@@ -1,0 +1,63 @@
+{
+  "name": "Sydney to Melbourne Road Trip",
+  "country": "",
+  "dateDescription": "April 2025",
+  "startDate": "2025-04-18",
+  "endDate": "2025-04-26",
+  "photos": [
+    {
+      "fileName": "R0005984",
+      "caption": "",
+      "location": "Kiama Blowhole, Kiama",
+      "dimensions": {
+        "width": 3576,
+        "height": 5356
+      }
+    },
+    {
+      "fileName": "R0005999",
+      "caption": "Sunrise walk",
+      "location": "Depot Beach",
+      "dimensions": {
+        "width": 3917,
+        "height": 5876
+      }
+    },
+    {
+      "fileName": "R0006077",
+      "caption": "",
+      "location": "Wilsons Promontory",
+      "dimensions": {
+        "width": 3706,
+        "height": 2471
+      }
+    },
+    {
+      "fileName": "R0006098",
+      "caption": "The crowd watch the coin flip during a game of 2-up on ANZAC Day",
+      "location": "The Corner Hotel, Richmond",
+      "dimensions": {
+        "width": 5620,
+        "height": 3209
+      }
+    },
+    {
+      "fileName": "R0006028",
+      "caption": "",
+      "location": "North Durras",
+      "dimensions": {
+        "width": 1701,
+        "height": 2268
+      }
+    },
+    {
+      "fileName": "R0006052",
+      "caption": "",
+      "location": "Wilsons Promontory",
+      "dimensions": {
+        "width": 2938,
+        "height": 1958
+      }
+    }
+  ]
+}

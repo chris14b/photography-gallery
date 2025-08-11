@@ -1,0 +1,90 @@
+{
+  "name": "Cambodia",
+  "country": "",
+  "dateDescription": "August 2024",
+  "startDate": "2024-08-07",
+  "endDate": "2024-08-22",
+  "photos": [
+    {
+      "fileName": "R0004245",
+      "caption": "\"You didn't come for normal\"",
+      "location": "Siem Reap",
+      "dimensions": {
+        "width": 5922,
+        "height": 3331
+      }
+    },
+    {
+      "fileName": "R0004405",
+      "caption": "Anton doesn't mind that our boat didn't take us all the way to shore",
+      "location": "Koh Rong Sanloem",
+      "dimensions": {
+        "width": 6000,
+        "height": 4000
+      }
+    },
+    {
+      "fileName": "R0004438",
+      "caption": "Victims of the Khmer Rouge",
+      "location": "Choeung Ek, Phnom Penh",
+      "dimensions": {
+        "width": 4000,
+        "height": 6000
+      }
+    },
+    {
+      "fileName": "R0004250",
+      "caption": "Modern monk",
+      "location": "Siem Reap",
+      "dimensions": {
+        "width": 5782,
+        "height": 3252
+      }
+    },
+    {
+      "fileName": "R0004282",
+      "caption": "",
+      "location": "Angkor Wat, Siem Reap",
+      "dimensions": {
+        "width": 5336,
+        "height": 3557
+      }
+    },
+    {
+      "fileName": "R0004367",
+      "caption": "Jas becomes airborne",
+      "location": "Arcadia Backpackers, Kampot",
+      "dimensions": {
+        "width": 5152,
+        "height": 3435
+      }
+    },
+    {
+      "fileName": "R0004378",
+      "caption": "Jas & Sophie smile because they're leaving me",
+      "location": "Koh Rong",
+      "dimensions": {
+        "width": 5939,
+        "height": 4000
+      }
+    },
+    {
+      "fileName": "R0004456",
+      "caption": "A man collects donations",
+      "location": "The Killing Cave, Battambang",
+      "dimensions": {
+        "width": 4000,
+        "height": 5452
+      }
+    },
+    {
+      "fileName": "R0004341",
+      "caption": "Jas & Sophie think they're on Masterchef",
+      "location": "Siem Reap",
+      "dimensions": {
+        "width": 3859,
+        "height": 5145
+      }
+    }
+  ]
+}

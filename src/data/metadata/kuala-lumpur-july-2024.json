@@ -1,0 +1,36 @@
+{
+  "name": "Kuala Lumpur",
+  "country": "Malaysia",
+  "dateDescription": "July 2024",
+  "startDate": "2024-07-12",
+  "endDate": "2024-07-16",
+  "photos": [
+    {
+      "fileName": "R0003767",
+      "caption": "",
+      "location": "Jalan Alor, Kuala Lumpur",
+      "dimensions": {
+        "width": 4000,
+        "height": 5333
+      }
+    },
+    {
+      "fileName": "R0003774",
+      "caption": "",
+      "location": "Perdana Botanical Garden, Kuala Lumpur",
+      "dimensions": {
+        "width": 1078,
+        "height": 1437
+      }
+    },
+    {
+      "fileName": "R0003776",
+      "caption": "The world's second tallest building, at 679 metres tall",
+      "location": "Merdeka 118, Kuala Lumpur",
+      "dimensions": {
+        "width": 3926,
+        "height": 5890
+      }
+    }
+  ]
+}

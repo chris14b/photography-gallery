@@ -1,0 +1,117 @@
+{
+  "name": "Vietnam",
+  "country": "",
+  "dateDescription": "December 2023 – January 2024",
+  "startDate": "2023-12-27",
+  "endDate": "2024-01-25",
+  "photos": [
+    {
+      "fileName": "R0001747",
+      "caption": "",
+      "location": "Add location",
+      "dimensions": {
+        "width": 6000,
+        "height": 4000
+      }
+    },
+    {
+      "fileName": "R0001768",
+      "caption": "",
+      "location": "Add location",
+      "dimensions": {
+        "width": 3793,
+        "height": 5690
+      }
+    },
+    {
+      "fileName": "R0001891",
+      "caption": "",
+      "location": "Add location",
+      "dimensions": {
+        "width": 4000,
+        "height": 6000
+      }
+    },
+    {
+      "fileName": "R0001892",
+      "caption": "",
+      "location": "Add location",
+      "dimensions": {
+        "width": 4000,
+        "height": 6000
+      }
+    },
+    {
+      "fileName": "R0001927",
+      "caption": "",
+      "location": "Add location",
+      "dimensions": {
+        "width": 2697,
+        "height": 4046
+      }
+    },
+    {
+      "fileName": "R0001959",
+      "caption": "",
+      "location": "Add location",
+      "dimensions": {
+        "width": 4000,
+        "height": 6000
+      }
+    },
+    {
+      "fileName": "R0001986",
+      "caption": "",
+      "location": "Add location",
+      "dimensions": {
+        "width": 4000,
+        "height": 5333
+      }
+    },
+    {
+      "fileName": "R0002064",
+      "caption": "",
+      "location": "Add location",
+      "dimensions": {
+        "width": 6000,
+        "height": 4000
+      }
+    },
+    {
+      "fileName": "R0002081",
+      "caption": "",
+      "location": "Add location",
+      "dimensions": {
+        "width": 4000,
+        "height": 5333
+      }
+    },
+    {
+      "fileName": "R0002102",
+      "caption": "",
+      "location": "Add location",
+      "dimensions": {
+        "width": 4000,
+        "height": 6000
+      }
+    },
+    {
+      "fileName": "R0002105",
+      "caption": "",
+      "location": "Add location",
+      "dimensions": {
+        "width": 5725,
+        "height": 3220
+      }
+    },
+    {
+      "fileName": "R0002139",
+      "caption": "",
+      "location": "Add location",
+      "dimensions": {
+        "width": 6000,
+        "height": 3375
+      }
+    }
+  ]
+}

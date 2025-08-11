@@ -1,0 +1,72 @@
+{
+  "name": "Philippines",
+  "country": "",
+  "dateDescription": "February 2024",
+  "startDate": "2024-02-01",
+  "endDate": "2024-03-01",
+  "photos": [
+    {
+      "fileName": "R0002347",
+      "caption": "",
+      "location": "Add location",
+      "dimensions": {
+        "width": 4000,
+        "height": 6000
+      }
+    },
+    {
+      "fileName": "R0002413",
+      "caption": "",
+      "location": "Add location",
+      "dimensions": {
+        "width": 3562,
+        "height": 5264
+      }
+    },
+    {
+      "fileName": "R0002435",
+      "caption": "",
+      "location": "Add location",
+      "dimensions": {
+        "width": 4000,
+        "height": 6000
+      }
+    },
+    {
+      "fileName": "R0002471",
+      "caption": "",
+      "location": "Add location",
+      "dimensions": {
+        "width": 4000,
+        "height": 6000
+      }
+    },
+    {
+      "fileName": "R0002504",
+      "caption": "",
+      "location": "Add location",
+      "dimensions": {
+        "width": 5392,
+        "height": 3595
+      }
+    },
+    {
+      "fileName": "R0002521",
+      "caption": "",
+      "location": "Add location",
+      "dimensions": {
+        "width": 3360,
+        "height": 5040
+      }
+    },
+    {
+      "fileName": "R0002550",
+      "caption": "",
+      "location": "Add location",
+      "dimensions": {
+        "width": 4000,
+        "height": 5616
+      }
+    }
+  ]
+}

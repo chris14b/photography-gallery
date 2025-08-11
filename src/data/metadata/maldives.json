@@ -1,0 +1,27 @@
+{
+  "name": "Maldives",
+  "country": "",
+  "dateDescription": "July 2024",
+  "startDate": "2024-07-04",
+  "endDate": "2024-07-11",
+  "photos": [
+    {
+      "fileName": "R0003672",
+      "caption": "Nurse sharks",
+      "location": "Thulusdhoo",
+      "dimensions": {
+        "width": 4496,
+        "height": 2997
+      }
+    },
+    {
+      "fileName": "R0003663",
+      "caption": "Maddy searches for nurse sharks",
+      "location": "Thulusdhoo",
+      "dimensions": {
+        "width": 6000,
+        "height": 4000
+      }
+    }
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "name": "Home",
+  "country": "",
+  "dateDescription": "Spring 2024 – Autumn 2025",
+  "startDate": "2024-10-25",
+  "endDate": "2025-04-18",
+  "photos": [
+    {
+      "fileName": "R0005934",
+      "caption": "Most beautiful butterfly I've ever seen in Australia, and it's in my backyard",
+      "location": "Home, Erskineville",
+      "dimensions": {
+        "width": 1738,
+        "height": 3090
+      }
+    },
+    {
+      "fileName": "R0005345",
+      "caption": "A 1959 Cadillac DeVille at a car meet",
+      "location": "The Entrance",
+      "dimensions": {
+        "width": 6000,
+        "height": 3375
+      }
+    },
+    {
+      "fileName": "R0005390",
+      "caption": "Meret poses",
+      "location": "Freshwater",
+      "dimensions": {
+        "width": 3724,
+        "height": 5590
+      }
+    },
+    {
+      "fileName": "R0005531",
+      "caption": "Dan mans the barbeque on his birthday",
+      "location": "Clontarf",
+      "dimensions": {
+        "width": 3851,
+        "height": 5135
+      }
+    },
+    {
+      "fileName": "R0005669",
+      "caption": "Jasprit Bumrah bowls to Marnus Labuschagne on day 2 of the Sydney Test",
+      "location": "Sydney Cricket Ground",
+      "dimensions": {
+        "width": 5449,
+        "height": 3633
+      }
+    },
+    {
+      "fileName": "R0005576",
+      "caption": "Issy",
+      "location": "Wentworth Falls",
+      "dimensions": {
+        "width": 4000,
+        "height": 6000
+      }
+    },
+    {
+      "fileName": "R0005373",
+      "caption": "",
+      "location": "Manly Beach",
+      "dimensions": {
+        "width": 3977,
+        "height": 2983
+      }
+    },
+    {
+      "fileName": "R0005898",
+      "caption": "",
+      "location": "Sydney Harbour",
+      "dimensions": {
+        "width": 6000,
+        "height": 4000
+      }
+    },
+    {
+      "fileName": "R0005629",
+      "caption": "Merry Christmas Eve",
+      "location": "The Entrance",
+      "dimensions": {
+        "width": 3764,
+        "height": 3764
+      }
+    },
+    {
+      "fileName": "R0005586",
+      "caption": "Angus drops a catch",
+      "location": "Cheltenham",
+      "dimensions": {
+        "width": 3522,
+        "height": 1981
+      }
+    },
+    {
+      "fileName": "R0005850",
+      "caption": "",
+      "location": "Dalpura Canyon",
+      "dimensions": {
+        "width": 5883,
+        "height": 3360
+      }
+    },
+    {
+      "fileName": "R0005356",
+      "caption": "",
+      "location": "The Entrance",
+      "dimensions": {
+        "width": 4000,
+        "height": 6000
+      }
+    },
+    {
+      "fileName": "R0005370",
+      "caption": "Cicada",
+      "location": "Wentworth Falls",
+      "dimensions": {
+        "width": 4750,
+        "height": 3167
+      }
+    }
+  ]
+}

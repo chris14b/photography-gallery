@@ -1,0 +1,27 @@
+{
+  "name": "Hong Kong",
+  "country": "",
+  "dateDescription": "January 2024",
+  "startDate": "2024-01-25",
+  "endDate": "2024-01-31",
+  "photos": [
+    {
+      "fileName": "R0002178",
+      "caption": "",
+      "location": "Add location",
+      "dimensions": {
+        "width": 4000,
+        "height": 6000
+      }
+    },
+    {
+      "fileName": "R0002247",
+      "caption": "",
+      "location": "Add location",
+      "dimensions": {
+        "width": 4000,
+        "height": 6000
+      }
+    }
+  ]
+}

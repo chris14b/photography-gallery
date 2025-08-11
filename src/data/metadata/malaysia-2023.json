@@ -1,0 +1,45 @@
+{
+  "name": "Malaysia",
+  "country": "",
+  "dateDescription": "October 2023",
+  "startDate": "2023-10-03",
+  "endDate": "2023-10-18",
+  "photos": [
+    {
+      "fileName": "R0000796",
+      "caption": "",
+      "location": "Thean Hou Temple, Kuala Lumpur",
+      "dimensions": {
+        "width": 4000,
+        "height": 6000
+      }
+    },
+    {
+      "fileName": "R0000805",
+      "caption": "Tea fields",
+      "location": "Cameron Highlands",
+      "dimensions": {
+        "width": 6000,
+        "height": 4000
+      }
+    },
+    {
+      "fileName": "R0000842",
+      "caption": "",
+      "location": "Kek Lok Si, Penang",
+      "dimensions": {
+        "width": 4000,
+        "height": 6000
+      }
+    },
+    {
+      "fileName": "R0000827",
+      "caption": "",
+      "location": "Umbrella Alley, Kuala Lumpur",
+      "dimensions": {
+        "width": 3815,
+        "height": 5722
+      }
+    }
+  ]
+}

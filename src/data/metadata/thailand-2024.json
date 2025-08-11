@@ -1,0 +1,45 @@
+{
+  "name": "Thailand",
+  "country": "",
+  "dateDescription": "August–September 2024",
+  "startDate": "2024-08-22",
+  "endDate": "2024-09-14",
+  "photos": [
+    {
+      "fileName": "R0004657",
+      "caption": "",
+      "location": "Sunset Bar, Ko Tao",
+      "dimensions": {
+        "width": 6000,
+        "height": 4000
+      }
+    },
+    {
+      "fileName": "R0004485",
+      "caption": "",
+      "location": "The Grand Palace, Bangkok",
+      "dimensions": {
+        "width": 4864,
+        "height": 2736
+      }
+    },
+    {
+      "fileName": "R0004538",
+      "caption": "",
+      "location": "JJ Night Market, Kanchanaburi",
+      "dimensions": {
+        "width": 4000,
+        "height": 6000
+      }
+    },
+    {
+      "fileName": "R0004568",
+      "caption": "",
+      "location": "Erawan Falls, Kanchanaburi",
+      "dimensions": {
+        "width": 4000,
+        "height": 6000
+      }
+    }
+  ]
+}

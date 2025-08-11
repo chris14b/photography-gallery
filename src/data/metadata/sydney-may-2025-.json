@@ -1,0 +1,63 @@
+{
+  "name": "Home",
+  "country": "",
+  "dateDescription": "Spring 2025 –",
+  "startDate": "2025-04-26",
+  "endDate": "YYYY-MM-DD",
+  "photos": [
+    {
+      "fileName": "R0006245",
+      "caption": "Vivid Sydney",
+      "location": "The Rocks",
+      "dimensions": {
+        "width": 4000,
+        "height": 6000
+      }
+    },
+    {
+      "fileName": "R0006325",
+      "caption": "Kiasmos",
+      "location": "Sydney Opera House",
+      "dimensions": {
+        "width": 6000,
+        "height": 4000
+      }
+    },
+    {
+      "fileName": "R0006381",
+      "caption": "Gyan guards the drinks bath at a party",
+      "location": "Home, Erskineville",
+      "dimensions": {
+        "width": 6000,
+        "height": 4000
+      }
+    },
+    {
+      "fileName": "R0006159",
+      "caption": "Chef Sabrina wows Gab with her brigadeiro",
+      "location": "Home, Erskineville",
+      "dimensions": {
+        "width": 6000,
+        "height": 4000
+      }
+    },
+    {
+      "fileName": "R0006407",
+      "caption": "Connor and his Abarth 124 Spider",
+      "location": "Canberra",
+      "dimensions": {
+        "width": 2681,
+        "height": 4022
+      }
+    },
+    {
+      "fileName": "R0006333",
+      "caption": "Ólafur Arnalds of Kiasmos",
+      "location": "Sydney Opera House",
+      "dimensions": {
+        "width": 3307,
+        "height": 4961
+      }
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "name": "Home",
+  "country": "",
+  "dateDescription": "Autumn 2024",
+  "startDate": "2024-03-01",
+  "endDate": "2024-06-05",
+  "photos": [
+    {
+      "fileName": "R0002718",
+      "caption": "",
+      "location": "Add location",
+      "dimensions": {
+        "width": 4000,
+        "height": 6000
+      }
+    },
+    {
+      "fileName": "R0002729",
+      "caption": "",
+      "location": "Add location",
+      "dimensions": {
+        "width": 6000,
+        "height": 4000
+      }
+    },
+    {
+      "fileName": "R0002759",
+      "caption": "",
+      "location": "Add location",
+      "dimensions": {
+        "width": 3798,
+        "height": 5064
+      }
+    },
+    {
+      "fileName": "R0002901",
+      "caption": "",
+      "location": "Add location",
+      "dimensions": {
+        "width": 6000,
+        "height": 4000
+      }
+    },
+    {
+      "fileName": "R0003061",
+      "caption": "",
+      "location": "Add location",
+      "dimensions": {
+        "width": 5844,
+        "height": 3330
+      }
+    },
+    {
+      "fileName": "R0003081",
+      "caption": "",
+      "location": "Add location",
+      "dimensions": {
+        "width": 4000,
+        "height": 6000
+      }
+    }
+  ]
+}

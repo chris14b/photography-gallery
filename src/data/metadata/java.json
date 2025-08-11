@@ -1,0 +1,108 @@
+{
+  "name": "Java",
+  "country": "Indonesia",
+  "dateDescription": "September–October 2024",
+  "startDate": "2024-09-27",
+  "endDate": "2024-10-19",
+  "photos": [
+    {
+      "fileName": "R0005165 (1)",
+      "caption": "Mount Bromo crater, Mount Batok, and Semeru",
+      "location": "Bromo Tengger Semeru National Park",
+      "dimensions": {
+        "width": 5604,
+        "height": 3768
+      }
+    },
+    {
+      "fileName": "R0005160",
+      "caption": "Pre-dawn in the town on the edge of the caldera",
+      "location": "Cemoro Lawang",
+      "dimensions": {
+        "width": 3251,
+        "height": 4876
+      }
+    },
+    {
+      "fileName": "R0005270",
+      "caption": "Headlamps light the way to the top of the crater",
+      "location": "Ijen, Banyuwangi Regency",
+      "dimensions": {
+        "width": 5427,
+        "height": 3053
+      }
+    },
+    {
+      "fileName": "R0005320",
+      "caption": "Lamborghini ride down the mountain",
+      "location": "Ijen, Banyuwangi Regency",
+      "dimensions": {
+        "width": 4000,
+        "height": 6000
+      }
+    },
+    {
+      "fileName": "R0005066",
+      "caption": "Sunset on the snorkel boat",
+      "location": "Karimunjawa",
+      "dimensions": {
+        "width": 5836,
+        "height": 3464
+      }
+    },
+    {
+      "fileName": "R0005281",
+      "caption": "",
+      "location": "Ijen, Banyuwangi Regency",
+      "dimensions": {
+        "width": 4000,
+        "height": 6000
+      }
+    },
+    {
+      "fileName": "R0005029",
+      "caption": "Felix, Rutger, Mathis and Finn",
+      "location": "Karimunjawa",
+      "dimensions": {
+        "width": 4000,
+        "height": 6000
+      }
+    },
+    {
+      "fileName": "R0005059",
+      "caption": "",
+      "location": "Karimunjawa",
+      "dimensions": {
+        "width": 2807,
+        "height": 4210
+      }
+    },
+    {
+      "fileName": "R0005265",
+      "caption": "",
+      "location": "Seruni Point, Bromo Tengger Semeru National Park",
+      "dimensions": {
+        "width": 6000,
+        "height": 4000
+      }
+    },
+    {
+      "fileName": "R0004896",
+      "caption": "Amanda holds the hostel snake",
+      "location": "Laura's Backpacker 523, Yogyakarta",
+      "dimensions": {
+        "width": 3752,
+        "height": 4559
+      }
+    },
+    {
+      "fileName": "R0005036",
+      "caption": "",
+      "location": "Karimunjawa",
+      "dimensions": {
+        "width": 6000,
+        "height": 4000
+      }
+    }
+  ]
+}

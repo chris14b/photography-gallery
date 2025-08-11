@@ -1,0 +1,27 @@
+{
+  "name": "Singapore",
+  "country": "",
+  "dateDescription": "September–October 2023",
+  "startDate": "2023-09-28",
+  "endDate": "2023-10-03",
+  "photos": [
+    {
+      "fileName": "R0000705",
+      "caption": "",
+      "location": "Supertree Grove",
+      "dimensions": {
+        "width": 4000,
+        "height": 6000
+      }
+    },
+    {
+      "fileName": "R0000677",
+      "caption": "Alannah is fascinated by the wall",
+      "location": "ArtScience Museum",
+      "dimensions": {
+        "width": 3772,
+        "height": 5658
+      }
+    }
+  ]
+}

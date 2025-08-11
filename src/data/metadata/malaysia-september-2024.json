@@ -1,0 +1,36 @@
+{
+  "name": "Malaysia",
+  "country": "",
+  "dateDescription": "September 2024",
+  "startDate": "2024-09-14",
+  "endDate": "2024-09-27",
+  "photos": [
+    {
+      "fileName": "R0004752",
+      "caption": "",
+      "location": "Durian Perangin Waterfall, Langakwi",
+      "dimensions": {
+        "width": 4000,
+        "height": 5724
+      }
+    },
+    {
+      "fileName": "R0004776",
+      "caption": "",
+      "location": "George Town",
+      "dimensions": {
+        "width": 3367,
+        "height": 5050
+      }
+    },
+    {
+      "fileName": "R0004774",
+      "caption": "",
+      "location": "Umbrella Alley, George Town",
+      "dimensions": {
+        "width": 3878,
+        "height": 5817
+      }
+    }
+  ]
+}

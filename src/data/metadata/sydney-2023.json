@@ -1,0 +1,27 @@
+{
+  "name": "Home",
+  "country": "",
+  "dateDescription": "Winter 2023",
+  "startDate": "2023-06-14",
+  "endDate": "2023-08-31",
+  "photos": [
+    {
+      "fileName": "R0000208",
+      "caption": "",
+      "location": "Hanging Rock, Blackheath",
+      "dimensions": {
+        "width": 4000,
+        "height": 6000
+      }
+    },
+    {
+      "fileName": "R0000216",
+      "caption": "Wattle season",
+      "location": "Burramoko Ridge, Blackheath",
+      "dimensions": {
+        "width": 6000,
+        "height": 4000
+      }
+    }
+  ]
+}
