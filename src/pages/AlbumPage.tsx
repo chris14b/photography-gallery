@@ -54,7 +54,7 @@ const AlbumPage: React.FC<AlbumPageProps> = React.memo(({
 }) => {
   // Use custom hook for container width measurement
   const { containerRef, containerWidth } = useContainerWidth();
-  
+
   // Use custom hook for photo dimension calculations
   const { calculateDimensions } = usePhotoDimensions(containerWidth);
 

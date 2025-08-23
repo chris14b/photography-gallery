@@ -1,12 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-import LazyImage from '../../common/LazyImage';
+import PhotoCard from '../../common/PhotoCard';
 import type { Photo } from '../../../types';
 import { PhotoCaption, PhotoLocation, InfoContainer } from '../../../styles/components/AlbumStyles';
 import LocationIcon from '../../common/LocationIcon';
 
 interface PhotoWithInfoProps {
   photo: Photo;
+  width: number;
+  height: number;
   layout: 'side' | 'below';
   /**
    * When layout is 'side', reverse controls whether info appears before the photo (row-reverse)
@@ -32,11 +34,9 @@ const Container = styled.div<{ $direction: 'row' | 'row-reverse' | 'column' }>`
 const PhotoWrapper = styled.div<{ $isColumn: boolean }>`
   display: flex;
   justify-content: center;
-  /* In side layout, do not allow the photo to flex-grow; keep it snug next to the info */
-  flex: ${p => (p.$isColumn ? '0 1 auto' : '0 0 auto')};
   width: ${p => (p.$isColumn ? '100%' : 'auto')};
   margin-bottom: ${p => (p.$isColumn ? '20px' : '0')};
-  max-width: ${p => (p.$isColumn ? 'min(95vw, 1600px)' : '100%')};
+  max-width: ${p => (p.$isColumn ? '100%' : '90%')};
 
   @media (max-width: 768px) {
     max-width: 100%; /* Full width on mobile */
@@ -44,7 +44,7 @@ const PhotoWrapper = styled.div<{ $isColumn: boolean }>`
   }
 `;
 
-const PhotoWithInfo: React.FC<PhotoWithInfoProps> = React.memo(({ photo, layout, reverse }) => {
+const PhotoWithInfo: React.FC<PhotoWithInfoProps> = React.memo(({ photo, width, height, layout, reverse }) => {
   const isSide = layout === 'side';
   const direction: 'row' | 'row-reverse' | 'column' = isSide ? (reverse ? 'row-reverse' : 'row') : 'column';
   const align: 'left' | 'right' | 'center' = isSide ? (reverse ? 'right' : 'left') : 'center';
@@ -52,7 +52,7 @@ const PhotoWithInfo: React.FC<PhotoWithInfoProps> = React.memo(({ photo, layout,
   return (
     <Container $direction={direction}>
       <PhotoWrapper $isColumn={!isSide}>
-        <LazyImage src={photo.src} alt={photo.alt} layout={isSide ? 'side' : 'below'} />
+        <PhotoCard photo={photo} width={width} height={height} />
       </PhotoWrapper>
 
       <InfoContainer $align={align}>
