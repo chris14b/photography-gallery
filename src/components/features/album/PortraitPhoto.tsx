@@ -65,7 +65,7 @@ const PortraitPhoto: React.FC<PortraitPhotoProps> = React.memo(({
           />
         </div>
       </PortraitPhotoWrapper>
-      <PortraitPhotoInfo>
+      <PortraitPhotoInfo $alignRight={!isEven}>
         {photo.caption && (
           <PhotoCaption>{photo.caption}</PhotoCaption>
         )}

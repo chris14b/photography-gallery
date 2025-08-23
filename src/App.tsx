@@ -129,6 +129,14 @@ const App: React.FC = () => {
     setSelectedAlbumId(albumId || null);
   };
 
+  // Ensure each view (home or album) opens at the top of the page
+  useEffect(() => {
+    // Use instant jump to avoid smooth scroll artifacts during navigation
+    if (typeof window !== 'undefined' && typeof window.scrollTo === 'function') {
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    }
+  }, [selectedAlbumId]);
+
   // Find the selected album object if an album is selected
   const selectedAlbum = selectedAlbumId 
     ? albums.find(album => album.id === selectedAlbumId) || null

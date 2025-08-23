@@ -31,18 +31,20 @@ export const PhotoInfo = styled.div`
 `;
 
 // Container for portrait photo information
-export const PortraitPhotoInfo = styled.div`
+export const PortraitPhotoInfo = styled.div<{ $alignRight?: boolean }>`
   padding: 0;
-  text-align: left;
+  text-align: ${props => (props.$alignRight ? 'right' : 'left')};
   display: flex;
   flex-direction: column;
   justify-content: center; /* Center content vertically */
+  align-items: ${props => (props.$alignRight ? 'flex-end' : 'flex-start')};
   max-width: 300px; /* Limit width of the info section */
   
   /* Responsive layout for smaller screens */
   @media (max-width: 768px) {
     max-width: 100%; /* Full width on mobile */
     text-align: center; /* Center text on mobile */
+    align-items: center; /* Center items on mobile */
     padding: 0 24px;
   }
 `;
@@ -52,7 +54,6 @@ export const AlbumHeader = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 32px;
   padding: 0 24px;
 `;
 

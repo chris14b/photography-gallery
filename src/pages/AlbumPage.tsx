@@ -23,7 +23,7 @@ interface AlbumPageProps {
 const AlbumContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 36px; /* Reduced gap between photos */
+  gap: 96px;
   padding: 24px 0;
   max-width: 100%;
   overflow-x: hidden; /* Prevent horizontal scrolling */
@@ -88,43 +88,57 @@ const AlbumPage: React.FC<AlbumPageProps> = React.memo(({
 
   // Render the album photos
   const renderAlbumPhotos = () => {
-    // Counter to track portrait photos for alternating layout
-    let portraitPhotoIndex = 0;
-    
+    // Counter to track side-by-side photos for alternating layout
+    let sideBySideIndex = 0;
+
     return photos.map((photo) => {
-      // Calculate dimensions while maintaining aspect ratio
-      const aspectRatio = photo.width / photo.height;
-      const isPortrait = aspectRatio < 1;
-      
-      // Calculate dimensions based on aspect ratio
-      const { width, height } = calculateDimensions(photo.width, photo.height);
-      
-      // For portrait photos, use row layout with info to the side
-      if (isPortrait) {
-        // Determine if this is an even-indexed portrait photo
-        const isEven = portraitPhotoIndex % 2 === 0;
-        
-        // Increment the portrait photo counter for the next portrait photo
-        portraitPhotoIndex++;
-        
+      const GAP_BETWEEN = 32; // matches PortraitPhotoContainer gap
+      const INFO_WIDTH = 240; // matches PortraitPhotoInfo width
+      const vw = typeof window !== 'undefined' ? window.innerWidth : 1024;
+
+      // Always stack on narrow screens
+      if (vw < 768) {
+        const below = calculateDimensions(photo.width, photo.height, { layout: 'below', gap: GAP_BETWEEN, infoWidth: INFO_WIDTH });
+        return (
+          <LandscapePhoto
+            key={photo.id}
+            photo={photo}
+            width={below.width}
+            height={below.height}
+          />
+        );
+      }
+
+      // Compute both layouts and choose the one that yields the larger image area
+      const below = calculateDimensions(photo.width, photo.height, { layout: 'below', gap: GAP_BETWEEN, infoWidth: INFO_WIDTH });
+      const side = calculateDimensions(photo.width, photo.height, { layout: 'side', gap: GAP_BETWEEN, infoWidth: INFO_WIDTH });
+
+      const areaBelow = below.width * below.height;
+      const areaSide = side.width * side.height;
+
+      const useSide = areaSide > areaBelow;
+
+      if (useSide) {
+        const isEven = sideBySideIndex % 2 === 0;
+        sideBySideIndex++;
+
         return (
           <PortraitPhoto
             key={photo.id}
             photo={photo}
-            width={width}
-            height={height}
+            width={side.width}
+            height={side.height}
             isEven={isEven}
           />
         );
       }
-      
-      // For landscape photos, use the original column layout
+
       return (
         <LandscapePhoto
           key={photo.id}
           photo={photo}
-          width={width}
-          height={height}
+          width={below.width}
+          height={below.height}
         />
       );
     });
