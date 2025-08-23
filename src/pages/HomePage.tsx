@@ -1,11 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import type { AlbumCover } from '../types';
-import { 
-  GalleryContainer, 
-  Header, 
-  GalleryTitle 
-} from '../styles/components/HomeStyles';
+import { GalleryContainer } from '../styles/components/HomeStyles';
+import { PageHeader as Header, PageTitle as GalleryTitle, PageSubtitle as GallerySubtitle } from '../styles/components/PageHeaderStyles';
 import AlbumCard from '../components/features/gallery/AlbumCard';
 import { useContainerWidth } from '../hooks/useContainerWidth';
 
@@ -13,6 +10,7 @@ interface HomePageProps {
   albumCovers: AlbumCover[];
   galleryTitle: string;
   onSelectAlbum: (albumId: string) => void;
+  gallerySubtitle?: string;
 }
 
 // Grid container for album cards with responsive columns
@@ -55,7 +53,8 @@ const AlbumGrid = styled.div`
 const HomePage: React.FC<HomePageProps> = React.memo(({ 
   albumCovers, 
   galleryTitle,
-  onSelectAlbum
+  onSelectAlbum,
+  gallerySubtitle,
 }) => {
   // Use custom hook for container width measurement (for potential future use)
   const { containerRef } = useContainerWidth();
@@ -64,6 +63,7 @@ const HomePage: React.FC<HomePageProps> = React.memo(({
     <GalleryContainer ref={containerRef}>
       <Header>
         <GalleryTitle>{galleryTitle}</GalleryTitle>
+        {gallerySubtitle && <GallerySubtitle>{gallerySubtitle}</GallerySubtitle>}
       </Header>
       <AlbumGrid>
         {albumCovers.map(ac => (

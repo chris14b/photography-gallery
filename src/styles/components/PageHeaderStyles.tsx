@@ -1,19 +1,9 @@
 import styled from 'styled-components';
 
-// Base container for gallery layouts (homepage)
-export const GalleryContainer = styled.div`
-  padding: 24px;
-  width: 100%;
-  max-width: 1800px;
-  margin: 0 auto;
-  position: relative;
-`;
-
-// Header for homepage
-export const Header = styled.header`
+export const PageHeader = styled.header`
   width: 100%;
   padding: 16px 24px 12px;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -27,9 +17,8 @@ export const Header = styled.header`
   }
 `;
 
-// Title for homepage
-export const GalleryTitle = styled.h1`
-  font-size: clamp(1.75rem, 3vw, 2.5rem);
+export const PageTitle = styled.h1`
+  font-size: clamp(2.25rem, 4vw, 3.5rem);
   margin: 0;
   color: ${({ theme }) => theme.colors.text};
   letter-spacing: -0.01em;
@@ -37,8 +26,7 @@ export const GalleryTitle = styled.h1`
   font-weight: 600;
 `;
 
-// Subtitle for homepage
-export const GallerySubtitle = styled.p`
+export const PageSubtitle = styled.p`
   margin: 0;
   color: ${({ theme }) => theme.colors.text};
   opacity: 0.75;

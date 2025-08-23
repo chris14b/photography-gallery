@@ -7,7 +7,7 @@ export const PhotoCaption = styled.div`
   font-weight: 500;
 `;
 
-// Location text for photos (with pin)
+// Location text for photos with inline SVG icon
 export const PhotoLocation = styled.div`
   font-size: 1rem;
   color: ${({ theme }) => theme.colors.text};
@@ -15,13 +15,7 @@ export const PhotoLocation = styled.div`
   font-style: italic;
   display: inline-flex;
   align-items: center;
-
-  &::before {
-    content: '📍';
-    margin-right: 6px;
-    opacity: 0.9;
-    font-style: normal; /* keep icon non-italic */
-  }
+  gap: 6px; /* space between icon and text */
 `;
 
 // Container for photo information (used in landscape photos)
@@ -55,19 +49,15 @@ export const AlbumHeader = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 0 24px;
+  margin-bottom: 16px; /* Tighter spacing so photos start higher */
 `;
 
 // Title for album pages
 export const AlbumTitle = styled.h1`
-  font-size: 4rem;
-  margin: 0 0 16px 0;
+  font-size: clamp(1.75rem, 3.2vw, 2.75rem);
+  margin: 0;
   color: ${({ theme }) => theme.colors.text};
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: 5rem;
-  }
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
-    font-size: 6rem;
-  }
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  font-weight: 600;
 `;

@@ -159,7 +159,8 @@ const App: React.FC = () => {
               {!selectedAlbumId ? (
                 <HomePage
                   albumCovers={albumCoverCards}
-                  galleryTitle="Chris Johnston's Photography Gallery"
+                  galleryTitle="Chris Johnston Photography"
+                  gallerySubtitle="Selected work • 2023–2025"
                   onSelectAlbum={handleSelectAlbum}
                 />
               ) : (

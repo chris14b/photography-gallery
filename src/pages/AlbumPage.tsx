@@ -3,10 +3,7 @@ import styled from 'styled-components';
 import type { Photo, Album } from '../types';
 import { PhotoProvider } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
-import {
-  AlbumHeader,
-  AlbumTitle
-} from '../styles/components/AlbumStyles';
+import { PageHeader as Header, PageTitle as GalleryTitle, PageSubtitle as GallerySubtitle } from '../styles/components/PageHeaderStyles';
 import HomeIcon from '../components/common/HomeIcon';
 import PortraitPhoto from '../components/features/album/PortraitPhoto';
 import LandscapePhoto from '../components/features/album/LandscapePhoto';
@@ -23,42 +20,19 @@ interface AlbumPageProps {
 const AlbumContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 96px;
+  gap: 0; /* Separate header spacing from photo list spacing */
   padding: 24px 0;
   max-width: 100%;
   overflow-x: hidden; /* Prevent horizontal scrolling */
 `;
 
-// Row to place title and subtitle inline
-const TitleRow = styled.div`
+// Dedicated list container for photos with its own vertical spacing
+const PhotosList = styled.div`
   display: flex;
-  align-items: baseline;
-  gap: 12px;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
+  gap: 96px; /* Inter-photo spacing (increased) */
 `;
 
-// Title text adjusted for inline layout
-const TitleText = styled(AlbumTitle)`
-  margin: 0;
-`;
-
-
-// Date span text shown under the subtitle
-const AlbumDateSpan = styled.div`
-  font-size: 1.2rem;
-  color: ${({ theme }) => theme.colors.text};
-  opacity: 0.85;
-  text-align: center;
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: 1.3rem;
-  }
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
-    font-size: 1.4rem;
-  }
-`;
 
 
 /**
@@ -153,15 +127,15 @@ const AlbumPage: React.FC<AlbumPageProps> = React.memo(({
     <PhotoProvider>
       <AlbumContainer ref={containerRef}>
         <HomeIcon onClick={onBackClick} />
-        <AlbumHeader>
-          <TitleRow>
-            <TitleText>{selectedAlbum?.title || 'Album'}</TitleText>
-          </TitleRow>
+        <Header>
+          <GalleryTitle>{selectedAlbum?.title || 'Album'}</GalleryTitle>
           {combinedLine.length > 0 && (
-            <AlbumDateSpan>{combinedLine}</AlbumDateSpan>
+            <GallerySubtitle>{combinedLine}</GallerySubtitle>
           )}
-        </AlbumHeader>
-        {renderAlbumPhotos()}
+        </Header>
+        <PhotosList>
+          {renderAlbumPhotos()}
+        </PhotosList>
       </AlbumContainer>
     </PhotoProvider>
   );

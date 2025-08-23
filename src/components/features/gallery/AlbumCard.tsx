@@ -103,7 +103,6 @@ const Caption = styled.div`
   padding: 10px 12px;
   text-align: center;
   color: ${({ theme }) => theme.colors.text};
-  border-top: 1px solid ${({ theme }) => theme.colors.accent};
 `;
 
 const AlbumName = styled.h3`
@@ -220,7 +219,7 @@ const AlbumCard: React.FC<AlbumCardProps> = ({ album, coverPhoto, onSelectAlbum 
   const combinedSubtitleLine = [album.country, album.dateDescription]
     .map(s => (typeof s === 'string' ? s.trim() : ''))
     .filter(s => s.length > 0)
-    .join(', ');
+    .join(' • ');
 
   return (
     <Card onClick={handleAlbumClick}>

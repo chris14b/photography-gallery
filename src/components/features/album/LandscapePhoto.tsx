@@ -7,6 +7,7 @@ import {
   PhotoLocation,
   PhotoInfo
 } from '../../../styles/components/AlbumStyles';
+import LocationIcon from '../../common/LocationIcon';
 
 interface LandscapePhotoProps {
   photo: Photo;
@@ -53,7 +54,7 @@ const LandscapePhoto: React.FC<LandscapePhotoProps> = React.memo(({
           <PhotoCaption>{photo.caption}</PhotoCaption>
         )}
         {photo.location && (
-          <PhotoLocation>{photo.location}</PhotoLocation>
+          <PhotoLocation><LocationIcon />{photo.location}</PhotoLocation>
         )}
       </PhotoInfo>
     </LandscapePhotoContainer>
