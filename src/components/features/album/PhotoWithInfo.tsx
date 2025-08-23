@@ -56,12 +56,30 @@ const PhotoWithInfo: React.FC<PhotoWithInfoProps> = React.memo(({ photo, width, 
       </PhotoWrapper>
 
       <InfoContainer $align={align}>
-        {photo.caption && <PhotoCaption>{photo.caption}</PhotoCaption>}
-        {photo.location && (
-          <PhotoLocation>
-            <LocationIcon />
-            {photo.location}
-          </PhotoLocation>
+        {isSide ? (
+          <>
+            {photo.caption && <PhotoCaption>{photo.caption}</PhotoCaption>}
+            {photo.location && (
+              <PhotoLocation>
+                <LocationIcon />
+                {photo.location}
+              </PhotoLocation>
+            )}
+          </>
+        ) : (
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            {photo.caption && (
+              <PhotoCaption as="span" style={{ marginBottom: 0 }}>
+                {photo.caption}
+              </PhotoCaption>
+            )}
+            {photo.location && (
+              <PhotoLocation>
+                <LocationIcon />
+                {photo.location}
+              </PhotoLocation>
+            )}
+          </div>
         )}
       </InfoContainer>
     </Container>

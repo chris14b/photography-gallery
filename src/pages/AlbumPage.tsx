@@ -65,7 +65,7 @@ const AlbumPage: React.FC<AlbumPageProps> = React.memo(({
 
     return photos.map((photo) => {
       const GAP_BETWEEN = 32; // matches PortraitPhotoContainer gap
-      const INFO_WIDTH = 240; // matches InfoContainer side width
+      const INFO_WIDTH = 300; // matches InfoContainer side width
       const vw = typeof window !== 'undefined' ? window.innerWidth : 1024;
 
       // Always stack on narrow screens

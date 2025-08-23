@@ -25,7 +25,7 @@ export function usePhotoDimensions(containerWidth: number) {
     const aspectRatio = width / height;
     const layout = options?.layout ?? 'below';
     const gap = options?.gap ?? 32; // matches PortraitPhotoContainer gap
-    const infoWidth = options?.infoWidth ?? 240; // matches InfoContainer side width
+    const infoWidth = options?.infoWidth ?? 300; // matches InfoContainer side width
 
     // Available width for the photo depending on layout
     // Inline responsive width calculation (previously in getMaxPhotoWidth)
@@ -50,7 +50,7 @@ export function usePhotoDimensions(containerWidth: number) {
     } else if (vw < 1200) {
       maxHeight = layout === 'side' ? vh * 0.9 : vh * 0.8;
     } else {
-      maxHeight = layout === 'side' ? vh * 0.95 : vh * 0.9;
+      maxHeight = layout === 'side' ? vh * 0.98 : vh * 0.92;
     }
 
     // Start with maximum width within constraints

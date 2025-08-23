@@ -11,7 +11,7 @@ export const PhotoCaption = styled.div`
 export const PhotoLocation = styled.div`
   font-size: 1rem;
   color: ${({ theme }) => theme.colors.text};
-  opacity: 0.85;
+  opacity: 0.5;
   font-style: italic;
   display: inline-flex;
   align-items: center;
