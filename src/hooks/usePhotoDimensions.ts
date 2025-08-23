@@ -2,45 +2,10 @@
  * Custom hook to calculate photo dimensions for album layout
  * 
  * @param containerWidth - Width of the container in pixels
- * @returns Functions to calculate maximum photo width and height
+ * @returns Object exposing calculateDimensions(width, height, options)
  */
 export function usePhotoDimensions(containerWidth: number) {
-  /**
-   * Calculate maximum photo width based on container width and screen size
-   * @returns Maximum width in pixels
-   */
-  const getMaxPhotoWidth = (): number => {
-    // Responsive width calculation based on screen size
-    if (window.innerWidth < 768) {
-      // Mobile devices: use 98% of container width
-      return containerWidth * 0.98;
-    } else if (window.innerWidth < 1200) {
-      // Tablets and small desktops: use 96% of container width
-      return Math.min(containerWidth * 0.96, 1200);
-    } else {
-      // Large desktops: use 95% of container width, cap at 1600px
-      return Math.min(containerWidth * 0.95, 1600);
-    }
-  };
   
-  /**
-   * Calculate maximum photo height based on screen size and orientation
-   * @param isPortrait - Whether the photo is in portrait orientation
-   * @returns Maximum height in pixels
-   */
-  const getMaxPhotoHeight = (isPortrait = false): number => {
-    // Responsive height calculation based on screen size
-    if (window.innerWidth < 768) {
-      // Mobile devices
-      return window.innerHeight * (isPortrait ? 0.8 : 0.7); // Extra height for portrait photos
-    } else if (window.innerWidth < 1200) {
-      // Tablets and small desktops
-      return window.innerHeight * (isPortrait ? 0.9 : 0.8); // Extra height for portrait photos
-    } else {
-      // Large desktops
-      return window.innerHeight * (isPortrait ? 0.95 : 0.9); // Extra height for portrait photos
-    }
-  };
   
   /**
    * Calculate photo dimensions while maintaining aspect ratio and respecting layout
@@ -60,10 +25,18 @@ export function usePhotoDimensions(containerWidth: number) {
     const aspectRatio = width / height;
     const layout = options?.layout ?? 'below';
     const gap = options?.gap ?? 32; // matches PortraitPhotoContainer gap
-    const infoWidth = options?.infoWidth ?? 240; // matches PortraitPhotoInfo width
+    const infoWidth = options?.infoWidth ?? 240; // matches InfoContainer side width
 
     // Available width for the photo depending on layout
-    const baseMaxWidth = getMaxPhotoWidth();
+    // Inline responsive width calculation (previously in getMaxPhotoWidth)
+    let baseMaxWidth: number;
+    if (window.innerWidth < 768) {
+      baseMaxWidth = containerWidth * 0.98;
+    } else if (window.innerWidth < 1200) {
+      baseMaxWidth = Math.min(containerWidth * 0.96, 1200);
+    } else {
+      baseMaxWidth = Math.min(containerWidth * 0.95, 1600);
+    }
     const maxWidth = layout === 'side'
       ? Math.max(0, baseMaxWidth - (infoWidth + gap))
       : baseMaxWidth;
@@ -94,8 +67,6 @@ export function usePhotoDimensions(containerWidth: number) {
   };
   
   return {
-    getMaxPhotoWidth,
-    getMaxPhotoHeight,
     calculateDimensions
   };
 }

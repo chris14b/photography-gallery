@@ -2,11 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import type { Photo, Album } from '../types';
 import { PhotoProvider } from 'react-photo-view';
-import 'react-photo-view/dist/react-photo-view.css';
 import { PageHeader as Header, PageTitle as GalleryTitle, PageSubtitle as GallerySubtitle } from '../styles/components/PageHeaderStyles';
 import HomeIcon from '../components/common/HomeIcon';
-import PortraitPhoto from '../components/features/album/PortraitPhoto';
-import LandscapePhoto from '../components/features/album/LandscapePhoto';
+import PhotoWithInfo from '../components/features/album/PhotoWithInfo';
 import { useContainerWidth } from '../hooks/useContainerWidth';
 import { usePhotoDimensions } from '../hooks/usePhotoDimensions';
 
@@ -67,18 +65,19 @@ const AlbumPage: React.FC<AlbumPageProps> = React.memo(({
 
     return photos.map((photo) => {
       const GAP_BETWEEN = 32; // matches PortraitPhotoContainer gap
-      const INFO_WIDTH = 240; // matches PortraitPhotoInfo width
+      const INFO_WIDTH = 240; // matches InfoContainer side width
       const vw = typeof window !== 'undefined' ? window.innerWidth : 1024;
 
       // Always stack on narrow screens
       if (vw < 768) {
         const below = calculateDimensions(photo.width, photo.height, { layout: 'below', gap: GAP_BETWEEN, infoWidth: INFO_WIDTH });
         return (
-          <LandscapePhoto
+          <PhotoWithInfo
             key={photo.id}
             photo={photo}
             width={below.width}
             height={below.height}
+            layout="below"
           />
         );
       }
@@ -97,22 +96,24 @@ const AlbumPage: React.FC<AlbumPageProps> = React.memo(({
         sideBySideIndex++;
 
         return (
-          <PortraitPhoto
+          <PhotoWithInfo
             key={photo.id}
             photo={photo}
             width={side.width}
             height={side.height}
-            isEven={isEven}
+            layout="side"
+            reverse={!isEven}
           />
         );
       }
 
       return (
-        <LandscapePhoto
+        <PhotoWithInfo
           key={photo.id}
           photo={photo}
           width={below.width}
           height={below.height}
+          layout="below"
         />
       );
     });

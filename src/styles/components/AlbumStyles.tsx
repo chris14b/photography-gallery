@@ -18,22 +18,18 @@ export const PhotoLocation = styled.div`
   gap: 6px; /* space between icon and text */
 `;
 
-// Container for photo information (used in landscape photos)
-export const PhotoInfo = styled.div`
-  padding: 0 24px;
-  text-align: center;
-`;
-
-// Container for portrait photo information
-export const PortraitPhotoInfo = styled.div<{ $alignRight?: boolean }>`
-  padding: 0;
-  text-align: ${props => (props.$alignRight ? 'right' : 'left')};
+// Unified container for photo information with configurable alignment
+export const InfoContainer = styled.div<{ $align: 'left' | 'right' | 'center' }>`
+  /* Padding and text alignment adapt to alignment mode */
+  padding: ${props => (props.$align === 'center' ? '0 24px' : '0')};
+  text-align: ${props => (props.$align === 'center' ? 'center' : props.$align)};
   display: flex;
   flex-direction: column;
   justify-content: center; /* Center content vertically */
-  align-items: ${props => (props.$alignRight ? 'flex-end' : 'flex-start')};
-  max-width: 300px; /* Limit width of the info section */
-  
+  align-items: ${props => (props.$align === 'right' ? 'flex-end' : props.$align === 'left' ? 'flex-start' : 'center')};
+  /* Limit width of the side info section, full width when centered */
+  max-width: ${props => (props.$align === 'center' ? '100%' : '300px')};
+
   /* Responsive layout for smaller screens */
   @media (max-width: 768px) {
     max-width: 100%; /* Full width on mobile */
@@ -41,23 +37,4 @@ export const PortraitPhotoInfo = styled.div<{ $alignRight?: boolean }>`
     align-items: center; /* Center items on mobile */
     padding: 0 24px;
   }
-`;
-
-// Header for album pages
-export const AlbumHeader = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0 24px;
-  margin-bottom: 16px; /* Tighter spacing so photos start higher */
-`;
-
-// Title for album pages
-export const AlbumTitle = styled.h1`
-  font-size: clamp(1.75rem, 3.2vw, 2.75rem);
-  margin: 0;
-  color: ${({ theme }) => theme.colors.text};
-  line-height: 1.08;
-  letter-spacing: -0.01em;
-  font-weight: 600;
 `;
