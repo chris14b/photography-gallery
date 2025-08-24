@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import IconButton from './IconButton';
 
 interface FullscreenButtonProps {
@@ -30,19 +30,30 @@ const ExitFullscreenIcon = () => (
 const FullscreenButton: React.FC<FullscreenButtonProps> = ({ size = 40 }) => {
   const [isFullscreen, setIsFullscreen] = useState(false);
 
+  // Feature detection for Fullscreen API support
+  const isSupported = useMemo(() => {
+    if (typeof document === 'undefined') return false;
+    const el = document.documentElement as HTMLElement;
+    return document.fullscreenEnabled && typeof el.requestFullscreen === 'function';
+  }, []);
+
   const toggleFullscreen = () => {
+    if (!isSupported) return; // No-op if unsupported
+
     if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen().catch(err => {
-        console.error(`Error attempting to enable fullscreen: ${err.message}`);
+      (document.documentElement as HTMLElement).requestFullscreen?.().catch((err: unknown) => {
+        console.error('Error attempting to enable fullscreen:', err);
       });
     } else {
-      document.exitFullscreen().catch(err => {
-        console.error(`Error attempting to exit fullscreen: ${err.message}`);
+      document.exitFullscreen?.().catch((err: unknown) => {
+        console.error('Error attempting to exit fullscreen:', err);
       });
     }
   };
 
   useEffect(() => {
+    if (!isSupported) return;
+
     const handleFullscreenChange = () => {
       setIsFullscreen(!!document.fullscreenElement);
     };
@@ -51,7 +62,12 @@ const FullscreenButton: React.FC<FullscreenButtonProps> = ({ size = 40 }) => {
     return () => {
       document.removeEventListener('fullscreenchange', handleFullscreenChange);
     };
-  }, []);
+  }, [isSupported]);
+
+  if (!isSupported) {
+    // Hide the button entirely if fullscreen is not supported
+    return null;
+  }
 
   return (
     <IconButton

@@ -31,7 +31,8 @@ export function usePhotoDimensions(containerWidth: number) {
     // Inline responsive width calculation (previously in getMaxPhotoWidth)
     let baseMaxWidth: number;
     if (window.innerWidth < 768) {
-      baseMaxWidth = containerWidth * 0.98;
+      // On mobile, make photos span the full container width
+      baseMaxWidth = containerWidth;
     } else if (window.innerWidth < 1200) {
       baseMaxWidth = Math.min(containerWidth * 0.96, 1200);
     } else {
@@ -46,7 +47,8 @@ export function usePhotoDimensions(containerWidth: number) {
     const vh = window.innerHeight;
     let maxHeight: number;
     if (vw < 768) {
-      maxHeight = layout === 'side' ? vh * 0.8 : vh * 0.7;
+      // On mobile, let below-layout photos use full width without height cap
+      maxHeight = layout === 'side' ? vh * 0.8 : Number.POSITIVE_INFINITY;
     } else if (vw < 1200) {
       maxHeight = layout === 'side' ? vh * 0.9 : vh * 0.8;
     } else {

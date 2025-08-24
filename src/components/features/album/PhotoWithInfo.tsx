@@ -44,6 +44,29 @@ const PhotoWrapper = styled.div<{ $isColumn: boolean }>`
   }
 `;
 
+// For layout="below": display caption and location on a single line on desktop,
+// but stack them on mobile.
+const BelowDetails = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 0;
+  }
+`;
+
+// Inline variant of PhotoCaption for row layout (no bottom margin),
+// restores the margin when stacked on mobile.
+const InlineCaption = styled(PhotoCaption)`
+  margin-bottom: 0;
+
+  @media (max-width: 768px) {
+    margin-bottom: 8px;
+  }
+`;
+
 const PhotoWithInfo: React.FC<PhotoWithInfoProps> = React.memo(({ photo, width, height, layout, reverse }) => {
   const isSide = layout === 'side';
   const direction: 'row' | 'row-reverse' | 'column' = isSide ? (reverse ? 'row-reverse' : 'row') : 'column';
@@ -67,19 +90,15 @@ const PhotoWithInfo: React.FC<PhotoWithInfoProps> = React.memo(({ photo, width, 
             )}
           </>
         ) : (
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-            {photo.caption && (
-              <PhotoCaption as="span" style={{ marginBottom: 0 }}>
-                {photo.caption}
-              </PhotoCaption>
-            )}
+          <BelowDetails>
+            {photo.caption && <InlineCaption as="span">{photo.caption}</InlineCaption>}
             {photo.location && (
               <PhotoLocation>
                 <LocationIcon />
                 {photo.location}
               </PhotoLocation>
             )}
-          </div>
+          </BelowDetails>
         )}
       </InfoContainer>
     </Container>
