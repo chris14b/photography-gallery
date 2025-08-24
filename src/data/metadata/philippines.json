@@ -6,66 +6,102 @@
   "endDate": "2024-03-01",
   "photos": [
     {
-      "fileName": "R0002347",
-      "caption": "",
-      "location": "Add location",
+      "fileName": "R0002471",
+      "caption": "Happily lost",
+      "location": "Bohol",
       "dimensions": {
         "width": 4000,
         "height": 6000
       }
     },
     {
+      "fileName": "R0002550",
+      "caption": "My tour guide serves me sea urchin straight from the ocean",
+      "location": "Malapascua",
+      "dimensions": {
+        "width": 4000,
+        "height": 5616
+      }
+    },
+    {
       "fileName": "R0002413",
       "caption": "",
-      "location": "Add location",
+      "location": "El Nido",
       "dimensions": {
         "width": 3562,
         "height": 5264
       }
     },
     {
-      "fileName": "R0002435",
-      "caption": "",
-      "location": "Add location",
-      "dimensions": {
-        "width": 4000,
-        "height": 6000
-      }
-    },
-    {
-      "fileName": "R0002471",
-      "caption": "",
-      "location": "Add location",
-      "dimensions": {
-        "width": 4000,
-        "height": 6000
-      }
-    },
-    {
       "fileName": "R0002504",
-      "caption": "",
-      "location": "Add location",
+      "caption": "A couple invited me into their home for lunch",
+      "location": "Siquijor",
       "dimensions": {
         "width": 5392,
         "height": 3595
       }
     },
     {
+      "fileName": "R0002402",
+      "caption": "The dodgiest tuk-tuk I've ever been in",
+      "location": "El Nido",
+      "dimensions": {
+        "width": 6000,
+        "height": 4000
+      }
+    },
+    {
+      "fileName": "R0002457",
+      "caption": "Patrick, Evan and Nenia at a waterfall",
+      "location": "Bohol",
+      "dimensions": {
+        "width": 4000,
+        "height": 6000
+      }
+    },
+    {
       "fileName": "R0002521",
-      "caption": "",
-      "location": "Add location",
+      "caption": "Jordan and Alexis jump off the 8 metre platform",
+      "location": "Salagdoong Beach Resort, Siquijor",
       "dimensions": {
         "width": 3360,
         "height": 5040
       }
     },
     {
-      "fileName": "R0002550",
+      "fileName": "R0002545",
+      "caption": "Jordan prepares for a backflip",
+      "location": "Lugnason Falls, Siquijor",
+      "dimensions": {
+        "width": 5321,
+        "height": 3788
+      }
+    },
+    {
+      "fileName": "R0002347",
       "caption": "",
-      "location": "Add location",
+      "location": "Coron to El Nido Expedition",
       "dimensions": {
         "width": 4000,
-        "height": 5616
+        "height": 6000
+      }
+    },
+    {
+      "fileName": "R0002470",
+      "caption": "Nenia leads the way",
+      "location": "Bohol",
+      "dimensions": {
+        "width": 2992,
+        "height": 4488
+      }
+    },
+    {
+      "fileName": "R0002435",
+      "caption": "",
+      "location": "Port Barton",
+      "dimensions": {
+        "width": 4000,
+        "height": 6000
       }
     }
   ]

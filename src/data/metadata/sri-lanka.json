@@ -6,72 +6,99 @@
   "endDate": "2024-07-04",
   "photos": [
     {
-      "fileName": "R0003219",
+      "fileName": "R0003342",
       "caption": "",
-      "location": "Add location",
+      "location": "Diyaluma Falls",
       "dimensions": {
-        "width": 3825,
-        "height": 5369
-      }
-    },
-    {
-      "fileName": "R0003273",
-      "caption": "",
-      "location": "Add location",
-      "dimensions": {
-        "width": 6000,
-        "height": 4000
+        "width": 3681,
+        "height": 6000
       }
     },
     {
       "fileName": "R0003314",
-      "caption": "",
-      "location": "Add location",
+      "caption": "Nikki is happy",
+      "location": "Ella",
       "dimensions": {
         "width": 3651,
         "height": 4868
       }
     },
     {
-      "fileName": "R0003337",
+      "fileName": "R0003219",
       "caption": "",
-      "location": "Add location",
+      "location": "Arugam Bay",
+      "dimensions": {
+        "width": 3825,
+        "height": 5369
+      }
+    },
+    {
+      "fileName": "R0003518",
+      "caption": "",
+      "location": "Pidurangala Rock, Sigiriya",
+      "dimensions": {
+        "width": 5934,
+        "height": 4000
+      }
+    },
+    {
+      "fileName": "R0003611",
+      "caption": "",
+      "location": "Anuradhapura",
+      "dimensions": {
+        "width": 6000,
+        "height": 4000
+      }
+    },
+    {
+      "fileName": "R0003618",
+      "caption": "Hostel owner serves us jackfruit",
+      "location": "Anuradhapura",
+      "dimensions": {
+        "width": 2634,
+        "height": 2922
+      }
+    },
+    {
+      "fileName": "R0003337",
+      "caption": "Nikki, Jade and Ella enjoy the view",
+      "location": "Diyaluma Falls",
       "dimensions": {
         "width": 5787,
         "height": 3921
       }
     },
     {
-      "fileName": "R0003367",
-      "caption": "",
-      "location": "Add location",
-      "dimensions": {
-        "width": 2895,
-        "height": 5147
-      }
-    },
-    {
       "fileName": "R0003408",
-      "caption": "",
-      "location": "Add location",
+      "caption": "Jade watches the world go by",
+      "location": "Ella",
       "dimensions": {
         "width": 3146,
         "height": 4719
       }
     },
     {
-      "fileName": "R0003479",
+      "fileName": "R0003273",
       "caption": "",
-      "location": "Add location",
+      "location": "Nine Arches Bridge, Ella",
       "dimensions": {
-        "width": 3828,
-        "height": 5104
+        "width": 6000,
+        "height": 4000
+      }
+    },
+    {
+      "fileName": "R0003570",
+      "caption": "Sunset swim",
+      "location": "Uppuveli Beach, Trincomalee",
+      "dimensions": {
+        "width": 5902,
+        "height": 3940
       }
     },
     {
       "fileName": "R0003483",
       "caption": "",
-      "location": "Add location",
+      "location": "Ella",
       "dimensions": {
         "width": 6000,
         "height": 4000
@@ -80,25 +107,16 @@
     {
       "fileName": "R0003491",
       "caption": "",
-      "location": "Add location",
+      "location": "Kandy",
       "dimensions": {
         "width": 2672,
         "height": 3563
       }
     },
     {
-      "fileName": "R0003518",
-      "caption": "",
-      "location": "Add location",
-      "dimensions": {
-        "width": 5934,
-        "height": 4000
-      }
-    },
-    {
       "fileName": "R0003536",
       "caption": "",
-      "location": "Add location",
+      "location": "Pidurangala Rock, Sigiriya",
       "dimensions": {
         "width": 5935,
         "height": 4000
@@ -107,7 +125,7 @@
     {
       "fileName": "R0003538",
       "caption": "",
-      "location": "Add location",
+      "location": "Sigiriya Rock",
       "dimensions": {
         "width": 6000,
         "height": 4000
@@ -116,7 +134,7 @@
     {
       "fileName": "R0003547",
       "caption": "",
-      "location": "Add location",
+      "location": "Sigiriya",
       "dimensions": {
         "width": 4000,
         "height": 5333
@@ -125,37 +143,37 @@
     {
       "fileName": "R0003601",
       "caption": "",
-      "location": "Add location",
+      "location": "Ruwanweli Maha Seya, Anuradhapura",
       "dimensions": {
         "width": 4000,
         "height": 6000
       }
     },
     {
-      "fileName": "R0003611",
+      "fileName": "R0003189",
       "caption": "",
-      "location": "Add location",
+      "location": "Udawalawe National Park",
       "dimensions": {
-        "width": 6000,
-        "height": 4000
+        "width": 2117,
+        "height": 2822
       }
     },
     {
-      "fileName": "R0003614",
+      "fileName": "R0003573",
       "caption": "",
-      "location": "Add location",
+      "location": "Trincorini, Trincomalee",
       "dimensions": {
-        "width": 6000,
-        "height": 4000
+        "width": 3812,
+        "height": 5083
       }
     },
     {
-      "fileName": "R0003618",
-      "caption": "",
-      "location": "Add location",
+      "fileName": "R0003579",
+      "caption": "Imy waits in the back of a tuk-tuk",
+      "location": "Trincomalee",
       "dimensions": {
-        "width": 2634,
-        "height": 2922
+        "width": 2667,
+        "height": 4000
       }
     }
   ]

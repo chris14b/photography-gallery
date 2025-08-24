@@ -42,12 +42,30 @@
       }
     },
     {
+      "fileName": "R0005991",
+      "caption": "Kim & Sabrina",
+      "location": "Depot Beach",
+      "dimensions": {
+        "width": 5649,
+        "height": 3766
+      }
+    },
+    {
       "fileName": "R0006028",
       "caption": "",
       "location": "North Durras",
       "dimensions": {
         "width": 1701,
         "height": 2268
+      }
+    },
+    {
+      "fileName": "R0006069",
+      "caption": "",
+      "location": "Wilsons Promontory",
+      "dimensions": {
+        "width": 4000,
+        "height": 6000
       }
     },
     {

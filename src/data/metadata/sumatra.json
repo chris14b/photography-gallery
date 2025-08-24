@@ -7,7 +7,7 @@
   "photos": [
     {
       "fileName": "R0004161",
-      "caption": "",
+      "caption": "A man takes part in the weekly bull race",
       "location": "Batusangkar",
       "dimensions": {
         "width": 4009,
@@ -69,24 +69,6 @@
       }
     },
     {
-      "fileName": "R0003825",
-      "caption": "",
-      "location": "Bukit Lawang",
-      "dimensions": {
-        "width": 1680,
-        "height": 2240
-      }
-    },
-    {
-      "fileName": "R0003848",
-      "caption": "",
-      "location": "Bukit Lawang",
-      "dimensions": {
-        "width": 1348,
-        "height": 2022
-      }
-    },
-    {
       "fileName": "R0004088",
       "caption": "",
       "location": "Lake Maninjau",
@@ -105,39 +87,12 @@
       }
     },
     {
-      "fileName": "R0003911",
-      "caption": "",
-      "location": "Mount Sibayak, Berastagi",
-      "dimensions": {
-        "width": 4000,
-        "height": 6000
-      }
-    },
-    {
-      "fileName": "R0003914",
-      "caption": "Nikki admires the view",
-      "location": "Mount Sibayak, Berastagi",
-      "dimensions": {
-        "width": 4692,
-        "height": 4000
-      }
-    },
-    {
       "fileName": "R0004057",
       "caption": "Renol pats a water buffalo",
       "location": "Bukittinggi",
       "dimensions": {
         "width": 3182,
         "height": 2240
-      }
-    },
-    {
-      "fileName": "R0004100",
-      "caption": "",
-      "location": "Lake Maninjau",
-      "dimensions": {
-        "width": 4000,
-        "height": 6000
       }
     },
     {
@@ -174,6 +129,15 @@
       "dimensions": {
         "width": 4000,
         "height": 6000
+      }
+    },
+    {
+      "fileName": "R0003952",
+      "caption": "Jesse and the world's largest Jesus Christ statue",
+      "location": "Lake Toba",
+      "dimensions": {
+        "width": 3868,
+        "height": 5158
       }
     }
   ]

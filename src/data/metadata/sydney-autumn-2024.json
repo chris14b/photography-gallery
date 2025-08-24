@@ -6,27 +6,36 @@
   "endDate": "2024-06-05",
   "photos": [
     {
-      "fileName": "R0002718",
-      "caption": "",
-      "location": "Add location",
-      "dimensions": {
-        "width": 4000,
-        "height": 6000
-      }
-    },
-    {
       "fileName": "R0002729",
       "caption": "",
-      "location": "Add location",
+      "location": "The Entrance",
       "dimensions": {
         "width": 6000,
         "height": 4000
       }
     },
     {
-      "fileName": "R0002759",
+      "fileName": "R0002718",
       "caption": "",
-      "location": "Add location",
+      "location": "Coogee Beach",
+      "dimensions": {
+        "width": 4000,
+        "height": 6000
+      }
+    },
+    {
+      "fileName": "R0002580",
+      "caption": "Glenn enjoys his chicken",
+      "location": "Barangaroo",
+      "dimensions": {
+        "width": 4000,
+        "height": 6000
+      }
+    },
+    {
+      "fileName": "R0002759",
+      "caption": "Road trip with Nick",
+      "location": "Bylong",
       "dimensions": {
         "width": 3798,
         "height": 5064
@@ -35,7 +44,7 @@
     {
       "fileName": "R0002901",
       "caption": "",
-      "location": "Add location",
+      "location": "Sydney Opera House",
       "dimensions": {
         "width": 6000,
         "height": 4000
@@ -43,8 +52,8 @@
     },
     {
       "fileName": "R0003061",
-      "caption": "",
-      "location": "Add location",
+      "caption": "Vivid festival",
+      "location": "Sydney Harbour",
       "dimensions": {
         "width": 5844,
         "height": 3330
@@ -52,8 +61,8 @@
     },
     {
       "fileName": "R0003081",
-      "caption": "",
-      "location": "Add location",
+      "caption": "Sabrina at Vivid",
+      "location": "The Rocks",
       "dimensions": {
         "width": 4000,
         "height": 6000

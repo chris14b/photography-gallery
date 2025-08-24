@@ -6,90 +6,9 @@
   "endDate": "2024-01-25",
   "photos": [
     {
-      "fileName": "R0001747",
-      "caption": "",
-      "location": "Add location",
-      "dimensions": {
-        "width": 6000,
-        "height": 4000
-      }
-    },
-    {
-      "fileName": "R0001768",
-      "caption": "",
-      "location": "Add location",
-      "dimensions": {
-        "width": 3793,
-        "height": 5690
-      }
-    },
-    {
-      "fileName": "R0001891",
-      "caption": "",
-      "location": "Add location",
-      "dimensions": {
-        "width": 4000,
-        "height": 6000
-      }
-    },
-    {
       "fileName": "R0001892",
       "caption": "",
-      "location": "Add location",
-      "dimensions": {
-        "width": 4000,
-        "height": 6000
-      }
-    },
-    {
-      "fileName": "R0001927",
-      "caption": "",
-      "location": "Add location",
-      "dimensions": {
-        "width": 2697,
-        "height": 4046
-      }
-    },
-    {
-      "fileName": "R0001959",
-      "caption": "",
-      "location": "Add location",
-      "dimensions": {
-        "width": 4000,
-        "height": 6000
-      }
-    },
-    {
-      "fileName": "R0001986",
-      "caption": "",
-      "location": "Add location",
-      "dimensions": {
-        "width": 4000,
-        "height": 5333
-      }
-    },
-    {
-      "fileName": "R0002064",
-      "caption": "",
-      "location": "Add location",
-      "dimensions": {
-        "width": 6000,
-        "height": 4000
-      }
-    },
-    {
-      "fileName": "R0002081",
-      "caption": "",
-      "location": "Add location",
-      "dimensions": {
-        "width": 4000,
-        "height": 5333
-      }
-    },
-    {
-      "fileName": "R0002102",
-      "caption": "",
-      "location": "Add location",
+      "location": "Hà Giang Loop",
       "dimensions": {
         "width": 4000,
         "height": 6000
@@ -97,20 +16,137 @@
     },
     {
       "fileName": "R0002105",
-      "caption": "",
-      "location": "Add location",
+      "caption": "Melissa on the sand dunes at sunrise",
+      "location": "White Sand Dunes, Mũi Né",
       "dimensions": {
         "width": 5725,
         "height": 3220
       }
     },
     {
+      "fileName": "R0001927",
+      "caption": "Jock poses",
+      "location": "Hà Giang Loop",
+      "dimensions": {
+        "width": 2697,
+        "height": 4046
+      }
+    },
+    {
+      "fileName": "R0001983",
+      "caption": "Meret is Duck Queen",
+      "location": "The Duck Stop, Phong Nha",
+      "dimensions": {
+        "width": 4000,
+        "height": 6000
+      }
+    },
+    {
+      "fileName": "R0001875",
+      "caption": "Questionable-quality roads",
+      "location": "Hà Giang Loop",
+      "dimensions": {
+        "width": 6000,
+        "height": 4000
+      }
+    },
+    {
+      "fileName": "R0001891",
+      "caption": "",
+      "location": "Hà Giang Loop",
+      "dimensions": {
+        "width": 4000,
+        "height": 6000
+      }
+    },
+    {
+      "fileName": "R0001768",
+      "caption": "Meret, Melissa and Beth regret bringing such heavy bags",
+      "location": "Sa Pa",
+      "dimensions": {
+        "width": 3793,
+        "height": 5690
+      }
+    },
+    {
+      "fileName": "PXL_20240106_041746919",
+      "caption": "Me and my driver Duk",
+      "location": "Hà Giang Loop",
+      "dimensions": {
+        "width": 3072,
+        "height": 4080
+      }
+    },
+    {
+      "fileName": "R0001959",
+      "caption": "Rain doesn't stop us from adventuring",
+      "location": "Tràng An, Ninh Binh",
+      "dimensions": {
+        "width": 4000,
+        "height": 6000
+      }
+    },
+    {
+      "fileName": "R0002064",
+      "caption": "Fire-breathing bridge",
+      "location": "Dragon Bridge, Da Nang",
+      "dimensions": {
+        "width": 6000,
+        "height": 4000
+      }
+    },
+    {
       "fileName": "R0002139",
       "caption": "",
-      "location": "Add location",
+      "location": "Bui Vien Street, Ho Chi Minh City",
       "dimensions": {
         "width": 6000,
         "height": 3375
+      }
+    },
+    {
+      "fileName": "R0001986",
+      "caption": "Exploring the abandoned water park",
+      "location": "Hồ Thuỷ Tiên, Huế",
+      "dimensions": {
+        "width": 4000,
+        "height": 5333
+      }
+    },
+    {
+      "fileName": "R0001941",
+      "caption": "A curious baby goat",
+      "location": "Ninh Binh",
+      "dimensions": {
+        "width": 4000,
+        "height": 4000
+      }
+    },
+    {
+      "fileName": "R0001747",
+      "caption": "",
+      "location": "Lan Ha Bay",
+      "dimensions": {
+        "width": 6000,
+        "height": 4000
+      }
+    },
+    {
+      "fileName": "R0002102",
+      "caption": "",
+      "location": "Mũi Né",
+      "dimensions": {
+        "width": 4000,
+        "height": 6000
+      }
+    },
+    {
+      "fileName": "R0001954",
+      "caption": "Meg & Mason",
+      "location": "Tràng An, Ninh Binh",
+      "dimensions": {
+        "width": 6000,
+        "height": 4000
       }
     }
   ]

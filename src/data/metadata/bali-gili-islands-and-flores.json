@@ -1,86 +1,86 @@
 {
-  "name": "Bali, Gili Islands and Flores",
-  "country": "Indonesia",
+  "name": "Indonesia",
+  "country": "",
   "dateDescription": "August–September 2023",
   "startDate": "2023-08-30",
   "endDate": "2023-09-28",
   "photos": [
     {
       "fileName": "R0000349",
-      "caption": "",
-      "location": "Add location",
+      "caption": "Sunrise hike",
+      "location": "Mount Batur",
       "dimensions": {
         "width": 5065,
         "height": 3377
       }
     },
     {
-      "fileName": "R0000352",
-      "caption": "",
-      "location": "Add location",
-      "dimensions": {
-        "width": 6000,
-        "height": 4000
-      }
-    },
-    {
-      "fileName": "R0000403",
-      "caption": "",
-      "location": "Add location",
-      "dimensions": {
-        "width": 6000,
-        "height": 4000
-      }
-    },
-    {
-      "fileName": "R0000414",
-      "caption": "",
-      "location": "Add location",
-      "dimensions": {
-        "width": 6000,
-        "height": 4000
-      }
-    },
-    {
-      "fileName": "R0000427",
-      "caption": "",
-      "location": "Add location",
-      "dimensions": {
-        "width": 2827,
-        "height": 3770
-      }
-    },
-    {
-      "fileName": "R0000481",
-      "caption": "",
-      "location": "Add location",
-      "dimensions": {
-        "width": 4000,
-        "height": 6000
-      }
-    },
-    {
-      "fileName": "R0000526",
-      "caption": "",
-      "location": "Add location",
-      "dimensions": {
-        "width": 3349,
-        "height": 1884
-      }
-    },
-    {
       "fileName": "R0000633",
       "caption": "",
-      "location": "Add location",
+      "location": "Padar",
       "dimensions": {
         "width": 4000,
         "height": 5333
       }
     },
     {
+      "fileName": "R0000526",
+      "caption": "",
+      "location": "Gili Meno",
+      "dimensions": {
+        "width": 3349,
+        "height": 1884
+      }
+    },
+    {
+      "fileName": "GOPR2269_1694342820129",
+      "caption": "",
+      "location": "Gili Trawangan",
+      "dimensions": {
+        "width": 3465,
+        "height": 2599
+      }
+    },
+    {
+      "fileName": "R0000427",
+      "caption": "",
+      "location": "Monkey Forest, Ubud",
+      "dimensions": {
+        "width": 2827,
+        "height": 3770
+      }
+    },
+    {
+      "fileName": "GOPR2273_1694342820129",
+      "caption": "",
+      "location": "Gili Trawangan",
+      "dimensions": {
+        "width": 3302,
+        "height": 2476
+      }
+    },
+    {
+      "fileName": "R0000414",
+      "caption": "Kecak performance",
+      "location": "Ubud",
+      "dimensions": {
+        "width": 6000,
+        "height": 4000
+      }
+    },
+    {
       "fileName": "R0000638",
       "caption": "",
-      "location": "Add location",
+      "location": "Padar",
+      "dimensions": {
+        "width": 4000,
+        "height": 6000
+      }
+    },
+    {
+      "fileName": "R0000481",
+      "caption": "",
+      "location": "Kelingkling Beach, Nusa Penida",
       "dimensions": {
         "width": 4000,
         "height": 6000

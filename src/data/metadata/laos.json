@@ -6,18 +6,108 @@
   "endDate": "2023-12-27",
   "photos": [
     {
-      "fileName": "R0001506",
+      "fileName": "R0001602",
       "caption": "",
-      "location": "Add location",
+      "location": "Vang Vieng",
+      "dimensions": {
+        "width": 3913,
+        "height": 5869
+      }
+    },
+    {
+      "fileName": "R0001682",
+      "caption": "Four days on a bike with Andrew, Lara and Jessie",
+      "location": "Na Pavan, Thakhek Loop",
       "dimensions": {
         "width": 4000,
         "height": 6000
       }
     },
     {
-      "fileName": "R0001534",
+      "fileName": "R0001599",
+      "caption": "View over the edge of the hot air balloon basket",
+      "location": "Vang Vieng",
+      "dimensions": {
+        "width": 6000,
+        "height": 4000
+      }
+    },
+    {
+      "fileName": "R0001566",
+      "caption": "Sunset before we walked down the mountain in the dark",
+      "location": "Phadeng Peak Viewpoint, Nong Khiaw",
+      "dimensions": {
+        "width": 4000,
+        "height": 6000
+      }
+    },
+    {
+      "fileName": "R0001590",
+      "caption": "Rising above the town in a hot air balloon",
+      "location": "Vang Vieng",
+      "dimensions": {
+        "width": 6000,
+        "height": 3375
+      }
+    },
+    {
+      "fileName": "R0001506",
       "caption": "",
-      "location": "Add location",
+      "location": "Kuang Si Waterfall, Luang Prabang",
+      "dimensions": {
+        "width": 4000,
+        "height": 6000
+      }
+    },
+    {
+      "fileName": "R0001672",
+      "caption": "Lara stops for petrol",
+      "location": "Nam Theun, Thakhek Loop",
+      "dimensions": {
+        "width": 3689,
+        "height": 4919
+      }
+    },
+    {
+      "fileName": "R0001556",
+      "caption": "",
+      "location": "Tad Mok Waterfall, Nong Khiaw",
+      "dimensions": {
+        "width": 4000,
+        "height": 6000
+      }
+    },
+    {
+      "fileName": "R0001638",
+      "caption": "Daphne at a one-of-a-kind viewpoint",
+      "location": "Phapoungkham Viewpoint, Vang Vieng",
+      "dimensions": {
+        "width": 4000,
+        "height": 5212
+      }
+    },
+    {
+      "fileName": "R0001534",
+      "caption": "Meret searches for the keys she dropped off the balcony",
+      "location": "Nong Khiaw",
+      "dimensions": {
+        "width": 4000,
+        "height": 6000
+      }
+    },
+    {
+      "fileName": "R0001646",
+      "caption": "The bumpiest bus ride I've ever been on",
+      "location": "Vientiane",
+      "dimensions": {
+        "width": 5793,
+        "height": 3592
+      }
+    },
+    {
+      "fileName": "R0001585",
+      "caption": "",
+      "location": "Vang Vieng",
       "dimensions": {
         "width": 4000,
         "height": 6000
@@ -26,106 +116,16 @@
     {
       "fileName": "R0001536",
       "caption": "",
-      "location": "Add location",
+      "location": "Nong Khiaw",
       "dimensions": {
         "width": 4000,
         "height": 6000
-      }
-    },
-    {
-      "fileName": "R0001556",
-      "caption": "",
-      "location": "Add location",
-      "dimensions": {
-        "width": 4000,
-        "height": 6000
-      }
-    },
-    {
-      "fileName": "R0001559",
-      "caption": "",
-      "location": "Add location",
-      "dimensions": {
-        "width": 4000,
-        "height": 6000
-      }
-    },
-    {
-      "fileName": "R0001566",
-      "caption": "",
-      "location": "Add location",
-      "dimensions": {
-        "width": 4000,
-        "height": 6000
-      }
-    },
-    {
-      "fileName": "R0001585",
-      "caption": "",
-      "location": "Add location",
-      "dimensions": {
-        "width": 4000,
-        "height": 6000
-      }
-    },
-    {
-      "fileName": "R0001590",
-      "caption": "",
-      "location": "Add location",
-      "dimensions": {
-        "width": 6000,
-        "height": 3375
-      }
-    },
-    {
-      "fileName": "R0001599",
-      "caption": "",
-      "location": "Add location",
-      "dimensions": {
-        "width": 6000,
-        "height": 4000
       }
     },
     {
       "fileName": "R0001601",
       "caption": "",
-      "location": "Add location",
-      "dimensions": {
-        "width": 4000,
-        "height": 6000
-      }
-    },
-    {
-      "fileName": "R0001602",
-      "caption": "",
-      "location": "Add location",
-      "dimensions": {
-        "width": 3913,
-        "height": 5869
-      }
-    },
-    {
-      "fileName": "R0001638",
-      "caption": "",
-      "location": "Add location",
-      "dimensions": {
-        "width": 4000,
-        "height": 5212
-      }
-    },
-    {
-      "fileName": "R0001672",
-      "caption": "",
-      "location": "Add location",
-      "dimensions": {
-        "width": 3689,
-        "height": 4919
-      }
-    },
-    {
-      "fileName": "R0001682",
-      "caption": "",
-      "location": "Add location",
+      "location": "Vang Vieng",
       "dimensions": {
         "width": 4000,
         "height": 6000

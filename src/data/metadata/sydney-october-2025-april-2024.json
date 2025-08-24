@@ -87,6 +87,33 @@
       }
     },
     {
+      "fileName": "R0005651",
+      "caption": "My parents at the beach on Christmas Day",
+      "location": "The Entrance Beach",
+      "dimensions": {
+        "width": 5242,
+        "height": 3495
+      }
+    },
+    {
+      "fileName": "R0005448",
+      "caption": "Tash and her friend",
+      "location": "Hippopotamus Street Sculpture, Kyeemagh",
+      "dimensions": {
+        "width": 6000,
+        "height": 4000
+      }
+    },
+    {
+      "fileName": "R0005811",
+      "caption": "Glenn waves hello",
+      "location": "Mount Victoria",
+      "dimensions": {
+        "width": 5486,
+        "height": 3349
+      }
+    },
+    {
       "fileName": "R0005586",
       "caption": "Angus drops a catch",
       "location": "Cheltenham",
@@ -102,6 +129,15 @@
       "dimensions": {
         "width": 5883,
         "height": 3360
+      }
+    },
+    {
+      "fileName": "R0005706",
+      "caption": "Sabrina & Ash",
+      "location": "Home, Erskineville",
+      "dimensions": {
+        "width": 6000,
+        "height": 4000
       }
     },
     {
