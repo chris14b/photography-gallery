@@ -1,13 +1,13 @@
 {
   "name": "Home",
   "country": "",
-  "dateDescription": "Spring 2024 – Autumn 2025",
+  "dateDescription": "October 2024 – April 2025",
   "startDate": "2024-10-25",
   "endDate": "2025-04-18",
   "photos": [
     {
       "fileName": "R0005934",
-      "caption": "Most beautiful butterfly I've ever seen in Australia, and it's in my backyard",
+      "caption": "",
       "location": "Home, Erskineville",
       "dimensions": {
         "width": 1738,
@@ -16,7 +16,7 @@
     },
     {
       "fileName": "R0005345",
-      "caption": "A 1959 Cadillac DeVille at a car meet",
+      "caption": "A 1959 Cadillac DeVille",
       "location": "The Entrance",
       "dimensions": {
         "width": 6000,
@@ -25,7 +25,7 @@
     },
     {
       "fileName": "R0005390",
-      "caption": "Meret poses",
+      "caption": "Meret wonders whether she should move to Australia",
       "location": "Freshwater",
       "dimensions": {
         "width": 3724,
@@ -52,7 +52,7 @@
     },
     {
       "fileName": "R0005576",
-      "caption": "Issy",
+      "caption": "Issy admires the view",
       "location": "Wentworth Falls",
       "dimensions": {
         "width": 4000,
@@ -97,7 +97,7 @@
     },
     {
       "fileName": "R0005448",
-      "caption": "Tash and her friend",
+      "caption": "Tash and her new friend",
       "location": "Hippopotamus Street Sculpture, Kyeemagh",
       "dimensions": {
         "width": 6000,
@@ -106,7 +106,7 @@
     },
     {
       "fileName": "R0005811",
-      "caption": "Glenn waves hello",
+      "caption": "Hello Glenn",
       "location": "Mount Victoria",
       "dimensions": {
         "width": 5486,
@@ -133,7 +133,7 @@
     },
     {
       "fileName": "R0005706",
-      "caption": "Sabrina & Ash",
+      "caption": "My housemates Sabrina and Ash",
       "location": "Home, Erskineville",
       "dimensions": {
         "width": 6000,

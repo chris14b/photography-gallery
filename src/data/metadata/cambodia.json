@@ -69,15 +69,6 @@
       }
     },
     {
-      "fileName": "R0004456",
-      "caption": "A man collects donations",
-      "location": "The Killing Cave, Battambang",
-      "dimensions": {
-        "width": 4000,
-        "height": 5452
-      }
-    },
-    {
       "fileName": "R0004341",
       "caption": "Jas & Sophie think they're on Masterchef",
       "location": "Siem Reap",
@@ -93,6 +84,15 @@
       "dimensions": {
         "width": 4000,
         "height": 5333
+      }
+    },
+    {
+      "fileName": "R0004456",
+      "caption": "",
+      "location": "The Killing Cave, Battambang",
+      "dimensions": {
+        "width": 4000,
+        "height": 5452
       }
     }
   ]

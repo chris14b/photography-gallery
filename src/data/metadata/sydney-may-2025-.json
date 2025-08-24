@@ -1,7 +1,7 @@
 {
   "name": "Home",
   "country": "",
-  "dateDescription": "Autumn 2025 –",
+  "dateDescription": "April 2025 –",
   "startDate": "2025-04-26",
   "endDate": "YYYY-MM-DD",
   "photos": [
@@ -16,7 +16,7 @@
     },
     {
       "fileName": "R0006325",
-      "caption": "Kiasmos",
+      "caption": "Kiasmos perform",
       "location": "Sydney Opera House",
       "dimensions": {
         "width": 6000,
@@ -25,7 +25,7 @@
     },
     {
       "fileName": "R0006381",
-      "caption": "Gyan guards the drinks bath at a party",
+      "caption": "Gyan guards the drinks bath",
       "location": "Home, Erskineville",
       "dimensions": {
         "width": 6000,
@@ -43,7 +43,7 @@
     },
     {
       "fileName": "R0006317",
-      "caption": "Simon & Cara",
+      "caption": "My new housemates Simon & Cara",
       "location": "The Erko Hotel, Erskineville",
       "dimensions": {
         "width": 6000,
