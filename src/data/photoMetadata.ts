@@ -46,6 +46,8 @@ export interface AlbumMetadataFileNew {
   dateDescription: string; // mandatory human-friendly description derived from dates or provided
   startDate: string; // ISO date string (YYYY-MM-DD)
   endDate: string;   // ISO date string (YYYY-MM-DD)
+  /** Optional album cover fileName (without extension). If omitted, UI will choose a fallback. */
+  cover?: string;
   photos: PhotoMetadata[];
 }
 export const photoMetadata: Record<string, AlbumMetadataFileNew> = {};

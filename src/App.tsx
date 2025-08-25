@@ -79,8 +79,9 @@ const getAlbumCoverCards = (photos: Photo[], albums: Album[]): AlbumCover[] => {
   sortedAlbums.forEach(album => {
     const albumPhotos = photos.filter(photo => photo.albumId === album.id);
     if (albumPhotos.length > 0) {
+      const preferred = album.coverPhotoId ? albumPhotos.find(p => p.id === album.coverPhotoId) : undefined;
       const landscapePhoto = albumPhotos.find(p => p.width > p.height);
-      const selectedPhoto = landscapePhoto || albumPhotos[0];
+      const selectedPhoto = preferred || landscapePhoto || albumPhotos[0];
       result.push({ album, coverPhoto: selectedPhoto });
     }
   });

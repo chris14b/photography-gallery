@@ -402,8 +402,6 @@ async function generateAlbumMetadata(albumId, photos, options = {}) {
       const errorMessage = `Error processing photo ${fileName} in album ${albumId}: ${error.message}`;
       console.error(errorMessage);
       errors.push(errorMessage);
-      // Skip this photo and continue with others
-      continue;
     }
   }
 
@@ -435,6 +433,23 @@ async function generateAlbumMetadata(albumId, photos, options = {}) {
     ? existingMetadata.slug.trim()
     : albumId;
 
+  // Determine cover photo: preserve existing valid cover, otherwise first landscape, else first photo
+  let cover;
+  const existingCover = (typeof existingMetadata.cover === 'string') ? existingMetadata.cover.trim() : '';
+  const fileNamesSet = new Set(updatedPhotos.map(p => p.fileName));
+  if (existingCover && fileNamesSet.has(existingCover)) {
+    cover = existingCover;
+  } else {
+    const firstLandscape = updatedPhotos.find(p => p?.dimensions && p.dimensions.width > p.dimensions.height);
+    if (firstLandscape) {
+      cover = firstLandscape.fileName;
+    } else if (updatedPhotos.length > 0) {
+      cover = updatedPhotos[0].fileName;
+    } else {
+      cover = '';
+    }
+  }
+
   // Create final metadata object in the new schema
   const finalMetadata = {
     slug,
@@ -443,6 +458,7 @@ async function generateAlbumMetadata(albumId, photos, options = {}) {
     dateDescription,
     startDate,
     endDate,
+    cover: cover || undefined,
     photos: updatedPhotos
   };
 

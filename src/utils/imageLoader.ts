@@ -103,8 +103,19 @@ export async function loadImagesFromFolders(): Promise<{ albums: Album[], photos
           return fa.localeCompare(fb);
         });
 
+        // Compute coverPhotoId from metadata cover (fileName) if provided
+        let coverPhotoId: string | undefined = undefined;
+        const coverFileName = (typeof albumMeta?.cover === 'string') ? albumMeta.cover.trim() : '';
+        if (coverFileName) {
+          const coverIndex = folderMap[folderName].findIndex(p => extractFileName(p) === coverFileName);
+          if (coverIndex >= 0) {
+            coverPhotoId = `${albumId}-${coverIndex}`;
+          }
+        }
+
         albums.push({
           id: albumId,
+          coverPhotoId,
           title: albumInfo.title,
           country: albumInfo?.country,
           dateDescription: albumInfo?.dateDescription,
