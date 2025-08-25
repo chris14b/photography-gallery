@@ -10,6 +10,7 @@ import FullscreenButton from './components/common/FullscreenButton';
 import { albums as initialAlbums, photos as initialPhotos, loadGalleryData } from './data/photos';
 import type { Album, Photo, AlbumCover } from './types';
 import 'react-photo-view/dist/react-photo-view.css';
+import { findAlbumIdBySlug, getSlugForAlbumId } from './data/photoMetadata';
 
 const AppContainer = styled.div`
   display: flex;
@@ -93,6 +94,40 @@ const App: React.FC = () => {
   const [albums, setAlbums] = useState<Album[]>(initialAlbums);
   const [photos, setPhotos] = useState<Photo[]>(initialPhotos);
   
+  // Sync state from URL on load and handle back/forward navigation
+  useEffect(() => {
+    const applyFromLocation = () => {
+      try {
+        const path = (typeof window !== 'undefined') ? window.location.pathname : '/';
+        // Expect either "/" (home) or "/:slug" (album)
+        const parts = path.split('/').filter(Boolean);
+        if (parts.length === 1) {
+          const slug = decodeURIComponent(parts[0]);
+          const id = findAlbumIdBySlug(slug);
+          if (id) {
+            setSelectedAlbumId(id);
+          } else {
+            // Unknown slug: go back to home
+            if (typeof window !== 'undefined' && typeof window.history?.replaceState === 'function') {
+              window.history.replaceState({}, '', '/');
+            }
+            setSelectedAlbumId(null);
+          }
+        } else {
+          // Any other path (including "/") shows home
+          setSelectedAlbumId(null);
+        }
+      } catch (e) {
+        console.error('Failed to parse URL for album slug', e);
+        setSelectedAlbumId(null);
+      }
+    };
+
+    applyFromLocation();
+    window.addEventListener('popstate', applyFromLocation);
+    return () => window.removeEventListener('popstate', applyFromLocation);
+  }, []);
+
   // Load gallery data when component mounts
   useEffect(() => {
     const loadData = async () => {
@@ -126,6 +161,10 @@ const App: React.FC = () => {
   }, [selectedAlbumId, photos]);
 
   const handleSelectAlbum = (albumId: string) => {
+    const slug = getSlugForAlbumId(albumId);
+    if (typeof window !== 'undefined' && typeof window.history?.pushState === 'function') {
+      window.history.pushState({ albumSlug: slug }, '', `/${encodeURIComponent(slug)}`);
+    }
     setSelectedAlbumId(albumId || null);
   };
 
@@ -167,7 +206,12 @@ const App: React.FC = () => {
                 <AlbumPage
                   photos={filteredPhotos}
                   selectedAlbum={selectedAlbum}
-                  onBackClick={() => setSelectedAlbumId(null)}
+                  onBackClick={() => {
+                    if (typeof window !== 'undefined' && typeof window.history?.pushState === 'function') {
+                      window.history.pushState({}, '', '/');
+                    }
+                    setSelectedAlbumId(null);
+                  }}
                 />
               )}
             </ErrorBoundary>

@@ -430,8 +430,14 @@ async function generateAlbumMetadata(albumId, photos, options = {}) {
     });
   }
 
+  // Determine slug based on folder name (albumId), preserving existing if present
+  const slug = (typeof existingMetadata.slug === 'string' && existingMetadata.slug.trim() !== '')
+    ? existingMetadata.slug.trim()
+    : albumId;
+
   // Create final metadata object in the new schema
   const finalMetadata = {
+    slug,
     name,
     country,
     dateDescription,

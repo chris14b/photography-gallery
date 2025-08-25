@@ -40,6 +40,7 @@ const metadataFiles = import.meta.glob('./metadata/*.json', { eager: true });
  * Each album metadata file contains top-level album info and a photos array.
  */
 export interface AlbumMetadataFileNew {
+  slug?: string; // slug based on folder name; optional for backward compatibility
   name: string; // mandatory
   country?: string; // optional
   dateDescription: string; // mandatory human-friendly description derived from dates or provided
@@ -58,10 +59,32 @@ Object.entries(metadataFiles).forEach(([path, module]) => {
     const albumId = match[1];
     // Add the album's metadata to the photoMetadata object
     const mod = module as { default?: unknown };
-    const data = (mod.default ?? module) as AlbumMetadataFileNew;
-    photoMetadata[albumId] = data;
+    photoMetadata[albumId] = (mod.default ?? module) as AlbumMetadataFileNew;
   }
 });
+
+// Build slug maps for routing support
+const slugToAlbumIdMap: Map<string, string> = new Map();
+const albumIdToSlugMap: Map<string, string> = new Map();
+Object.entries(photoMetadata).forEach(([albumId, meta]) => {
+  const slug = (typeof meta?.slug === 'string' && meta.slug.trim() !== '') ? meta.slug.trim() : albumId;
+  slugToAlbumIdMap.set(slug, albumId);
+  albumIdToSlugMap.set(albumId, slug);
+});
+
+/**
+ * Resolve albumId by slug (slug from URL). Returns undefined if not found.
+ */
+export function findAlbumIdBySlug(slug: string): string | undefined {
+  return slugToAlbumIdMap.get(slug);
+}
+
+/**
+ * Get the primary slug to use in URLs for a given albumId.
+ */
+export function getSlugForAlbumId(albumId: string): string {
+  return albumIdToSlugMap.get(albumId) ?? albumId;
+}
 
 /**
  * Helper function to get metadata for a specific photo by filename
@@ -81,12 +104,12 @@ export function getPhotoMetadata(albumId: string, filename: string): PhotoMetada
  * Get album-level metadata (title, subtitle, startDate, endDate) from the album metadata file.
  */
 export function getAlbumInfo(albumId: string): AlbumInfo {
-  const albumMeta = photoMetadata[albumId] as any;
+  const albumMeta = photoMetadata[albumId] as AlbumMetadataFileNew | undefined;
   return {
-    title: albumMeta?.name,
+    title: albumMeta?.name ?? '',
     country: albumMeta?.country,
-    dateDescription: albumMeta?.dateDescription,
-    startDate: albumMeta?.startDate,
-    endDate: albumMeta?.endDate,
+    dateDescription: albumMeta?.dateDescription ?? '',
+    startDate: albumMeta?.startDate ?? '',
+    endDate: albumMeta?.endDate ?? '',
   } as AlbumInfo;
 }
