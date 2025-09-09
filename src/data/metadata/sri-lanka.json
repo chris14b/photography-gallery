@@ -12,8 +12,8 @@
       "caption": "",
       "location": "Diyaluma Falls",
       "dimensions": {
-        "width": 3681,
-        "height": 6000
+        "width": 2000,
+        "height": 3000
       }
     },
     {
@@ -21,8 +21,8 @@
       "caption": "Nikki is happy",
       "location": "Ella",
       "dimensions": {
-        "width": 3651,
-        "height": 4868
+        "width": 2000,
+        "height": 3000
       }
     },
     {
@@ -30,8 +30,8 @@
       "caption": "",
       "location": "Arugam Bay",
       "dimensions": {
-        "width": 3825,
-        "height": 5369
+        "width": 2000,
+        "height": 3000
       }
     },
     {
@@ -39,8 +39,8 @@
       "caption": "",
       "location": "Pidurangala Rock, Sigiriya",
       "dimensions": {
-        "width": 5934,
-        "height": 4000
+        "width": 3000,
+        "height": 2000
       }
     },
     {
@@ -48,8 +48,8 @@
       "caption": "A curious squirrel",
       "location": "Anuradhapura",
       "dimensions": {
-        "width": 6000,
-        "height": 4000
+        "width": 3000,
+        "height": 2000
       }
     },
     {
@@ -57,8 +57,8 @@
       "caption": "Hostel owner prepares jackfruit",
       "location": "Anuradhapura",
       "dimensions": {
-        "width": 2634,
-        "height": 2922
+        "width": 2530,
+        "height": 3000
       }
     },
     {
@@ -66,8 +66,8 @@
       "caption": "Nikki, Jade and Ella enjoy the view",
       "location": "Diyaluma Falls",
       "dimensions": {
-        "width": 5787,
-        "height": 3921
+        "width": 3000,
+        "height": 2000
       }
     },
     {
@@ -75,8 +75,8 @@
       "caption": "Jade peers out of the tuk-tuk",
       "location": "Ella",
       "dimensions": {
-        "width": 3146,
-        "height": 4719
+        "width": 2000,
+        "height": 3000
       }
     },
     {
@@ -84,8 +84,8 @@
       "caption": "Waiting for the train",
       "location": "Nine Arches Bridge, Ella",
       "dimensions": {
-        "width": 6000,
-        "height": 4000
+        "width": 3000,
+        "height": 2000
       }
     },
     {
@@ -93,8 +93,8 @@
       "caption": "Sunset swim",
       "location": "Uppuveli Beach, Trincomalee",
       "dimensions": {
-        "width": 5902,
-        "height": 3940
+        "width": 3000,
+        "height": 2000
       }
     },
     {
@@ -102,8 +102,8 @@
       "caption": "Catching the breeze",
       "location": "Ella to Nuwara Eliya",
       "dimensions": {
-        "width": 6000,
-        "height": 4000
+        "width": 3000,
+        "height": 2000
       }
     },
     {
@@ -111,8 +111,8 @@
       "caption": "",
       "location": "Kandy",
       "dimensions": {
-        "width": 2672,
-        "height": 3563
+        "width": 2000,
+        "height": 3000
       }
     },
     {
@@ -120,8 +120,8 @@
       "caption": "",
       "location": "Pidurangala Rock, Sigiriya",
       "dimensions": {
-        "width": 5935,
-        "height": 4000
+        "width": 3000,
+        "height": 2000
       }
     },
     {
@@ -129,8 +129,8 @@
       "caption": "",
       "location": "Sigiriya Rock",
       "dimensions": {
-        "width": 6000,
-        "height": 4000
+        "width": 3000,
+        "height": 1500
       }
     },
     {
@@ -138,17 +138,8 @@
       "caption": "",
       "location": "Sigiriya",
       "dimensions": {
-        "width": 4000,
-        "height": 5333
-      }
-    },
-    {
-      "fileName": "R0003601",
-      "caption": "",
-      "location": "Ruwanweli Maha Seya, Anuradhapura",
-      "dimensions": {
-        "width": 4000,
-        "height": 6000
+        "width": 2250,
+        "height": 3000
       }
     },
     {
@@ -156,8 +147,8 @@
       "caption": "On safari",
       "location": "Udawalawe National Park",
       "dimensions": {
-        "width": 2117,
-        "height": 2822
+        "width": 3000,
+        "height": 3000
       }
     },
     {
@@ -165,8 +156,8 @@
       "caption": "",
       "location": "Trincorini, Trincomalee",
       "dimensions": {
-        "width": 3812,
-        "height": 5083
+        "width": 2000,
+        "height": 3000
       }
     },
     {
@@ -174,8 +165,8 @@
       "caption": "Imy waits in the back of a tuk-tuk",
       "location": "Trincomalee",
       "dimensions": {
-        "width": 2667,
-        "height": 4000
+        "width": 2000,
+        "height": 3000
       }
     }
   ]

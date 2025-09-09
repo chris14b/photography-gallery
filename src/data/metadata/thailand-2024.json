@@ -12,8 +12,8 @@
       "caption": "",
       "location": "Sunset Bar, Ko Tao",
       "dimensions": {
-        "width": 6000,
-        "height": 4000
+        "width": 3000,
+        "height": 2000
       }
     },
     {
@@ -21,8 +21,8 @@
       "caption": "",
       "location": "The Grand Palace, Bangkok",
       "dimensions": {
-        "width": 4864,
-        "height": 2736
+        "width": 3000,
+        "height": 1715
       }
     },
     {
@@ -30,26 +30,8 @@
       "caption": "",
       "location": "JJ Night Market, Kanchanaburi",
       "dimensions": {
-        "width": 4000,
-        "height": 6000
-      }
-    },
-    {
-      "fileName": "R0004568",
-      "caption": "",
-      "location": "Erawan Falls, Kanchanaburi",
-      "dimensions": {
-        "width": 4000,
-        "height": 6000
-      }
-    },
-    {
-      "fileName": "R0004631",
-      "caption": "Issy and Tessa struggle to light cigarettes in the wind",
-      "location": "Ko Tao",
-      "dimensions": {
-        "width": 5921,
-        "height": 3947
+        "width": 2250,
+        "height": 3000
       }
     }
   ]

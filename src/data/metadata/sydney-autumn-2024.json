@@ -12,8 +12,8 @@
       "caption": "",
       "location": "The Entrance",
       "dimensions": {
-        "width": 6000,
-        "height": 4000
+        "width": 3000,
+        "height": 2000
       }
     },
     {
@@ -21,8 +21,8 @@
       "caption": "",
       "location": "Coogee Beach",
       "dimensions": {
-        "width": 4000,
-        "height": 6000
+        "width": 2065,
+        "height": 3000
       }
     },
     {
@@ -30,8 +30,8 @@
       "caption": "Glenn enjoys his chicken",
       "location": "Barangaroo",
       "dimensions": {
-        "width": 4000,
-        "height": 6000
+        "width": 1992,
+        "height": 3000
       }
     },
     {
@@ -39,26 +39,8 @@
       "caption": "Road trip with Nick",
       "location": "Bylong",
       "dimensions": {
-        "width": 3798,
-        "height": 5064
-      }
-    },
-    {
-      "fileName": "R0002901",
-      "caption": "",
-      "location": "Sydney Opera House",
-      "dimensions": {
-        "width": 6000,
-        "height": 4000
-      }
-    },
-    {
-      "fileName": "R0003061",
-      "caption": "Vivid Sydney",
-      "location": "Sydney Harbour",
-      "dimensions": {
-        "width": 5844,
-        "height": 3330
+        "width": 2000,
+        "height": 3000
       }
     },
     {
@@ -66,8 +48,8 @@
       "caption": "Sabrina at Vivid",
       "location": "The Rocks",
       "dimensions": {
-        "width": 4000,
-        "height": 6000
+        "width": 2000,
+        "height": 3000
       }
     }
   ]

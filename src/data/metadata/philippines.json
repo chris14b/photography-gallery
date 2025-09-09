@@ -12,8 +12,8 @@
       "caption": "Happily lost",
       "location": "Bohol",
       "dimensions": {
-        "width": 4000,
-        "height": 6000
+        "width": 2000,
+        "height": 3000
       }
     },
     {
@@ -21,8 +21,8 @@
       "caption": "Boat captain serves me sea urchin straight from the ocean",
       "location": "Malapascua",
       "dimensions": {
-        "width": 4000,
-        "height": 5616
+        "width": 2000,
+        "height": 3000
       }
     },
     {
@@ -30,8 +30,8 @@
       "caption": "On a snorkel tour",
       "location": "El Nido",
       "dimensions": {
-        "width": 3562,
-        "height": 5264
+        "width": 2000,
+        "height": 3000
       }
     },
     {
@@ -39,8 +39,8 @@
       "caption": "A couple invited me into their home for lunch",
       "location": "Siquijor",
       "dimensions": {
-        "width": 5392,
-        "height": 3595
+        "width": 3000,
+        "height": 2000
       }
     },
     {
@@ -48,8 +48,8 @@
       "caption": "The dodgiest tuk-tuk I've ever been in",
       "location": "El Nido",
       "dimensions": {
-        "width": 6000,
-        "height": 4000
+        "width": 3000,
+        "height": 2000
       }
     },
     {
@@ -57,8 +57,8 @@
       "caption": "Patrick, Evan and Nenia at a waterfall",
       "location": "Bohol",
       "dimensions": {
-        "width": 4000,
-        "height": 6000
+        "width": 2000,
+        "height": 3000
       }
     },
     {
@@ -66,8 +66,8 @@
       "caption": "Jordan and Alexis jump off the 8 metre platform",
       "location": "Salagdoong Beach Resort, Siquijor",
       "dimensions": {
-        "width": 3360,
-        "height": 5040
+        "width": 2000,
+        "height": 3000
       }
     },
     {
@@ -75,17 +75,8 @@
       "caption": "Jordan prepares for a backflip",
       "location": "Lugnason Falls, Siquijor",
       "dimensions": {
-        "width": 5321,
-        "height": 3788
-      }
-    },
-    {
-      "fileName": "R0002347",
-      "caption": "4 days on a boat in Palawan",
-      "location": "Coron to El Nido Expedition",
-      "dimensions": {
-        "width": 4000,
-        "height": 6000
+        "width": 3000,
+        "height": 2000
       }
     },
     {
@@ -93,8 +84,8 @@
       "caption": "Nenia leads the way",
       "location": "Bohol",
       "dimensions": {
-        "width": 2992,
-        "height": 4488
+        "width": 2000,
+        "height": 3000
       }
     },
     {
@@ -102,8 +93,8 @@
       "caption": "",
       "location": "Port Barton",
       "dimensions": {
-        "width": 4000,
-        "height": 6000
+        "width": 2000,
+        "height": 3000
       }
     }
   ]

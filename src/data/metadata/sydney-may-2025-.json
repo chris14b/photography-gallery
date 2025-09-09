@@ -12,8 +12,8 @@
       "caption": "Vivid Sydney",
       "location": "The Rocks",
       "dimensions": {
-        "width": 4000,
-        "height": 6000
+        "width": 2000,
+        "height": 3000
       }
     },
     {
@@ -21,8 +21,8 @@
       "caption": "Kiasmos perform",
       "location": "Sydney Opera House",
       "dimensions": {
-        "width": 6000,
-        "height": 4000
+        "width": 3000,
+        "height": 2000
       }
     },
     {
@@ -30,8 +30,8 @@
       "caption": "Gyan guards the drinks bath",
       "location": "Home, Erskineville",
       "dimensions": {
-        "width": 6000,
-        "height": 4000
+        "width": 3000,
+        "height": 2000
       }
     },
     {
@@ -39,8 +39,8 @@
       "caption": "Chef Sabrina wows Gab with her brigadeiro",
       "location": "Home, Erskineville",
       "dimensions": {
-        "width": 6000,
-        "height": 4000
+        "width": 3000,
+        "height": 2000
       }
     },
     {
@@ -48,8 +48,8 @@
       "caption": "My new housemates Simon & Cara",
       "location": "The Erko Hotel, Erskineville",
       "dimensions": {
-        "width": 6000,
-        "height": 4000
+        "width": 3000,
+        "height": 2000
       }
     },
     {
@@ -57,8 +57,8 @@
       "caption": "Connor and his Abarth 124 Spider",
       "location": "Canberra",
       "dimensions": {
-        "width": 2681,
-        "height": 4022
+        "width": 2000,
+        "height": 3000
       }
     },
     {
@@ -66,8 +66,8 @@
       "caption": "Ólafur Arnalds of Kiasmos",
       "location": "Sydney Opera House",
       "dimensions": {
-        "width": 3307,
-        "height": 4961
+        "width": 2000,
+        "height": 3000
       }
     }
   ]

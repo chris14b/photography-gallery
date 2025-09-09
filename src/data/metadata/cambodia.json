@@ -12,8 +12,8 @@
       "caption": "\"You didn't come for normal\"",
       "location": "Siem Reap",
       "dimensions": {
-        "width": 5922,
-        "height": 3331
+        "width": 3000,
+        "height": 1500
       }
     },
     {
@@ -21,8 +21,8 @@
       "caption": "Anton doesn't mind that our boat didn't take us all the way to shore",
       "location": "Koh Rong Sanloem",
       "dimensions": {
-        "width": 6000,
-        "height": 4000
+        "width": 3000,
+        "height": 2000
       }
     },
     {
@@ -30,8 +30,8 @@
       "caption": "Victims of the Khmer Rouge",
       "location": "Choeung Ek, Phnom Penh",
       "dimensions": {
-        "width": 4000,
-        "height": 6000
+        "width": 2000,
+        "height": 3000
       }
     },
     {
@@ -39,8 +39,8 @@
       "caption": "Modern monk",
       "location": "Siem Reap",
       "dimensions": {
-        "width": 5782,
-        "height": 3252
+        "width": 3000,
+        "height": 1898
       }
     },
     {
@@ -48,8 +48,8 @@
       "caption": "",
       "location": "Angkor Wat, Siem Reap",
       "dimensions": {
-        "width": 5336,
-        "height": 3557
+        "width": 3000,
+        "height": 1671
       }
     },
     {
@@ -57,8 +57,8 @@
       "caption": "Jas becomes airborne",
       "location": "Arcadia Backpackers, Kampot",
       "dimensions": {
-        "width": 5152,
-        "height": 3435
+        "width": 3000,
+        "height": 2000
       }
     },
     {
@@ -66,8 +66,8 @@
       "caption": "Jas & Sophie smile because they're leaving me",
       "location": "Koh Rong",
       "dimensions": {
-        "width": 5939,
-        "height": 4000
+        "width": 3000,
+        "height": 2000
       }
     },
     {
@@ -75,17 +75,8 @@
       "caption": "Jas & Sophie think they're on Masterchef",
       "location": "Siem Reap",
       "dimensions": {
-        "width": 3859,
-        "height": 5145
-      }
-    },
-    {
-      "fileName": "R0004264",
-      "caption": "Mia and a landmine-sniffing rat",
-      "location": "APOPO Visitor Center",
-      "dimensions": {
-        "width": 4000,
-        "height": 5333
+        "width": 2000,
+        "height": 3000
       }
     },
     {
@@ -93,8 +84,17 @@
       "caption": "",
       "location": "The Killing Cave, Battambang",
       "dimensions": {
-        "width": 4000,
-        "height": 5452
+        "width": 2250,
+        "height": 3000
+      }
+    },
+    {
+      "fileName": "R0004334",
+      "caption": "Mia is sick of the paparazzi",
+      "location": "Angkor Wat, Siem Reap",
+      "dimensions": {
+        "width": 2000,
+        "height": 3000
       }
     }
   ]

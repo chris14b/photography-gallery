@@ -12,8 +12,8 @@
       "caption": "A farmer takes part in the Pacu Jawi bull race",
       "location": "Batusangkar",
       "dimensions": {
-        "width": 4009,
-        "height": 1835
+        "width": 3000,
+        "height": 1445
       }
     },
     {
@@ -21,8 +21,8 @@
       "caption": "School bus needs an upgrade",
       "location": "Lake Toba",
       "dimensions": {
-        "width": 5261,
-        "height": 3553
+        "width": 3000,
+        "height": 2000
       }
     },
     {
@@ -30,8 +30,8 @@
       "caption": "",
       "location": "Pagaruyung Palace, Batusangkar",
       "dimensions": {
-        "width": 6000,
-        "height": 4000
+        "width": 3000,
+        "height": 2000
       }
     },
     {
@@ -39,17 +39,17 @@
       "caption": "Nikki compares shoe size with the world's largest Jesus Christ statue",
       "location": "Lake Toba",
       "dimensions": {
-        "width": 4438,
-        "height": 3143
+        "width": 3000,
+        "height": 2000
       }
     },
     {
-      "fileName": "R0003897",
+      "fileName": "R0003910",
       "caption": "Dawn atop the volcano",
       "location": "Mount Sibayak, Berastagi",
       "dimensions": {
-        "width": 6000,
-        "height": 3375
+        "width": 3000,
+        "height": 1500
       }
     },
     {
@@ -57,8 +57,8 @@
       "caption": "Our guide assembling a raft for us",
       "location": "Bukit Lawang",
       "dimensions": {
-        "width": 2815,
-        "height": 3753
+        "width": 2000,
+        "height": 3000
       }
     },
     {
@@ -66,8 +66,8 @@
       "caption": "",
       "location": "Bukit Lawang",
       "dimensions": {
-        "width": 1730,
-        "height": 2595
+        "width": 2000,
+        "height": 3000
       }
     },
     {
@@ -75,8 +75,8 @@
       "caption": "",
       "location": "Lake Maninjau",
       "dimensions": {
-        "width": 6000,
-        "height": 4000
+        "width": 3000,
+        "height": 2000
       }
     },
     {
@@ -84,8 +84,8 @@
       "caption": "Esther enjoys the breeze",
       "location": "Bukittinggi",
       "dimensions": {
-        "width": 3409,
-        "height": 5114
+        "width": 2000,
+        "height": 3000
       }
     },
     {
@@ -93,8 +93,8 @@
       "caption": "Renol pokes a water buffalo",
       "location": "Bukittinggi",
       "dimensions": {
-        "width": 3182,
-        "height": 2240
+        "width": 3000,
+        "height": 2167
       }
     },
     {
@@ -102,8 +102,8 @@
       "caption": "",
       "location": "Batusangkar",
       "dimensions": {
-        "width": 6000,
-        "height": 3639
+        "width": 3000,
+        "height": 1714
       }
     },
     {
@@ -111,8 +111,8 @@
       "caption": "",
       "location": "Pariangan",
       "dimensions": {
-        "width": 6000,
-        "height": 4000
+        "width": 3000,
+        "height": 2000
       }
     },
     {
@@ -120,8 +120,8 @@
       "caption": "Tofu factory employee doesn't need a smoke break",
       "location": "Bukittinggi",
       "dimensions": {
-        "width": 3374,
-        "height": 5061
+        "width": 2000,
+        "height": 3000
       }
     },
     {
@@ -129,17 +129,8 @@
       "caption": "",
       "location": "Bukit Lawang",
       "dimensions": {
-        "width": 4000,
-        "height": 6000
-      }
-    },
-    {
-      "fileName": "R0003952",
-      "caption": "Jesse mimics the world's largest Jesus Christ statue",
-      "location": "Lake Toba",
-      "dimensions": {
-        "width": 3868,
-        "height": 5158
+        "width": 2000,
+        "height": 3000
       }
     }
   ]

@@ -12,8 +12,8 @@
       "caption": "Every fruit juice you could ever want",
       "location": "Jalan Alor, Kuala Lumpur",
       "dimensions": {
-        "width": 4000,
-        "height": 5333
+        "width": 2000,
+        "height": 3000
       }
     },
     {
@@ -21,8 +21,8 @@
       "caption": "",
       "location": "Perdana Botanical Garden, Kuala Lumpur",
       "dimensions": {
-        "width": 1078,
-        "height": 1437
+        "width": 2000,
+        "height": 3000
       }
     },
     {
@@ -30,8 +30,8 @@
       "caption": "The world's second tallest building, at 679 metres",
       "location": "Merdeka 118, Kuala Lumpur",
       "dimensions": {
-        "width": 3926,
-        "height": 5890
+        "width": 2000,
+        "height": 3000
       }
     }
   ]

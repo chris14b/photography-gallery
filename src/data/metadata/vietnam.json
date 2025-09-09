@@ -12,8 +12,8 @@
       "caption": "4 days on bikes with a bunch of strangers",
       "location": "Hà Giang Loop",
       "dimensions": {
-        "width": 4000,
-        "height": 6000
+        "width": 2000,
+        "height": 3000
       }
     },
     {
@@ -21,8 +21,8 @@
       "caption": "Melissa on the sand dunes at sunrise",
       "location": "White Sand Dunes, Mũi Né",
       "dimensions": {
-        "width": 5725,
-        "height": 3220
+        "width": 3000,
+        "height": 1500
       }
     },
     {
@@ -30,8 +30,8 @@
       "caption": "",
       "location": "Hà Giang Loop",
       "dimensions": {
-        "width": 2697,
-        "height": 4046
+        "width": 2000,
+        "height": 3000
       }
     },
     {
@@ -39,8 +39,8 @@
       "caption": "Meret is the Duck Queen",
       "location": "The Duck Stop, Phong Nha",
       "dimensions": {
-        "width": 4000,
-        "height": 6000
+        "width": 2000,
+        "height": 3000
       }
     },
     {
@@ -48,17 +48,8 @@
       "caption": "The roads weren't always the best",
       "location": "Hà Giang Loop",
       "dimensions": {
-        "width": 6000,
-        "height": 4000
-      }
-    },
-    {
-      "fileName": "R0001891",
-      "caption": "",
-      "location": "Hà Giang Loop",
-      "dimensions": {
-        "width": 4000,
-        "height": 6000
+        "width": 3000,
+        "height": 2000
       }
     },
     {
@@ -66,8 +57,8 @@
       "caption": "Meret, Melissa and Beth regret bringing such heavy bags",
       "location": "Sa Pa",
       "dimensions": {
-        "width": 3793,
-        "height": 5690
+        "width": 2000,
+        "height": 3000
       }
     },
     {
@@ -75,8 +66,8 @@
       "caption": "Me and my driver Duk",
       "location": "Hà Giang Loop",
       "dimensions": {
-        "width": 3072,
-        "height": 4080
+        "width": 2259,
+        "height": 3000
       }
     },
     {
@@ -84,8 +75,8 @@
       "caption": "",
       "location": "Tràng An, Ninh Binh",
       "dimensions": {
-        "width": 4000,
-        "height": 6000
+        "width": 2000,
+        "height": 3000
       }
     },
     {
@@ -93,8 +84,8 @@
       "caption": "Fire-breathing bridge",
       "location": "Dragon Bridge, Da Nang",
       "dimensions": {
-        "width": 6000,
-        "height": 4000
+        "width": 3000,
+        "height": 2000
       }
     },
     {
@@ -102,8 +93,8 @@
       "caption": "",
       "location": "Bui Vien Street, Ho Chi Minh City",
       "dimensions": {
-        "width": 6000,
-        "height": 3375
+        "width": 3000,
+        "height": 1776
       }
     },
     {
@@ -111,8 +102,8 @@
       "caption": "Exploring an abandoned water park",
       "location": "Hồ Thuỷ Tiên, Huế",
       "dimensions": {
-        "width": 4000,
-        "height": 5333
+        "width": 2250,
+        "height": 3000
       }
     },
     {
@@ -120,8 +111,8 @@
       "caption": "A curious baby goat",
       "location": "Ninh Binh",
       "dimensions": {
-        "width": 4000,
-        "height": 4000
+        "width": 3000,
+        "height": 2000
       }
     },
     {
@@ -129,8 +120,8 @@
       "caption": "",
       "location": "Lan Ha Bay",
       "dimensions": {
-        "width": 6000,
-        "height": 4000
+        "width": 3000,
+        "height": 1500
       }
     },
     {
@@ -138,8 +129,17 @@
       "caption": "",
       "location": "Mũi Né",
       "dimensions": {
-        "width": 4000,
-        "height": 6000
+        "width": 2000,
+        "height": 3000
+      }
+    },
+    {
+      "fileName": "R0001743",
+      "caption": "",
+      "location": "Lan Ha Bay",
+      "dimensions": {
+        "width": 2000,
+        "height": 3000
       }
     }
   ]

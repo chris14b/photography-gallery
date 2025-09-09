@@ -12,8 +12,8 @@
       "caption": "",
       "location": "Home, Erskineville",
       "dimensions": {
-        "width": 1738,
-        "height": 3090
+        "width": 2000,
+        "height": 3000
       }
     },
     {
@@ -21,8 +21,8 @@
       "caption": "A 1959 Cadillac DeVille",
       "location": "The Entrance",
       "dimensions": {
-        "width": 6000,
-        "height": 3375
+        "width": 3000,
+        "height": 1642
       }
     },
     {
@@ -30,8 +30,8 @@
       "caption": "Meret wonders whether she should move to Australia",
       "location": "Freshwater",
       "dimensions": {
-        "width": 3724,
-        "height": 5590
+        "width": 2000,
+        "height": 3000
       }
     },
     {
@@ -39,8 +39,8 @@
       "caption": "Dan mans the barbeque on his birthday",
       "location": "Clontarf",
       "dimensions": {
-        "width": 3851,
-        "height": 5135
+        "width": 2073,
+        "height": 3000
       }
     },
     {
@@ -48,8 +48,8 @@
       "caption": "Australia vs India, Day 2",
       "location": "Sydney Cricket Ground",
       "dimensions": {
-        "width": 5449,
-        "height": 3633
+        "width": 3000,
+        "height": 1500
       }
     },
     {
@@ -57,8 +57,8 @@
       "caption": "Issy admires the view",
       "location": "Wentworth Falls",
       "dimensions": {
-        "width": 4000,
-        "height": 6000
+        "width": 1972,
+        "height": 3000
       }
     },
     {
@@ -66,8 +66,8 @@
       "caption": "",
       "location": "Manly Beach",
       "dimensions": {
-        "width": 3977,
-        "height": 2983
+        "width": 3000,
+        "height": 2250
       }
     },
     {
@@ -75,8 +75,8 @@
       "caption": "",
       "location": "Sydney Harbour",
       "dimensions": {
-        "width": 6000,
-        "height": 4000
+        "width": 3000,
+        "height": 2000
       }
     },
     {
@@ -84,8 +84,8 @@
       "caption": "Merry Christmas Eve",
       "location": "The Entrance",
       "dimensions": {
-        "width": 3764,
-        "height": 3764
+        "width": 3000,
+        "height": 3000
       }
     },
     {
@@ -93,8 +93,8 @@
       "caption": "My parents at the beach on Christmas Day",
       "location": "The Entrance Beach",
       "dimensions": {
-        "width": 5242,
-        "height": 3495
+        "width": 3000,
+        "height": 2000
       }
     },
     {
@@ -102,8 +102,8 @@
       "caption": "Tash and her new friend",
       "location": "Hippopotamus Street Sculpture, Kyeemagh",
       "dimensions": {
-        "width": 6000,
-        "height": 4000
+        "width": 3000,
+        "height": 2000
       }
     },
     {
@@ -111,8 +111,8 @@
       "caption": "Hello Glenn",
       "location": "Mount Victoria",
       "dimensions": {
-        "width": 5486,
-        "height": 3349
+        "width": 3000,
+        "height": 2000
       }
     },
     {
@@ -120,8 +120,8 @@
       "caption": "Angus drops a catch",
       "location": "Cheltenham",
       "dimensions": {
-        "width": 3522,
-        "height": 1981
+        "width": 3000,
+        "height": 1500
       }
     },
     {
@@ -129,17 +129,8 @@
       "caption": "",
       "location": "Dalpura Canyon",
       "dimensions": {
-        "width": 5883,
-        "height": 3360
-      }
-    },
-    {
-      "fileName": "R0005706",
-      "caption": "My housemates Sabrina and Ash",
-      "location": "Home, Erskineville",
-      "dimensions": {
-        "width": 6000,
-        "height": 4000
+        "width": 3000,
+        "height": 1634
       }
     },
     {
@@ -147,17 +138,8 @@
       "caption": "",
       "location": "The Entrance",
       "dimensions": {
-        "width": 4000,
-        "height": 6000
-      }
-    },
-    {
-      "fileName": "R0005370",
-      "caption": "Cicada",
-      "location": "Wentworth Falls",
-      "dimensions": {
-        "width": 4750,
-        "height": 3167
+        "width": 2250,
+        "height": 3000
       }
     }
   ]

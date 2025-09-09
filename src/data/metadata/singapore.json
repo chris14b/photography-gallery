@@ -5,7 +5,7 @@
   "dateDescription": "September–October 2023",
   "startDate": "2023-09-28",
   "endDate": "2023-10-03",
-  "cover": "R0000700",
+  "cover": "R0000705",
   "photos": [
     {
       "fileName": "R0000705",
@@ -23,15 +23,6 @@
       "dimensions": {
         "width": 3772,
         "height": 5658
-      }
-    },
-    {
-      "fileName": "R0000700",
-      "caption": "",
-      "location": "Supertree Grove",
-      "dimensions": {
-        "width": 6000,
-        "height": 4000
       }
     }
   ]

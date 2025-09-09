@@ -12,17 +12,8 @@
       "caption": "Hiking over the city",
       "location": "Suicide Cliff, Hong Kong",
       "dimensions": {
-        "width": 4000,
-        "height": 6000
-      }
-    },
-    {
-      "fileName": "R0002314",
-      "caption": "Ness & Hosea",
-      "location": "Tsim Sha Tsui, Hong Kong",
-      "dimensions": {
-        "width": 3331,
-        "height": 4441
+        "width": 2000,
+        "height": 3000
       }
     },
     {
@@ -30,8 +21,8 @@
       "caption": "Georgia in the Floating Flower Garden",
       "location": "teamLab SuperNature, Macau",
       "dimensions": {
-        "width": 2257,
-        "height": 3386
+        "width": 2000,
+        "height": 3000
       }
     },
     {
@@ -39,8 +30,17 @@
       "caption": "Tom in The Infinite Crystal Universe",
       "location": "teamLab SuperNature, Macau",
       "dimensions": {
-        "width": 3162,
-        "height": 4743
+        "width": 2000,
+        "height": 3000
+      }
+    },
+    {
+      "fileName": "R0002238",
+      "caption": "",
+      "location": "Add location",
+      "dimensions": {
+        "width": 3000,
+        "height": 2000
       }
     }
   ]
