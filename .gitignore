@@ -22,8 +22,3 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-
-
-# Images (keep repo lean)
-src/assets/images/
-public/images/
