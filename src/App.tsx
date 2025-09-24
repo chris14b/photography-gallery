@@ -12,6 +12,10 @@ import type { Album, Photo, AlbumCover } from './types';
 import 'react-photo-view/dist/react-photo-view.css';
 import { findAlbumIdBySlug, getSlugForAlbumId } from './data/photoMetadata';
 
+// Base path as known by Vite/GitHub Pages, without trailing slash
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const BASE: string = (((import.meta as any).env?.BASE_URL as string) || '').replace(/\/$/, '')
+
 const AppContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -99,7 +103,11 @@ const App: React.FC = () => {
   useEffect(() => {
     const applyFromLocation = () => {
       try {
-        const path = (typeof window !== 'undefined') ? window.location.pathname : '/';
+        let path = (typeof window !== 'undefined') ? window.location.pathname : '/';
+        // Strip the base prefix so parsing expects "/" or "/:slug"
+        if (BASE && path.startsWith(BASE)) {
+          path = path.slice(BASE.length) || '/';
+        }
         // Expect either "/" (home) or "/:slug" (album)
         const parts = path.split('/').filter(Boolean);
         if (parts.length === 1) {
@@ -110,7 +118,7 @@ const App: React.FC = () => {
           } else {
             // Unknown slug: go back to home
             if (typeof window !== 'undefined' && typeof window.history?.replaceState === 'function') {
-              window.history.replaceState({}, '', '/');
+              window.history.replaceState({}, '', `${BASE}/`);
             }
             setSelectedAlbumId(null);
           }
@@ -164,7 +172,7 @@ const App: React.FC = () => {
   const handleSelectAlbum = (albumId: string) => {
     const slug = getSlugForAlbumId(albumId);
     if (typeof window !== 'undefined' && typeof window.history?.pushState === 'function') {
-      window.history.pushState({ albumSlug: slug }, '', `/${encodeURIComponent(slug)}`);
+      window.history.pushState({ albumSlug: slug }, '', `${BASE}/${encodeURIComponent(slug)}`);
     }
     setSelectedAlbumId(albumId || null);
   };
@@ -209,7 +217,7 @@ const App: React.FC = () => {
                   selectedAlbum={selectedAlbum}
                   onBackClick={() => {
                     if (typeof window !== 'undefined' && typeof window.history?.pushState === 'function') {
-                      window.history.pushState({}, '', '/');
+                      window.history.pushState({}, '', `${BASE}/`);
                     }
                     setSelectedAlbumId(null);
                   }}
