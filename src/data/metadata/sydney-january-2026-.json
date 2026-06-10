@@ -1,0 +1,110 @@
+{
+  "slug": "sydney-january-2026-",
+  "name": "Home",
+  "country": "",
+  "dateDescription": "January 2026 –",
+  "startDate": "2026-01-01",
+  "endDate": "YYYY-MM-DD",
+  "cover": "R0008127",
+  "photos": [
+    {
+      "fileName": "R0007276",
+      "caption": "My camera saw the aurora even if my eyes didn't",
+      "location": "Ring Rock Viewpoint, La Perouse",
+      "dimensions": {
+        "width": 2000,
+        "height": 3000
+      }
+    },
+    {
+      "fileName": "R0007463",
+      "caption": "",
+      "location": "Newtown",
+      "dimensions": {
+        "width": 2000,
+        "height": 3000
+      }
+    },
+    {
+      "fileName": "R0008048",
+      "caption": "Vivid Sydney",
+      "location": "Sydney",
+      "dimensions": {
+        "width": 3000,
+        "height": 2046
+      }
+    },
+    {
+      "fileName": "R0007916",
+      "caption": "Lara poses",
+      "location": "Barrenjoey Track, Palm Beach",
+      "dimensions": {
+        "width": 3000,
+        "height": 2000
+      }
+    },
+    {
+      "fileName": "R0007417",
+      "caption": "Sunset on King Street",
+      "location": "Newtown",
+      "dimensions": {
+        "width": 2000,
+        "height": 3000
+      }
+    },
+    {
+      "fileName": "R0007332",
+      "caption": "Bean Magazine perform at King Street Crawl",
+      "location": "Newtown",
+      "dimensions": {
+        "width": 3000,
+        "height": 2749
+      }
+    },
+    {
+      "fileName": "R0007437",
+      "caption": "",
+      "location": "Newtown",
+      "dimensions": {
+        "width": 2000,
+        "height": 3000
+      }
+    },
+    {
+      "fileName": "R0007382",
+      "caption": "Cherish, Nick and Marina admire the view",
+      "location": "Sublime Point Lookout, Austinmer",
+      "dimensions": {
+        "width": 3000,
+        "height": 1710
+      }
+    },
+    {
+      "fileName": "R0008127",
+      "caption": "A humpback whale breaches",
+      "location": "South Pacific Ocean",
+      "dimensions": {
+        "width": 3000,
+        "height": 2000
+      }
+    },
+    {
+      "fileName": "R0007247",
+      "caption": "Jas double-parked",
+      "location": "Clovelly",
+      "dimensions": {
+        "width": 2000,
+        "height": 3000
+      }
+    },
+    {
+      "fileName": "R0008066",
+      "caption": "Vivid Sydney",
+      "location": "Barangaroo",
+      "dimensions": {
+        "width": 3000,
+        "height": 2000
+      }
+    }
+  ]
+}

@@ -2,9 +2,9 @@
   "slug": "home-autumn-2025",
   "name": "Home",
   "country": "",
-  "dateDescription": "April 2025 –",
+  "dateDescription": "April–December 2025",
   "startDate": "2025-04-26",
-  "endDate": "YYYY-MM-DD",
+  "endDate": "2025-12-31",
   "cover": "R0006325",
   "photos": [
     {
@@ -17,9 +17,9 @@
       }
     },
     {
-      "fileName": "R0006245",
-      "caption": "Vivid Sydney",
-      "location": "The Rocks",
+      "fileName": "R0007153",
+      "caption": "Christmas Eve fireworks",
+      "location": "The Entrance",
       "dimensions": {
         "width": 2000,
         "height": 3000
@@ -35,12 +35,39 @@
       }
     },
     {
+      "fileName": "R0007086",
+      "caption": "Sabrina explores",
+      "location": "Little Marley Beach, Royal National Park",
+      "dimensions": {
+        "width": 3000,
+        "height": 1500
+      }
+    },
+    {
+      "fileName": "R0006245",
+      "caption": "Vivid Sydney",
+      "location": "The Rocks",
+      "dimensions": {
+        "width": 2000,
+        "height": 3000
+      }
+    },
+    {
       "fileName": "R0006381",
       "caption": "Gyan guards the drinks bath",
       "location": "Home, Erskineville",
       "dimensions": {
         "width": 3000,
         "height": 2000
+      }
+    },
+    {
+      "fileName": "R0006681",
+      "caption": "",
+      "location": "Wentworth Falls",
+      "dimensions": {
+        "width": 2000,
+        "height": 3000
       }
     },
     {
@@ -54,11 +81,29 @@
     },
     {
       "fileName": "R0006317",
-      "caption": "My new housemates Simon & Cara",
+      "caption": "My housemates Simon & Cara",
       "location": "The Erko Hotel, Erskineville",
       "dimensions": {
         "width": 3000,
         "height": 2000
+      }
+    },
+    {
+      "fileName": "R0006333",
+      "caption": "Ólafur Arnalds of Kiasmos",
+      "location": "Sydney Opera House",
+      "dimensions": {
+        "width": 2000,
+        "height": 3000
+      }
+    },
+    {
+      "fileName": "R0006609",
+      "caption": "Celebrating my 10,000th day alive",
+      "location": "Home, Erskineville",
+      "dimensions": {
+        "width": 2000,
+        "height": 3000
       }
     },
     {
@@ -71,9 +116,9 @@
       }
     },
     {
-      "fileName": "R0006333",
-      "caption": "Ólafur Arnalds of Kiasmos",
-      "location": "Sydney Opera House",
+      "fileName": "R0006721",
+      "caption": "",
+      "location": "Balgowlah",
       "dimensions": {
         "width": 2000,
         "height": 3000

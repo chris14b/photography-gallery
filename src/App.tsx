@@ -208,7 +208,7 @@ const App: React.FC = () => {
                 <HomePage
                   albumCovers={albumCoverCards}
                   galleryTitle="Chris Johnston Photography"
-                  gallerySubtitle="Selected work • 2023–2025"
+                  gallerySubtitle="Selected work • 2023–2026"
                   onSelectAlbum={handleSelectAlbum}
                 />
               ) : (
