@@ -1,0 +1,119 @@
+{
+  "slug": "mongolia",
+  "name": "Mongolia",
+  "country": "",
+  "dateDescription": "July 2026",
+  "startDate": "2026-07-06",
+  "endDate": "2026-07-27",
+  "cover": "R0008282",
+  "photos": [
+    {
+      "fileName": "R0008282",
+      "caption": "We never expected Mongolia to be this green",
+      "location": "Aryapala Temple Meditation Center",
+      "dimensions": {
+        "width": 3000,
+        "height": 1500
+      }
+    },
+    {
+      "fileName": "R0008384",
+      "caption": "Ness and her camel Mercury",
+      "location": "Khongor Sand Dune",
+      "dimensions": {
+        "width": 2000,
+        "height": 3000
+      }
+    },
+    {
+      "fileName": "R0008823",
+      "caption": "Dean and a Tsaatan child holding the photos we printed out for her",
+      "location": "Taiga",
+      "dimensions": {
+        "width": 2000,
+        "height": 3000
+      }
+    },
+    {
+      "fileName": "R0008520",
+      "caption": "",
+      "location": "Kharkhorin",
+      "dimensions": {
+        "width": 3000,
+        "height": 1775
+      }
+    },
+    {
+      "fileName": "R0008593",
+      "caption": "",
+      "location": "Middle of nowhere",
+      "dimensions": {
+        "width": 3000,
+        "height": 2000
+      }
+    },
+    {
+      "fileName": "R0008436",
+      "caption": "Hosea tries to ignore the looming sand dune",
+      "location": "Khongor Sand Dune",
+      "dimensions": {
+        "width": 3000,
+        "height": 2000
+      }
+    },
+    {
+      "fileName": "R0008795",
+      "caption": "Lifestyle of the Tsaatan nomadic reindeer herders",
+      "location": "Taiga",
+      "dimensions": {
+        "width": 3000,
+        "height": 2000
+      }
+    },
+    {
+      "fileName": "R0008866",
+      "caption": "The best rainbow I've ever seen",
+      "location": "Khatgal",
+      "dimensions": {
+        "width": 2000,
+        "height": 3000
+      }
+    },
+    {
+      "fileName": "R0008489",
+      "caption": "Ness living her geology dreams",
+      "location": "Flaming Cliffs",
+      "dimensions": {
+        "width": 3000,
+        "height": 1500
+      }
+    },
+    {
+      "fileName": "R0008814",
+      "caption": "",
+      "location": "Taiga",
+      "dimensions": {
+        "width": 2000,
+        "height": 3000
+      }
+    },
+    {
+      "fileName": "R0008610",
+      "caption": "A strong contender for world's most beautiful basketball location",
+      "location": "Darkhad Valley",
+      "dimensions": {
+        "width": 3000,
+        "height": 1500
+      }
+    },
+    {
+      "fileName": "R0008771",
+      "caption": "Teepees of the Tsaatan people",
+      "location": "Taiga",
+      "dimensions": {
+        "width": 3000,
+        "height": 1500
+      }
+    }
+  ]
+}
