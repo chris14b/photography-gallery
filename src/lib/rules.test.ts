@@ -195,6 +195,13 @@ describe("album cover", () => {
     ).toBe("R0001.jpg");
   });
 
+  test("throws when cover names a photo that isn't in the album", () => {
+    const data = album({ cover: "R0009.jpg", photos });
+    expect(() => buildAlbum("laos-2023", data, mixed)).toThrow(
+      `Album "laos-2023" has cover "R0009.jpg", which isn't one of its photos`,
+    );
+  });
+
   test("falls back to the first landscape photo without a cover", () => {
     expect(buildAlbum("laos-2023", album({ photos }), mixed)?.cover?.file).toBe(
       "R0002.jpg",

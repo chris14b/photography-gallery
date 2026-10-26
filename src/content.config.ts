@@ -54,7 +54,7 @@ const albums = defineCollection({
       .string()
       .optional()
       .describe(
-        "The file name of the home page cover photo, with its extension. Defaults to the first landscape photo.",
+        "The file name of the home page cover photo, with its extension. It must be one of the album's photos. Defaults to the first landscape photo.",
       ),
     unlisted: z
       .boolean()

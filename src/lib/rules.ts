@@ -77,13 +77,24 @@ function checkUnique(files: string[], owner: string) {
   }
 }
 
-/** The photo named by cover, else the first landscape photo, else the first photo. */
-export function pickCover(photos: Photo[], cover: string | undefined): Photo {
-  return (
-    photos.find((photo) => photo.file === cover?.trim()) ??
-    photos.find((photo) => photo.image.width > photo.image.height) ??
-    photos[0]
-  );
+/** The photo named by cover, which must be one of the album's photos. Without a cover, the first landscape photo, else the first photo. */
+export function pickCover(
+  id: string,
+  photos: Photo[],
+  cover: string | undefined,
+): Photo {
+  const file = cover?.trim();
+  if (!file)
+    return (
+      photos.find((photo) => photo.image.width > photo.image.height) ??
+      photos[0]
+    );
+  const named = photos.find((photo) => photo.file === file);
+  if (!named)
+    throw new Error(
+      `Album "${id}" has cover "${file}", which isn't one of its photos`,
+    );
+  return named;
 }
 
 /** The album in albums/{id}/album.json, or undefined while it has no photos. */
@@ -123,7 +134,7 @@ export function buildAlbum(
     description: `Photos by ${AUTHOR} from ${[data.title, ...details, dates].filter(Boolean).join(", ")}.`,
     unlisted: data.unlisted === true,
     photos,
-    cover: pickCover(photos, data.cover),
+    cover: pickCover(id, photos, data.cover),
     dates: [data.start, data.end],
   };
 }
