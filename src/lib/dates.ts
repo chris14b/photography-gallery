@@ -3,13 +3,39 @@ const monthYear = new Intl.DateTimeFormat("en", {
   year: "numeric",
   timeZone: "UTC",
 });
+const shortMonth = new Intl.DateTimeFormat("en", {
+  month: "short",
+  timeZone: "UTC",
+});
+const shortMonthYear = new Intl.DateTimeFormat("en", {
+  month: "short",
+  year: "numeric",
+  timeZone: "UTC",
+});
 
 /**
  * The months an album covers, such as "December 2023", "August–September 2023" or "October 2024 – April 2025".
  * Dates are YYYY-MM-DD, which Date reads as UTC.
  */
 export function formatDates(start: string, end: string): string {
-  const parts = monthYear.formatRangeToParts(new Date(start), new Date(end));
+  return formatRange(monthYear, start, end);
+}
+
+/**
+ * The months an album covers, short and without the year it starts in, for under a year heading: "Dec", "Aug–Sep",
+ * or "Oct 2024 – Apr 2025" when it runs into another year. Dates are YYYY-MM-DD.
+ */
+export function formatMonths(start: string, end: string): string {
+  const oneYear = start.slice(0, 4) === end.slice(0, 4);
+  return formatRange(oneYear ? shortMonth : shortMonthYear, start, end);
+}
+
+function formatRange(
+  format: Intl.DateTimeFormat,
+  start: string,
+  end: string,
+): string {
+  const parts = format.formatRangeToParts(new Date(start), new Date(end));
   // Intl puts thin spaces around the dash. Close it up between months of one year, and use normal spaces between years.
   const acrossYears = parts.some(
     (part) => part.type === "year" && part.source === "startRange",

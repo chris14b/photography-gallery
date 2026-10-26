@@ -4,7 +4,8 @@ A minimal, static photo gallery built with Astro. It uses a dark theme and reads
 
 ## Features
 
-- Home page grid of album covers, newest first
+- A header on every page with the site name, which links home, and a fullscreen button
+- Home page with albums under the year they started, newest first, then the collections. Covers keep their own shapes, in rows of even height.
 - Album pages show one photo per screen, as large as fits, with its caption and location below. On screens at least 768px wide in landscape orientation, portrait photos have their caption beside them instead, alternating sides. The layout is CSS only.
 - Phones get 1200px AVIF copies; bigger screens get the original 3000px JPEG, untouched
 - Per-page titles, descriptions and link previews, plus a sitemap

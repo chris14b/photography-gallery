@@ -24,7 +24,6 @@ const { title, subtitle, description, photos, cover } = Astro.props;
   title={title}
   description={description}
   image={{ ...(await socialImage(cover.image)), alt: cover.alt }}
-  homeButton
 >
   <main>
     <PageHeader title={title} subtitle={subtitle} />

@@ -1,0 +1,43 @@
+---
+import { AUTHOR } from "../site";
+import FullscreenButton from "./FullscreenButton.astro";
+
+const home = Astro.url.pathname === "/";
+---
+
+<!-- The same on every page: the name goes home, which is how a shared collection link leads to everything else. -->
+<header>
+  <a class="name" href="/" aria-current={home ? "page" : undefined}>
+    {AUTHOR} <span class="kind">Photography</span>
+  </a>
+  <FullscreenButton />
+</header>
+
+<style>
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    /* The fullscreen button's height, so the header doesn't shrink where the button is hidden. */
+    min-height: 36px;
+    margin: 16px clamp(16px, 2.5vw, 40px) 0;
+  }
+
+  .name {
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: -0.005em;
+  }
+
+  /* Says what the site is, for someone arriving from a shared link, without making the name any bigger. */
+  .kind {
+    font-weight: 400;
+    color: var(--muted);
+  }
+
+  .name:focus-visible {
+    outline: 2px solid var(--text);
+    outline-offset: 4px;
+  }
+</style>

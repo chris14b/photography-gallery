@@ -26,6 +26,8 @@ export type PhotoSet = {
   title: string;
   /** Shown under the title. */
   subtitle?: string;
+  /** An album's country, when its title doesn't name it. */
+  country?: string;
   /** A sentence for search results and link previews. */
   description: string;
   unlisted: boolean;
@@ -130,6 +132,7 @@ export function buildAlbum(
     id,
     title: data.title,
     subtitle: [...details, dates].filter(Boolean).join(SEPARATOR),
+    country: data.country,
     description: `Photos by ${AUTHOR} from ${[data.title, ...details, dates].filter(Boolean).join(", ")}.`,
     unlisted: data.unlisted === true,
     photos,
