@@ -1,0 +1,40 @@
+---
+import IconButton from './IconButton.astro'
+---
+
+<!-- Hidden until the script finds the Fullscreen API, which iPhones don't have. -->
+<IconButton corner="right" label="Enter fullscreen" id="fullscreen" hidden>
+  <svg class="enter" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+    <path d="M1 6V1H6M10 1H15V6M15 10V15H10M6 15H1V10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+  </svg>
+  <svg class="exit" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+    <path d="M1 6H6V1M10 1V6H15M15 10H10V15M6 15V10H1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+  </svg>
+</IconButton>
+
+<style>
+  .exit,
+  :global(:fullscreen) .enter {
+    display: none;
+  }
+
+  :global(:fullscreen) .exit {
+    display: block;
+  }
+</style>
+
+<script>
+  const button = document.getElementById('fullscreen')
+  if (button && document.fullscreenEnabled) {
+    button.hidden = false
+    button.addEventListener('click', () => {
+      const change = document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen()
+      change.catch((error: unknown) => console.error('Could not change fullscreen mode:', error))
+    })
+    document.addEventListener('fullscreenchange', () => {
+      const label = document.fullscreenElement ? 'Exit fullscreen' : 'Enter fullscreen'
+      button.setAttribute('aria-label', label)
+      button.title = label
+    })
+  }
+</script>

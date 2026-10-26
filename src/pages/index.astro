@@ -1,0 +1,95 @@
+---
+import AlbumCard from '../components/AlbumCard.astro'
+import PageHeader from '../components/PageHeader.astro'
+import Page from '../layouts/Page.astro'
+import { SEPARATOR, SITE_TITLE, loadGallery } from '../lib/gallery'
+import { socialImage } from '../lib/images'
+
+const { albums, categories } = await loadGallery()
+const listedAlbums = albums.filter((album) => !album.unlisted)
+const listedCategories = categories.filter((category) => !category.unlisted && category.photos.length > 0)
+const latest = listedAlbums[0]
+---
+
+<Page
+  description="Travel and everyday photos by Chris Johnston, 2023–2026."
+  image={latest && { ...(await socialImage(latest.cover.image)), alt: latest.cover.alt }}
+>
+  <main>
+    <PageHeader title={SITE_TITLE} subtitle={`Selected work${SEPARATOR}2023–2026`}>
+      {
+        listedCategories.length > 0 && (
+          <nav aria-label="Categories">
+            {listedCategories.map((category) => (
+              <a href={`/${category.slug}/`}>{category.title}</a>
+            ))}
+          </nav>
+        )
+      }
+    </PageHeader>
+    <div class="grid">
+      {listedAlbums.map((album, index) => <AlbumCard album={album} eager={index < 3} />)}
+    </div>
+  </main>
+</Page>
+
+<style>
+  main {
+    width: 100%;
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 24px;
+  }
+
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px 20px;
+    margin-top: 8px;
+  }
+
+  nav a {
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.5;
+    transition: opacity 0.15s ease;
+  }
+
+  nav a:hover {
+    opacity: 1;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+    gap: 12px;
+  }
+
+  @media (max-width: 576px) {
+    .grid {
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 8px;
+    }
+  }
+
+  @media (min-width: 576px) and (max-width: 768px) {
+    .grid {
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+  }
+
+  @media (min-width: 992px) {
+    .grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .grid {
+      gap: 18px;
+    }
+  }
+</style>

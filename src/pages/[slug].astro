@@ -1,0 +1,62 @@
+---
+import type { GetStaticPaths } from 'astro'
+import PageHeader from '../components/PageHeader.astro'
+import PhotoStream from '../components/PhotoStream.astro'
+import Page from '../layouts/Page.astro'
+import { type Photo, loadGallery } from '../lib/gallery'
+import { socialImage } from '../lib/images'
+
+interface Props {
+  title: string
+  subtitle?: string
+  description: string
+  photos: Photo[]
+  /** The link preview photo. */
+  preview?: Photo
+}
+
+// Albums and categories share the top level of the URL; loadGallery fails the build if a category clashes with an album.
+export const getStaticPaths = (async () => {
+  const { albums, categories } = await loadGallery()
+  return [
+    ...albums.map((album) => ({
+      params: { slug: album.slug },
+      props: {
+        title: album.title,
+        subtitle: album.subtitle,
+        description: album.description,
+        photos: album.photos,
+        preview: album.cover,
+      },
+    })),
+    ...categories.map((category) => ({
+      params: { slug: category.slug },
+      props: {
+        title: category.title,
+        subtitle: category.description,
+        description: category.description ?? `${category.title} photos by Chris Johnston.`,
+        photos: category.photos,
+        preview: category.photos[0],
+      },
+    })),
+  ]
+}) satisfies GetStaticPaths
+
+const { title, subtitle, description, photos, preview } = Astro.props
+
+// A category with no photos is hidden, and its URL goes home. A 301 makes the generated page redirect straight away.
+if (photos.length === 0) return Astro.redirect('/', 301)
+---
+
+<Page title={title} description={description} image={preview && { ...(await socialImage(preview.image)), alt: preview.alt }} homeButton>
+  <main>
+    <PageHeader title={title} subtitle={subtitle} />
+    <PhotoStream photos={photos} />
+  </main>
+</Page>
+
+<style>
+  main {
+    padding: 24px 0;
+  }
+</style>

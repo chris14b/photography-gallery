@@ -1,33 +1,39 @@
 # Gallery
 
-A modern, minimal photo gallery built with React + TypeScript + Vite. It uses a dark theme and reads photo metadata from JSON files per album. A generator script scans your images, extracts dimensions, and keeps metadata up to date.
+A minimal, static photo gallery built with Astro. It uses a dark theme and reads photo metadata from JSON files per album. A generator script scans your images, extracts dimensions, and keeps metadata up to date.
 
 ## Features
 
 - Home page grid of album covers, newest first
-- Album pages show one photo per screen, as large as fits, with its caption and location below (landscape) or alternating to either side (portrait)
+- Album pages show one photo per screen, as large as fits, with its caption and location below. On screens at least 768px wide in landscape orientation, portrait photos have their caption beside them instead, alternating sides. The layout is CSS only.
+- Phones get 1200px AVIF copies; bigger screens get the original 3000px JPEG, untouched
+- Per-page titles, descriptions and link previews, plus a sitemap
 - Per‑album JSON metadata with preserved photo order
 - Generator script to scan images and auto‑populate dimensions
 
 ## Tech stack
 
-- React 19, TypeScript, Vite 7
-- styled-components for styling
+- Astro 7 (static output), TypeScript
+- Scoped CSS in Astro components
+- Content collections with Zod schemas for the album and category JSON
+- astro:assets (sharp) for image resizing
 
 ## Quick start
 
 Prerequisites
-- Node.js 22 (see .nvmrc)
+- Node.js 22, at least 22.23.4 (see .nvmrc; with nvm, run nvm install 22)
 - npm
 
 Run locally
 - npm install
 - npm run dev
-- Open http://localhost:5173
+- Open http://localhost:4321
 
 Build and preview
-- npm run build (outputs to dist/)
+- npm run build (type checks with astro check, then builds to dist/)
 - npm run preview (serves the production build locally)
+
+The first build resizes every photo, which takes a few minutes. Later builds reuse the copies cached in node_modules/.astro.
 
 Other scripts
 - npm run lint
@@ -43,7 +49,7 @@ Export from Lightroom with these settings so new photos match the existing ones:
 
 ## Deploying
 
-Pushing to main deploys the site to GitHub Pages via .github/workflows/deploy.yml. To publish new photos:
+Pushing to main deploys the site to GitHub Pages via .github/workflows/deploy.yml, which lints, builds and uploads dist/. It caches the resized photos between runs. To publish new photos:
 
 1. Export them (see Exporting photos) into an album folder under src/assets/images/
 2. npm run generate-metadata, then fill in captions and locations
@@ -56,6 +62,10 @@ The custom domain comes from public/CNAME.
 - src/assets/images/          Images by album folder
 - src/data/metadata/          JSON metadata per album (committed)
 - src/data/categories/        JSON per category page, e.g. concerts.json → /concerts
+- src/content.config.ts       Zod schemas for the metadata and category files
+- src/lib/gallery.ts          Builds albums and categories from the JSON and images, and checks them
+- src/lib/images.ts           Image sizes and formats
+- src/pages/                  The home page, album and category pages ([slug].astro), and 404
 - scripts/generateMetadata.mjs Metadata generator (Node ESM)
 
 Album IDs are derived from the folder name under src/assets/images (slugified). Photo fileName is the filename without extension.
@@ -86,7 +96,7 @@ Notes
 - location is a single string (e.g., "Site, City").
 - dimensions are required for layout; the generator extracts them.
 - Existing photo order is preserved when regenerating.
-- Set "unlisted": true to keep an album off the home page. Its URL still works, and categories can still use its photos.
+- Set "unlisted": true to keep an album off the home page and out of the sitemap. Its URL still works, and categories can still use its photos.
 
 ## Categories
 
@@ -107,7 +117,7 @@ A category page, such as /concerts, shows hand-picked photos from any album, in 
 - To give a photo a different caption or location on the category page, use the object form. Anything you leave out comes from the album.
 - A concert photo that also belongs in a personal album goes in that album. A concert-only photo goes in src/assets/images/Concerts/, an unlisted album whose slug is concerts-album so it doesn't clash with /concerts.
 - Categories with photos are linked from the home page, unless the category has "unlisted": true, in which case it's only reachable by its URL. A category with no photos is hidden, and its URL redirects home.
-- The build fails if a category has the same URL as an album, or lists a photo that doesn't exist.
+- The build fails if a category has the same URL as an album, lists a photo that doesn't exist, or lists a photo twice. It also fails if any metadata or category file doesn't match its schema in src/content.config.ts.
 
 ## Metadata generator
 
