@@ -157,9 +157,9 @@ A collection page, such as /concerts, shows hand-picked photos, in the same layo
 These apply to album.json and collection.json alike.
 
 - Write a location as "Place, Town", such as "Monkey Forest, Ubud". Leave the country out; the album gives it.
-- A town on its own is fine, and so is a place that already names its town, such as "Ella" or "Manly Beach".
+- Don't repeat the town. A town on its own is fine, and so is a place that already names its town, such as "Ella" or "Manly Beach", not "Manly Beach, Manly".
 - Where there's no town, use the island, park or area instead, such as "Padar Island, Komodo".
-- Spell places the common English way, without diacritics: "Hue", not "Huế".
+- Spell places the common English way, without diacritics: "Hue", not "Huế", and "Koh Tao", not "Ko Tao".
 - Call a place by the same name everywhere it appears.
 - Vague locations, such as "Middle of nowhere", are fine.
 - Write captions in sentence case, without a full stop at the end.
