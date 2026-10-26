@@ -25,3 +25,6 @@ export const COLLECTIONS: Kind = {
 };
 
 export const KINDS = [ALBUMS, COLLECTIONS];
+
+/** Photos are JPEGs, exported as README.md describes. Files with any other extension are ignored. */
+export const PHOTO_EXTENSION = ".jpg";

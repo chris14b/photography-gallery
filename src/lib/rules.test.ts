@@ -42,10 +42,10 @@ describe("indexImages", () => {
   test("indexes each image by its file name, with its folder", () => {
     const index = images([
       "/albums/laos-2023/R0001.jpg",
-      "/collections/concerts/R0002.JPG",
+      "/collections/concerts/R0002.jpg",
     ]);
     expect(index.get("R0001.jpg")?.folder).toBe("albums/laos-2023");
-    expect(index.get("R0002.JPG")?.folder).toBe("collections/concerts");
+    expect(index.get("R0002.jpg")?.folder).toBe("collections/concerts");
   });
 
   test("throws when two folders have a photo with the same file name", () => {

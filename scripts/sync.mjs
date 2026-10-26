@@ -10,14 +10,12 @@
 
 import { existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
-import { ALBUMS, KINDS } from "../src/lib/folders.ts";
-
-const IMAGE_EXTENSIONS = new Set([".jpg", ".jpeg", ".png", ".gif", ".webp"]);
+import { ALBUMS, KINDS, PHOTO_EXTENSION } from "../src/lib/folders.ts";
 
 /** @param {string} folder */
-function imageFiles(folder) {
+function photoFiles(folder) {
   return readdirSync(folder)
-    .filter((file) => IMAGE_EXTENSIONS.has(path.extname(file).toLowerCase()))
+    .filter((file) => file.endsWith(PHOTO_EXTENSION))
     .sort();
 }
 
@@ -41,7 +39,7 @@ for (const { dir, jsonFile, schema } of KINDS) {
     data.photos ??= [];
 
     const listed = new Set(data.photos.map((photo) => photo.file));
-    const added = imageFiles(folder).filter((file) => !listed.has(file));
+    const added = photoFiles(folder).filter((file) => !listed.has(file));
     if (added.length === 0 && !isNew) continue;
 
     data.photos.push(

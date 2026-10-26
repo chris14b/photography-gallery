@@ -51,7 +51,7 @@ Other scripts
 
 ## Exporting photos
 
-Export from Lightroom with these settings so new photos match the existing ones:
+Export from Lightroom with these settings so new photos match the existing ones. The site only uses .jpg files:
 
 - File type: JPEG, quality 70
 - Image sizing: Resize to Fit, Long Edge, 3000 px
@@ -149,4 +149,4 @@ A collection page, such as /concerts, shows hand-picked photos, in the same layo
 
 ## Syncing new photos
 
-npm run sync adds every photo that isn't listed yet to its folder's album.json or collection.json, with an empty caption and location to fill in. It leaves everything already there, including the order, as it is. A new album folder gets an album.json with just its photos; add its title, start and end before building.
+npm run sync adds every .jpg photo that isn't listed yet to its folder's album.json or collection.json, with an empty caption and location to fill in. It leaves everything already there, including the order, as it is. A new album folder gets an album.json with just its photos; add its title, start and end before building.

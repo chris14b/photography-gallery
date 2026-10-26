@@ -11,17 +11,11 @@ import {
 
 export { type Album, type Collection, type Photo } from "./rules";
 
-// import.meta.glob needs literal paths, so these repeat the folders in folders.ts.
-const imageModules = {
-  ...import.meta.glob<ImageMetadata>(
-    "/albums/*/*.{jpg,jpeg,png,gif,webp,JPG,JPEG,PNG,GIF,WEBP}",
-    { eager: true, import: "default" },
-  ),
-  ...import.meta.glob<ImageMetadata>(
-    "/collections/*/*.{jpg,jpeg,png,gif,webp,JPG,JPEG,PNG,GIF,WEBP}",
-    { eager: true, import: "default" },
-  ),
-};
+// import.meta.glob needs literal paths, so these repeat the folders and PHOTO_EXTENSION in folders.ts.
+const imageModules = import.meta.glob<ImageMetadata>(
+  ["/albums/*/*.jpg", "/collections/*/*.jpg"],
+  { eager: true, import: "default" },
+);
 
 let gallery:
   Promise<{ albums: Album[]; collections: Collection[] }> | undefined;
