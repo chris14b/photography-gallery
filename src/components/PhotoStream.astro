@@ -1,24 +1,30 @@
 ---
-import type { Photo } from '../lib/gallery'
-import { photoSources } from '../lib/images'
-import LocationIcon from './LocationIcon.astro'
+import type { Photo } from "../lib/gallery";
+import { photoSources } from "../lib/images";
+import LocationIcon from "./LocationIcon.astro";
 
 interface Props {
-  photos: Photo[]
+  photos: Photo[];
 }
 
-const { photos } = Astro.props
+const { photos } = Astro.props;
 
 // Portrait photos take turns having their caption on the right and the left.
-let portraits = 0
+let portraits = 0;
 const items = await Promise.all(
   photos.map(async (photo) => {
-    const { width, height } = photo.image
-    const portrait = width < height
-    const flip = portrait && portraits++ % 2 === 1
-    return { photo, portrait, flip, ratio: width / height, sources: await photoSources(photo.image) }
+    const { width, height } = photo.image;
+    const portrait = width < height;
+    const flip = portrait && portraits++ % 2 === 1;
+    return {
+      photo,
+      portrait,
+      flip,
+      ratio: width / height,
+      sources: await photoSources(photo.image),
+    };
   }),
-)
+);
 ---
 
 <!--
@@ -26,34 +32,35 @@ const items = await Promise.all(
   Portrait photos have their caption beside them on wide landscape screens; everything else has it below.
 -->
 <div class="stream">
-  {
-    items.map(({ photo, portrait, flip, ratio, sources }, index) => (
-      <figure class:list={['photo', { portrait, flip }]} style={`--ratio: ${ratio.toFixed(4)}`}>
-        <img
-          src={sources.src}
-          srcset={sources.srcset}
-          sizes={`min(100vw, 1600px, ${Math.round(ratio * 100)}vh)`}
-          width={photo.image.width}
-          height={photo.image.height}
-          alt={photo.alt}
-          loading={index === 0 ? 'eager' : 'lazy'}
-          fetchpriority={index === 0 ? 'high' : undefined}
-          decoding="async"
-        />
-        {(photo.caption || photo.location) && (
-          <figcaption>
-            {photo.caption && <span class="caption">{photo.caption}</span>}
-            {photo.location && (
-              <span class="location">
-                <LocationIcon />
-                {photo.location}
-              </span>
-            )}
-          </figcaption>
-        )}
-      </figure>
-    ))
-  }
+  {items.map(({ photo, portrait, flip, ratio, sources }, index) => (
+    <figure
+      class:list={["photo", { portrait, flip }]}
+      style={`--ratio: ${ratio.toFixed(4)}`}
+    >
+      <img
+        src={sources.src}
+        srcset={sources.srcset}
+        sizes={`min(100vw, 1600px, ${Math.round(ratio * 100)}vh)`}
+        width={photo.image.width}
+        height={photo.image.height}
+        alt={photo.alt}
+        loading={index === 0 ? "eager" : "lazy"}
+        fetchpriority={index === 0 ? "high" : undefined}
+        decoding="async"
+      />
+      {(photo.caption || photo.location) && (
+        <figcaption>
+          {photo.caption && <span class="caption">{photo.caption}</span>}
+          {photo.location && (
+            <span class="location">
+              <LocationIcon />
+              {photo.location}
+            </span>
+          )}
+        </figcaption>
+      )}
+    </figure>
+  ))}
 </div>
 
 <style>
@@ -77,7 +84,11 @@ const items = await Promise.all(
 
   img {
     /* Leave room below the photo for its caption. */
-    width: min(100% - 2 * var(--gutter), 1600px, (100svh - 6rem) * var(--ratio));
+    width: min(
+      100% - 2 * var(--gutter),
+      1600px,
+      (100svh - 6rem) * var(--ratio)
+    );
     background-color: var(--surface);
   }
 
@@ -118,7 +129,10 @@ const items = await Promise.all(
 
     .portrait img {
       flex: none;
-      width: min(100% - 2 * var(--gutter) - var(--caption-width) - var(--caption-gap), (100svh - 48px) * var(--ratio));
+      width: min(
+        100% - 2 * var(--gutter) - var(--caption-width) - var(--caption-gap),
+        (100svh - 48px) * var(--ratio)
+      );
     }
 
     .portrait figcaption {

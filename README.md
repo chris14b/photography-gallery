@@ -21,22 +21,27 @@ A minimal, static photo gallery built with Astro. It uses a dark theme and reads
 ## Quick start
 
 Prerequisites
+
 - Node.js 22.23.4 or later (see .nvmrc; with nvm, run nvm install)
 - npm
 
 Run locally
+
 - npm install
 - npm run dev
 - Open http://localhost:4321
 
 Build and preview
+
 - npm run build (type checks with astro check, then builds to dist/)
 - npm run preview (serves the production build locally)
 
 The first build resizes every photo, which takes a few minutes. Later builds reuse the copies cached in node_modules/.astro.
 
 Other scripts
+
 - npm run lint
+- npm run format formats everything with Prettier, using its default style; npm run format:check only checks
 - npm run sync
 
 ## Exporting photos
@@ -59,14 +64,16 @@ The custom domain comes from public/CNAME.
 
 ## Project layout
 
-- albums/{url}/                 One folder per album: its photos and album.json. The folder name is the URL.
-- portfolio/{url}/              One folder per collection: its own photos and collection.json, e.g. portfolio/concerts → /concerts
-- src/content.config.ts         Zod schemas for album.json and collection.json
-- src/lib/gallery.ts            Builds albums and collections from the JSON and images, and checks them
-- src/lib/dates.ts              Formats an album's dates
-- src/lib/images.ts             Image sizes and formats
-- src/pages/                    The home page, album and collection pages ([slug].astro), and 404
-- scripts/sync.mjs              Adds new photos to the JSON (npm run sync)
+| Path                  | What it is                                                                                         |
+| --------------------- | -------------------------------------------------------------------------------------------------- |
+| albums/{url}/         | One folder per album: its photos and album.json. The folder name is the URL.                       |
+| portfolio/{url}/      | One folder per collection: its own photos and collection.json, e.g. portfolio/concerts → /concerts |
+| src/content.config.ts | Zod schemas for album.json and collection.json                                                     |
+| src/lib/gallery.ts    | Builds albums and collections from the JSON and images, and checks them                            |
+| src/lib/dates.ts      | Formats an album's dates                                                                           |
+| src/lib/images.ts     | Image sizes and formats                                                                            |
+| src/pages/            | The home page, album and collection pages ([slug].astro), and 404                                  |
+| scripts/sync.mjs      | Adds new photos to the JSON (npm run sync)                                                         |
 
 ## Albums
 
@@ -111,8 +118,16 @@ A collection page, such as /concerts, shows hand-picked photos, in the same layo
   "title": "Concerts",
   "description": "Live music in Sydney",
   "photos": [
-    { "fileName": "R0009278", "caption": "Tame Impala, 2026", "location": "Sydney SuperDome" },
-    { "fileName": "R0006333", "caption": "Ólafur Arnalds of Kiasmos, 2025", "location": "Sydney Opera House" }
+    {
+      "fileName": "R0009278",
+      "caption": "Tame Impala, 2026",
+      "location": "Sydney SuperDome"
+    },
+    {
+      "fileName": "R0006333",
+      "caption": "Ólafur Arnalds of Kiasmos, 2025",
+      "location": "Sydney Opera House"
+    }
   ]
 }
 ```

@@ -1,27 +1,37 @@
 ---
-import type { HTMLAttributes } from 'astro/types'
+import type { HTMLAttributes } from "astro/types";
 
-type Props = Pick<HTMLAttributes<'button'>, 'id' | 'hidden'> & {
+type Props = Pick<HTMLAttributes<"button">, "id" | "hidden"> & {
   /** Which top corner of the screen the button floats in. */
-  corner: 'left' | 'right'
-  href?: string
-  label: string
-}
+  corner: "left" | "right";
+  href?: string;
+  label: string;
+};
 
-const { corner, href, label, ...rest } = Astro.props
+const { corner, href, label, ...rest } = Astro.props;
 ---
 
-{
-  href ? (
-    <a class:list={['icon-button', corner]} href={href} aria-label={label} title={label} {...rest}>
-      <slot />
-    </a>
-  ) : (
-    <button class:list={['icon-button', corner]} type="button" aria-label={label} title={label} {...rest}>
-      <slot />
-    </button>
-  )
-}
+{href ? (
+  <a
+    class:list={["icon-button", corner]}
+    href={href}
+    aria-label={label}
+    title={label}
+    {...rest}
+  >
+    <slot />
+  </a>
+) : (
+  <button
+    class:list={["icon-button", corner]}
+    type="button"
+    aria-label={label}
+    title={label}
+    {...rest}
+  >
+    <slot />
+  </button>
+)}
 
 <style>
   .icon-button {

@@ -1,34 +1,44 @@
 ---
-import AlbumCard from '../components/AlbumCard.astro'
-import PageHeader from '../components/PageHeader.astro'
-import Page from '../layouts/Page.astro'
-import { SEPARATOR, SITE_TITLE, loadGallery } from '../lib/gallery'
-import { socialImage } from '../lib/images'
+import AlbumCard from "../components/AlbumCard.astro";
+import PageHeader from "../components/PageHeader.astro";
+import Page from "../layouts/Page.astro";
+import { SEPARATOR, SITE_TITLE, loadGallery } from "../lib/gallery";
+import { socialImage } from "../lib/images";
 
-const { albums, collections } = await loadGallery()
-const listedAlbums = albums.filter((album) => !album.unlisted)
-const listedCollections = collections.filter((collection) => !collection.unlisted && collection.photos.length > 0)
-const latest = listedAlbums[0]
+const { albums, collections } = await loadGallery();
+const listedAlbums = albums.filter((album) => !album.unlisted);
+const listedCollections = collections.filter(
+  (collection) => !collection.unlisted && collection.photos.length > 0,
+);
+const latest = listedAlbums[0];
 ---
 
 <Page
   description="Travel and everyday photos by Chris Johnston, 2023–2026."
-  image={latest && { ...(await socialImage(latest.cover.image)), alt: latest.cover.alt }}
+  image={
+    latest && {
+      ...(await socialImage(latest.cover.image)),
+      alt: latest.cover.alt,
+    }
+  }
 >
   <main>
-    <PageHeader title={SITE_TITLE} subtitle={`Selected work${SEPARATOR}2023–2026`}>
-      {
-        listedCollections.length > 0 && (
-          <nav aria-label="Collections">
-            {listedCollections.map((collection) => (
-              <a href={`/${collection.id}/`}>{collection.title}</a>
-            ))}
-          </nav>
-        )
-      }
+    <PageHeader
+      title={SITE_TITLE}
+      subtitle={`Selected work${SEPARATOR}2023–2026`}
+    >
+      {listedCollections.length > 0 && (
+        <nav aria-label="Collections">
+          {listedCollections.map((collection) => (
+            <a href={`/${collection.id}/`}>{collection.title}</a>
+          ))}
+        </nav>
+      )}
     </PageHeader>
     <div class="grid">
-      {listedAlbums.map((album, index) => <AlbumCard album={album} eager={index < 3} />)}
+      {listedAlbums.map((album, index) => (
+        <AlbumCard album={album} eager={index < 3} />
+      ))}
     </div>
   </main>
 </Page>

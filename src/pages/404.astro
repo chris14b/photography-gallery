@@ -1,12 +1,21 @@
 ---
-import PageHeader from '../components/PageHeader.astro'
-import Page from '../layouts/Page.astro'
+import PageHeader from "../components/PageHeader.astro";
+import Page from "../layouts/Page.astro";
 ---
 
-<Page title="Page not found" description="There's no page at this address." homeButton>
+<Page
+  title="Page not found"
+  description="There's no page at this address."
+  homeButton
+>
   <main>
-    <PageHeader title="Page not found" subtitle="There's no page at this address." />
-    <p><a href="/">See all albums</a></p>
+    <PageHeader
+      title="Page not found"
+      subtitle="There's no page at this address."
+    />
+    <p>
+      <a href="/">See all albums</a>
+    </p>
   </main>
 </Page>
 
