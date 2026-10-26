@@ -1,5 +1,7 @@
 {
   "extends": "astro/tsconfigs/strict",
+  // Node runs the scripts with type stripping, which only handles syntax it can erase.
+  "compilerOptions": { "erasableSyntaxOnly": true },
   "include": [".astro/types.d.ts", "**/*"],
   "exclude": ["dist", ".claude/worktrees"]
 }

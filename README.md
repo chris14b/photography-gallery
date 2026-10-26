@@ -81,8 +81,8 @@ The custom domain, chrisjohnston.photography, is set in the repository's Pages s
 | src/lib/dates.ts      | Formats an album's dates                                                                             |
 | src/lib/images.ts     | Image sizes and formats                                                                              |
 | src/pages/            | The home page, album and collection pages ([slug].astro), and 404                                    |
-| scripts/sync.mjs      | Adds new photos to the JSON (npm run sync)                                                           |
-| scripts/captions.mjs  | Lists photos without captions (part of npm run check)                                                |
+| scripts/sync.ts       | Adds new photos to the JSON (npm run sync)                                                           |
+| scripts/captions.ts   | Lists photos without captions (part of npm run check)                                                |
 
 ## Albums
 

@@ -12,8 +12,13 @@ import { existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { ALBUMS, KINDS, PHOTO_EXTENSION } from "../src/lib/folders.ts";
 
-/** @param {string} folder */
-function photoFiles(folder) {
+/** What the script reads and writes of an album.json or collection.json; it keeps the other fields as they are. */
+interface JsonFile {
+  $schema?: string;
+  photos?: { file: string; caption?: string; location?: string }[];
+}
+
+function photoFiles(folder: string) {
   return readdirSync(folder)
     .filter((file) => file.endsWith(PHOTO_EXTENSION))
     .sort();
@@ -30,11 +35,8 @@ for (const { dir, jsonFile, schema } of KINDS) {
     const folder = path.join(dir, name);
     const json = path.join(folder, jsonFile);
     const isNew = !existsSync(json);
-    const data = isNew
-      ? {
-          $schema: path.relative(folder, schema),
-          photos: [],
-        }
+    const data: JsonFile = isNew
+      ? { $schema: path.relative(folder, schema), photos: [] }
       : JSON.parse(readFileSync(json, "utf8"));
     data.photos ??= [];
 

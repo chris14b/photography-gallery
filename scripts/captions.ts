@@ -4,7 +4,7 @@
  * Warns about photos without a caption in album.json and collection.json, one line per file. It's only a reminder, so it
  * never fails; the build checks everything else about the JSON.
  *
- * Usage: node scripts/captions.mjs (part of npm run check)
+ * Usage: node scripts/captions.ts (part of npm run check)
  */
 
 import { existsSync, readdirSync, readFileSync } from "node:fs";
@@ -21,7 +21,8 @@ for (const { dir, jsonFile } of KINDS) {
   for (const { name } of folders) {
     const file = path.join(dir, name, jsonFile);
     if (!existsSync(file)) continue;
-    const { photos = [] } = JSON.parse(readFileSync(file, "utf8"));
+    const { photos = [] }: { photos?: { file: string; caption?: string }[] } =
+      JSON.parse(readFileSync(file, "utf8"));
     const uncaptioned = photos
       .filter((photo) => !photo.caption?.trim())
       .map((photo) => photo.file);
