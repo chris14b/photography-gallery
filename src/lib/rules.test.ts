@@ -184,14 +184,14 @@ describe("album cover", () => {
   test("uses the photo named by cover", () => {
     expect(
       buildAlbum("laos-2023", album({ cover: "R0003.jpg", photos }), mixed)
-        ?.cover?.file,
+        ?.cover.file,
     ).toBe("R0003.jpg");
   });
 
   test("uses the photo named by cover even when it is portrait", () => {
     expect(
       buildAlbum("laos-2023", album({ cover: "R0001.jpg", photos }), mixed)
-        ?.cover?.file,
+        ?.cover.file,
     ).toBe("R0001.jpg");
   });
 
@@ -203,7 +203,7 @@ describe("album cover", () => {
   });
 
   test("falls back to the first landscape photo without a cover", () => {
-    expect(buildAlbum("laos-2023", album({ photos }), mixed)?.cover?.file).toBe(
+    expect(buildAlbum("laos-2023", album({ photos }), mixed)?.cover.file).toBe(
       "R0002.jpg",
     );
   });
@@ -216,7 +216,7 @@ describe("album cover", () => {
     const data = album({
       photos: [{ file: "R0002.jpg" }, { file: "R0001.jpg" }],
     });
-    expect(buildAlbum("laos-2023", data, portraits)?.cover?.file).toBe(
+    expect(buildAlbum("laos-2023", data, portraits)?.cover.file).toBe(
       "R0002.jpg",
     );
   });
@@ -232,9 +232,22 @@ describe("buildCollection", () => {
 
   test("throws when the collection has the same URL as an album", () => {
     expect(() =>
-      buildCollection("laos-2023", collection({ photos: [] }), index, albumIds),
+      buildCollection(
+        "laos-2023",
+        collection({ photos: [{ file: "R0001.jpg" }] }),
+        index,
+        albumIds,
+      ),
     ).toThrow(
       'Collection "laos-2023" has the same URL as an album; rename one of their folders',
+    );
+  });
+
+  test("throws when the collection has no photos", () => {
+    expect(() =>
+      buildCollection("concerts", collection({ photos: [] }), index, albumIds),
+    ).toThrow(
+      'Collection "concerts" has no photos; add some or delete its folder',
     );
   });
 
@@ -307,17 +320,13 @@ describe("buildCollection", () => {
     expect(built.description).toBe("Concerts photos by Chris Johnston.");
   });
 
-  test("uses its first photo as its cover, and has none without photos", () => {
+  test("uses its first photo as its cover", () => {
     const data = collection({
       photos: [{ file: "R0002.jpg" }, { file: "R0001.jpg" }],
     });
-    expect(buildCollection("concerts", data, index, albumIds).cover?.file).toBe(
+    expect(buildCollection("concerts", data, index, albumIds).cover.file).toBe(
       "R0002.jpg",
     );
-    expect(
-      buildCollection("concerts", collection({ photos: [] }), index, albumIds)
-        .cover,
-    ).toBeUndefined();
   });
 });
 
@@ -325,7 +334,7 @@ describe("isListed", () => {
   const index = images(["/albums/laos-2023/R0001.jpg"]);
   const photos = [{ file: "R0001.jpg" }];
 
-  test("lists an album or collection with photos", () => {
+  test("lists an album or collection", () => {
     expect(isListed(buildAlbum("laos-2023", album({ photos }), index)!)).toBe(
       true,
     );
@@ -347,19 +356,6 @@ describe("isListed", () => {
         buildCollection(
           "concerts",
           collection({ unlisted: true, photos }),
-          index,
-          new Set(),
-        ),
-      ),
-    ).toBe(false);
-  });
-
-  test("leaves out a collection with no photos", () => {
-    expect(
-      isListed(
-        buildCollection(
-          "concerts",
-          collection({ photos: [] }),
           index,
           new Set(),
         ),

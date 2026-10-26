@@ -144,8 +144,8 @@ A collection page, such as /concerts, shows hand-picked photos, in the same layo
 - Each photo's file can be in the collection's own folder or in any album. The page shows photos in the order listed.
 - Each photo has the same fields as in an album: file, and an optional caption and location. collection.json is the only source of a collection's text; nothing comes from the album, even for an album photo, so an album photo can read differently on its album page.
 - A concert photo that also belongs in a personal album goes in that album, and the collection lists it. A concert-only photo goes in collections/concerts/.
-- Collections with photos are linked from the home page, unless the collection has "unlisted": true, in which case it's only reachable by its URL. A collection with no photos is hidden, and its URL redirects home.
-- The build fails if a collection has the same URL as an album, two photo files share a name, a JSON file lists a photo that doesn't exist or lists one twice, an album's cover isn't one of its photos, an album ends before it starts, or any JSON file doesn't match its schema in src/content.config.ts. Photos that no JSON file lists are left out, with a warning.
+- Collections are linked from the home page, unless the collection has "unlisted": true, in which case it's only reachable by its URL.
+- The build fails if a collection has the same URL as an album, two photo files share a name, a JSON file lists a photo that doesn't exist or lists one twice, a collection has no photos, an album's cover isn't one of its photos, an album ends before it starts, or any JSON file doesn't match its schema in src/content.config.ts. Photos that no JSON file lists are left out, with a warning.
 
 ## Syncing new photos
 

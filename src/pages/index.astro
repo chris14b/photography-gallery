@@ -18,7 +18,7 @@ const years = formatYears(listedAlbums.flatMap((album) => album.dates ?? []));
 <Page
   description={`Travel and everyday photos by ${AUTHOR}, ${years}.`}
   image={
-    latest?.cover && {
+    latest && {
       ...(await socialImage(latest.cover.image)),
       alt: latest.cover.alt,
     }

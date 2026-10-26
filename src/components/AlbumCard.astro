@@ -9,8 +9,7 @@ interface Props {
 }
 
 const { album, eager = false } = Astro.props;
-// Every album has a cover; only a collection with no photos doesn't.
-const cover = album.cover!;
+const { cover } = album;
 const source = await coverSource(cover.image);
 ---
 

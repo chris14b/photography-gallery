@@ -30,8 +30,8 @@ export type PhotoSet = {
   description: string;
   unlisted: boolean;
   photos: Photo[];
-  /** The home page cover and link preview photo. Only a collection with no photos has none. */
-  cover?: Photo;
+  /** The home page cover and link preview photo. */
+  cover: Photo;
   /** An album's first and last days, as YYYY-MM-DD. Collections have none. */
   dates?: [start: string, end: string];
 };
@@ -139,7 +139,7 @@ export function buildAlbum(
   };
 }
 
-/** The collection in collections/{id}/collection.json, whose cover is its first photo. Its URL mustn't be one of albumIds. */
+/** The collection in collections/{id}/collection.json, whose cover is its first photo. Its URL mustn't be one of albumIds, and it must have photos. */
 export function buildCollection(
   id: string,
   data: CollectionData,
@@ -149,6 +149,10 @@ export function buildCollection(
   if (albumIds.has(id))
     throw new Error(
       `Collection "${id}" has the same URL as an album; rename one of their folders`,
+    );
+  if (data.photos.length === 0)
+    throw new Error(
+      `Collection "${id}" has no photos; add some or delete its folder`,
     );
   checkUnique(
     data.photos.map((photo) => photo.file),
@@ -181,9 +185,9 @@ export function buildCollection(
   };
 }
 
-/** Whether the home page and the sitemap list an album or collection: it isn't unlisted, and it has photos. */
+/** Whether the home page and the sitemap list an album or collection, which they do unless it's unlisted. */
 export function isListed(photoSet: PhotoSet): boolean {
-  return !photoSet.unlisted && photoSet.photos.length > 0;
+  return !photoSet.unlisted;
 }
 
 /** Images that no album.json or collection.json lists, such as "albums/laos-2023/R0001234.jpg", which the site leaves out. */

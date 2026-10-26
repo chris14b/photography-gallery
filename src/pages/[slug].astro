@@ -18,15 +18,12 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths;
 
 const { title, subtitle, description, photos, cover } = Astro.props;
-
-// A collection with no photos is hidden, and its URL goes home. A 301 makes the generated page redirect straight away.
-if (photos.length === 0) return Astro.redirect("/", 301);
 ---
 
 <Page
   title={title}
   description={description}
-  image={cover && { ...(await socialImage(cover.image)), alt: cover.alt }}
+  image={{ ...(await socialImage(cover.image)), alt: cover.alt }}
   homeButton
 >
   <main>

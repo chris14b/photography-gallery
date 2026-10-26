@@ -19,7 +19,7 @@ const imageModules = import.meta.glob<ImageMetadata>(
 let gallery:
   Promise<{ albums: PhotoSet[]; collections: PhotoSet[] }> | undefined;
 
-/** Every album, newest first, and every collection, including unlisted and empty ones. */
+/** Every album, newest first, and every collection, including unlisted ones. */
 export function loadGallery() {
   gallery ??= (async () => {
     const images = indexImages(imageModules);
