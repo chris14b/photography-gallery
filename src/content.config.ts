@@ -9,19 +9,23 @@ const idFromFolder = ({ entry }: { entry: string }) => entry.split("/")[0];
 /** Lets editors find the JSON schema Astro generates in .astro/collections, which a strict object would otherwise reject. */
 const $schema = z.string().optional();
 const date = z.iso.date();
+const title = z.string().trim().min(1);
+/** Optional text, trimmed. Empty or whitespace-only text becomes undefined, the same as leaving the field out. */
+const text = z
+  .string()
+  .trim()
+  .transform((value) => value || undefined)
+  .optional();
 const file = z
   .string()
   .min(1)
   .describe(
     "The photo's file name with its extension, such as R0001234.jpg. File names are unique across albums and collections.",
   );
-const caption = z.string().optional().describe("Leave empty for no caption.");
-const location = z
-  .string()
-  .optional()
-  .describe(
-    'A single string, such as "Site, City". Leave empty for no location.',
-  );
+const caption = text.describe("Leave empty for no caption.");
+const location = text.describe(
+  'A single string, such as "Site, City". Leave empty for no location.',
+);
 
 /** A photo in an album or collection. In a collection, the text always comes from collection.json, never from the album. */
 const photo = z.strictObject({ file, caption, location });
@@ -35,27 +39,20 @@ const albums = defineCollection({
   }),
   schema: z.strictObject({
     $schema,
-    title: z.string().min(1),
-    description: z
-      .string()
-      .optional()
-      .describe("Shown under the title, such as the places an album covers."),
-    country: z
-      .string()
-      .optional()
-      .describe(
-        "Shown under the title. Set it only when the title doesn't already name the country.",
-      ),
+    title,
+    description: text.describe(
+      "Shown under the title, such as the places an album covers.",
+    ),
+    country: text.describe(
+      "Shown under the title. Set it only when the title doesn't already name the country.",
+    ),
     start: date.describe(
       "The first day of the trip, as YYYY-MM-DD. Albums are sorted by it, newest first.",
     ),
     end: date.describe("The last day of the trip, as YYYY-MM-DD."),
-    cover: z
-      .string()
-      .optional()
-      .describe(
-        "The file name of the home page cover photo, with its extension. It must be one of the album's photos. Defaults to the first landscape photo.",
-      ),
+    cover: text.describe(
+      "The file name of the home page cover photo, with its extension. It must be one of the album's photos. Defaults to the first landscape photo.",
+    ),
     unlisted: z
       .boolean()
       .optional()
@@ -77,8 +74,8 @@ const handPicked = defineCollection({
   }),
   schema: z.strictObject({
     $schema,
-    title: z.string().min(1),
-    description: z.string().optional().describe("Shown under the title."),
+    title,
+    description: text.describe("Shown under the title."),
     unlisted: z
       .boolean()
       .optional()

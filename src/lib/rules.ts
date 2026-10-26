@@ -38,6 +38,8 @@ export type PhotoSet = {
 
 export type AlbumData = CollectionEntry<"albums">["data"];
 export type CollectionData = CollectionEntry<"collections">["data"];
+/** A photo as album.json or collection.json lists it. The schema has already trimmed its text and dropped empty text. */
+type PhotoData = AlbumData["photos"][number];
 
 /** Every image by its file name, such as "R0001234.jpg", with the folder it's in, such as "albums/laos-2023". */
 export type Images = Map<string, { folder: string; image: ImageMetadata }>;
@@ -57,14 +59,16 @@ export function indexImages(modules: Record<string, ImageMetadata>): Images {
   return images;
 }
 
-function photoText(caption: string | undefined, location: string | undefined) {
-  const text = {
-    caption: caption?.trim() || undefined,
-    location: location?.trim() || undefined,
-  };
+function toPhoto(
+  { file, caption, location }: PhotoData,
+  image: ImageMetadata,
+): Photo {
   return {
-    ...text,
-    alt: [text.caption, text.location].filter(Boolean).join(", "),
+    file,
+    image,
+    caption,
+    location,
+    alt: [caption, location].filter(Boolean).join(", "),
   };
 }
 
@@ -83,16 +87,15 @@ export function pickCover(
   photos: Photo[],
   cover: string | undefined,
 ): Photo {
-  const file = cover?.trim();
-  if (!file)
+  if (cover === undefined)
     return (
       photos.find((photo) => photo.image.width > photo.image.height) ??
       photos[0]
     );
-  const named = photos.find((photo) => photo.file === file);
+  const named = photos.find((photo) => photo.file === cover);
   if (!named)
     throw new Error(
-      `Album "${id}" has cover "${file}", which isn't one of its photos`,
+      `Album "${id}" has cover "${cover}", which isn't one of its photos`,
     );
   return named;
 }
@@ -117,15 +120,11 @@ export function buildAlbum(
         `Album "${id}" lists "${photo.file}", but there's no image with that name in its folder`,
       );
     }
-    return {
-      file: photo.file,
-      image: found.image,
-      ...photoText(photo.caption, photo.location),
-    };
+    return toPhoto(photo, found.image);
   });
   if (photos.length === 0) return undefined;
 
-  const details = [data.description?.trim(), data.country?.trim()];
+  const details = [data.description, data.country];
   const dates = formatDates(data.start, data.end);
   return {
     id,
@@ -160,18 +159,18 @@ export function buildCollection(
   );
 
   // The image can be in the collection's folder or any album's, but the text is always the collection's own.
-  const photos = data.photos.map(({ file, caption, location }): Photo => {
-    const found = images.get(file);
+  const photos = data.photos.map((photo): Photo => {
+    const found = images.get(photo.file);
     if (
       !found ||
       (found.folder !== `${COLLECTIONS.dir}/${id}` &&
         !found.folder.startsWith(`${ALBUMS.dir}/`))
     ) {
       throw new Error(
-        `Collection "${id}" lists "${file}", which isn't in its folder or any album`,
+        `Collection "${id}" lists "${photo.file}", which isn't in its folder or any album`,
       );
     }
-    return { file, image: found.image, ...photoText(caption, location) };
+    return toPhoto(photo, found.image);
   });
 
   return {

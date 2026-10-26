@@ -148,11 +148,11 @@ describe("buildAlbum", () => {
     expect(built?.dates).toEqual(["2023-08-28", "2023-09-04"]);
   });
 
-  test("trims captions and locations, drops empty ones and joins them into the alt text", () => {
+  test("joins the caption and location into the alt text, leaving out missing ones", () => {
     const data = album({
       photos: [
-        { file: "R0001.jpg", caption: " Dawn ", location: "Luang Prabang" },
-        { file: "R0002.jpg", caption: "", location: " " },
+        { file: "R0001.jpg", caption: "Dawn", location: "Luang Prabang" },
+        { file: "R0002.jpg" },
       ],
     });
     const [first, second] = buildAlbum("laos-2023", data, laos)!.photos;
