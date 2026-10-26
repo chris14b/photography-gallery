@@ -1,12 +1,11 @@
 # Gallery
 
-A modern, minimal photo gallery built with React + TypeScript + Vite. It renders a fast, justified layout, uses a dark theme, and reads photo metadata from JSON files per album. A generator script scans your images, extracts dimensions, and keeps metadata up to date.
+A modern, minimal photo gallery built with React + TypeScript + Vite. It uses a dark theme and reads photo metadata from JSON files per album. A generator script scans your images, extracts dimensions, and keeps metadata up to date.
 
 ## Features
 
-- Justified, responsive layout that respects original aspect ratios
-- Dark theme and minimalist UI with hover overlays (location + caption)
-- Lightbox viewing with keyboard navigation
+- Home page grid of album covers, newest first
+- Album pages show one photo per screen, as large as fits, with its caption and location below (landscape) or alternating to either side (portrait)
 - Per‑album JSON metadata with preserved photo order
 - Generator script to scan images and auto‑populate dimensions
 
@@ -14,7 +13,6 @@ A modern, minimal photo gallery built with React + TypeScript + Vite. It renders
 
 - React 19, TypeScript, Vite 7
 - styled-components for styling
-- react-photo-view for the lightbox
 
 ## Quick start
 
@@ -76,7 +74,7 @@ Each album has a JSON file named {albumId}.json:
   "photos": [
     {
       "fileName": "R0003897",
-      "caption": "Dawn on top the volcano",
+      "caption": "Dawn on top of the volcano",
       "location": "Mount Sibayak, Berastagi",
       "dimensions": { "width": 6000, "height": 3375 }
     }

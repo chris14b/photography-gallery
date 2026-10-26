@@ -12,8 +12,8 @@
       "caption": "",
       "location": "Thean Hou Temple, Kuala Lumpur",
       "dimensions": {
-        "width": 4000,
-        "height": 6000
+        "width": 2000,
+        "height": 3000
       }
     },
     {
@@ -21,8 +21,8 @@
       "caption": "Tea fields",
       "location": "Cameron Highlands",
       "dimensions": {
-        "width": 6000,
-        "height": 4000
+        "width": 3000,
+        "height": 2000
       }
     },
     {
@@ -30,8 +30,8 @@
       "caption": "",
       "location": "Kek Lok Si, Penang",
       "dimensions": {
-        "width": 4000,
-        "height": 6000
+        "width": 2000,
+        "height": 3000
       }
     },
     {
@@ -39,8 +39,8 @@
       "caption": "",
       "location": "Umbrella Alley, Kuala Lumpur",
       "dimensions": {
-        "width": 3815,
-        "height": 5722
+        "width": 2000,
+        "height": 3000
       }
     }
   ]

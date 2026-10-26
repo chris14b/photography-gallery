@@ -11,7 +11,6 @@ import FullscreenButton from './components/common/FullscreenButton';
 import { albums as initialAlbums, photos as initialPhotos, loadGalleryData } from './data/photos';
 import { buildCategories } from './data/categories';
 import type { Album, Photo, AlbumCover, Category } from './types';
-import 'react-photo-view/dist/react-photo-view.css';
 import { findAlbumIdBySlug, getSlugForAlbumId } from './data/photoMetadata';
 
 const SITE_TITLE = 'Chris Johnston Photography';

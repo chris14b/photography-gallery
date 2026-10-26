@@ -93,11 +93,7 @@ const PhotoCard: React.FC<PhotoCardProps> = ({ photo, width, height }) => {
       observer.observe(imageContainerRef.current);
     }
 
-    return () => {
-      if (imageContainerRef.current) {
-        observer.disconnect();
-      }
-    };
+    return () => observer.disconnect();
   }, []);
 
   const handleImageLoad = () => {

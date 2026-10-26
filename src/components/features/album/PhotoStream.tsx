@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { PhotoProvider } from 'react-photo-view';
 import type { Photo } from '../../../types';
 import PhotoWithInfo from './PhotoWithInfo';
 import { useContainerWidth } from '../../../hooks/useContainerWidth';
@@ -95,14 +94,12 @@ const PhotoStream: React.FC<PhotoStreamProps> = ({ photos, children }) => {
   };
 
   return (
-    <PhotoProvider>
-      <StreamContainer ref={containerRef}>
-        {children}
-        <PhotosList>
-          {renderPhotos()}
-        </PhotosList>
-      </StreamContainer>
-    </PhotoProvider>
+    <StreamContainer ref={containerRef}>
+      {children}
+      <PhotosList>
+        {renderPhotos()}
+      </PhotosList>
+    </StreamContainer>
   );
 };
 

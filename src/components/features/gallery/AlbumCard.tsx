@@ -196,11 +196,7 @@ const AlbumCard: React.FC<AlbumCardProps> = ({ album, coverPhoto, onSelectAlbum 
       observer.observe(imageContainerRef.current);
     }
 
-    return () => {
-      if (imageContainerRef.current) {
-        observer.disconnect();
-      }
-    };
+    return () => observer.disconnect();
   }, []);
 
   const handleImageLoad = useCallback(() => {

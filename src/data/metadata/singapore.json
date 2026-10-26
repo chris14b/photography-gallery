@@ -12,8 +12,8 @@
       "caption": "The nightly light show",
       "location": "Supertree Grove",
       "dimensions": {
-        "width": 4000,
-        "height": 6000
+        "width": 2000,
+        "height": 3000
       }
     },
     {
@@ -21,8 +21,8 @@
       "caption": "Alannah is fascinated by the wall",
       "location": "ArtScience Museum",
       "dimensions": {
-        "width": 3772,
-        "height": 5658
+        "width": 2000,
+        "height": 3000
       }
     }
   ]
