@@ -5,10 +5,8 @@
 
 import type { ImageMetadata } from "astro";
 import type { CollectionEntry } from "astro:content";
+import { AUTHOR, SEPARATOR } from "../site";
 import { formatDates } from "./dates";
-
-/** Joins the parts of a subtitle, such as an album's country and dates. */
-export const SEPARATOR = " • ";
 
 export interface Photo {
   /** The file name with its extension, such as "R0001234.jpg". */
@@ -125,7 +123,7 @@ export function buildAlbum(
     id,
     title: data.title,
     subtitle: [...details, dates].filter(Boolean).join(SEPARATOR),
-    description: `Photos by Chris Johnston from ${[data.title, ...details, dates].filter(Boolean).join(", ")}.`,
+    description: `Photos by ${AUTHOR} from ${[data.title, ...details, dates].filter(Boolean).join(", ")}.`,
     unlisted: data.unlisted === true,
     photos,
     cover: pickCover(photos, data.cover),

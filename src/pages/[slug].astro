@@ -5,6 +5,7 @@ import PhotoStream from "../components/PhotoStream.astro";
 import Page from "../layouts/Page.astro";
 import { type Photo, loadGallery } from "../lib/gallery";
 import { socialImage } from "../lib/images";
+import { AUTHOR } from "../site";
 
 interface Props {
   title: string;
@@ -35,8 +36,7 @@ export const getStaticPaths = (async () => {
         title: collection.title,
         subtitle: collection.description,
         description:
-          collection.description ??
-          `${collection.title} photos by Chris Johnston.`,
+          collection.description ?? `${collection.title} photos by ${AUTHOR}.`,
         photos: collection.photos,
         preview: collection.photos[0],
       },

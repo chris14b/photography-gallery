@@ -73,6 +73,7 @@ The custom domain, chrisjohnston.photography, is set in the repository's Pages s
 | --------------------- | ---------------------------------------------------------------------------------------------------- |
 | albums/{url}/         | One folder per album: its photos and album.json. The folder name is the URL.                         |
 | collections/{url}/    | One folder per collection: its own photos and collection.json, e.g. collections/concerts → /concerts |
+| src/site.ts           | The site's URL, title and author                                                                     |
 | src/content.config.ts | Zod schemas for album.json and collection.json                                                       |
 | src/lib/gallery.ts    | Loads the JSON and images for the pages                                                              |
 | src/lib/rules.ts      | Builds albums and collections from them, and checks them (tested in rules.test.ts)                   |

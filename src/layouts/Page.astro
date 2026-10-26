@@ -2,7 +2,7 @@
 import "../styles/global.css";
 import FullscreenButton from "../components/FullscreenButton.astro";
 import HomeButton from "../components/HomeButton.astro";
-import { SITE_TITLE } from "../lib/gallery";
+import { SITE_TITLE } from "../site";
 
 interface Props {
   /** The page's own title; the site title is added after it. Leave it out on the home page. */
@@ -17,14 +17,17 @@ interface Props {
 const { title, description, image, homeButton = false } = Astro.props;
 const fullTitle = title ? `${title} · ${SITE_TITLE}` : SITE_TITLE;
 const url = new URL(Astro.url.pathname, Astro.site);
+
+// The page background, which browsers also use for their toolbars. global.css reads it as --background.
+const background = "#121212";
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" style={`--background: ${background}`}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#121212" />
+    <meta name="theme-color" content={background} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="canonical" href={url} />

@@ -9,9 +9,7 @@ import {
   unlistedImages,
 } from "./rules";
 
-export { SEPARATOR, type Album, type Collection, type Photo } from "./rules";
-
-export const SITE_TITLE = "Chris Johnston Photography";
+export { type Album, type Collection, type Photo } from "./rules";
 
 const imageModules = {
   ...import.meta.glob<ImageMetadata>(

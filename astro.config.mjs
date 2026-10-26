@@ -4,8 +4,7 @@ import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
-
-const site = "https://chrisjohnston.photography";
+import { SITE_URL as site } from "./src/site.ts";
 
 /** URLs of unlisted albums and collections, and of empty collections, which all stay out of the sitemap as well as off the home page. */
 async function unlistedUrls() {
