@@ -1,0 +1,48 @@
+{
+  "slug": "concerts-album",
+  "name": "Concerts",
+  "country": "",
+  "dateDescription": "Add date description",
+  "startDate": "YYYY-MM-DD",
+  "endDate": "YYYY-MM-DD",
+  "cover": "R0009278",
+  "unlisted": true,
+  "photos": [
+    {
+      "fileName": "R0009268",
+      "caption": "Tame Impala, 2026",
+      "location": "Sydney SuperDome",
+      "dimensions": {
+        "width": 2250,
+        "height": 3000
+      }
+    },
+    {
+      "fileName": "R0009278",
+      "caption": "Tame Impala, 2026",
+      "location": "Sydney SuperDome",
+      "dimensions": {
+        "width": 3000,
+        "height": 1907
+      }
+    },
+    {
+      "fileName": "R0009280",
+      "caption": "Tame Impala, 2026",
+      "location": "Sydney SuperDome",
+      "dimensions": {
+        "width": 3000,
+        "height": 1720
+      }
+    },
+    {
+      "fileName": "R0009285",
+      "caption": "Tame Impala, 2026",
+      "location": "Sydney SuperDome",
+      "dimensions": {
+        "width": 3000,
+        "height": 1500
+      }
+    }
+  ]
+}
