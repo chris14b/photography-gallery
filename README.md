@@ -35,11 +35,19 @@ Other scripts
 - npm run lint
 - npm run generate-metadata
 
+## Exporting photos
+
+Export from Lightroom with these settings so new photos match the existing ones:
+
+- File type: JPEG, quality 70
+- Image sizing: Resize to Fit, Long Edge, 3000 px
+- Metadata: none (existing exports carry no EXIF or creator tags)
+
 ## Deploying
 
 Pushing to main deploys the site to GitHub Pages via .github/workflows/deploy.yml. To publish new photos:
 
-1. Add them to an album folder under src/assets/images/
+1. Export them (see Exporting photos) into an album folder under src/assets/images/
 2. npm run generate-metadata, then fill in captions and locations
 3. Commit and push
 
