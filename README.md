@@ -21,7 +21,7 @@ A minimal, static photo gallery built with Astro. It uses a dark theme and reads
 ## Quick start
 
 Prerequisites
-- Node.js 22, at least 22.23.4 (see .nvmrc; with nvm, run nvm install 22)
+- Node.js 22.23.4 or later (see .nvmrc; with nvm, run nvm install)
 - npm
 
 Run locally
