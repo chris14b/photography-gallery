@@ -170,6 +170,11 @@ export function buildCollection(
   };
 }
 
+/** Whether the home page and the sitemap list an album or collection: it isn't unlisted, and it has photos. */
+export function isListed(photoSet: PhotoSet): boolean {
+  return !photoSet.unlisted && photoSet.photos.length > 0;
+}
+
 /** Images that no album.json or collection.json lists, such as "albums/laos-2023/R0001234.jpg", which the site leaves out. */
 export function unlistedImages(
   images: Images,

@@ -8,7 +8,7 @@ import {
   unlistedImages,
 } from "./rules";
 
-export { type Photo, type PhotoSet } from "./rules";
+export { type Photo, type PhotoSet, isListed } from "./rules";
 
 // import.meta.glob needs literal paths, so these repeat the folders and PHOTO_EXTENSION in folders.ts.
 const imageModules = import.meta.glob<ImageMetadata>(
