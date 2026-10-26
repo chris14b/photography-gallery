@@ -3,21 +3,74 @@ import type { GetStaticPaths } from "astro";
 import PageHeader from "../components/PageHeader.astro";
 import PhotoStream from "../components/PhotoStream.astro";
 import Page from "../layouts/Page.astro";
-import { type PhotoSet, loadGallery } from "../lib/gallery";
-import { socialImage } from "../lib/images";
+import { formatDates } from "../lib/dates";
+import {
+  type PhotoSet,
+  countPhotos,
+  isListed,
+  loadGallery,
+} from "../lib/gallery";
+import { averageColour, coverSource, socialImage } from "../lib/images";
+import { AUTHOR, SEPARATOR } from "../site";
 
-type Props = PhotoSet;
+interface Props {
+  photoSet: PhotoSet;
+  /** The listed albums just before and after this one, for an album that's listed itself. */
+  earlier?: PhotoSet;
+  later?: PhotoSet;
+}
 
 // Albums and collections share the top level of the URL; loadGallery fails the build if a collection clashes with an album.
 export const getStaticPaths = (async () => {
   const { albums, collections } = await loadGallery();
-  return [...albums, ...collections].map((photoSet) => ({
-    params: { slug: photoSet.id },
-    props: photoSet,
-  }));
+  // Newest first, as loadGallery sorts them.
+  const listed = albums.filter(isListed);
+  return [
+    ...albums.map((album) => {
+      const index = listed.indexOf(album);
+      return {
+        params: { slug: album.id },
+        props: {
+          photoSet: album,
+          earlier: index === -1 ? undefined : listed[index + 1],
+          later: index === -1 ? undefined : listed[index - 1],
+        },
+      };
+    }),
+    ...collections.map((collection) => ({
+      params: { slug: collection.id },
+      props: { photoSet: collection },
+    })),
+  ];
 }) satisfies GetStaticPaths;
 
-const { title, subtitle, description, photos, cover } = Astro.props;
+const { photoSet, earlier, later } = Astro.props;
+const { title, subtitle, description, photos, cover } = photoSet;
+const details = [subtitle, countPhotos(photoSet)]
+  .filter(Boolean)
+  .join(SEPARATOR);
+
+// The albums either side, each with a small copy of its cover.
+const neighbours = await Promise.all(
+  (
+    [
+      ["Earlier", earlier],
+      ["Later", later],
+    ] as const
+  ).map(async ([label, album]) =>
+    album
+      ? {
+          label,
+          album,
+          dates: album.dates && formatDates(...album.dates),
+          source: await coverSource(album.cover.image),
+          colour: await averageColour(album.cover),
+          ratio: album.cover.image.width / album.cover.image.height,
+        }
+      : undefined,
+  ),
+);
+const isAlbum = photoSet.dates !== undefined;
 ---
 
 <Page
@@ -26,13 +79,113 @@ const { title, subtitle, description, photos, cover } = Astro.props;
   image={{ ...(await socialImage(cover.image)), alt: cover.alt }}
 >
   <main>
-    <PageHeader title={title} subtitle={subtitle} />
+    <PageHeader title={title} subtitle={details} />
     <PhotoStream photos={photos} />
+    <footer>
+      {isAlbum ? (
+        <nav aria-label="More albums">
+          {neighbours.map((neighbour) =>
+            neighbour ? (
+              <a
+                class:list={["neighbour", neighbour.label.toLowerCase()]}
+                href={`/${neighbour.album.id}/`}
+              >
+                <img
+                  src={neighbour.source.src}
+                  width={neighbour.source.width}
+                  height={neighbour.source.height}
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                  style={`--ratio: ${neighbour.ratio.toFixed(4)}; --colour: ${neighbour.colour}`}
+                />
+                <span class="label">
+                  {neighbour.label === "Earlier" ? "← Earlier" : "Later →"}
+                </span>
+                <span class="title">{neighbour.album.title}</span>
+                {neighbour.dates && (
+                  <span class="dates">{neighbour.dates}</span>
+                )}
+              </a>
+            ) : (
+              <span />
+            ),
+          )}
+        </nav>
+      ) : (
+        <a class="more" href="/">
+          More photos by {AUTHOR} →
+        </a>
+      )}
+    </footer>
   </main>
 </Page>
 
 <style>
   main {
-    padding: 24px 0;
+    padding-bottom: 48px;
+  }
+
+  footer {
+    margin: 96px clamp(16px, 2.5vw, 40px) 0;
+    padding-top: 24px;
+    border-top: 1px solid var(--surface);
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .neighbour {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+
+  .later {
+    align-items: flex-end;
+    text-align: right;
+  }
+
+  .neighbour img {
+    width: auto;
+    height: clamp(80px, 10vw, 140px);
+    aspect-ratio: var(--ratio);
+    margin-bottom: 10px;
+    object-fit: cover;
+    background-color: var(--colour);
+  }
+
+  .label,
+  .dates,
+  .more {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  .title {
+    font-weight: 500;
+  }
+
+  .neighbour:hover .title,
+  .more:hover {
+    color: var(--text);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .neighbour:focus-visible,
+  .more:focus-visible {
+    outline: 2px solid var(--text);
+    outline-offset: 4px;
+  }
+
+  .more {
+    display: block;
+    text-align: right;
   }
 </style>

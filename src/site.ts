@@ -5,4 +5,4 @@ export const AUTHOR = "Chris Johnston";
 export const SITE_TITLE = `${AUTHOR} Photography`;
 
 /** Joins the parts of a subtitle, such as an album's country and dates. */
-export const SEPARATOR = " • ";
+export const SEPARATOR = " · ";

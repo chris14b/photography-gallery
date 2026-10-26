@@ -1,6 +1,6 @@
 ---
 import type { Photo } from "../lib/gallery";
-import { photoSources } from "../lib/images";
+import { averageColour, photoSources } from "../lib/images";
 import LocationIcon from "./LocationIcon.astro";
 
 interface Props {
@@ -21,6 +21,7 @@ const items = await Promise.all(
       portrait,
       flip,
       ratio: width / height,
+      colour: await averageColour(photo),
       sources: await photoSources(photo.image),
     };
   }),
@@ -28,14 +29,15 @@ const items = await Promise.all(
 ---
 
 <!--
-  One photo per screen, as large as fits. Each photo is sized from its aspect ratio (--ratio), so the layout needs no script.
-  Portrait photos have their caption beside them on wide landscape screens; everything else has it below.
+  One photo per screen, as large as fits. Each photo is sized from its aspect ratio (--ratio), so the layout needs no
+  script, and filled with its average colour (--colour) while it loads. Portrait photos have their caption beside them
+  on wide landscape screens; everything else has it below.
 -->
 <div class="stream">
-  {items.map(({ photo, portrait, flip, ratio, sources }, index) => (
+  {items.map(({ photo, portrait, flip, ratio, colour, sources }, index) => (
     <figure
       class:list={["photo", { portrait, flip }]}
-      style={`--ratio: ${ratio.toFixed(4)}`}
+      style={`--ratio: ${ratio.toFixed(4)}; --colour: ${colour}`}
     >
       <img
         src={sources.src}
@@ -79,7 +81,7 @@ const items = await Promise.all(
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 16px;
   }
 
   img {
@@ -89,21 +91,21 @@ const items = await Promise.all(
       1600px,
       (100svh - 6rem) * var(--ratio)
     );
-    background-color: var(--surface);
+    background-color: var(--colour);
   }
 
   figcaption {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: baseline;
     justify-content: center;
-    gap: 8px 10px;
+    gap: 4px 14px;
     padding: 0 24px;
     text-align: center;
   }
 
   .caption {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 500;
   }
 
@@ -111,9 +113,14 @@ const items = await Promise.all(
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    font-size: 1rem;
-    font-style: italic;
-    opacity: 0.5;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  .location :global(svg) {
+    width: 13px;
+    height: 13px;
   }
 
   @media (min-width: 768px) and (orientation: landscape) {
@@ -139,6 +146,7 @@ const items = await Promise.all(
       flex-direction: column;
       flex-wrap: nowrap;
       align-items: flex-start;
+      gap: 8px;
       max-width: var(--caption-width);
       padding: 0;
       text-align: left;

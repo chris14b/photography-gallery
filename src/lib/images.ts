@@ -1,5 +1,8 @@
 import type { ImageMetadata } from "astro";
 import { getImage } from "astro:assets";
+import { join } from "node:path";
+import sharp from "sharp";
+import type { Photo } from "./rules";
 
 /** Width of the resized copies for phones and home page covers. */
 const SMALL_WIDTH = 1200;
@@ -43,6 +46,28 @@ export async function coverSource(
     width: SMALL_WIDTH,
     height: Math.round((image.height * SMALL_WIDTH) / image.width),
   };
+}
+
+const colours = new Map<string, Promise<string>>();
+
+/**
+ * A photo's average colour, such as "#3a4a3f", to fill its space while it loads instead of a flat grey. Shrinking the
+ * photo to a single pixel averages it. Each photo is read once per build.
+ */
+export function averageColour(photo: Photo): Promise<string> {
+  let colour = colours.get(photo.path);
+  if (!colour) {
+    colour = sharp(join(process.cwd(), photo.path))
+      .resize(1, 1, { fit: "fill" })
+      .raw()
+      .toBuffer()
+      .then(
+        ([red, green, blue]) =>
+          `#${[red, green, blue].map((value) => value.toString(16).padStart(2, "0")).join("")}`,
+      );
+    colours.set(photo.path, colour);
+  }
+  return colour;
 }
 
 /** A 1200×630 JPEG for link previews, which don't all support AVIF. */

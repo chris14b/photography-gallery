@@ -1,6 +1,6 @@
 ---
 import type { PhotoSet } from "../lib/gallery";
-import { coverSource } from "../lib/images";
+import { averageColour, coverSource } from "../lib/images";
 
 interface Props {
   album: PhotoSet;
@@ -14,10 +14,15 @@ const { album, details, eager = false } = Astro.props;
 const { cover } = album;
 const source = await coverSource(cover.image);
 const ratio = cover.image.width / cover.image.height;
+const colour = await averageColour(cover);
 ---
 
 <!-- Sized by --ratio within a row of cards, so its cover keeps its own shape. See .row in index.astro, which sets the row heights. -->
-<a class="card" href={`/${album.id}/`} style={`--ratio: ${ratio.toFixed(4)}`}>
+<a
+  class="card"
+  href={`/${album.id}/`}
+  style={`--ratio: ${ratio.toFixed(4)}; --colour: ${colour}`}
+>
   <div class="frame">
     <img
       src={source.src}
@@ -52,7 +57,8 @@ const ratio = cover.image.width / cover.image.height;
   .frame {
     overflow: hidden;
     aspect-ratio: var(--ratio);
-    background-color: var(--surface);
+    /* The cover's average colour, while it loads. */
+    background-color: var(--colour);
   }
 
   img {

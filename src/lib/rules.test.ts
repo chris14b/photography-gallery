@@ -5,6 +5,7 @@ import {
   type CollectionData,
   buildAlbum,
   buildCollection,
+  countPhotos,
   indexImages,
   isListed,
   unlistedImages,
@@ -140,7 +141,7 @@ describe("buildAlbum", () => {
     });
     const built = buildAlbum("laos-2023", data, laos);
     expect(built?.subtitle).toBe(
-      "Luang Prabang and Vientiane • Laos • August–September 2023",
+      "Luang Prabang and Vientiane · Laos · August–September 2023",
     );
     expect(built?.description).toBe(
       "Photos by Chris Johnston from The Mekong, Luang Prabang and Vientiane, Laos, August–September 2023.",
@@ -327,6 +328,31 @@ describe("buildCollection", () => {
     expect(buildCollection("concerts", data, index, albumIds).cover.file).toBe(
       "R0002.jpg",
     );
+  });
+});
+
+describe("countPhotos", () => {
+  const index = images([
+    "/albums/laos-2023/R0001.jpg",
+    "/albums/laos-2023/R0002.jpg",
+  ]);
+
+  test("counts one photo", () => {
+    const built = buildAlbum(
+      "laos-2023",
+      album({ photos: [{ file: "R0001.jpg" }] }),
+      index,
+    )!;
+    expect(countPhotos(built)).toBe("1 photo");
+  });
+
+  test("counts several photos", () => {
+    const built = buildAlbum(
+      "laos-2023",
+      album({ photos: [{ file: "R0001.jpg" }, { file: "R0002.jpg" }] }),
+      index,
+    )!;
+    expect(countPhotos(built)).toBe("2 photos");
   });
 });
 

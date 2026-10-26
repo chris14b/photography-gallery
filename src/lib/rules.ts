@@ -12,6 +12,8 @@ import { ALBUMS, COLLECTIONS } from "./folders";
 export interface Photo {
   /** The file name with its extension, such as "R0001234.jpg". */
   file: string;
+  /** The file's path from the project folder, such as "albums/laos-2023/R0001234.jpg". */
+  path: string;
   image: ImageMetadata;
   caption?: string;
   location?: string;
@@ -63,10 +65,11 @@ export function indexImages(modules: Record<string, ImageMetadata>): Images {
 
 function toPhoto(
   { file, caption, location }: PhotoData,
-  image: ImageMetadata,
+  { folder, image }: { folder: string; image: ImageMetadata },
 ): Photo {
   return {
     file,
+    path: `${folder}/${file}`,
     image,
     caption,
     location,
@@ -122,7 +125,7 @@ export function buildAlbum(
         `Album "${id}" lists "${photo.file}", but there's no image with that name in its folder`,
       );
     }
-    return toPhoto(photo, found.image);
+    return toPhoto(photo, found);
   });
   if (photos.length === 0) return undefined;
 
@@ -173,7 +176,7 @@ export function buildCollection(
         `Collection "${id}" lists "${photo.file}", which isn't in its folder or any album`,
       );
     }
-    return toPhoto(photo, found.image);
+    return toPhoto(photo, found);
   });
 
   return {
@@ -185,6 +188,12 @@ export function buildCollection(
     photos,
     cover: photos[0],
   };
+}
+
+/** How many photos an album or collection has, such as "24 photos". */
+export function countPhotos(photoSet: PhotoSet): string {
+  const { length } = photoSet.photos;
+  return `${length} ${length === 1 ? "photo" : "photos"}`;
 }
 
 /** Whether the home page and the sitemap list an album or collection, which they do unless it's unlisted. */
