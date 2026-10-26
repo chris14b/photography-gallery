@@ -24,13 +24,13 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
       - run: npm ci
+      - run: npm run check
       # Resized photos take minutes to encode, so keep them between runs. Astro reuses any that still match.
       - uses: actions/cache@v6
         with:
           path: node_modules/.astro/assets
           key: astro-assets-${{ hashFiles('albums/**', 'portfolio/**', '!albums/*/album.json', '!portfolio/*/collection.json', 'src/lib/images.ts', 'package-lock.json') }}
           restore-keys: astro-assets-
-      - run: npm run lint
       - run: npm run build
       - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v5

@@ -17,6 +17,7 @@ A minimal, static photo gallery built with Astro. It uses a dark theme and reads
 - Scoped CSS in Astro components
 - Content collections with Zod schemas for the album and collection JSON
 - astro:assets (sharp) for image resizing
+- Vitest, ESLint and Prettier
 
 ## Quick start
 
@@ -33,15 +34,19 @@ Run locally
 
 Build and preview
 
-- npm run build (type checks with astro check, then builds to dist/)
+- npm run build (builds to dist/; npm run check does the type checking)
 - npm run preview (serves the production build locally)
 
 The first build resizes every photo, which takes a few minutes. Later builds reuse the copies cached in node_modules/.astro.
 
+Checks
+
+- npm run check runs everything CI runs before deploying: astro check, lint, the Prettier format check and the tests. It ends with a list of photos without captions, as a reminder rather than a failure.
+- npm run format formats everything with Prettier, using its default style
+- npm run lint, npm run format:check and npm test run one check each
+
 Other scripts
 
-- npm run lint
-- npm run format formats everything with Prettier, using its default style; npm run format:check only checks
 - npm run sync
 
 ## Exporting photos
@@ -54,7 +59,7 @@ Export from Lightroom with these settings so new photos match the existing ones:
 
 ## Deploying
 
-Pushing to main deploys the site to GitHub Pages via .github/workflows/deploy.yml, which lints, builds and uploads dist/. It caches the resized photos between runs. To publish new photos:
+Pushing to main deploys the site to GitHub Pages via .github/workflows/deploy.yml, which runs npm run check, builds and uploads dist/. It caches the resized photos between runs. Pull requests run npm run check via .github/workflows/check.yml. To publish new photos:
 
 1. Export them (see Exporting photos) into an album folder under albums/
 2. npm run sync, then fill in captions and locations
@@ -69,11 +74,13 @@ The custom domain comes from public/CNAME.
 | albums/{url}/         | One folder per album: its photos and album.json. The folder name is the URL.                       |
 | portfolio/{url}/      | One folder per collection: its own photos and collection.json, e.g. portfolio/concerts → /concerts |
 | src/content.config.ts | Zod schemas for album.json and collection.json                                                     |
-| src/lib/gallery.ts    | Builds albums and collections from the JSON and images, and checks them                            |
+| src/lib/gallery.ts    | Loads the JSON and images for the pages                                                            |
+| src/lib/rules.ts      | Builds albums and collections from them, and checks them (tested in rules.test.ts)                 |
 | src/lib/dates.ts      | Formats an album's dates                                                                           |
 | src/lib/images.ts     | Image sizes and formats                                                                            |
 | src/pages/            | The home page, album and collection pages ([slug].astro), and 404                                  |
 | scripts/sync.mjs      | Adds new photos to the JSON (npm run sync)                                                         |
+| scripts/captions.mjs  | Lists photos without captions (part of npm run check)                                              |
 
 ## Albums
 
