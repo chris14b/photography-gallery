@@ -7,7 +7,6 @@
   "photos": [
     {
       "file": "R0005934.jpg",
-      "caption": "",
       "location": "Home, Erskineville"
     },
     {
@@ -37,12 +36,10 @@
     },
     {
       "file": "R0005373.jpg",
-      "caption": "",
       "location": "Manly Beach"
     },
     {
       "file": "R0005898.jpg",
-      "caption": "",
       "location": "Sydney Harbour"
     },
     {
@@ -72,12 +69,10 @@
     },
     {
       "file": "R0005850.jpg",
-      "caption": "",
       "location": "Dalpura Canyon"
     },
     {
       "file": "R0005356.jpg",
-      "caption": "",
       "location": "The Entrance"
     }
   ]

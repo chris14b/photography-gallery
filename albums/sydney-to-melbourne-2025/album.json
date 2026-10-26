@@ -7,7 +7,6 @@
   "photos": [
     {
       "file": "R0005984.jpg",
-      "caption": "",
       "location": "Kiama Blowhole, Kiama"
     },
     {
@@ -17,7 +16,6 @@
     },
     {
       "file": "R0006077.jpg",
-      "caption": "",
       "location": "Wilsons Promontory"
     },
     {
@@ -32,17 +30,14 @@
     },
     {
       "file": "R0006028.jpg",
-      "caption": "",
       "location": "North Durras"
     },
     {
       "file": "R0006069.jpg",
-      "caption": "",
       "location": "Wilsons Promontory"
     },
     {
       "file": "R0006052.jpg",
-      "caption": "",
       "location": "Wilsons Promontory"
     }
   ]
