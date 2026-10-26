@@ -7,6 +7,7 @@ import type { ImageMetadata } from "astro";
 import type { CollectionEntry } from "astro:content";
 import { AUTHOR, SEPARATOR } from "../site";
 import { formatDates } from "./dates";
+import { ALBUMS, COLLECTIONS } from "./folders";
 
 export interface Photo {
   /** The file name with its extension, such as "R0001234.jpg". */
@@ -106,7 +107,7 @@ export function buildAlbum(
 
   const photos = data.photos.map((photo): Photo => {
     const found = images.get(photo.file);
-    if (found?.folder !== `albums/${id}`) {
+    if (found?.folder !== `${ALBUMS.dir}/${id}`) {
       throw new Error(
         `Album "${id}" lists "${photo.file}", but there's no image with that name in its folder`,
       );
@@ -154,8 +155,8 @@ export function buildCollection(
     const found = images.get(file);
     if (
       !found ||
-      (found.folder !== `collections/${id}` &&
-        !found.folder.startsWith("albums/"))
+      (found.folder !== `${COLLECTIONS.dir}/${id}` &&
+        !found.folder.startsWith(`${ALBUMS.dir}/`))
     ) {
       throw new Error(
         `Collection "${id}" lists "${file}", which isn't in its folder or any album`,
@@ -181,10 +182,10 @@ export function unlistedImages(
 ): string[] {
   const listed = new Set([
     ...albums.flatMap(({ id, data }) =>
-      data.photos.map((photo) => `albums/${id}/${photo.file}`),
+      data.photos.map((photo) => `${ALBUMS.dir}/${id}/${photo.file}`),
     ),
     ...collections.flatMap(({ id, data }) =>
-      data.photos.map((photo) => `collections/${id}/${photo.file}`),
+      data.photos.map((photo) => `${COLLECTIONS.dir}/${id}/${photo.file}`),
     ),
   ]);
   return [...images]

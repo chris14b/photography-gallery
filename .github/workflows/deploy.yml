@@ -26,6 +26,7 @@ jobs:
       - run: npm ci
       - run: npm run check
       # Resized photos take minutes to encode, so keep them between runs. Astro reuses any that still match.
+      # hashFiles needs literal paths, so the photo folders and JSON files repeat those in src/lib/folders.ts.
       - uses: actions/cache@v6
         with:
           path: node_modules/.astro/assets

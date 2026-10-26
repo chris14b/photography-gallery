@@ -9,11 +9,7 @@
 
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
-
-const KINDS = [
-  { dir: "albums", jsonFile: "album.json" },
-  { dir: "collections", jsonFile: "collection.json" },
-];
+import { KINDS } from "../src/lib/folders.ts";
 
 let missing = 0;
 for (const { dir, jsonFile } of KINDS) {

@@ -11,6 +11,7 @@ import {
 
 export { type Album, type Collection, type Photo } from "./rules";
 
+// import.meta.glob needs literal paths, so these repeat the folders in folders.ts.
 const imageModules = {
   ...import.meta.glob<ImageMetadata>(
     "/albums/*/*.{jpg,jpeg,png,gif,webp,JPG,JPEG,PNG,GIF,WEBP}",

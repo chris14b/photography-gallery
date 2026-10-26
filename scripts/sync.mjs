@@ -10,13 +10,9 @@
 
 import { existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
+import { ALBUMS, KINDS } from "../src/lib/folders.ts";
 
 const IMAGE_EXTENSIONS = new Set([".jpg", ".jpeg", ".png", ".gif", ".webp"]);
-
-const KINDS = [
-  { dir: "albums", jsonFile: "album.json", schema: "albums" },
-  { dir: "collections", jsonFile: "collection.json", schema: "collections" },
-];
 
 /** @param {string} folder */
 function imageFiles(folder) {
@@ -38,7 +34,7 @@ for (const { dir, jsonFile, schema } of KINDS) {
     const isNew = !existsSync(json);
     const data = isNew
       ? {
-          $schema: `../../.astro/collections/${schema}.schema.json`,
+          $schema: path.relative(folder, schema),
           photos: [],
         }
       : JSON.parse(readFileSync(json, "utf8"));
@@ -58,7 +54,7 @@ for (const { dir, jsonFile, schema } of KINDS) {
     );
     if (isNew)
       console.log(
-        `  Fill in its other fields, such as ${dir === "albums" ? "title, start and end" : "title"}, before building.`,
+        `  Fill in its other fields, such as ${dir === ALBUMS.dir ? "title, start and end" : "title"}, before building.`,
       );
   }
 }

@@ -1,6 +1,7 @@
 import { defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
 import { z } from "astro/zod";
+import { ALBUMS, COLLECTIONS } from "./lib/folders";
 
 // The folder name is the ID, and the URL.
 const idFromFolder = ({ entry }: { entry: string }) => entry.split("/")[0];
@@ -28,8 +29,8 @@ const photo = z.strictObject({ file, caption, location });
 /** One album per folder in albums/, with its photos alongside album.json. */
 const albums = defineCollection({
   loader: glob({
-    pattern: "*/album.json",
-    base: "./albums",
+    pattern: `*/${ALBUMS.jsonFile}`,
+    base: ALBUMS.dir,
     generateId: idFromFolder,
   }),
   schema: z.strictObject({
@@ -70,8 +71,8 @@ const albums = defineCollection({
 /** Hand-picked photos, from its own folder in collections/ and from any album; the folder name is the URL. */
 const handPicked = defineCollection({
   loader: glob({
-    pattern: "*/collection.json",
-    base: "./collections",
+    pattern: `*/${COLLECTIONS.jsonFile}`,
+    base: COLLECTIONS.dir,
     generateId: idFromFolder,
   }),
   schema: z.strictObject({
