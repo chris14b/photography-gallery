@@ -98,13 +98,17 @@ A category page, such as /concerts, shows hand-picked photos from any album, in 
 {
   "name": "Concerts",
   "description": "Live music in Sydney",
-  "photos": ["sydney-h2-2025/R0006520", "concerts-2026/R0008123"]
+  "photos": [
+    "concerts/R0008123",
+    { "photo": "sydney-h2-2025/R0006325", "caption": "Kiasmos", "location": "Sydney Opera House" }
+  ]
 }
 ```
 
 - Each photo is "{albumId}/{fileName}", where albumId is the album's metadata file name. The page shows photos in the order listed.
-- A concert photo that also belongs in a personal album goes in that album. A concert-only photo goes in an unlisted album, such as "Concerts 2026".
-- Categories with photos are linked from the home page. A category with no photos is hidden, and its URL redirects home.
+- To give a photo a different caption or location on the category page, use the object form. Anything you leave out comes from the album.
+- A concert photo that also belongs in a personal album goes in that album. A concert-only photo goes in src/assets/images/Concerts/, an unlisted album whose slug is concerts-album so it doesn't clash with /concerts.
+- Categories with photos are linked from the home page, unless the category has "unlisted": true, in which case it's only reachable by its URL. A category with no photos is hidden, and its URL redirects home.
 - The build fails if a category has the same URL as an album, or lists a photo that doesn't exist.
 
 ## Metadata generator

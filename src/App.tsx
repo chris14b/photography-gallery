@@ -6,7 +6,6 @@ import { theme } from './styles/theme';
 import GlobalStyles from './styles/globalStyles';
 import HomePage from './pages/HomePage';
 import AlbumPage from './pages/AlbumPage';
-import CategoryPage from './pages/CategoryPage';
 import ErrorBoundary from './components/common/ErrorBoundary';
 import FullscreenButton from './components/common/FullscreenButton';
 import { albums as initialAlbums, photos as initialPhotos, loadGalleryData } from './data/photos';
@@ -103,21 +102,35 @@ interface SlugPageProps {
 const SlugPage: React.FC<SlugPageProps> = ({ albums, photos, categories }) => {
   const { slug = '' } = useParams();
   const navigate = useNavigate();
+  const goHome = () => navigate('/');
 
   const category = categories.find(c => c.slug === slug);
   if (category) {
-    return <CategoryPage category={category} categories={categories} siteTitle={SITE_TITLE} />;
+    return (
+      <AlbumPage
+        title={category.title}
+        subtitle={category.description}
+        photos={category.photos}
+        siteTitle={SITE_TITLE}
+        onBackClick={goHome}
+      />
+    );
   }
 
   const albumId = findAlbumIdBySlug(slug);
   const album = albums.find(a => a.id === albumId);
   if (album) {
+    const subtitle = [album.country, album.dateDescription]
+      .map(s => s?.trim())
+      .filter(Boolean)
+      .join(', ');
     return (
       <AlbumPage
+        title={album.title}
+        subtitle={subtitle}
         photos={photos.filter(photo => photo.albumId === album.id)}
-        selectedAlbum={album}
         siteTitle={SITE_TITLE}
-        onBackClick={() => navigate('/')}
+        onBackClick={goHome}
       />
     );
   }
@@ -159,6 +172,7 @@ const App: React.FC = () => {
   );
 
   const categories = useMemo(() => buildCategories(photos), [photos]);
+  const listedCategories = useMemo(() => categories.filter(category => !category.unlisted), [categories]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -179,7 +193,7 @@ const App: React.FC = () => {
                   element={
                     <HomePage
                       albumCovers={albumCoverCards}
-                      categories={categories}
+                      categories={listedCategories}
                       galleryTitle={SITE_TITLE}
                       gallerySubtitle="Selected work • 2023–2026"
                       onSelectAlbum={albumId => navigate(`/${encodeURIComponent(getSlugForAlbumId(albumId))}`)}

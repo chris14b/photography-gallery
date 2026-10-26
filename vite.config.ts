@@ -11,7 +11,7 @@ interface AlbumFile {
 }
 
 interface CategoryFile {
-  photos: string[]
+  photos: (string | { photo: string })[]
 }
 
 async function readJsonDir<T>(dir: string): Promise<Map<string, T>> {
@@ -31,10 +31,10 @@ async function pageSlugs(): Promise<string[]> {
 
   for (const [slug, category] of categories) {
     if (albumSlugs.includes(slug)) {
-      throw new Error(`Category "${slug}" has the same URL as an album`)
+      throw new Error(`Category "${slug}" has the same URL as an album; give the album a different "slug" in its metadata`)
     }
     const seen = new Set<string>()
-    for (const ref of category.photos) {
+    for (const ref of category.photos.map((entry) => (typeof entry === 'string' ? entry : entry.photo))) {
       if (!photoRefs.has(ref)) throw new Error(`Category "${slug}" refers to unknown photo "${ref}"`)
       if (seen.has(ref)) throw new Error(`Category "${slug}" lists "${ref}" more than once`)
       seen.add(ref)
