@@ -3,60 +3,60 @@
   "title": "Home",
   "start": "2026-01-01",
   "end": "2026-07-05",
-  "cover": "R0008127",
+  "cover": "R0008127.jpg",
   "photos": [
     {
-      "fileName": "R0007276",
+      "file": "R0007276.jpg",
       "caption": "My camera saw the aurora even if my eyes didn't",
       "location": "Ring Rock Viewpoint, La Perouse"
     },
     {
-      "fileName": "R0007463",
+      "file": "R0007463.jpg",
       "caption": "",
       "location": "Newtown"
     },
     {
-      "fileName": "R0008048",
+      "file": "R0008048.jpg",
       "caption": "Vivid Sydney",
       "location": "Sydney"
     },
     {
-      "fileName": "R0007916",
+      "file": "R0007916.jpg",
       "caption": "Lara poses",
       "location": "Barrenjoey Track, Palm Beach"
     },
     {
-      "fileName": "R0007417",
+      "file": "R0007417.jpg",
       "caption": "Sunset on King Street",
       "location": "Newtown"
     },
     {
-      "fileName": "R0007332",
+      "file": "R0007332.jpg",
       "caption": "Bean Magazine perform at King Street Crawl",
       "location": "Newtown"
     },
     {
-      "fileName": "R0007437",
+      "file": "R0007437.jpg",
       "caption": "",
       "location": "Newtown"
     },
     {
-      "fileName": "R0007382",
+      "file": "R0007382.jpg",
       "caption": "Cherish, Nick and Marina admire the view",
       "location": "Sublime Point Lookout, Austinmer"
     },
     {
-      "fileName": "R0008127",
+      "file": "R0008127.jpg",
       "caption": "A humpback whale breaches",
       "location": "South Pacific Ocean"
     },
     {
-      "fileName": "R0007247",
+      "file": "R0007247.jpg",
       "caption": "Jas double-parked",
       "location": "Clovelly"
     },
     {
-      "fileName": "R0008066",
+      "file": "R0008066.jpg",
       "caption": "Vivid Sydney",
       "location": "Barangaroo"
     }

@@ -3,15 +3,15 @@
   "title": "Singapore",
   "start": "2023-09-28",
   "end": "2023-10-03",
-  "cover": "R0000705",
+  "cover": "R0000705.jpg",
   "photos": [
     {
-      "fileName": "R0000705",
+      "file": "R0000705.jpg",
       "caption": "The nightly light show",
       "location": "Supertree Grove"
     },
     {
-      "fileName": "R0000677",
+      "file": "R0000677.jpg",
       "caption": "Alannah is fascinated by the wall",
       "location": "ArtScience Museum"
     }

@@ -4,50 +4,50 @@
   "description": "Bali, the Gili Islands and Flores",
   "start": "2023-08-30",
   "end": "2023-09-28",
-  "cover": "R0000349",
+  "cover": "R0000349.jpg",
   "photos": [
     {
-      "fileName": "R0000349",
+      "file": "R0000349.jpg",
       "caption": "Nithin, Mariya and Josh catch the morning rays on top of a volcano",
       "location": "Mount Batur"
     },
     {
-      "fileName": "R0000633",
+      "file": "R0000633.jpg",
       "caption": "",
       "location": "Padar Island, Komodo"
     },
     {
-      "fileName": "R0000526",
+      "file": "R0000526.jpg",
       "caption": "",
       "location": "Gili Meno"
     },
     {
-      "fileName": "GOPR2269_1694342820129",
+      "file": "GOPR2269_1694342820129.jpg",
       "caption": "A green sea turtle",
       "location": "Gili Trawangan"
     },
     {
-      "fileName": "R0000427",
+      "file": "R0000427.jpg",
       "caption": "",
       "location": "Monkey Forest, Ubud"
     },
     {
-      "fileName": "GOPR2273_1694342820129",
+      "file": "GOPR2273_1694342820129.jpg",
       "caption": "A green sea turtle surfaces for air",
       "location": "Gili Trawangan"
     },
     {
-      "fileName": "R0000414",
+      "file": "R0000414.jpg",
       "caption": "A traditional Kecak performance",
       "location": "Ubud"
     },
     {
-      "fileName": "R0000638",
+      "file": "R0000638.jpg",
       "caption": "",
       "location": "Padar Island, Komodo"
     },
     {
-      "fileName": "R0000481",
+      "file": "R0000481.jpg",
       "caption": "",
       "location": "Kelingkling Beach, Nusa Penida"
     }

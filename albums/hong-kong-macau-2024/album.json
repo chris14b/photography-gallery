@@ -3,25 +3,25 @@
   "title": "Hong Kong & Macau",
   "start": "2024-01-25",
   "end": "2024-01-31",
-  "cover": "R0002178",
+  "cover": "R0002178.jpg",
   "photos": [
     {
-      "fileName": "R0002178",
+      "file": "R0002178.jpg",
       "caption": "Hiking over the city",
       "location": "Suicide Cliff, Hong Kong"
     },
     {
-      "fileName": "R0002281",
+      "file": "R0002281.jpg",
       "caption": "Georgia in the Floating Flower Garden",
       "location": "teamLab SuperNature, Macau"
     },
     {
-      "fileName": "R0002253",
+      "file": "R0002253.jpg",
       "caption": "Tom in The Infinite Crystal Universe",
       "location": "teamLab SuperNature, Macau"
     },
     {
-      "fileName": "R0002238",
+      "file": "R0002238.jpg",
       "caption": "",
       "location": "Lantau Island, Hong Kong"
     }

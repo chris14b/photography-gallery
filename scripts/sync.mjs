@@ -15,14 +15,13 @@ const IMAGE_EXTENSIONS = new Set([".jpg", ".jpeg", ".png", ".gif", ".webp"]);
 
 const KINDS = [
   { dir: "albums", jsonFile: "album.json", schema: "albums" },
-  { dir: "portfolio", jsonFile: "collection.json", schema: "collections" },
+  { dir: "collections", jsonFile: "collection.json", schema: "collections" },
 ];
 
 /** @param {string} folder */
-function imageNames(folder) {
+function imageFiles(folder) {
   return readdirSync(folder)
     .filter((file) => IMAGE_EXTENSIONS.has(path.extname(file).toLowerCase()))
-    .map((file) => path.basename(file, path.extname(file)))
     .sort();
 }
 
@@ -35,29 +34,27 @@ for (const { dir, jsonFile, schema } of KINDS) {
 
   for (const { name } of folders) {
     const folder = path.join(dir, name);
-    const file = path.join(folder, jsonFile);
-    const isNew = !existsSync(file);
+    const json = path.join(folder, jsonFile);
+    const isNew = !existsSync(json);
     const data = isNew
       ? {
           $schema: `../../.astro/collections/${schema}.schema.json`,
           photos: [],
         }
-      : JSON.parse(readFileSync(file, "utf8"));
+      : JSON.parse(readFileSync(json, "utf8"));
     data.photos ??= [];
 
-    const listed = new Set(data.photos.map((photo) => photo.fileName));
-    const added = imageNames(folder).filter(
-      (fileName) => !listed.has(fileName),
-    );
+    const listed = new Set(data.photos.map((photo) => photo.file));
+    const added = imageFiles(folder).filter((file) => !listed.has(file));
     if (added.length === 0 && !isNew) continue;
 
     data.photos.push(
-      ...added.map((fileName) => ({ fileName, caption: "", location: "" })),
+      ...added.map((file) => ({ file, caption: "", location: "" })),
     );
-    writeFileSync(file, `${JSON.stringify(data, null, 2)}\n`);
+    writeFileSync(json, `${JSON.stringify(data, null, 2)}\n`);
     changed++;
     console.log(
-      `${isNew ? "Created" : "Updated"} ${file}: added ${added.length} photo${added.length === 1 ? "" : "s"}`,
+      `${isNew ? "Created" : "Updated"} ${json}: added ${added.length} photo${added.length === 1 ? "" : "s"}`,
     );
     if (isNew)
       console.log(

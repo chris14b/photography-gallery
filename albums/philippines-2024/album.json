@@ -3,55 +3,55 @@
   "title": "Philippines",
   "start": "2024-02-01",
   "end": "2024-02-29",
-  "cover": "R0002545",
+  "cover": "R0002545.jpg",
   "photos": [
     {
-      "fileName": "R0002471",
+      "file": "R0002471.jpg",
       "caption": "Happily lost",
       "location": "Bohol"
     },
     {
-      "fileName": "R0002550",
+      "file": "R0002550.jpg",
       "caption": "Boat captain serves me sea urchin straight from the ocean",
       "location": "Malapascua"
     },
     {
-      "fileName": "R0002413",
+      "file": "R0002413.jpg",
       "caption": "On a snorkel tour",
       "location": "El Nido"
     },
     {
-      "fileName": "R0002504",
+      "file": "R0002504.jpg",
       "caption": "A couple invited me into their home for lunch",
       "location": "Siquijor"
     },
     {
-      "fileName": "R0002402",
+      "file": "R0002402.jpg",
       "caption": "The dodgiest tuk-tuk I've ever been in",
       "location": "El Nido"
     },
     {
-      "fileName": "R0002457",
+      "file": "R0002457.jpg",
       "caption": "Patrick, Evan and Nenia at a waterfall",
       "location": "Bohol"
     },
     {
-      "fileName": "R0002521",
+      "file": "R0002521.jpg",
       "caption": "Jordan and Alexis jump off the 8 metre platform",
       "location": "Salagdoong Beach Resort, Siquijor"
     },
     {
-      "fileName": "R0002545",
+      "file": "R0002545.jpg",
       "caption": "Jordan prepares for a backflip",
       "location": "Lugnason Falls, Siquijor"
     },
     {
-      "fileName": "R0002470",
+      "file": "R0002470.jpg",
       "caption": "Nenia leads the way",
       "location": "Bohol"
     },
     {
-      "fileName": "R0002435",
+      "file": "R0002435.jpg",
       "caption": "",
       "location": "Port Barton"
     }

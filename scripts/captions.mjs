@@ -12,7 +12,7 @@ import path from "node:path";
 
 const KINDS = [
   { dir: "albums", jsonFile: "album.json" },
-  { dir: "portfolio", jsonFile: "collection.json" },
+  { dir: "collections", jsonFile: "collection.json" },
 ];
 
 let missing = 0;
@@ -26,13 +26,13 @@ for (const { dir, jsonFile } of KINDS) {
     const file = path.join(dir, name, jsonFile);
     if (!existsSync(file)) continue;
     const { photos = [] } = JSON.parse(readFileSync(file, "utf8"));
-    const fileNames = photos
+    const uncaptioned = photos
       .filter((photo) => !photo.caption?.trim())
-      .map((photo) => photo.fileName);
-    if (fileNames.length === 0) continue;
+      .map((photo) => photo.file);
+    if (uncaptioned.length === 0) continue;
 
-    missing += fileNames.length;
-    console.warn(`${file}: ${fileNames.join(", ")}`);
+    missing += uncaptioned.length;
+    console.warn(`${file}: ${uncaptioned.join(", ")}`);
   }
 }
 

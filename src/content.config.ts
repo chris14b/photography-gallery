@@ -8,11 +8,11 @@ const idFromFolder = ({ entry }: { entry: string }) => entry.split("/")[0];
 /** Lets editors find the JSON schema Astro generates in .astro/collections, which a strict object would otherwise reject. */
 const $schema = z.string().optional();
 const date = z.iso.date();
-const fileName = z
+const file = z
   .string()
   .min(1)
   .describe(
-    "The photo's file name without its extension. File names are unique across albums and the portfolio.",
+    "The photo's file name with its extension, such as R0001234.jpg. File names are unique across albums and collections.",
   );
 const caption = z.string().optional().describe("Leave empty for no caption.");
 const location = z
@@ -23,7 +23,7 @@ const location = z
   );
 
 /** A photo in an album or collection. In a collection, the text always comes from collection.json, never from the album. */
-const photo = z.strictObject({ fileName, caption, location });
+const photo = z.strictObject({ file, caption, location });
 
 /** One album per folder in albums/, with its photos alongside album.json. */
 const albums = defineCollection({
@@ -53,7 +53,7 @@ const albums = defineCollection({
       .string()
       .optional()
       .describe(
-        "The fileName of the home page cover photo. Defaults to the first landscape photo.",
+        "The file name of the home page cover photo, with its extension. Defaults to the first landscape photo.",
       ),
     unlisted: z
       .boolean()
@@ -67,11 +67,11 @@ const albums = defineCollection({
   }),
 });
 
-/** Hand-picked photos, from its own folder in portfolio/ and from any album; the folder name is the URL. */
-const portfolio = defineCollection({
+/** Hand-picked photos, from its own folder in collections/ and from any album; the folder name is the URL. */
+const handPicked = defineCollection({
   loader: glob({
     pattern: "*/collection.json",
-    base: "./portfolio",
+    base: "./collections",
     generateId: idFromFolder,
   }),
   schema: z.strictObject({
@@ -92,4 +92,4 @@ const portfolio = defineCollection({
   }),
 });
 
-export const collections = { albums, collections: portfolio };
+export const collections = { albums, collections: handPicked };

@@ -3,25 +3,25 @@
   "title": "Malaysia",
   "start": "2023-10-03",
   "end": "2023-10-18",
-  "cover": "R0000805",
+  "cover": "R0000805.jpg",
   "photos": [
     {
-      "fileName": "R0000796",
+      "file": "R0000796.jpg",
       "caption": "",
       "location": "Thean Hou Temple, Kuala Lumpur"
     },
     {
-      "fileName": "R0000805",
+      "file": "R0000805.jpg",
       "caption": "Tea fields",
       "location": "Cameron Highlands"
     },
     {
-      "fileName": "R0000842",
+      "file": "R0000842.jpg",
       "caption": "",
       "location": "Kek Lok Si, Penang"
     },
     {
-      "fileName": "R0000827",
+      "file": "R0000827.jpg",
       "caption": "",
       "location": "Umbrella Alley, Kuala Lumpur"
     }

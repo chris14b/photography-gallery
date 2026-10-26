@@ -42,24 +42,27 @@ describe("indexImages", () => {
   test("indexes each image by its file name, with its folder", () => {
     const index = images([
       "/albums/laos-2023/R0001.jpg",
-      "/portfolio/concerts/R0002.JPG",
+      "/collections/concerts/R0002.JPG",
     ]);
-    expect(index.get("R0001")?.folder).toBe("albums/laos-2023");
-    expect(index.get("R0002")?.folder).toBe("portfolio/concerts");
+    expect(index.get("R0001.jpg")?.folder).toBe("albums/laos-2023");
+    expect(index.get("R0002.JPG")?.folder).toBe("collections/concerts");
   });
 
   test("throws when two folders have a photo with the same file name", () => {
     expect(() =>
       images(["/albums/laos-2023/R0001.jpg", "/albums/vietnam-2023/R0001.jpg"]),
     ).toThrow(
-      'Photo file names must be unique, but "R0001" is in both albums/laos-2023 and albums/vietnam-2023',
+      'Photo file names must be unique, but "R0001.jpg" is in both albums/laos-2023 and albums/vietnam-2023',
     );
   });
 
-  test("throws when two files in one folder differ only by extension", () => {
+  test("throws when an album and a collection have a photo with the same file name", () => {
     expect(() =>
-      images(["/albums/laos-2023/R0001.jpg", "/albums/laos-2023/R0001.png"]),
-    ).toThrow('"R0001" is in both');
+      images([
+        "/albums/laos-2023/R0001.jpg",
+        "/collections/concerts/R0001.jpg",
+      ]),
+    ).toThrow('"R0001.jpg" is in both');
   });
 });
 
@@ -74,7 +77,7 @@ describe("buildAlbum", () => {
     const data = album({
       start: "2023-03-20",
       end: "2023-03-01",
-      photos: [{ fileName: "R0001" }],
+      photos: [{ file: "R0001.jpg" }],
     });
     expect(() => buildAlbum("laos-2023", data, laos)).toThrow(
       'Album "laos-2023" ends before it starts',
@@ -85,7 +88,7 @@ describe("buildAlbum", () => {
     const data = album({
       start: "2023-03-01",
       end: "2023-03-01",
-      photos: [{ fileName: "R0001" }],
+      photos: [{ file: "R0001.jpg" }],
     });
     expect(buildAlbum("laos-2023", data, laos)?.subtitle).toBe("March 2023");
   });
@@ -93,27 +96,27 @@ describe("buildAlbum", () => {
   test("throws when the album lists a photo twice", () => {
     const data = album({
       photos: [
-        { fileName: "R0001" },
-        { fileName: "R0002" },
-        { fileName: "R0001" },
+        { file: "R0001.jpg" },
+        { file: "R0002.jpg" },
+        { file: "R0001.jpg" },
       ],
     });
     expect(() => buildAlbum("laos-2023", data, laos)).toThrow(
-      'Album "laos-2023" lists "R0001" more than once',
+      'Album "laos-2023" lists "R0001.jpg" more than once',
     );
   });
 
   test("throws when the album lists a photo that no folder has", () => {
-    const data = album({ photos: [{ fileName: "R9999" }] });
+    const data = album({ photos: [{ file: "R9999.jpg" }] });
     expect(() => buildAlbum("laos-2023", data, laos)).toThrow(
-      `Album "laos-2023" lists "R9999", but there's no image with that name in its folder`,
+      `Album "laos-2023" lists "R9999.jpg", but there's no image with that name in its folder`,
     );
   });
 
   test("throws when the album lists a photo from another album's folder", () => {
-    const data = album({ photos: [{ fileName: "R0003" }] });
+    const data = album({ photos: [{ file: "R0003.jpg" }] });
     expect(() => buildAlbum("laos-2023", data, laos)).toThrow(
-      `Album "laos-2023" lists "R0003", but there's no image with that name in its folder`,
+      `Album "laos-2023" lists "R0003.jpg", but there's no image with that name in its folder`,
     );
   });
 
@@ -130,7 +133,7 @@ describe("buildAlbum", () => {
       country: "Laos",
       start: "2023-08-28",
       end: "2023-09-04",
-      photos: [{ fileName: "R0001" }],
+      photos: [{ file: "R0001.jpg" }],
     });
     const built = buildAlbum("laos-2023", data, laos);
     expect(built?.subtitle).toBe(
@@ -144,8 +147,8 @@ describe("buildAlbum", () => {
   test("trims captions and locations, drops empty ones and joins them into the alt text", () => {
     const data = album({
       photos: [
-        { fileName: "R0001", caption: " Dawn ", location: "Luang Prabang" },
-        { fileName: "R0002", caption: "", location: " " },
+        { file: "R0001.jpg", caption: " Dawn ", location: "Luang Prabang" },
+        { file: "R0002.jpg", caption: "", location: " " },
       ],
     });
     const [first, second] = buildAlbum("laos-2023", data, laos)!.photos;
@@ -169,29 +172,29 @@ describe("album cover", () => {
     "/albums/laos-2023/R0003.jpg": LANDSCAPE,
   });
   const photos = [
-    { fileName: "R0001" },
-    { fileName: "R0002" },
-    { fileName: "R0003" },
+    { file: "R0001.jpg" },
+    { file: "R0002.jpg" },
+    { file: "R0003.jpg" },
   ];
 
   test("uses the photo named by cover", () => {
     expect(
-      buildAlbum("laos-2023", album({ cover: "R0003", photos }), mixed)?.cover
-        .fileName,
-    ).toBe("R0003");
+      buildAlbum("laos-2023", album({ cover: "R0003.jpg", photos }), mixed)
+        ?.cover.file,
+    ).toBe("R0003.jpg");
   });
 
   test("uses the photo named by cover even when it is portrait", () => {
     expect(
-      buildAlbum("laos-2023", album({ cover: "R0001", photos }), mixed)?.cover
-        .fileName,
-    ).toBe("R0001");
+      buildAlbum("laos-2023", album({ cover: "R0001.jpg", photos }), mixed)
+        ?.cover.file,
+    ).toBe("R0001.jpg");
   });
 
   test("falls back to the first landscape photo without a cover", () => {
-    expect(
-      buildAlbum("laos-2023", album({ photos }), mixed)?.cover.fileName,
-    ).toBe("R0002");
+    expect(buildAlbum("laos-2023", album({ photos }), mixed)?.cover.file).toBe(
+      "R0002.jpg",
+    );
   });
 
   test("falls back to the first photo when none is landscape", () => {
@@ -200,10 +203,10 @@ describe("album cover", () => {
       "/albums/laos-2023/R0002.jpg": PORTRAIT,
     });
     const data = album({
-      photos: [{ fileName: "R0002" }, { fileName: "R0001" }],
+      photos: [{ file: "R0002.jpg" }, { file: "R0001.jpg" }],
     });
-    expect(buildAlbum("laos-2023", data, portraits)?.cover.fileName).toBe(
-      "R0002",
+    expect(buildAlbum("laos-2023", data, portraits)?.cover.file).toBe(
+      "R0002.jpg",
     );
   });
 });
@@ -211,8 +214,8 @@ describe("album cover", () => {
 describe("buildCollection", () => {
   const index = images([
     "/albums/laos-2023/R0001.jpg",
-    "/portfolio/concerts/R0002.jpg",
-    "/portfolio/festivals/R0003.jpg",
+    "/collections/concerts/R0002.jpg",
+    "/collections/festivals/R0003.jpg",
   ]);
   const albumIds = new Set(["laos-2023"]);
 
@@ -226,33 +229,33 @@ describe("buildCollection", () => {
 
   test("throws when the collection lists a photo twice", () => {
     const data = collection({
-      photos: [{ fileName: "R0001" }, { fileName: "R0001" }],
+      photos: [{ file: "R0001.jpg" }, { file: "R0001.jpg" }],
     });
     expect(() => buildCollection("concerts", data, index, albumIds)).toThrow(
-      'Collection "concerts" lists "R0001" more than once',
+      'Collection "concerts" lists "R0001.jpg" more than once',
     );
   });
 
   test("throws when the collection lists a photo that no folder has", () => {
-    const data = collection({ photos: [{ fileName: "R9999" }] });
+    const data = collection({ photos: [{ file: "R9999.jpg" }] });
     expect(() => buildCollection("concerts", data, index, albumIds)).toThrow(
-      `Collection "concerts" lists "R9999", which isn't in its folder or any album`,
+      `Collection "concerts" lists "R9999.jpg", which isn't in its folder or any album`,
     );
   });
 
   test("throws when the collection lists a photo from another collection's folder", () => {
-    const data = collection({ photos: [{ fileName: "R0003" }] });
+    const data = collection({ photos: [{ file: "R0003.jpg" }] });
     expect(() => buildCollection("concerts", data, index, albumIds)).toThrow(
-      `Collection "concerts" lists "R0003", which isn't in its folder or any album`,
+      `Collection "concerts" lists "R0003.jpg", which isn't in its folder or any album`,
     );
   });
 
   test("uses photos from its own folder and from any album, with its own text", () => {
     const data = collection({
       photos: [
-        { fileName: "R0001", caption: "Encore" },
+        { file: "R0001.jpg", caption: "Encore" },
         {
-          fileName: "R0002",
+          file: "R0002.jpg",
           caption: "Soundcheck",
           location: "Sydney Opera House",
         },
@@ -260,15 +263,15 @@ describe("buildCollection", () => {
     });
     const built = buildCollection("concerts", data, index, albumIds);
     expect(
-      built.photos.map(({ fileName, caption, location }) => ({
-        fileName,
+      built.photos.map(({ file, caption, location }) => ({
+        file,
         caption,
         location,
       })),
     ).toEqual([
-      { fileName: "R0001", caption: "Encore", location: undefined },
+      { file: "R0001.jpg", caption: "Encore", location: undefined },
       {
-        fileName: "R0002",
+        file: "R0002.jpg",
         caption: "Soundcheck",
         location: "Sydney Opera House",
       },
@@ -281,17 +284,17 @@ describe("unlistedImages", () => {
     const index = images([
       "/albums/laos-2023/R0001.jpg",
       "/albums/laos-2023/R0002.jpg",
-      "/portfolio/concerts/R0003.jpg",
+      "/collections/concerts/R0003.jpg",
     ]);
     const albums = [
-      { id: "laos-2023", data: album({ photos: [{ fileName: "R0001" }] }) },
+      { id: "laos-2023", data: album({ photos: [{ file: "R0001.jpg" }] }) },
     ];
     const collections = [
-      { id: "concerts", data: collection({ photos: [{ fileName: "R0001" }] }) },
+      { id: "concerts", data: collection({ photos: [{ file: "R0001.jpg" }] }) },
     ];
     expect(unlistedImages(index, albums, collections)).toEqual([
-      "albums/laos-2023/R0002",
-      "portfolio/concerts/R0003",
+      "albums/laos-2023/R0002.jpg",
+      "collections/concerts/R0003.jpg",
     ]);
   });
 });

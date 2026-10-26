@@ -3,45 +3,45 @@
   "title": "Sydney to Melbourne Road Trip",
   "start": "2025-04-18",
   "end": "2025-04-26",
-  "cover": "R0006077",
+  "cover": "R0006077.jpg",
   "photos": [
     {
-      "fileName": "R0005984",
+      "file": "R0005984.jpg",
       "caption": "",
       "location": "Kiama Blowhole, Kiama"
     },
     {
-      "fileName": "R0005999",
+      "file": "R0005999.jpg",
       "caption": "Sunrise walk",
       "location": "Depot Beach"
     },
     {
-      "fileName": "R0006077",
+      "file": "R0006077.jpg",
       "caption": "",
       "location": "Wilsons Promontory"
     },
     {
-      "fileName": "R0006098",
+      "file": "R0006098.jpg",
       "caption": "The crowd watch the coin flip during a game of 2-up on ANZAC Day",
       "location": "The Corner Hotel, Richmond"
     },
     {
-      "fileName": "R0005991",
+      "file": "R0005991.jpg",
       "caption": "Kim & Sabrina",
       "location": "Depot Beach"
     },
     {
-      "fileName": "R0006028",
+      "file": "R0006028.jpg",
       "caption": "",
       "location": "North Durras"
     },
     {
-      "fileName": "R0006069",
+      "file": "R0006069.jpg",
       "caption": "",
       "location": "Wilsons Promontory"
     },
     {
-      "fileName": "R0006052",
+      "file": "R0006052.jpg",
       "caption": "",
       "location": "Wilsons Promontory"
     }

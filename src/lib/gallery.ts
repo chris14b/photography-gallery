@@ -19,7 +19,7 @@ const imageModules = {
     { eager: true, import: "default" },
   ),
   ...import.meta.glob<ImageMetadata>(
-    "/portfolio/*/*.{jpg,jpeg,png,gif,webp,JPG,JPEG,PNG,GIF,WEBP}",
+    "/collections/*/*.{jpg,jpeg,png,gif,webp,JPG,JPEG,PNG,GIF,WEBP}",
     { eager: true, import: "default" },
   ),
 };

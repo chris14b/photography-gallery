@@ -29,7 +29,7 @@ async function unlistedUrls() {
     );
   };
   const albums = await readFolders("albums", "album.json");
-  const collections = await readFolders("portfolio", "collection.json");
+  const collections = await readFolders("collections", "collection.json");
   const ids = [
     ...albums.filter((album) => album.unlisted).map((album) => album.id),
     ...collections

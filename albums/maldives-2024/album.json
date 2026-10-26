@@ -3,15 +3,15 @@
   "title": "Maldives",
   "start": "2024-07-04",
   "end": "2024-07-11",
-  "cover": "R0003672",
+  "cover": "R0003672.jpg",
   "photos": [
     {
-      "fileName": "R0003672",
+      "file": "R0003672.jpg",
       "caption": "Nurse sharks",
       "location": "Thulusdhoo"
     },
     {
-      "fileName": "R0003663",
+      "file": "R0003663.jpg",
       "caption": "Maddy searches for nurse sharks",
       "location": "Thulusdhoo"
     }
