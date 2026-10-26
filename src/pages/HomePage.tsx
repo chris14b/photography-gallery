@@ -1,13 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
-import type { AlbumCover } from '../types';
+import type { AlbumCover, Category } from '../types';
 import { GalleryContainer } from '../styles/components/HomeStyles';
 import { PageHeader as Header, PageTitle as GalleryTitle, PageSubtitle as GallerySubtitle } from '../styles/components/PageHeaderStyles';
 import AlbumCard from '../components/features/gallery/AlbumCard';
+import CategoryNav from '../components/layout/CategoryNav';
 import { useContainerWidth } from '../hooks/useContainerWidth';
 
 interface HomePageProps {
   albumCovers: AlbumCover[];
+  categories: Category[];
   galleryTitle: string;
   onSelectAlbum: (albumId: string) => void;
   gallerySubtitle?: string;
@@ -52,6 +54,7 @@ const AlbumGrid = styled.div`
  */
 const HomePage: React.FC<HomePageProps> = React.memo(({ 
   albumCovers, 
+  categories,
   galleryTitle,
   onSelectAlbum,
   gallerySubtitle,
@@ -64,6 +67,7 @@ const HomePage: React.FC<HomePageProps> = React.memo(({
       <Header>
         <GalleryTitle>{galleryTitle}</GalleryTitle>
         {gallerySubtitle && <GallerySubtitle>{gallerySubtitle}</GallerySubtitle>}
+        {categories.length > 0 && <CategoryNav categories={categories} />}
       </Header>
       <AlbumGrid>
         {albumCovers.map(ac => (

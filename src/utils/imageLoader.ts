@@ -120,7 +120,8 @@ export async function loadImagesFromFolders(): Promise<{ albums: Album[], photos
           country: albumInfo?.country,
           dateDescription: albumInfo?.dateDescription,
           startDate: albumInfo.startDate,
-          endDate: albumInfo.endDate
+          endDate: albumInfo.endDate,
+          unlisted: albumMeta?.unlisted === true,
         });
         
         // Create photos for each image in the folder (now in sorted order)
@@ -149,6 +150,7 @@ export async function loadImagesFromFolders(): Promise<{ albums: Album[], photos
                 title: fileName,
                 caption: (typeof metadata?.caption === 'string' && metadata.caption.trim() !== '' && metadata.caption !== 'Add a caption for this photo') ? metadata.caption : undefined,
                 location: metadata.location,
+                fileName,
                 albumId: albumId
               });
             } else {

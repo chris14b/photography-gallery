@@ -7,6 +7,7 @@ export interface Photo {
   title?: string;
   caption?: string;
   location?: string;
+  fileName: string;
   // Only relation to its album; no album details on Photo
   albumId?: string;
 }
@@ -19,6 +20,14 @@ export interface Album {
   dateDescription?: string;
   startDate: string; // ISO date string (YYYY-MM-DD)
   endDate: string;   // ISO date string (YYYY-MM-DD)
+  unlisted?: boolean;
+}
+
+export interface Category {
+  slug: string;
+  title: string;
+  description?: string;
+  photos: Photo[];
 }
 
 // Homepage cover card: an album and its representative cover photo

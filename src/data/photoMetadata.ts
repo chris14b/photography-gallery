@@ -48,6 +48,8 @@ export interface AlbumMetadataFileNew {
   endDate: string;   // ISO date string (YYYY-MM-DD)
   /** Optional album cover fileName (without extension). If omitted, UI will choose a fallback. */
   cover?: string;
+  /** Unlisted albums are left off the home page, e.g. photos that only appear in a category. */
+  unlisted?: boolean;
   photos: PhotoMetadata[];
 }
 export const photoMetadata: Record<string, AlbumMetadataFileNew> = {};

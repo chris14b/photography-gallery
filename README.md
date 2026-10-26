@@ -57,6 +57,7 @@ The custom domain comes from public/CNAME.
 
 - src/assets/images/          Images by album folder
 - src/data/metadata/          JSON metadata per album (committed)
+- src/data/categories/        JSON per category page, e.g. concerts.json → /concerts
 - scripts/generateMetadata.mjs Metadata generator (Node ESM)
 
 Album IDs are derived from the folder name under src/assets/images (slugified). Photo fileName is the filename without extension.
@@ -87,6 +88,24 @@ Notes
 - location is a single string (e.g., "Site, City").
 - dimensions are required for layout; the generator extracts them.
 - Existing photo order is preserved when regenerating.
+- Set "unlisted": true to keep an album off the home page. Its URL still works, and categories can still use its photos.
+
+## Categories
+
+A category page, such as /concerts, shows hand-picked photos from any album, in the same layout as an album. Each category is a JSON file in src/data/categories/, and the file name is the URL:
+
+```json
+{
+  "name": "Concerts",
+  "description": "Live music in Sydney",
+  "photos": ["sydney-h2-2025/R0006520", "concerts-2026/R0008123"]
+}
+```
+
+- Each photo is "{albumId}/{fileName}", where albumId is the album's metadata file name. The page shows photos in the order listed.
+- A concert photo that also belongs in a personal album goes in that album. A concert-only photo goes in an unlisted album, such as "Concerts 2026".
+- Categories with photos are linked from the home page. A category with no photos is hidden, and its URL redirects home.
+- The build fails if a category has the same URL as an album, or lists a photo that doesn't exist.
 
 ## Metadata generator
 

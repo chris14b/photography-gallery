@@ -1,20 +1,21 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { ThemeProvider } from 'styled-components';
 import styled from 'styled-components';
+import { Navigate, Route, Routes, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { theme } from './styles/theme';
 import GlobalStyles from './styles/globalStyles';
 import HomePage from './pages/HomePage';
 import AlbumPage from './pages/AlbumPage';
+import CategoryPage from './pages/CategoryPage';
 import ErrorBoundary from './components/common/ErrorBoundary';
 import FullscreenButton from './components/common/FullscreenButton';
 import { albums as initialAlbums, photos as initialPhotos, loadGalleryData } from './data/photos';
-import type { Album, Photo, AlbumCover } from './types';
+import { buildCategories } from './data/categories';
+import type { Album, Photo, AlbumCover, Category } from './types';
 import 'react-photo-view/dist/react-photo-view.css';
 import { findAlbumIdBySlug, getSlugForAlbumId } from './data/photoMetadata';
 
-// Base path as known by Vite/GitHub Pages, without trailing slash
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const BASE: string = (((import.meta as any).env?.BASE_URL as string) || '').replace(/\/$/, '')
+const SITE_TITLE = 'Chris Johnston Photography';
 
 const AppContainer = styled.div`
   display: flex;
@@ -93,51 +94,44 @@ const getAlbumCoverCards = (photos: Photo[], albums: Album[]): AlbumCover[] => {
   return result;
 };
 
+interface SlugPageProps {
+  albums: Album[];
+  photos: Photo[];
+  categories: Category[];
+}
+
+const SlugPage: React.FC<SlugPageProps> = ({ albums, photos, categories }) => {
+  const { slug = '' } = useParams();
+  const navigate = useNavigate();
+
+  const category = categories.find(c => c.slug === slug);
+  if (category) {
+    return <CategoryPage category={category} categories={categories} siteTitle={SITE_TITLE} />;
+  }
+
+  const albumId = findAlbumIdBySlug(slug);
+  const album = albums.find(a => a.id === albumId);
+  if (album) {
+    return (
+      <AlbumPage
+        photos={photos.filter(photo => photo.albumId === album.id)}
+        selectedAlbum={album}
+        siteTitle={SITE_TITLE}
+        onBackClick={() => navigate('/')}
+      />
+    );
+  }
+
+  return <Navigate to="/" replace />;
+};
+
 const App: React.FC = () => {
-  const [selectedAlbumId, setSelectedAlbumId] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [albums, setAlbums] = useState<Album[]>(initialAlbums);
   const [photos, setPhotos] = useState<Photo[]>(initialPhotos);
-  
-  // Sync state from URL on load and handle back/forward navigation
-  useEffect(() => {
-    const applyFromLocation = () => {
-      try {
-        let path = (typeof window !== 'undefined') ? window.location.pathname : '/';
-        // Strip the base prefix so parsing expects "/" or "/:slug"
-        if (BASE && path.startsWith(BASE)) {
-          path = path.slice(BASE.length) || '/';
-        }
-        // Expect either "/" (home) or "/:slug" (album)
-        const parts = path.split('/').filter(Boolean);
-        if (parts.length === 1) {
-          const slug = decodeURIComponent(parts[0]);
-          const id = findAlbumIdBySlug(slug);
-          if (id) {
-            setSelectedAlbumId(id);
-          } else {
-            // Unknown slug: go back to home
-            if (typeof window !== 'undefined' && typeof window.history?.replaceState === 'function') {
-              window.history.replaceState({}, '', `${BASE}/`);
-            }
-            setSelectedAlbumId(null);
-          }
-        } else {
-          // Any other path (including "/") shows home
-          setSelectedAlbumId(null);
-        }
-      } catch (e) {
-        console.error('Failed to parse URL for album slug', e);
-        setSelectedAlbumId(null);
-      }
-    };
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
 
-    applyFromLocation();
-    window.addEventListener('popstate', applyFromLocation);
-    return () => window.removeEventListener('popstate', applyFromLocation);
-  }, []);
-
-  // Load gallery data when component mounts
   useEffect(() => {
     const loadData = async () => {
       try {
@@ -151,50 +145,25 @@ const App: React.FC = () => {
         setLoading(false);
       }
     };
-    
+
     loadData();
   }, []);
-  
-  const albumCoverCards = useMemo(() => {
-    if (!selectedAlbumId) {
-      return getAlbumCoverCards(photos, albums);
-    }
-    return [] as AlbumCover[];
-  }, [selectedAlbumId, photos, albums]);
 
-  const filteredPhotos = useMemo(() => {
-    if (selectedAlbumId) {
-      return photos.filter(photo => photo.albumId === selectedAlbumId);
-    }
-    return [] as Photo[];
-  }, [selectedAlbumId, photos]);
-
-  const handleSelectAlbum = (albumId: string) => {
-    const slug = getSlugForAlbumId(albumId);
-    if (typeof window !== 'undefined' && typeof window.history?.pushState === 'function') {
-      window.history.pushState({ albumSlug: slug }, '', `${BASE}/${encodeURIComponent(slug)}`);
-    }
-    setSelectedAlbumId(albumId || null);
-  };
-
-  // Ensure each view (home or album) opens at the top of the page
   useEffect(() => {
-    // Use instant jump to avoid smooth scroll artifacts during navigation
-    if (typeof window !== 'undefined' && typeof window.scrollTo === 'function') {
-      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
-    }
-  }, [selectedAlbumId]);
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+  }, [pathname]);
 
-  // Find the selected album object if an album is selected
-  const selectedAlbum = selectedAlbumId 
-    ? albums.find(album => album.id === selectedAlbumId) || null
-    : null;
+  const albumCoverCards = useMemo(
+    () => getAlbumCoverCards(photos, albums.filter(album => !album.unlisted)),
+    [photos, albums],
+  );
+
+  const categories = useMemo(() => buildCategories(photos), [photos]);
 
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles theme={theme} />
       <AppContainer>
-        {/* Fullscreen button that stays fixed at the top right corner */}
         <FullscreenButton />
         <MainContent>
           {loading ? (
@@ -204,25 +173,22 @@ const App: React.FC = () => {
             </LoadingContainer>
           ) : (
             <ErrorBoundary>
-              {!selectedAlbumId ? (
-                <HomePage
-                  albumCovers={albumCoverCards}
-                  galleryTitle="Chris Johnston Photography"
-                  gallerySubtitle="Selected work • 2023–2026"
-                  onSelectAlbum={handleSelectAlbum}
+              <Routes>
+                <Route
+                  path="/"
+                  element={
+                    <HomePage
+                      albumCovers={albumCoverCards}
+                      categories={categories}
+                      galleryTitle={SITE_TITLE}
+                      gallerySubtitle="Selected work • 2023–2026"
+                      onSelectAlbum={albumId => navigate(`/${encodeURIComponent(getSlugForAlbumId(albumId))}`)}
+                    />
+                  }
                 />
-              ) : (
-                <AlbumPage
-                  photos={filteredPhotos}
-                  selectedAlbum={selectedAlbum}
-                  onBackClick={() => {
-                    if (typeof window !== 'undefined' && typeof window.history?.pushState === 'function') {
-                      window.history.pushState({}, '', `${BASE}/`);
-                    }
-                    setSelectedAlbumId(null);
-                  }}
-                />
-              )}
+                <Route path="/:slug" element={<SlugPage albums={albums} photos={photos} categories={categories} />} />
+                <Route path="*" element={<Navigate to="/" replace />} />
+              </Routes>
             </ErrorBoundary>
           )}
         </MainContent>

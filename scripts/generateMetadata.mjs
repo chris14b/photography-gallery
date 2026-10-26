@@ -459,6 +459,7 @@ async function generateAlbumMetadata(albumId, photos, options = {}) {
     startDate,
     endDate,
     cover: cover || undefined,
+    unlisted: existingMetadata.unlisted === true ? true : undefined,
     photos: updatedPhotos
   };
 
