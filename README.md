@@ -65,7 +65,7 @@ Pushing to main deploys the site to GitHub Pages via .github/workflows/deploy.ym
 2. npm run sync, then fill in captions and locations
 3. Commit and push
 
-The custom domain comes from public/CNAME.
+The custom domain, chrisjohnston.photography, is set in the repository's Pages settings.
 
 ## Project layout
 

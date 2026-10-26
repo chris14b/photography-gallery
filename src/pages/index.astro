@@ -71,35 +71,14 @@ const latest = listedAlbums[0];
     opacity: 1;
   }
 
+  /* Columns at least 310px wide, or the full width on narrow phones. The third of the width keeps it to three columns. */
   .grid {
+    --gap: clamp(8px, 1.5vw, 18px);
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
-    gap: 12px;
-  }
-
-  @media (max-width: 576px) {
-    .grid {
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 8px;
-    }
-  }
-
-  @media (min-width: 576px) and (max-width: 768px) {
-    .grid {
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    }
-  }
-
-  @media (min-width: 992px) {
-    .grid {
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-  }
-
-  @media (min-width: 1200px) {
-    .grid {
-      gap: 18px;
-    }
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(max(min(100%, 310px), (100% - 2 * var(--gap)) / 3), 1fr)
+    );
+    gap: var(--gap);
   }
 </style>
