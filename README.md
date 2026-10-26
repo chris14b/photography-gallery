@@ -19,7 +19,7 @@ A modern, minimal photo gallery built with React + TypeScript + Vite. It renders
 ## Quick start
 
 Prerequisites
-- Node.js 18+ (recommended for Vite 7)
+- Node.js 22 (see .nvmrc)
 - npm
 
 Run locally
@@ -35,9 +35,19 @@ Other scripts
 - npm run lint
 - npm run generate-metadata
 
+## Deploying
+
+Pushing to main deploys the site to GitHub Pages via .github/workflows/deploy.yml. To publish new photos:
+
+1. Add them to an album folder under src/assets/images/
+2. npm run generate-metadata, then fill in captions and locations
+3. Commit and push
+
+The custom domain comes from public/CNAME.
+
 ## Project layout
 
-- src/assets/images/          Local images by album folder (gitignored)
+- src/assets/images/          Images by album folder
 - src/data/metadata/          JSON metadata per album (committed)
 - scripts/generateMetadata.mjs Metadata generator (Node ESM)
 
