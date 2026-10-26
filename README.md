@@ -86,7 +86,11 @@ The custom domain, chrisjohnston.photography, is set in the repository's Pages s
 
 ## Albums
 
-An album's URL is `{place}-{year}`, using the year the trip started, such as laos-2023. When two albums share a place and year, both get the month: `{place}-{year}-{month}`, such as home-2024-03 and home-2024-10. Home is one album per stay between trips, split at New Year.
+An album is one continuous visit, titled with the smallest place that covers the whole visit. Sumatra and Java are separate albums in 2024 because they were separate visits, but Indonesia is one album in 2023 because Bali, the Gili Islands and Flores were one visit. Kuala Lumpur 2024 and Malaysia 2024 are separate albums too, because they were separate visits.
+
+Home is one album per stay between trips. When one gets too big, split it at whatever date suits.
+
+An album's URL is `{place}-{year}`, using the year the visit started, such as laos-2023. A later album for the same place and year adds the month it started: `{place}-{year}-{month}`. Published URLs never change, so never rename an album folder once it's live. Existing URLs stay as they are, even home-2024-03 and home-2024-10, which both have a month from before this rule.
 
 Each album folder has an album.json:
 
@@ -147,6 +151,20 @@ A collection page, such as /concerts, shows hand-picked photos, in the same layo
 - A concert photo that also belongs in a personal album goes in that album, and the collection lists it. A concert-only photo goes in collections/concerts/.
 - Collections are linked from the home page, unless the collection has "unlisted": true, in which case it's only reachable by its URL.
 - The build fails if a collection has the same URL as an album, two photo files share a name, a JSON file lists a photo that doesn't exist or lists one twice, a collection has no photos, an album's cover isn't one of its photos, an album ends before it starts, or any JSON file doesn't match its schema in src/content.config.ts. Photos that no JSON file lists are left out, with a warning.
+
+## Captions and locations
+
+These apply to album.json and collection.json alike.
+
+- Write a location as "Place, Town", such as "Monkey Forest, Ubud". Leave the country out; the album gives it.
+- A town on its own is fine, and so is a place that already names its town, such as "Ella" or "Manly Beach".
+- Where there's no town, use the island, park or area instead, such as "Padar Island, Komodo".
+- Spell places the common English way, without diacritics: "Hue", not "Huế".
+- Call a place by the same name everywhere it appears.
+- Vague locations, such as "Middle of nowhere", are fine.
+- Write captions in sentence case, without a full stop at the end.
+- Call people by their first name.
+- Caption a concert photo in collections/concerts with the artist and year, such as "Tame Impala, 2026".
 
 ## Syncing new photos
 
