@@ -1,0 +1,34 @@
+{
+  "$schema": "../../.astro/collections/albums.schema.json",
+  "title": "Home",
+  "start": "2024-03-01",
+  "end": "2024-06-05",
+  "cover": "R0002729",
+  "photos": [
+    {
+      "fileName": "R0002729",
+      "caption": "",
+      "location": "The Entrance"
+    },
+    {
+      "fileName": "R0002718",
+      "caption": "",
+      "location": "Coogee Beach"
+    },
+    {
+      "fileName": "R0002580",
+      "caption": "Glenn enjoys his chicken",
+      "location": "Barangaroo"
+    },
+    {
+      "fileName": "R0002759",
+      "caption": "Road trip with Nick",
+      "location": "Bylong"
+    },
+    {
+      "fileName": "R0003081",
+      "caption": "Sabrina at Vivid",
+      "location": "The Rocks"
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "$schema": "../../.astro/collections/albums.schema.json",
+  "title": "Sri Lanka",
+  "start": "2024-06-05",
+  "end": "2024-07-04",
+  "cover": "R0003518",
+  "photos": [
+    {
+      "fileName": "R0003342",
+      "caption": "",
+      "location": "Diyaluma Falls"
+    },
+    {
+      "fileName": "R0003314",
+      "caption": "Nikki is happy",
+      "location": "Ella"
+    },
+    {
+      "fileName": "R0003219",
+      "caption": "",
+      "location": "Arugam Bay"
+    },
+    {
+      "fileName": "R0003518",
+      "caption": "",
+      "location": "Pidurangala Rock, Sigiriya"
+    },
+    {
+      "fileName": "R0003611",
+      "caption": "A curious squirrel",
+      "location": "Anuradhapura"
+    },
+    {
+      "fileName": "R0003618",
+      "caption": "Hostel owner prepares jackfruit",
+      "location": "Anuradhapura"
+    },
+    {
+      "fileName": "R0003337",
+      "caption": "Nikki, Jade and Ella enjoy the view",
+      "location": "Diyaluma Falls"
+    },
+    {
+      "fileName": "R0003408",
+      "caption": "Jade peers out of the tuk-tuk",
+      "location": "Ella"
+    },
+    {
+      "fileName": "R0003273",
+      "caption": "Waiting for the train",
+      "location": "Nine Arches Bridge, Ella"
+    },
+    {
+      "fileName": "R0003570",
+      "caption": "Sunset swim",
+      "location": "Uppuveli Beach, Trincomalee"
+    },
+    {
+      "fileName": "R0003483",
+      "caption": "Catching the breeze",
+      "location": "Ella to Nuwara Eliya"
+    },
+    {
+      "fileName": "R0003491",
+      "caption": "",
+      "location": "Kandy"
+    },
+    {
+      "fileName": "R0003536",
+      "caption": "",
+      "location": "Pidurangala Rock, Sigiriya"
+    },
+    {
+      "fileName": "R0003538",
+      "caption": "",
+      "location": "Sigiriya Rock"
+    },
+    {
+      "fileName": "R0003547",
+      "caption": "",
+      "location": "Sigiriya"
+    },
+    {
+      "fileName": "R0003189",
+      "caption": "On safari",
+      "location": "Udawalawe National Park"
+    },
+    {
+      "fileName": "R0003573",
+      "caption": "",
+      "location": "Trincorini, Trincomalee"
+    },
+    {
+      "fileName": "R0003579",
+      "caption": "Imy waits in the back of a tuk-tuk",
+      "location": "Trincomalee"
+    }
+  ]
+}

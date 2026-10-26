@@ -28,7 +28,7 @@ jobs:
       - uses: actions/cache@v6
         with:
           path: node_modules/.astro/assets
-          key: astro-assets-${{ hashFiles('src/assets/images/**', 'src/lib/images.ts', 'package-lock.json') }}
+          key: astro-assets-${{ hashFiles('albums/**', 'portfolio/**', '!albums/*/album.json', '!portfolio/*/collection.json', 'src/lib/images.ts', 'package-lock.json') }}
           restore-keys: astro-assets-
       - run: npm run lint
       - run: npm run build

@@ -1,0 +1,19 @@
+{
+  "$schema": "../../.astro/collections/albums.schema.json",
+  "title": "Singapore",
+  "start": "2023-09-28",
+  "end": "2023-10-03",
+  "cover": "R0000705",
+  "photos": [
+    {
+      "fileName": "R0000705",
+      "caption": "The nightly light show",
+      "location": "Supertree Grove"
+    },
+    {
+      "fileName": "R0000677",
+      "caption": "Alannah is fascinated by the wall",
+      "location": "ArtScience Museum"
+    }
+  ]
+}

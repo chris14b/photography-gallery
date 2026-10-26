@@ -1,0 +1,55 @@
+{
+  "$schema": "../../.astro/collections/albums.schema.json",
+  "title": "Indonesia",
+  "description": "Bali, the Gili Islands and Flores",
+  "start": "2023-08-30",
+  "end": "2023-09-28",
+  "cover": "R0000349",
+  "photos": [
+    {
+      "fileName": "R0000349",
+      "caption": "Nithin, Mariya and Josh catch the morning rays on top of a volcano",
+      "location": "Mount Batur"
+    },
+    {
+      "fileName": "R0000633",
+      "caption": "",
+      "location": "Padar Island, Komodo"
+    },
+    {
+      "fileName": "R0000526",
+      "caption": "",
+      "location": "Gili Meno"
+    },
+    {
+      "fileName": "GOPR2269_1694342820129",
+      "caption": "A green sea turtle",
+      "location": "Gili Trawangan"
+    },
+    {
+      "fileName": "R0000427",
+      "caption": "",
+      "location": "Monkey Forest, Ubud"
+    },
+    {
+      "fileName": "GOPR2273_1694342820129",
+      "caption": "A green sea turtle surfaces for air",
+      "location": "Gili Trawangan"
+    },
+    {
+      "fileName": "R0000414",
+      "caption": "A traditional Kecak performance",
+      "location": "Ubud"
+    },
+    {
+      "fileName": "R0000638",
+      "caption": "",
+      "location": "Padar Island, Komodo"
+    },
+    {
+      "fileName": "R0000481",
+      "caption": "",
+      "location": "Kelingkling Beach, Nusa Penida"
+    }
+  ]
+}

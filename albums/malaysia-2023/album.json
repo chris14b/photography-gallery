@@ -1,0 +1,29 @@
+{
+  "$schema": "../../.astro/collections/albums.schema.json",
+  "title": "Malaysia",
+  "start": "2023-10-03",
+  "end": "2023-10-18",
+  "cover": "R0000805",
+  "photos": [
+    {
+      "fileName": "R0000796",
+      "caption": "",
+      "location": "Thean Hou Temple, Kuala Lumpur"
+    },
+    {
+      "fileName": "R0000805",
+      "caption": "Tea fields",
+      "location": "Cameron Highlands"
+    },
+    {
+      "fileName": "R0000842",
+      "caption": "",
+      "location": "Kek Lok Si, Penang"
+    },
+    {
+      "fileName": "R0000827",
+      "caption": "",
+      "location": "Umbrella Alley, Kuala Lumpur"
+    }
+  ]
+}

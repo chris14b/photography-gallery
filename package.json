@@ -8,7 +8,7 @@
     "build": "astro check && astro build",
     "lint": "eslint .",
     "preview": "astro preview",
-    "generate-metadata": "node scripts/generateMetadata.mjs",
+    "sync": "node scripts/sync.mjs",
     "astro": "astro"
   },
   "devDependencies": {

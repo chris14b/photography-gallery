@@ -1,4 +1,5 @@
 // @ts-check
+import { existsSync } from 'node:fs'
 import { readdir, readFile } from 'node:fs/promises'
 import path from 'node:path'
 import { defineConfig } from 'astro/config'
@@ -6,20 +7,25 @@ import sitemap from '@astrojs/sitemap'
 
 const site = 'https://chrisjohnston.photography'
 
-/** URLs of unlisted albums and categories, and of empty categories, which all stay out of the sitemap as well as off the home page. */
+/** URLs of unlisted albums and collections, and of empty collections, which all stay out of the sitemap as well as off the home page. */
 async function unlistedUrls() {
-  /** @param {string} dir */
-  const readJsonDir = async (dir) => {
-    const files = (await readdir(dir)).filter((file) => file.endsWith('.json'))
-    return Promise.all(files.map(async (file) => ({ id: path.basename(file, '.json'), ...JSON.parse(await readFile(path.join(dir, file), 'utf8')) })))
+  /**
+   * Each folder's JSON file, with the folder name as its ID. Folders without one aren't pages yet.
+   * @param {string} dir
+   * @param {string} jsonFile
+   */
+  const readFolders = async (dir, jsonFile) => {
+    const folders = (await readdir(dir, { withFileTypes: true })).filter((entry) => entry.isDirectory())
+    const files = folders.map(({ name }) => ({ id: name, file: path.join(dir, name, jsonFile) })).filter(({ file }) => existsSync(file))
+    return Promise.all(files.map(async ({ id, file }) => ({ id, ...JSON.parse(await readFile(file, 'utf8')) })))
   }
-  const albums = await readJsonDir('src/data/metadata')
-  const categories = await readJsonDir('src/data/categories')
-  const slugs = [
-    ...albums.filter((album) => album.unlisted).map((album) => album.slug?.trim() || album.id),
-    ...categories.filter((category) => category.unlisted || category.photos.length === 0).map((category) => category.id),
+  const albums = await readFolders('albums', 'album.json')
+  const collections = await readFolders('portfolio', 'collection.json')
+  const ids = [
+    ...albums.filter((album) => album.unlisted).map((album) => album.id),
+    ...collections.filter((collection) => collection.unlisted || collection.photos.length === 0).map((collection) => collection.id),
   ]
-  return new Set(slugs.map((slug) => new URL(`/${slug}/`, site).href))
+  return new Set(ids.map((id) => new URL(`/${id}/`, site).href))
 }
 
 const unlisted = await unlistedUrls()

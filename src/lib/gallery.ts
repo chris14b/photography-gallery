@@ -1,23 +1,23 @@
 import type { ImageMetadata } from 'astro'
 import { getCollection } from 'astro:content'
+import { formatDates } from './dates'
 
 export const SITE_TITLE = 'Chris Johnston Photography'
 /** Joins the parts of a subtitle, such as an album's country and dates. */
 export const SEPARATOR = ' • '
 
 export interface Photo {
-  albumId: string
   fileName: string
   image: ImageMetadata
   caption?: string
-  location: string
+  location?: string
   /** The caption and location, for the image's alt text. */
   alt: string
 }
 
 export interface Album {
+  /** The folder name, which is also the URL. */
   id: string
-  slug: string
   title: string
   subtitle: string
   /** A sentence for search results and link previews. */
@@ -27,72 +27,63 @@ export interface Album {
   cover: Photo
 }
 
-export interface Category {
-  slug: string
+export interface Collection {
+  /** The folder name, which is also the URL. */
+  id: string
   title: string
   description?: string
   unlisted: boolean
   photos: Photo[]
 }
 
-const imageModules = import.meta.glob<ImageMetadata>('../assets/images/*/*.{jpg,jpeg,png,gif,webp,JPG,JPEG,PNG,GIF,WEBP}', {
-  eager: true,
-  import: 'default',
-})
-
-/** The album ID for an image folder, e.g. "Thailand (2023)" → "thailand-2023". */
-function albumIdForFolder(folder: string): string {
-  return folder
-    .toLowerCase()
-    .replace(/[^\w\s-]/g, '')
-    .replace(/\s+/g, '-')
-    .replace(/-+/g, '-')
+const imageModules = {
+  ...import.meta.glob<ImageMetadata>('/albums/*/*.{jpg,jpeg,png,gif,webp,JPG,JPEG,PNG,GIF,WEBP}', { eager: true, import: 'default' }),
+  ...import.meta.glob<ImageMetadata>('/portfolio/*/*.{jpg,jpeg,png,gif,webp,JPG,JPEG,PNG,GIF,WEBP}', { eager: true, import: 'default' }),
 }
 
-/** Images keyed by "{albumId}/{fileName}", where fileName has no extension. */
-const imagesByRef = new Map(
-  Object.entries(imageModules).map(([path, image]) => {
-    const [, folder, fileName] = path.match(/\/images\/([^/]+)\/(.+)\.[^.]+$/)!
-    return [`${albumIdForFolder(folder)}/${fileName}`, image] as const
-  }),
-)
-
-const PLACEHOLDER_CAPTION = 'Add a caption for this photo'
-
-function photoText(caption: string | undefined, location: string) {
-  const trimmed = caption?.trim()
-  const text = trimmed && trimmed !== PLACEHOLDER_CAPTION ? trimmed : undefined
-  return { caption: text, location, alt: [text, location].filter(Boolean).join(', ') }
-}
-
-interface Dated {
-  startDate: string
-  endDate: string
-}
-
-/** Newest first by start date (or end date if there's no start), with undated albums last. */
-function byDateDescending(a: Dated, b: Dated): number {
-  const time = (album: Dated) => Date.parse(album.startDate || album.endDate)
-  const aTime = time(a)
-  const bTime = time(b)
-  if (Number.isNaN(aTime)) return Number.isNaN(bTime) ? 0 : 1
-  if (Number.isNaN(bTime)) return -1
-  return bTime - aTime
-}
-
-async function loadAlbums(): Promise<Album[]> {
-  const entries = (await getCollection('albums')).sort((a, b) => byDateDescending(a.data, b.data))
-
-  const listed = new Set(entries.flatMap(({ id, data }) => data.photos.map((photo) => `${id}/${photo.fileName}`)))
-  for (const ref of imagesByRef.keys()) {
-    if (!listed.has(ref)) console.warn(`Skipping ${ref}, which has no metadata; run npm run generate-metadata`)
+/** Every image by its file name without the extension, with the folder it's in, such as "albums/laos-2023". */
+function loadImages() {
+  const images = new Map<string, { folder: string; image: ImageMetadata }>()
+  for (const [path, image] of Object.entries(imageModules)) {
+    const [, folder, fileName] = path.match(/^\/(.+)\/([^/]+)\.[^.]+$/)!
+    const other = images.get(fileName)
+    if (other) throw new Error(`Photo file names must be unique, but "${fileName}" is in both ${other.folder} and ${folder}`)
+    images.set(fileName, { folder, image })
   }
+  return images
+}
+
+type Images = ReturnType<typeof loadImages>
+
+function photoText(caption: string | undefined, location: string | undefined) {
+  const text = { caption: caption?.trim() || undefined, location: location?.trim() || undefined }
+  return { ...text, alt: [text.caption, text.location].filter(Boolean).join(', ') }
+}
+
+function checkUnique(fileNames: string[], owner: string) {
+  const seen = new Set<string>()
+  for (const fileName of fileNames) {
+    if (seen.has(fileName)) throw new Error(`${owner} lists "${fileName}" more than once`)
+    seen.add(fileName)
+  }
+}
+
+async function loadAlbums(images: Images): Promise<Album[]> {
+  const entries = (await getCollection('albums')).sort((a, b) => b.data.start.localeCompare(a.data.start))
 
   return entries.flatMap(({ id, data }) => {
+    if (data.end < data.start) throw new Error(`Album "${id}" ends before it starts`)
+    checkUnique(
+      data.photos.map((photo) => photo.fileName),
+      `Album "${id}"`,
+    )
+
     const photos = data.photos.map((photo): Photo => {
-      const image = imagesByRef.get(`${id}/${photo.fileName}`)
-      if (!image) throw new Error(`Album "${id}" lists "${photo.fileName}", but there's no image with that name in its folder`)
-      return { albumId: id, fileName: photo.fileName, image, ...photoText(photo.caption, photo.location) }
+      const found = images.get(photo.fileName)
+      if (found?.folder !== `albums/${id}`) {
+        throw new Error(`Album "${id}" lists "${photo.fileName}", but there's no image with that name in its folder`)
+      }
+      return { fileName: photo.fileName, image: found.image, ...photoText(photo.caption, photo.location) }
     })
     if (photos.length === 0) return []
 
@@ -101,15 +92,14 @@ async function loadAlbums(): Promise<Album[]> {
       photos.find((photo) => photo.image.width > photo.image.height) ??
       photos[0]
 
-    const country = data.country?.trim()
-    const dates = data.dateDescription.trim()
+    const details = [data.description?.trim(), data.country?.trim()]
+    const dates = formatDates(data.start, data.end)
     return [
       {
         id,
-        slug: data.slug?.trim() || id,
-        title: data.name,
-        subtitle: [country, dates].filter(Boolean).join(SEPARATOR),
-        description: `Photos by Chris Johnston from ${[data.name, country, dates].filter(Boolean).join(', ')}.`,
+        title: data.title,
+        subtitle: [...details, dates].filter(Boolean).join(SEPARATOR),
+        description: `Photos by Chris Johnston from ${[data.title, ...details, dates].filter(Boolean).join(', ')}.`,
         unlisted: data.unlisted === true,
         photos,
         cover,
@@ -118,34 +108,49 @@ async function loadAlbums(): Promise<Album[]> {
   })
 }
 
-async function loadCategories(albums: Album[]): Promise<Category[]> {
-  const photosByRef = new Map<string, Photo>(albums.flatMap((album) => album.photos.map((photo) => [`${photo.albumId}/${photo.fileName}`, photo])))
-  const albumSlugs = new Set(albums.map((album) => album.slug))
+async function loadCollections(albums: Album[], images: Images): Promise<Collection[]> {
+  const albumIds = new Set(albums.map((album) => album.id))
 
-  return (await getCollection('categories')).map(({ id, data }) => {
-    if (albumSlugs.has(id)) {
-      throw new Error(`Category "${id}" has the same URL as an album; give the album a different "slug" in its metadata`)
-    }
+  return (await getCollection('collections')).map(({ id, data }) => {
+    if (albumIds.has(id)) throw new Error(`Collection "${id}" has the same URL as an album; rename one of their folders`)
+    checkUnique(
+      data.photos.map((photo) => photo.fileName),
+      `Collection "${id}"`,
+    )
 
-    const seen = new Set<string>()
-    const photos = data.photos.map((entry): Photo => {
-      const ref = typeof entry === 'string' ? entry : entry.photo
-      const photo = photosByRef.get(ref)
-      if (!photo) throw new Error(`Category "${id}" refers to unknown photo "${ref}"`)
-      if (seen.has(ref)) throw new Error(`Category "${id}" lists "${ref}" more than once`)
-      seen.add(ref)
-      if (typeof entry === 'string') return photo
-      return { ...photo, ...photoText(entry.caption ?? photo.caption, entry.location ?? photo.location) }
+    // The image can be in the collection's folder or any album's, but the text is always the collection's own.
+    const photos = data.photos.map(({ fileName, caption, location }): Photo => {
+      const found = images.get(fileName)
+      if (!found || (found.folder !== `portfolio/${id}` && !found.folder.startsWith('albums/'))) {
+        throw new Error(`Collection "${id}" lists "${fileName}", which isn't in its folder or any album`)
+      }
+      return { fileName, image: found.image, ...photoText(caption, location) }
     })
 
-    return { slug: id, title: data.name, description: data.description, unlisted: data.unlisted === true, photos }
+    return { id, title: data.title, description: data.description, unlisted: data.unlisted === true, photos }
   })
 }
 
-let gallery: Promise<{ albums: Album[]; categories: Category[] }> | undefined
+/** Warns about images that no album.json or collection.json lists, which the site leaves out. */
+async function warnAboutUnlistedImages(images: Images) {
+  const listed = new Set([
+    ...(await getCollection('albums')).flatMap(({ id, data }) => data.photos.map((photo) => `albums/${id}/${photo.fileName}`)),
+    ...(await getCollection('collections')).flatMap(({ id, data }) => data.photos.map((photo) => `portfolio/${id}/${photo.fileName}`)),
+  ])
+  for (const [fileName, { folder }] of images) {
+    if (!listed.has(`${folder}/${fileName}`)) console.warn(`Skipping ${folder}/${fileName}, which isn't in its JSON file; run npm run sync`)
+  }
+}
 
-/** Every album, newest first, and every category, including unlisted and empty ones. */
+let gallery: Promise<{ albums: Album[]; collections: Collection[] }> | undefined
+
+/** Every album, newest first, and every collection, including unlisted and empty ones. */
 export function loadGallery() {
-  gallery ??= loadAlbums().then(async (albums) => ({ albums, categories: await loadCategories(albums) }))
+  gallery ??= (async () => {
+    const images = loadImages()
+    await warnAboutUnlistedImages(images)
+    const albums = await loadAlbums(images)
+    return { albums, collections: await loadCollections(albums, images) }
+  })()
   return gallery
 }

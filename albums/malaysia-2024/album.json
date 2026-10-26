@@ -1,0 +1,34 @@
+{
+  "$schema": "../../.astro/collections/albums.schema.json",
+  "title": "Malaysia",
+  "start": "2024-09-14",
+  "end": "2024-09-27",
+  "cover": "R0004821",
+  "photos": [
+    {
+      "fileName": "R0004752",
+      "caption": "Sabrina emerges from a cold swim",
+      "location": "Durian Perangin Waterfall, Langakwi"
+    },
+    {
+      "fileName": "R0004776",
+      "caption": "",
+      "location": "George Town"
+    },
+    {
+      "fileName": "R0004774",
+      "caption": "Jye takes shelter",
+      "location": "Umbrella Alley, George Town"
+    },
+    {
+      "fileName": "R0004821",
+      "caption": "",
+      "location": "Taman Negara"
+    },
+    {
+      "fileName": "R0004764",
+      "caption": "Sabrina enjoys a rooftop pool",
+      "location": "George Town"
+    }
+  ]
+}

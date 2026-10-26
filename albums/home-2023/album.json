@@ -1,0 +1,19 @@
+{
+  "$schema": "../../.astro/collections/albums.schema.json",
+  "title": "Home",
+  "start": "2023-06-14",
+  "end": "2023-08-31",
+  "cover": "R0000216",
+  "photos": [
+    {
+      "fileName": "R0000208",
+      "caption": "",
+      "location": "Hanging Rock, Blackheath"
+    },
+    {
+      "fileName": "R0000216",
+      "caption": "Wattle season",
+      "location": "Burramoko Ridge, Blackheath"
+    }
+  ]
+}

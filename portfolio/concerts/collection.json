@@ -1,0 +1,42 @@
+{
+  "$schema": "../../.astro/collections/collections.schema.json",
+  "title": "Concerts",
+  "unlisted": true,
+  "photos": [
+    {
+      "fileName": "R0009278",
+      "caption": "Tame Impala, 2026",
+      "location": "Sydney SuperDome"
+    },
+    {
+      "fileName": "R0009280",
+      "caption": "Tame Impala, 2026",
+      "location": "Sydney SuperDome"
+    },
+    {
+      "fileName": "R0006325",
+      "caption": "Kiasmos, 2025",
+      "location": "Sydney Opera House"
+    },
+    {
+      "fileName": "R0009268",
+      "caption": "Tame Impala, 2026",
+      "location": "Sydney SuperDome"
+    },
+    {
+      "fileName": "R0007332",
+      "caption": "Bean Magazine, 2026",
+      "location": "King Street Crawl"
+    },
+    {
+      "fileName": "R0009285",
+      "caption": "Tame Impala, 2026",
+      "location": "Sydney SuperDome"
+    },
+    {
+      "fileName": "R0006333",
+      "caption": "Ólafur Arnalds of Kiasmos, 2025",
+      "location": "Sydney Opera House"
+    }
+  ]
+}

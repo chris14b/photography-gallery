@@ -5,9 +5,9 @@ import Page from '../layouts/Page.astro'
 import { SEPARATOR, SITE_TITLE, loadGallery } from '../lib/gallery'
 import { socialImage } from '../lib/images'
 
-const { albums, categories } = await loadGallery()
+const { albums, collections } = await loadGallery()
 const listedAlbums = albums.filter((album) => !album.unlisted)
-const listedCategories = categories.filter((category) => !category.unlisted && category.photos.length > 0)
+const listedCollections = collections.filter((collection) => !collection.unlisted && collection.photos.length > 0)
 const latest = listedAlbums[0]
 ---
 
@@ -18,10 +18,10 @@ const latest = listedAlbums[0]
   <main>
     <PageHeader title={SITE_TITLE} subtitle={`Selected work${SEPARATOR}2023–2026`}>
       {
-        listedCategories.length > 0 && (
-          <nav aria-label="Categories">
-            {listedCategories.map((category) => (
-              <a href={`/${category.slug}/`}>{category.title}</a>
+        listedCollections.length > 0 && (
+          <nav aria-label="Collections">
+            {listedCollections.map((collection) => (
+              <a href={`/${collection.id}/`}>{collection.title}</a>
             ))}
           </nav>
         )

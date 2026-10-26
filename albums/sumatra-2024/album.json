@@ -1,0 +1,80 @@
+{
+  "$schema": "../../.astro/collections/albums.schema.json",
+  "title": "Sumatra",
+  "country": "Indonesia",
+  "start": "2024-07-16",
+  "end": "2024-08-07",
+  "cover": "R0004183",
+  "photos": [
+    {
+      "fileName": "R0004161",
+      "caption": "A farmer takes part in the Pacu Jawi bull race",
+      "location": "Batusangkar"
+    },
+    {
+      "fileName": "R0003947",
+      "caption": "School bus needs an upgrade",
+      "location": "Lake Toba"
+    },
+    {
+      "fileName": "R0004183",
+      "caption": "",
+      "location": "Pagaruyung Palace, Batusangkar"
+    },
+    {
+      "fileName": "R0003955",
+      "caption": "Nikki compares shoe size with the world's largest Jesus Christ statue",
+      "location": "Lake Toba"
+    },
+    {
+      "fileName": "R0003910",
+      "caption": "Dawn atop the volcano",
+      "location": "Mount Sibayak, Berastagi"
+    },
+    {
+      "fileName": "R0003890",
+      "caption": "Our guide assembling a raft for us",
+      "location": "Bukit Lawang"
+    },
+    {
+      "fileName": "R0003823",
+      "caption": "",
+      "location": "Bukit Lawang"
+    },
+    {
+      "fileName": "R0004088",
+      "caption": "",
+      "location": "Lake Maninjau"
+    },
+    {
+      "fileName": "R0004217",
+      "caption": "Esther enjoys the breeze",
+      "location": "Bukittinggi"
+    },
+    {
+      "fileName": "R0004057",
+      "caption": "Renol pokes a water buffalo",
+      "location": "Bukittinggi"
+    },
+    {
+      "fileName": "R0004158",
+      "caption": "",
+      "location": "Batusangkar"
+    },
+    {
+      "fileName": "R0004189",
+      "caption": "",
+      "location": "Pariangan"
+    },
+    {
+      "fileName": "R0004213",
+      "caption": "Tofu factory employee doesn't need a smoke break",
+      "location": "Bukittinggi"
+    },
+    {
+      "fileName": "R0003866",
+      "caption": "",
+      "location": "Bukit Lawang"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "$schema": "../../.astro/collections/albums.schema.json",
+  "title": "Sydney to Melbourne Road Trip",
+  "start": "2025-04-18",
+  "end": "2025-04-26",
+  "cover": "R0006077",
+  "photos": [
+    {
+      "fileName": "R0005984",
+      "caption": "",
+      "location": "Kiama Blowhole, Kiama"
+    },
+    {
+      "fileName": "R0005999",
+      "caption": "Sunrise walk",
+      "location": "Depot Beach"
+    },
+    {
+      "fileName": "R0006077",
+      "caption": "",
+      "location": "Wilsons Promontory"
+    },
+    {
+      "fileName": "R0006098",
+      "caption": "The crowd watch the coin flip during a game of 2-up on ANZAC Day",
+      "location": "The Corner Hotel, Richmond"
+    },
+    {
+      "fileName": "R0005991",
+      "caption": "Kim & Sabrina",
+      "location": "Depot Beach"
+    },
+    {
+      "fileName": "R0006028",
+      "caption": "",
+      "location": "North Durras"
+    },
+    {
+      "fileName": "R0006069",
+      "caption": "",
+      "location": "Wilsons Promontory"
+    },
+    {
+      "fileName": "R0006052",
+      "caption": "",
+      "location": "Wilsons Promontory"
+    }
+  ]
+}

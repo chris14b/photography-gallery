@@ -1,0 +1,24 @@
+{
+  "$schema": "../../.astro/collections/albums.schema.json",
+  "title": "Thailand",
+  "start": "2024-08-22",
+  "end": "2024-09-14",
+  "cover": "R0004657",
+  "photos": [
+    {
+      "fileName": "R0004657",
+      "caption": "",
+      "location": "Sunset Bar, Ko Tao"
+    },
+    {
+      "fileName": "R0004485",
+      "caption": "",
+      "location": "The Grand Palace, Bangkok"
+    },
+    {
+      "fileName": "R0004538",
+      "caption": "",
+      "location": "JJ Night Market, Kanchanaburi"
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "$schema": "../../.astro/collections/albums.schema.json",
+  "title": "Home",
+  "start": "2024-10-25",
+  "end": "2025-04-18",
+  "cover": "R0005898",
+  "photos": [
+    {
+      "fileName": "R0005934",
+      "caption": "",
+      "location": "Home, Erskineville"
+    },
+    {
+      "fileName": "R0005345",
+      "caption": "A 1959 Cadillac DeVille",
+      "location": "The Entrance"
+    },
+    {
+      "fileName": "R0005390",
+      "caption": "Meret wonders whether she should move to Australia",
+      "location": "Freshwater"
+    },
+    {
+      "fileName": "R0005531",
+      "caption": "Dan mans the barbeque on his birthday",
+      "location": "Clontarf"
+    },
+    {
+      "fileName": "R0005669",
+      "caption": "Australia vs India, Day 2",
+      "location": "Sydney Cricket Ground"
+    },
+    {
+      "fileName": "R0005576",
+      "caption": "Issy admires the view",
+      "location": "Wentworth Falls"
+    },
+    {
+      "fileName": "R0005373",
+      "caption": "",
+      "location": "Manly Beach"
+    },
+    {
+      "fileName": "R0005898",
+      "caption": "",
+      "location": "Sydney Harbour"
+    },
+    {
+      "fileName": "R0005629",
+      "caption": "Merry Christmas Eve",
+      "location": "The Entrance"
+    },
+    {
+      "fileName": "R0005651",
+      "caption": "My parents at the beach on Christmas Day",
+      "location": "The Entrance Beach"
+    },
+    {
+      "fileName": "R0005448",
+      "caption": "Tash and her new friend",
+      "location": "Hippopotamus Street Sculpture, Kyeemagh"
+    },
+    {
+      "fileName": "R0005811",
+      "caption": "Hello Glenn",
+      "location": "Mount Victoria"
+    },
+    {
+      "fileName": "R0005586",
+      "caption": "Angus drops a catch",
+      "location": "Cheltenham"
+    },
+    {
+      "fileName": "R0005850",
+      "caption": "",
+      "location": "Dalpura Canyon"
+    },
+    {
+      "fileName": "R0005356",
+      "caption": "",
+      "location": "The Entrance"
+    }
+  ]
+}

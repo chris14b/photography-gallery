@@ -1,0 +1,84 @@
+{
+  "$schema": "../../.astro/collections/albums.schema.json",
+  "title": "Vietnam",
+  "start": "2023-12-27",
+  "end": "2024-01-25",
+  "cover": "R0001747",
+  "photos": [
+    {
+      "fileName": "R0001892",
+      "caption": "4 days on bikes with a bunch of strangers",
+      "location": "Hà Giang Loop"
+    },
+    {
+      "fileName": "R0002105",
+      "caption": "Melissa on the sand dunes at sunrise",
+      "location": "White Sand Dunes, Mũi Né"
+    },
+    {
+      "fileName": "R0001927",
+      "caption": "",
+      "location": "Hà Giang Loop"
+    },
+    {
+      "fileName": "R0001983",
+      "caption": "Meret is the Duck Queen",
+      "location": "The Duck Stop, Phong Nha"
+    },
+    {
+      "fileName": "R0001875",
+      "caption": "The roads weren't always the best",
+      "location": "Hà Giang Loop"
+    },
+    {
+      "fileName": "R0001768",
+      "caption": "Meret, Melissa and Beth regret bringing such heavy bags",
+      "location": "Sa Pa"
+    },
+    {
+      "fileName": "PXL_20240106_041746919",
+      "caption": "Me and my driver Duk",
+      "location": "Hà Giang Loop"
+    },
+    {
+      "fileName": "R0001959",
+      "caption": "",
+      "location": "Tràng An, Ninh Binh"
+    },
+    {
+      "fileName": "R0002064",
+      "caption": "Fire-breathing bridge",
+      "location": "Dragon Bridge, Da Nang"
+    },
+    {
+      "fileName": "R0002139",
+      "caption": "",
+      "location": "Bui Vien Street, Ho Chi Minh City"
+    },
+    {
+      "fileName": "R0001986",
+      "caption": "Exploring an abandoned water park",
+      "location": "Hồ Thuỷ Tiên, Huế"
+    },
+    {
+      "fileName": "R0001941",
+      "caption": "A curious baby goat",
+      "location": "Ninh Binh"
+    },
+    {
+      "fileName": "R0001747",
+      "caption": "",
+      "location": "Lan Ha Bay"
+    },
+    {
+      "fileName": "R0002102",
+      "caption": "",
+      "location": "Mũi Né"
+    },
+    {
+      "fileName": "R0001743",
+      "caption": "",
+      "location": "Lan Ha Bay"
+    }
+  ]
+}

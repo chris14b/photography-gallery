@@ -1,0 +1,124 @@
+{
+  "$schema": "../../.astro/collections/albums.schema.json",
+  "title": "Thailand",
+  "start": "2023-10-18",
+  "end": "2023-12-03",
+  "cover": "R0001303",
+  "photos": [
+    {
+      "fileName": "R0001444",
+      "caption": "Sophia and Danica release a lantern",
+      "location": "Chiang Mai"
+    },
+    {
+      "fileName": "R0000986",
+      "caption": "Scooting around the island with Hope and Shira",
+      "location": "Bamboo Beach, Ko Lanta"
+    },
+    {
+      "fileName": "R0000942",
+      "caption": "A dusky leaf monkey",
+      "location": "Mu Ko Lanta National Park"
+    },
+    {
+      "fileName": "R0000991",
+      "caption": "Georgie admires the sunset",
+      "location": "Bamboo Beach, Ko Lanta"
+    },
+    {
+      "fileName": "R0000910",
+      "caption": "Every sunset in southern Thailand was incredible",
+      "location": "Ao Nang Beach"
+    },
+    {
+      "fileName": "R0001303",
+      "caption": "Halfway through road tripping the Mae Hong Son Loop",
+      "location": "Wat Chom Thong, Mae Sariang"
+    },
+    {
+      "fileName": "R0001404",
+      "caption": "Haylee tries not to fall",
+      "location": "Buatong Waterfall, Chiang Mai"
+    },
+    {
+      "fileName": "R0001317",
+      "caption": "Sunflowers in bloom",
+      "location": "Thung Bua Tong Fields, Doi Mae U Kho"
+    },
+    {
+      "fileName": "R0000952",
+      "caption": "",
+      "location": "Mu Ko Lanta National Park"
+    },
+    {
+      "fileName": "R0000954",
+      "caption": "There were thousands of hermit crabs on this beach",
+      "location": "Mu Ko Lanta National Park"
+    },
+    {
+      "fileName": "R0000902",
+      "caption": "",
+      "location": "Ao Nang Beach"
+    },
+    {
+      "fileName": "R0000973",
+      "caption": "Surrounded by dusky leaf monkeys",
+      "location": "Mu Ko Lanta National Park"
+    },
+    {
+      "fileName": "R0001218",
+      "caption": "Saorise and her new friend on \"Pig Island\"",
+      "location": "Ko Madsum"
+    },
+    {
+      "fileName": "R0001278",
+      "caption": "",
+      "location": "Mae Sariang"
+    },
+    {
+      "fileName": "R0000972",
+      "caption": "Sunset on top of a lighthouse",
+      "location": "Mu Ko Lanta National Park"
+    },
+    {
+      "fileName": "R0000999",
+      "caption": "Vini couldn't be happier",
+      "location": "Ko Lanta"
+    },
+    {
+      "fileName": "R0001464",
+      "caption": "Meret and a sugar glider",
+      "location": "Wat Rong Khun, Chiang Rai"
+    },
+    {
+      "fileName": "R0001171",
+      "caption": "",
+      "location": "Haad Tien Beach, Ko Phangan"
+    },
+    {
+      "fileName": "R0001342",
+      "caption": "",
+      "location": "Ban Rak Thai"
+    },
+    {
+      "fileName": "R0001360",
+      "caption": "Noodles with a view",
+      "location": "Noodle Soup House Ban Jabo, Mae Hong Son"
+    },
+    {
+      "fileName": "R0001431",
+      "caption": "Lantern Festival",
+      "location": "Chiang Mai"
+    },
+    {
+      "fileName": "R0001442",
+      "caption": "Sophia and Danica release a lantern",
+      "location": "Chiang Mai"
+    },
+    {
+      "fileName": "R0001412",
+      "caption": "Mason, Meg and Oualid",
+      "location": "Buatong Waterfall, Chiang Mai"
+    }
+  ]
+}

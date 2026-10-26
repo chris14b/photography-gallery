@@ -1,0 +1,59 @@
+{
+  "$schema": "../../.astro/collections/albums.schema.json",
+  "title": "Cambodia",
+  "start": "2024-08-07",
+  "end": "2024-08-22",
+  "cover": "R0004405",
+  "photos": [
+    {
+      "fileName": "R0004245",
+      "caption": "\"You didn't come for normal\"",
+      "location": "Siem Reap"
+    },
+    {
+      "fileName": "R0004405",
+      "caption": "Anton doesn't mind that our boat didn't take us all the way to shore",
+      "location": "Koh Rong Sanloem"
+    },
+    {
+      "fileName": "R0004438",
+      "caption": "Victims of the Khmer Rouge",
+      "location": "Choeung Ek, Phnom Penh"
+    },
+    {
+      "fileName": "R0004250",
+      "caption": "Modern monk",
+      "location": "Siem Reap"
+    },
+    {
+      "fileName": "R0004282",
+      "caption": "",
+      "location": "Angkor Wat, Siem Reap"
+    },
+    {
+      "fileName": "R0004367",
+      "caption": "Jas becomes airborne",
+      "location": "Arcadia Backpackers, Kampot"
+    },
+    {
+      "fileName": "R0004378",
+      "caption": "Jas & Sophie smile because they're leaving me",
+      "location": "Koh Rong"
+    },
+    {
+      "fileName": "R0004341",
+      "caption": "Jas & Sophie think they're on Masterchef",
+      "location": "Siem Reap"
+    },
+    {
+      "fileName": "R0004456",
+      "caption": "",
+      "location": "The Killing Cave, Battambang"
+    },
+    {
+      "fileName": "R0004334",
+      "caption": "Mia is sick of the paparazzi",
+      "location": "Angkor Wat, Siem Reap"
+    }
+  ]
+}

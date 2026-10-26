@@ -16,7 +16,7 @@ async function small(image: ImageMetadata) {
 export async function photoSources(image: ImageMetadata): Promise<{ src: string; srcset?: string }> {
   if (image.width <= SMALL_WIDTH) return { src: image.src }
   const resized = await small(image)
-  // In dev, the original's URL is its path on disk, and the spaces in folder names would split a srcset candidate.
+  // In dev, the original's URL is its path on disk, and any spaces in it would split a srcset candidate.
   const candidate = (src: string, width: number) => `${src.replaceAll(' ', '%20')} ${width}w`
   return { src: image.src, srcset: `${candidate(resized.src, SMALL_WIDTH)}, ${candidate(image.src, image.width)}` }
 }

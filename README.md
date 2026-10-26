@@ -1,6 +1,6 @@
 # Gallery
 
-A minimal, static photo gallery built with Astro. It uses a dark theme and reads photo metadata from JSON files per album. A generator script scans your images, extracts dimensions, and keeps metadata up to date.
+A minimal, static photo gallery built with Astro. It uses a dark theme and reads each album's captions and dates from a JSON file next to its photos. A sync script adds new photos to those files.
 
 ## Features
 
@@ -9,13 +9,13 @@ A minimal, static photo gallery built with Astro. It uses a dark theme and reads
 - Phones get 1200px AVIF copies; bigger screens get the original 3000px JPEG, untouched
 - Per-page titles, descriptions and link previews, plus a sitemap
 - Per‑album JSON metadata with preserved photo order
-- Generator script to scan images and auto‑populate dimensions
+- Sync script that adds new photos to the JSON
 
 ## Tech stack
 
 - Astro 7 (static output), TypeScript
 - Scoped CSS in Astro components
-- Content collections with Zod schemas for the album and category JSON
+- Content collections with Zod schemas for the album and collection JSON
 - astro:assets (sharp) for image resizing
 
 ## Quick start
@@ -37,7 +37,7 @@ The first build resizes every photo, which takes a few minutes. Later builds reu
 
 Other scripts
 - npm run lint
-- npm run generate-metadata
+- npm run sync
 
 ## Exporting photos
 
@@ -51,85 +51,78 @@ Export from Lightroom with these settings so new photos match the existing ones:
 
 Pushing to main deploys the site to GitHub Pages via .github/workflows/deploy.yml, which lints, builds and uploads dist/. It caches the resized photos between runs. To publish new photos:
 
-1. Export them (see Exporting photos) into an album folder under src/assets/images/
-2. npm run generate-metadata, then fill in captions and locations
+1. Export them (see Exporting photos) into an album folder under albums/
+2. npm run sync, then fill in captions and locations
 3. Commit and push
 
 The custom domain comes from public/CNAME.
 
 ## Project layout
 
-- src/assets/images/          Images by album folder
-- src/data/metadata/          JSON metadata per album (committed)
-- src/data/categories/        JSON per category page, e.g. concerts.json → /concerts
-- src/content.config.ts       Zod schemas for the metadata and category files
-- src/lib/gallery.ts          Builds albums and categories from the JSON and images, and checks them
-- src/lib/images.ts           Image sizes and formats
-- src/pages/                  The home page, album and category pages ([slug].astro), and 404
-- scripts/generateMetadata.mjs Metadata generator (Node ESM)
+- albums/{url}/                 One folder per album: its photos and album.json. The folder name is the URL.
+- portfolio/{url}/              One folder per collection: its own photos and collection.json, e.g. portfolio/concerts → /concerts
+- src/content.config.ts         Zod schemas for album.json and collection.json
+- src/lib/gallery.ts            Builds albums and collections from the JSON and images, and checks them
+- src/lib/dates.ts              Formats an album's dates
+- src/lib/images.ts             Image sizes and formats
+- src/pages/                    The home page, album and collection pages ([slug].astro), and 404
+- scripts/sync.mjs              Adds new photos to the JSON (npm run sync)
 
-Album IDs are derived from the folder name under src/assets/images (slugified). Photo fileName is the filename without extension.
+## Albums
 
-## Metadata schema (current)
+An album's URL is `{place}-{year}`, using the year the trip started, such as laos-2023. When two albums share a place and year, both get the month: `{place}-{year}-{month}`, such as home-2024-03 and home-2024-10. Home is one album per stay between trips, split at New Year.
 
-Each album has a JSON file named {albumId}.json:
+Each album folder has an album.json:
 
 ```json
 {
-  "name": "Sumatra",
+  "$schema": "../../.astro/collections/albums.schema.json",
+  "title": "Sumatra",
   "country": "Indonesia",
-  "dateDescription": "July–August 2024",
-  "startDate": "2024-07-16",
-  "endDate": "2024-08-07",
+  "start": "2024-07-16",
+  "end": "2024-08-07",
+  "cover": "R0004183",
   "photos": [
     {
       "fileName": "R0003897",
       "caption": "Dawn on top of the volcano",
-      "location": "Mount Sibayak, Berastagi",
-      "dimensions": { "width": 6000, "height": 3375 }
+      "location": "Mount Sibayak, Berastagi"
     }
   ]
 }
 ```
 
-Notes
-- location is a single string (e.g., "Site, City").
-- dimensions are required for layout; the generator extracts them.
-- Existing photo order is preserved when regenerating.
-- Set "unlisted": true to keep an album off the home page and out of the sitemap. Its URL still works, and categories can still use its photos.
+- title, start, end and photos are required. Everything else is optional; leave a field out rather than filling it with a placeholder.
+- The page shows the dates as months, such as "July–August 2024" or "October 2024 – April 2025", from start and end (YYYY-MM-DD). Albums are sorted by start, newest first.
+- description is shown under the title, such as "Bali, the Gili Islands and Flores".
+- country is shown under the title too. Set it only when the title doesn't already name the country.
+- cover is the fileName of the home page cover photo. It defaults to the first landscape photo.
+- Photos are shown in the order listed. fileName is the file name without its extension, and must be unique across all albums and the portfolio. An empty caption or location is left off the page.
+- Set "unlisted": true to keep an album off the home page and out of the sitemap. Its URL still works, and collections can still use its photos.
+- `$schema` points at the JSON schema Astro generates from src/content.config.ts, so editors such as VS Code autocomplete fields and flag mistakes. It's generated by npm run dev, npm run build or npx astro sync, so run one of them once after cloning.
 
-## Categories
+## Collections
 
-A category page, such as /concerts, shows hand-picked photos from any album, in the same layout as an album. Each category is a JSON file in src/data/categories/, and the file name is the URL:
+A collection page, such as /concerts, shows hand-picked photos, in the same layout as an album. Each collection is a folder in portfolio/, with a collection.json and any photos of its own. The folder name is the URL:
 
 ```json
 {
-  "name": "Concerts",
+  "$schema": "../../.astro/collections/collections.schema.json",
+  "title": "Concerts",
   "description": "Live music in Sydney",
   "photos": [
-    "concerts/R0008123",
-    { "photo": "sydney-h2-2025/R0006325", "caption": "Kiasmos", "location": "Sydney Opera House" }
+    { "fileName": "R0009278", "caption": "Tame Impala, 2026", "location": "Sydney SuperDome" },
+    { "fileName": "R0006333", "caption": "Ólafur Arnalds of Kiasmos, 2025", "location": "Sydney Opera House" }
   ]
 }
 ```
 
-- Each photo is "{albumId}/{fileName}", where albumId is the album's metadata file name. The page shows photos in the order listed.
-- To give a photo a different caption or location on the category page, use the object form. Anything you leave out comes from the album.
-- A concert photo that also belongs in a personal album goes in that album. A concert-only photo goes in src/assets/images/Concerts/, an unlisted album whose slug is concerts-album so it doesn't clash with /concerts.
-- Categories with photos are linked from the home page, unless the category has "unlisted": true, in which case it's only reachable by its URL. A category with no photos is hidden, and its URL redirects home.
-- The build fails if a category has the same URL as an album, lists a photo that doesn't exist, or lists a photo twice. It also fails if any metadata or category file doesn't match its schema in src/content.config.ts.
+- Each photo's file can be in the collection's own folder or in any album. The page shows photos in the order listed.
+- Each photo has the same fields as in an album: fileName, and an optional caption and location. collection.json is the only source of a collection's text; nothing comes from the album, even for an album photo, so an album photo can read differently on its album page.
+- A concert photo that also belongs in a personal album goes in that album, and the collection lists it. A concert-only photo goes in portfolio/concerts/.
+- Collections with photos are linked from the home page, unless the collection has "unlisted": true, in which case it's only reachable by its URL. A collection with no photos is hidden, and its URL redirects home.
+- The build fails if a collection has the same URL as an album, two photo files share a name, a JSON file lists a photo that doesn't exist or lists one twice, an album ends before it starts, or any JSON file doesn't match its schema in src/content.config.ts. Photos that no JSON file lists are left out, with a warning.
 
-## Metadata generator
+## Syncing new photos
 
-Scans src/assets/images, groups images by album, and writes/updates JSON under src/data/metadata.
-
-Usage
-- npm run generate-metadata
-- npm run generate-metadata -- --force-dimensions  (recompute dimensions for all photos)
-- node scripts/generateMetadata.mjs --help
-
-Supported input image formats for dimension extraction: JPEG (.jpg/.jpeg), PNG (.png), GIF (.gif), WebP (.webp).
-
-Tips
-- If you see errors about missing/invalid dimensions, re-run with --force-dimensions.
-- The script preserves existing captions, locations, and ordering.
+npm run sync adds every photo that isn't listed yet to its folder's album.json or collection.json, with an empty caption and location to fill in. It leaves everything already there, including the order, as it is. A new album folder gets an album.json with just its photos; add its title, start and end before building.

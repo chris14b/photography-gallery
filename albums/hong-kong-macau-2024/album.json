@@ -1,0 +1,29 @@
+{
+  "$schema": "../../.astro/collections/albums.schema.json",
+  "title": "Hong Kong & Macau",
+  "start": "2024-01-25",
+  "end": "2024-01-31",
+  "cover": "R0002178",
+  "photos": [
+    {
+      "fileName": "R0002178",
+      "caption": "Hiking over the city",
+      "location": "Suicide Cliff, Hong Kong"
+    },
+    {
+      "fileName": "R0002281",
+      "caption": "Georgia in the Floating Flower Garden",
+      "location": "teamLab SuperNature, Macau"
+    },
+    {
+      "fileName": "R0002253",
+      "caption": "Tom in The Infinite Crystal Universe",
+      "location": "teamLab SuperNature, Macau"
+    },
+    {
+      "fileName": "R0002238",
+      "caption": "",
+      "location": "Lantau Island, Hong Kong"
+    }
+  ]
+}

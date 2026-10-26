@@ -12,7 +12,7 @@ const { album, eager = false } = Astro.props
 const cover = await coverSource(album.cover.image)
 ---
 
-<a class="card" href={`/${album.slug}/`}>
+<a class="card" href={`/${album.id}/`}>
   <div class="frame">
     <img
       src={cover.src}
