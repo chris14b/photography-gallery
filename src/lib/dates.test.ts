@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import { formatDates } from "./dates";
+import { formatDates, formatYears } from "./dates";
 
 describe("formatDates", () => {
   test("a range within one month shows that month once", () => {
@@ -32,5 +32,21 @@ describe("formatDates", () => {
     expect(formatDates("2024-06-01", "2025-06-30")).toBe(
       "June 2024 – June 2025",
     );
+  });
+});
+
+describe("formatYears", () => {
+  test("dates across years show the first and last years", () => {
+    expect(formatYears(["2024-07-16", "2023-06-14", "2026-01-02"])).toBe(
+      "2023–2026",
+    );
+  });
+
+  test("dates within one year show that year once", () => {
+    expect(formatYears(["2024-03-01", "2024-10-15"])).toBe("2024");
+  });
+
+  test("no dates show nothing", () => {
+    expect(formatYears([])).toBe("");
   });
 });

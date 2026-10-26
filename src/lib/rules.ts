@@ -28,6 +28,8 @@ export interface Album {
   unlisted: boolean;
   photos: Photo[];
   cover: Photo;
+  /** The first and last days, as YYYY-MM-DD. */
+  dates: [start: string, end: string];
 }
 
 export interface Collection {
@@ -127,6 +129,7 @@ export function buildAlbum(
     unlisted: data.unlisted === true,
     photos,
     cover: pickCover(photos, data.cover),
+    dates: [data.start, data.end],
   };
 }
 
