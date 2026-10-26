@@ -1,15 +1,14 @@
 import type { ImageMetadata } from "astro";
 import { getCollection } from "astro:content";
 import {
-  type Album,
-  type Collection,
+  type PhotoSet,
   buildAlbum,
   buildCollection,
   indexImages,
   unlistedImages,
 } from "./rules";
 
-export { type Album, type Collection, type Photo } from "./rules";
+export { type Photo, type PhotoSet } from "./rules";
 
 // import.meta.glob needs literal paths, so these repeat the folders and PHOTO_EXTENSION in folders.ts.
 const imageModules = import.meta.glob<ImageMetadata>(
@@ -18,7 +17,7 @@ const imageModules = import.meta.glob<ImageMetadata>(
 );
 
 let gallery:
-  Promise<{ albums: Album[]; collections: Collection[] }> | undefined;
+  Promise<{ albums: PhotoSet[]; collections: PhotoSet[] }> | undefined;
 
 /** Every album, newest first, and every collection, including unlisted and empty ones. */
 export function loadGallery() {

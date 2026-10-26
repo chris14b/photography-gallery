@@ -34,7 +34,9 @@ function album(
   return { title: "Laos", start: "2023-03-01", end: "2023-03-20", ...data };
 }
 
-function collection(data: Pick<CollectionData, "photos">): CollectionData {
+function collection(
+  data: Partial<CollectionData> & Pick<CollectionData, "photos">,
+): CollectionData {
   return { title: "Concerts", ...data };
 }
 
@@ -142,6 +144,7 @@ describe("buildAlbum", () => {
     expect(built?.description).toBe(
       "Photos by Chris Johnston from The Mekong, Luang Prabang and Vientiane, Laos, August–September 2023.",
     );
+    expect(built?.dates).toEqual(["2023-08-28", "2023-09-04"]);
   });
 
   test("trims captions and locations, drops empty ones and joins them into the alt text", () => {
@@ -180,19 +183,19 @@ describe("album cover", () => {
   test("uses the photo named by cover", () => {
     expect(
       buildAlbum("laos-2023", album({ cover: "R0003.jpg", photos }), mixed)
-        ?.cover.file,
+        ?.cover?.file,
     ).toBe("R0003.jpg");
   });
 
   test("uses the photo named by cover even when it is portrait", () => {
     expect(
       buildAlbum("laos-2023", album({ cover: "R0001.jpg", photos }), mixed)
-        ?.cover.file,
+        ?.cover?.file,
     ).toBe("R0001.jpg");
   });
 
   test("falls back to the first landscape photo without a cover", () => {
-    expect(buildAlbum("laos-2023", album({ photos }), mixed)?.cover.file).toBe(
+    expect(buildAlbum("laos-2023", album({ photos }), mixed)?.cover?.file).toBe(
       "R0002.jpg",
     );
   });
@@ -205,7 +208,7 @@ describe("album cover", () => {
     const data = album({
       photos: [{ file: "R0002.jpg" }, { file: "R0001.jpg" }],
     });
-    expect(buildAlbum("laos-2023", data, portraits)?.cover.file).toBe(
+    expect(buildAlbum("laos-2023", data, portraits)?.cover?.file).toBe(
       "R0002.jpg",
     );
   });
@@ -276,6 +279,37 @@ describe("buildCollection", () => {
         location: "Sydney Opera House",
       },
     ]);
+  });
+
+  test("shows its description under the title and in search results", () => {
+    const data = collection({
+      description: "Live music in Sydney",
+      photos: [{ file: "R0002.jpg" }],
+    });
+    expect(buildCollection("concerts", data, index, albumIds)).toMatchObject({
+      subtitle: "Live music in Sydney",
+      description: "Live music in Sydney",
+    });
+  });
+
+  test("falls back to a sentence for search results without a description", () => {
+    const data = collection({ photos: [{ file: "R0002.jpg" }] });
+    const built = buildCollection("concerts", data, index, albumIds);
+    expect(built.subtitle).toBeUndefined();
+    expect(built.description).toBe("Concerts photos by Chris Johnston.");
+  });
+
+  test("uses its first photo as its cover, and has none without photos", () => {
+    const data = collection({
+      photos: [{ file: "R0002.jpg" }, { file: "R0001.jpg" }],
+    });
+    expect(buildCollection("concerts", data, index, albumIds).cover?.file).toBe(
+      "R0002.jpg",
+    );
+    expect(
+      buildCollection("concerts", collection({ photos: [] }), index, albumIds)
+        .cover,
+    ).toBeUndefined();
   });
 });
 

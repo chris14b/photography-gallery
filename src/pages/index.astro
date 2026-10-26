@@ -14,13 +14,13 @@ const listedCollections = collections.filter(
 );
 const latest = listedAlbums[0];
 // The years the listed albums cover, such as "2023–2026".
-const years = formatYears(listedAlbums.flatMap((album) => album.dates));
+const years = formatYears(listedAlbums.flatMap((album) => album.dates ?? []));
 ---
 
 <Page
   description={`Travel and everyday photos by ${AUTHOR}, ${years}.`}
   image={
-    latest && {
+    latest?.cover && {
       ...(await socialImage(latest.cover.image)),
       alt: latest.cover.alt,
     }

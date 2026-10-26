@@ -3,48 +3,21 @@ import type { GetStaticPaths } from "astro";
 import PageHeader from "../components/PageHeader.astro";
 import PhotoStream from "../components/PhotoStream.astro";
 import Page from "../layouts/Page.astro";
-import { type Photo, loadGallery } from "../lib/gallery";
+import { type PhotoSet, loadGallery } from "../lib/gallery";
 import { socialImage } from "../lib/images";
-import { AUTHOR } from "../site";
 
-interface Props {
-  title: string;
-  subtitle?: string;
-  description: string;
-  photos: Photo[];
-  /** The link preview photo. */
-  preview?: Photo;
-}
+type Props = PhotoSet;
 
 // Albums and collections share the top level of the URL; loadGallery fails the build if a collection clashes with an album.
 export const getStaticPaths = (async () => {
   const { albums, collections } = await loadGallery();
-  return [
-    ...albums.map((album) => ({
-      params: { slug: album.id },
-      props: {
-        title: album.title,
-        subtitle: album.subtitle,
-        description: album.description,
-        photos: album.photos,
-        preview: album.cover,
-      },
-    })),
-    ...collections.map((collection) => ({
-      params: { slug: collection.id },
-      props: {
-        title: collection.title,
-        subtitle: collection.description,
-        description:
-          collection.description ?? `${collection.title} photos by ${AUTHOR}.`,
-        photos: collection.photos,
-        preview: collection.photos[0],
-      },
-    })),
-  ];
+  return [...albums, ...collections].map((photoSet) => ({
+    params: { slug: photoSet.id },
+    props: photoSet,
+  }));
 }) satisfies GetStaticPaths;
 
-const { title, subtitle, description, photos, preview } = Astro.props;
+const { title, subtitle, description, photos, cover } = Astro.props;
 
 // A collection with no photos is hidden, and its URL goes home. A 301 makes the generated page redirect straight away.
 if (photos.length === 0) return Astro.redirect("/", 301);
@@ -53,7 +26,7 @@ if (photos.length === 0) return Astro.redirect("/", 301);
 <Page
   title={title}
   description={description}
-  image={preview && { ...(await socialImage(preview.image)), alt: preview.alt }}
+  image={cover && { ...(await socialImage(cover.image)), alt: cover.alt }}
   homeButton
 >
   <main>

@@ -1,24 +1,26 @@
 ---
-import type { Album } from "../lib/gallery";
+import type { PhotoSet } from "../lib/gallery";
 import { coverSource } from "../lib/images";
 
 interface Props {
-  album: Album;
+  album: PhotoSet;
   /** Load the cover straight away, for cards that start on screen. */
   eager?: boolean;
 }
 
 const { album, eager = false } = Astro.props;
-const cover = await coverSource(album.cover.image);
+// Every album has a cover; only a collection with no photos doesn't.
+const cover = album.cover!;
+const source = await coverSource(cover.image);
 ---
 
 <a class="card" href={`/${album.id}/`}>
   <div class="frame">
     <img
-      src={cover.src}
-      width={cover.width}
-      height={cover.height}
-      alt={album.cover.alt}
+      src={source.src}
+      width={source.width}
+      height={source.height}
+      alt={cover.alt}
       loading={eager ? "eager" : "lazy"}
       decoding="async"
     />

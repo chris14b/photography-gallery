@@ -19,28 +19,22 @@ export interface Photo {
   alt: string;
 }
 
-export interface Album {
+/** An album or a collection, with everything its page shows. A type rather than an interface, so it can be a page's props. */
+export type PhotoSet = {
   /** The folder name, which is also the URL. */
   id: string;
   title: string;
-  subtitle: string;
+  /** Shown under the title. */
+  subtitle?: string;
   /** A sentence for search results and link previews. */
   description: string;
   unlisted: boolean;
   photos: Photo[];
-  cover: Photo;
-  /** The first and last days, as YYYY-MM-DD. */
-  dates: [start: string, end: string];
-}
-
-export interface Collection {
-  /** The folder name, which is also the URL. */
-  id: string;
-  title: string;
-  description?: string;
-  unlisted: boolean;
-  photos: Photo[];
-}
+  /** The home page cover and link preview photo. Only a collection with no photos has none. */
+  cover?: Photo;
+  /** An album's first and last days, as YYYY-MM-DD. Collections have none. */
+  dates?: [start: string, end: string];
+};
 
 export type AlbumData = CollectionEntry<"albums">["data"];
 export type CollectionData = CollectionEntry<"collections">["data"];
@@ -97,7 +91,7 @@ export function buildAlbum(
   id: string,
   data: AlbumData,
   images: Images,
-): Album | undefined {
+): PhotoSet | undefined {
   if (data.end < data.start)
     throw new Error(`Album "${id}" ends before it starts`);
   checkUnique(
@@ -134,13 +128,13 @@ export function buildAlbum(
   };
 }
 
-/** The collection in collections/{id}/collection.json. Its URL mustn't be one of albumIds. */
+/** The collection in collections/{id}/collection.json, whose cover is its first photo. Its URL mustn't be one of albumIds. */
 export function buildCollection(
   id: string,
   data: CollectionData,
   images: Images,
   albumIds: Set<string>,
-): Collection {
+): PhotoSet {
   if (albumIds.has(id))
     throw new Error(
       `Collection "${id}" has the same URL as an album; rename one of their folders`,
@@ -168,9 +162,11 @@ export function buildCollection(
   return {
     id,
     title: data.title,
-    description: data.description,
+    subtitle: data.description,
+    description: data.description ?? `${data.title} photos by ${AUTHOR}.`,
     unlisted: data.unlisted === true,
     photos,
+    cover: photos[0],
   };
 }
 
