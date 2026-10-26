@@ -22,7 +22,9 @@ const file = z
   .describe(
     "The photo's file name with its extension, such as R0001234.jpg. File names are unique across albums and collections.",
   );
-const caption = text.describe("Leave empty for no caption.");
+const caption = text.describe(
+  "Leave it out for no caption. An empty caption, which npm run sync adds for new photos, means it's still to write; npm run check lists those. Neither shows a caption.",
+);
 const location = text.describe(
   'A single string, such as "Site, City". Leave empty for no location.',
 );

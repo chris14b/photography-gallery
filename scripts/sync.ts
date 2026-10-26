@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 
 /**
- * Adds photos that aren't listed yet to their folder's album.json or collection.json, with an empty caption and location.
- * It leaves everything already in the file as it is, including the order. A folder without a JSON file gets one, which
- * then needs its other fields filling in, such as an album's title and dates.
+ * Adds photos that aren't listed yet to their folder's album.json or collection.json, with an empty location and an empty
+ * caption, which marks the caption as still to write. It leaves everything already in the file as it is, including the
+ * order. A folder without a JSON file gets one, which then needs its other fields filling in, such as an album's title and
+ * dates.
  *
  * Usage: npm run sync
  */
