@@ -1,6 +1,7 @@
 {
   "$schema": "../../.astro/collections/collections.schema.json",
   "title": "Concerts",
+  "cover": "R0009280.jpg",
   "photos": [
     {
       "file": "R0009278.jpg",

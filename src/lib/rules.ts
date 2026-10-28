@@ -86,6 +86,16 @@ function checkUnique(files: string[], owner: string) {
   }
 }
 
+/** The photo named by cover, which must be one of owner's photos, such as `Album "laos-2023"`. */
+function namedCover(owner: string, photos: Photo[], cover: string): Photo {
+  const named = photos.find((photo) => photo.file === cover);
+  if (!named)
+    throw new Error(
+      `${owner} has cover "${cover}", which isn't one of its photos`,
+    );
+  return named;
+}
+
 /** The photo named by cover, which must be one of the album's photos. Without a cover, the first landscape photo, else the first photo. */
 export function pickCover(
   id: string,
@@ -97,12 +107,7 @@ export function pickCover(
       photos.find((photo) => photo.image.width > photo.image.height) ??
       photos[0]
     );
-  const named = photos.find((photo) => photo.file === cover);
-  if (!named)
-    throw new Error(
-      `Album "${id}" has cover "${cover}", which isn't one of its photos`,
-    );
-  return named;
+  return namedCover(`Album "${id}"`, photos, cover);
 }
 
 /** The album in albums/{id}/album.json, or undefined while it has no photos. */
@@ -144,7 +149,7 @@ export function buildAlbum(
   };
 }
 
-/** The collection in collections/{id}/collection.json, whose cover is its first photo. Its URL mustn't be one of albumIds, and it must have photos. */
+/** The collection in collections/{id}/collection.json, whose cover is the photo named by cover, else its first photo. Its URL mustn't be one of albumIds, and it must have photos. */
 export function buildCollection(
   id: string,
   data: CollectionData,
@@ -186,7 +191,10 @@ export function buildCollection(
     description: data.description ?? `${data.title} photos by ${AUTHOR}.`,
     unlisted: data.unlisted === true,
     photos,
-    cover: photos[0],
+    cover:
+      data.cover === undefined
+        ? photos[0]
+        : namedCover(`Collection "${id}"`, photos, data.cover),
   };
 }
 

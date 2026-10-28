@@ -329,6 +329,29 @@ describe("buildCollection", () => {
       "R0002.jpg",
     );
   });
+
+  test("uses the photo named by cover without reordering its photos", () => {
+    const data = collection({
+      cover: "R0001.jpg",
+      photos: [{ file: "R0002.jpg" }, { file: "R0001.jpg" }],
+    });
+    const built = buildCollection("concerts", data, index, albumIds);
+    expect(built.cover.file).toBe("R0001.jpg");
+    expect(built.photos.map(({ file }) => file)).toEqual([
+      "R0002.jpg",
+      "R0001.jpg",
+    ]);
+  });
+
+  test("throws when cover names a photo that isn't in the collection", () => {
+    const data = collection({
+      cover: "R0009.jpg",
+      photos: [{ file: "R0002.jpg" }],
+    });
+    expect(() => buildCollection("concerts", data, index, albumIds)).toThrow(
+      `Collection "concerts" has cover "R0009.jpg", which isn't one of its photos`,
+    );
+  });
 });
 
 describe("countPhotos", () => {

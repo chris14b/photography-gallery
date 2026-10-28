@@ -78,6 +78,9 @@ const handPicked = defineCollection({
     $schema,
     title,
     description: text.describe("Shown under the title."),
+    cover: text.describe(
+      "The file name of the home page cover photo, with its extension. It must be one of the collection's photos. Defaults to the first photo.",
+    ),
     unlisted: z
       .boolean()
       .optional()
