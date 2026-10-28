@@ -4,14 +4,17 @@ import FullscreenButton from "./FullscreenButton.astro";
 
 const home = Astro.url.pathname === "/";
 const about = Astro.url.pathname.replace(/\/$/, "") === "/about";
+// Album and collection pages, which are the only long scrolls through photos.
+const photoPage = Astro.routePattern === "/[slug]";
 ---
 
 <!--
-  The same on every page: the name goes home, which is how a shared collection link leads to everything else. Away
-  from the home page it gets out of the way as you scroll down through the photos and comes back when you scroll up,
-  so home is never far. The home page doesn't need it, and its year headings already stick to the top.
+  The same on every page: the name goes home, which is how a shared collection link leads to everything else. On album
+  and collection pages it gets out of the way as you scroll down through the photos and comes back when you scroll up,
+  so home is never far. Elsewhere it stays put at the top: the home page's year headings already stick there, and the
+  about and 404 pages are short enough not to need it.
 -->
-<header class:list={{ "comes-back": !home }}>
+<header class:list={{ "comes-back": photoPage }}>
   <a class="name" href="/" aria-current={home ? "page" : undefined}>
     {AUTHOR} <span class="kind">Photography</span>
   </a>

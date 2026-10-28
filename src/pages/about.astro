@@ -67,12 +67,15 @@ const description = `About ${AUTHOR}, and how to get in touch.`;
     gap: clamp(24px, 4vw, 64px);
     max-width: 1200px;
     margin: 0 auto;
-    padding: clamp(24px, 4vw, 48px) clamp(16px, 2.5vw, 40px) 64px;
+    --padding-top: clamp(24px, 4vw, 48px);
+    --padding-bottom: 64px;
+    padding: var(--padding-top) clamp(16px, 2.5vw, 40px) var(--padding-bottom);
   }
 
   /*
-   * The portrait beside the text on wider screens, as tall as fits under the header, with the text level with its
-   * middle. Phones get it above the text, full width.
+   * The portrait beside the text on wider screens, as tall as fits under the header without scrolling, with the text
+   * level with its middle. The header takes 52px: its 16px margin and 36px height. Phones get the portrait above the
+   * text, full width.
    */
   @media (min-width: 768px) {
     main {
@@ -83,7 +86,9 @@ const description = `About ${AUTHOR}, and how to get in touch.`;
     .portrait {
       width: auto;
       max-width: 40vw;
-      max-height: calc(100svh - 140px);
+      max-height: calc(
+        100svh - 52px - var(--padding-top) - var(--padding-bottom)
+      );
     }
   }
 

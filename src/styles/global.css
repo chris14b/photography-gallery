@@ -42,7 +42,9 @@ body {
   color: var(--text);
 }
 
+/* flow-root keeps the header's top margin inside the body, so it doesn't push the page down and make it scroll. */
 body {
+  display: flow-root;
   overflow-x: hidden;
 }
 
