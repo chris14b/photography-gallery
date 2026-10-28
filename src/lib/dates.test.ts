@@ -1,5 +1,5 @@
-import { describe, expect, test } from "vitest";
-import { formatDates, formatMonths, formatYears } from "./dates";
+import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
+import { formatDates, formatMonths, formatYears, mainYear } from "./dates";
 
 describe("formatDates", () => {
   test("a range within one month shows that month once", () => {
@@ -58,8 +58,38 @@ describe("formatMonths", () => {
 });
 
 describe("formatMonths without an end", () => {
-  test("shows the start month and present", () => {
-    expect(formatMonths("2026-07-28")).toBe("Jul – present");
+  beforeEach(() => vi.setSystemTime("2026-10-28"));
+  afterEach(() => vi.useRealTimers());
+
+  test("closes up the dash before present", () => {
+    expect(formatMonths("2026-07-28")).toBe("Jul–present");
+  });
+
+  test("shows the year it started once it runs into another year", () => {
+    expect(formatMonths("2025-11-01")).toBe("Nov 2025 – present");
+  });
+});
+
+describe("mainYear", () => {
+  test("an album within one year is in that year", () => {
+    expect(mainYear("2023-08-28", "2023-09-04")).toBe("2023");
+  });
+
+  test("an album across years is in the year it spends the most days in", () => {
+    expect(mainYear("2023-12-27", "2024-01-25")).toBe("2024");
+    expect(mainYear("2024-10-25", "2025-04-18")).toBe("2025");
+    expect(mainYear("2024-12-01", "2025-01-05")).toBe("2024");
+  });
+
+  test("a tie goes to the earlier year", () => {
+    expect(mainYear("2024-12-30", "2025-01-02")).toBe("2024");
+  });
+
+  test("an album with no end runs to today", () => {
+    vi.setSystemTime("2027-03-01");
+    expect(mainYear("2026-12-01")).toBe("2027");
+    expect(mainYear("2026-07-28")).toBe("2026");
+    vi.useRealTimers();
   });
 });
 
