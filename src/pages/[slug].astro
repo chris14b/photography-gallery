@@ -6,13 +6,15 @@ import Page from "../layouts/Page.astro";
 import { formatShortDates } from "../lib/dates";
 import { type PhotoSet, countPhotos, loadGallery } from "../lib/gallery";
 import { averageColour, coverSource, socialImage } from "../lib/images";
-import { AUTHOR, SEPARATOR } from "../site";
+import { SEPARATOR } from "../site";
 
 interface Props {
   photoSet: PhotoSet;
   /** The albums just before and after this one, for an album. */
   earlier?: PhotoSet;
   later?: PhotoSet;
+  /** Every collection, in the home page's order, for a collection's footer. */
+  collections?: PhotoSet[];
 }
 
 // Albums and collections share the top level of the URL; loadGallery fails the build if a collection clashes with an album.
@@ -30,12 +32,12 @@ export const getStaticPaths = (async () => {
     })),
     ...collections.map((collection) => ({
       params: { slug: collection.id },
-      props: { photoSet: collection },
+      props: { photoSet: collection, collections },
     })),
   ];
 }) satisfies GetStaticPaths;
 
-const { photoSet, earlier, later } = Astro.props;
+const { photoSet, earlier, later, collections = [] } = Astro.props;
 const { title, subtitle, description, photos, cover } = photoSet;
 const details = [subtitle, countPhotos(photoSet)]
   .filter(Boolean)
@@ -75,7 +77,7 @@ const isAlbum = photoSet.dates !== undefined;
     <PhotoStream photos={photos} />
     <footer>
       {isAlbum ? (
-        <nav aria-label="More albums">
+        <nav class="albums" aria-label="More albums">
           {neighbours.map(
             (neighbour) =>
               neighbour && (
@@ -107,9 +109,33 @@ const isAlbum = photoSet.dates !== undefined;
           </a>
         </nav>
       ) : (
-        <a class="more" href="/">
-          More photos by {AUTHOR} →
-        </a>
+        <nav class="collections" aria-label="More photos">
+          {/* Not in any order, so just their names, with this one marked. A list of one would only be this one. */}
+          {collections.length > 1 && (
+            <div class="set">
+              <span class="label">Collections</span>
+              <ul>
+                {collections.map((collection, index) => (
+                  <li>
+                    {index > 0 && <span aria-hidden="true">{SEPARATOR}</span>}
+                    <a
+                      class="collection"
+                      href={`/${collection.id}/`}
+                      aria-current={
+                        collection.id === photoSet.id ? "page" : undefined
+                      }
+                    >
+                      {collection.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+          <a class="all" href="/">
+            All albums
+          </a>
+        </nav>
       )}
     </footer>
   </main>
@@ -127,7 +153,7 @@ const isAlbum = photoSet.dates !== undefined;
   }
 
   /* The way home sits between the two albums, level with their labels, and drops below them on phones. */
-  nav {
+  .albums {
     --cover-height: clamp(80px, 10vw, 140px);
     display: grid;
     grid-template-areas: "later all earlier";
@@ -136,7 +162,7 @@ const isAlbum = photoSet.dates !== undefined;
   }
 
   @media (max-width: 599px) {
-    nav {
+    .albums {
       grid-template-areas:
         "later earlier"
         "all all";
@@ -166,14 +192,14 @@ const isAlbum = photoSet.dates !== undefined;
   }
 
   /* Down past the covers, their 10px margin and the 2px gap, to the labels. */
-  .all {
+  .albums .all {
     grid-area: all;
     justify-self: center;
     padding-top: calc(var(--cover-height) + 12px);
   }
 
   @media (max-width: 599px) {
-    .all {
+    .albums .all {
       padding-top: 0;
     }
   }
@@ -187,36 +213,66 @@ const isAlbum = photoSet.dates !== undefined;
     background-color: var(--colour);
   }
 
+  /* The way home sits level with the Collections label, on the right even when there's no list. */
+  .collections {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .collections .all {
+    margin-left: auto;
+  }
+
+  .set {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  li {
+    display: inline;
+  }
+
+  li > span {
+    color: var(--muted);
+  }
+
   .label,
   .dates,
-  .all,
-  .more {
+  .all {
     font-family: var(--font-mono);
     font-size: 0.8rem;
     color: var(--muted);
   }
 
-  .title {
+  .title,
+  .collection {
     font-weight: 500;
   }
 
+  .collection[aria-current] {
+    color: var(--muted);
+  }
+
   .neighbour:hover .title,
-  .all:hover,
-  .more:hover {
+  .collection:not([aria-current]):hover,
+  .all:hover {
     color: var(--text);
     text-decoration: underline;
     text-underline-offset: 3px;
   }
 
   .neighbour:focus-visible,
-  .all:focus-visible,
-  .more:focus-visible {
+  .collection:focus-visible,
+  .all:focus-visible {
     outline: 2px solid var(--text);
     outline-offset: 4px;
-  }
-
-  .more {
-    display: block;
-    text-align: right;
   }
 </style>
