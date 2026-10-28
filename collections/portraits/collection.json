@@ -1,0 +1,30 @@
+{
+  "$schema": "../../.astro/collections/collections.schema.json",
+  "title": "Portraits",
+  "photos": [
+    {
+      "file": "R0005390.jpg",
+      "caption": "Meret"
+    },
+    {
+      "file": "R0007516.jpg",
+      "caption": "Glenn"
+    },
+    {
+      "file": "R0001686.jpg",
+      "caption": "Lara"
+    },
+    {
+      "file": "R0005531.jpg",
+      "caption": "Dan"
+    },
+    {
+      "file": "R0006317.jpg",
+      "caption": "Simon & Cara"
+    },
+    {
+      "file": "R0004217.jpg",
+      "caption": "Esther"
+    }
+  ]
+}
