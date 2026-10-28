@@ -5,7 +5,7 @@ import PhotoStream from "../components/PhotoStream.astro";
 import Page from "../layouts/Page.astro";
 import { formatShortDates } from "../lib/dates";
 import { type PhotoSet, countPhotos, loadGallery } from "../lib/gallery";
-import { averageColour, coverSource, socialImage } from "../lib/images";
+import { coverPreview, socialImage } from "../lib/images";
 import { SEPARATOR } from "../site";
 
 interface Props {
@@ -57,9 +57,7 @@ const neighbours = await Promise.all(
           label,
           album,
           dates: album.dates && formatShortDates(...album.dates),
-          source: await coverSource(album.cover.image),
-          colour: await averageColour(album.cover),
-          ratio: album.cover.image.width / album.cover.image.height,
+          ...(await coverPreview(album.cover)),
         }
       : undefined,
   ),

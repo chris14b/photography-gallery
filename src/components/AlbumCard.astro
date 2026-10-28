@@ -1,6 +1,6 @@
 ---
 import type { PhotoSet } from "../lib/gallery";
-import { averageColour, coverSource } from "../lib/images";
+import { coverPreview } from "../lib/images";
 
 interface Props {
   album: PhotoSet;
@@ -12,9 +12,7 @@ interface Props {
 
 const { album, details, eager = false } = Astro.props;
 const { cover } = album;
-const source = await coverSource(cover.image);
-const ratio = cover.image.width / cover.image.height;
-const colour = await averageColour(cover);
+const { source, colour, ratio } = await coverPreview(cover);
 ---
 
 <!-- Sized by --ratio within a row of cards, so its cover keeps its own shape. See .row in index.astro, which sets the row heights. -->

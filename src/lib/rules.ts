@@ -85,8 +85,32 @@ function checkUnique(files: string[], owner: string) {
   }
 }
 
-/** The photo named by cover, which must be one of owner's photos, such as `Album "laos-2023"`. */
-function namedCover(owner: string, photos: Photo[], cover: string): Photo {
+/**
+ * The photos that owner, such as `Album "laos-2023"`, lists, each of which must be listed once and be in a folder that
+ * allowed accepts. missing ends the error for one that isn't.
+ */
+function listedPhotos(
+  owner: string,
+  listed: PhotoData[],
+  images: Images,
+  allowed: (folder: string) => boolean,
+  missing: string,
+): Photo[] {
+  checkUnique(
+    listed.map((photo) => photo.file),
+    owner,
+  );
+  return listed.map((photo): Photo => {
+    const found = images.get(photo.file);
+    if (!found || !allowed(found.folder))
+      throw new Error(`${owner} lists "${photo.file}", ${missing}`);
+    return toPhoto(photo, found);
+  });
+}
+
+/** The photo named by cover, which must be one of owner's photos, else the first photo. */
+function chooseCover(owner: string, photos: Photo[], cover?: string): Photo {
+  if (cover === undefined) return photos[0];
   const named = photos.find((photo) => photo.file === cover);
   if (!named)
     throw new Error(
@@ -101,22 +125,17 @@ export function buildAlbum(
   data: AlbumData,
   images: Images,
 ): PhotoSet | undefined {
+  const owner = `Album "${id}"`;
   if (data.end !== undefined && data.end < data.start)
-    throw new Error(`Album "${id}" ends before it starts`);
-  checkUnique(
-    data.photos.map((photo) => photo.file),
-    `Album "${id}"`,
-  );
+    throw new Error(`${owner} ends before it starts`);
 
-  const photos = data.photos.map((photo): Photo => {
-    const found = images.get(photo.file);
-    if (found?.folder !== `${ALBUMS.dir}/${id}`) {
-      throw new Error(
-        `Album "${id}" lists "${photo.file}", but there's no image with that name in its folder`,
-      );
-    }
-    return toPhoto(photo, found);
-  });
+  const photos = listedPhotos(
+    owner,
+    data.photos,
+    images,
+    (folder) => folder === `${ALBUMS.dir}/${id}`,
+    "but there's no image with that name in its folder",
+  );
   if (photos.length === 0) return undefined;
 
   const details = [data.description, data.country];
@@ -128,10 +147,7 @@ export function buildAlbum(
     country: data.country,
     description: `Photos by ${AUTHOR} from ${[data.title, ...details, dates].filter(Boolean).join(", ")}.`,
     photos,
-    cover:
-      data.cover === undefined
-        ? photos[0]
-        : namedCover(`Album "${id}"`, photos, data.cover),
+    cover: chooseCover(owner, photos, data.cover),
     dates: [data.start, data.end],
   };
 }
@@ -143,33 +159,24 @@ export function buildCollection(
   images: Images,
   albumIds: Set<string>,
 ): PhotoSet {
+  const owner = `Collection "${id}"`;
   if (albumIds.has(id))
     throw new Error(
-      `Collection "${id}" has the same URL as an album; rename one of their folders`,
+      `${owner} has the same URL as an album; rename one of their folders`,
     );
   if (data.photos.length === 0)
-    throw new Error(
-      `Collection "${id}" has no photos; add some or delete its folder`,
-    );
-  checkUnique(
-    data.photos.map((photo) => photo.file),
-    `Collection "${id}"`,
-  );
+    throw new Error(`${owner} has no photos; add some or delete its folder`);
 
   // The image can be in the collection's folder or any album's, but the text is always the collection's own.
-  const photos = data.photos.map((photo): Photo => {
-    const found = images.get(photo.file);
-    if (
-      !found ||
-      (found.folder !== `${COLLECTIONS.dir}/${id}` &&
-        !found.folder.startsWith(`${ALBUMS.dir}/`))
-    ) {
-      throw new Error(
-        `Collection "${id}" lists "${photo.file}", which isn't in its folder or any album`,
-      );
-    }
-    return toPhoto(photo, found);
-  });
+  const photos = listedPhotos(
+    owner,
+    data.photos,
+    images,
+    (folder) =>
+      folder === `${COLLECTIONS.dir}/${id}` ||
+      folder.startsWith(`${ALBUMS.dir}/`),
+    "which isn't in its folder or any album",
+  );
 
   return {
     id,
@@ -177,10 +184,7 @@ export function buildCollection(
     subtitle: data.description,
     description: data.description ?? `${data.title} photos by ${AUTHOR}.`,
     photos,
-    cover:
-      data.cover === undefined
-        ? photos[0]
-        : namedCover(`Collection "${id}"`, photos, data.cover),
+    cover: chooseCover(owner, photos, data.cover),
   };
 }
 

@@ -35,19 +35,6 @@ export async function photoSources(
   };
 }
 
-/** A home page cover, which is never shown much more than 1200px wide. */
-export async function coverSource(
-  image: ImageMetadata,
-): Promise<{ src: string; width: number; height: number }> {
-  if (image.width <= SMALL_WIDTH) return image;
-  const resized = await small(image);
-  return {
-    src: resized.src,
-    width: SMALL_WIDTH,
-    height: Math.round((image.height * SMALL_WIDTH) / image.width),
-  };
-}
-
 const colours = new Map<string, Promise<string>>();
 
 /**
@@ -68,6 +55,31 @@ export function averageColour(photo: Photo): Promise<string> {
     colours.set(photo.path, colour);
   }
   return colour;
+}
+
+/**
+ * A cover as the home page and album footers show it, which is never much more than 1200px wide: its source, its
+ * average colour to show while it loads, and its width over its height.
+ */
+export async function coverPreview(cover: Photo): Promise<{
+  source: { src: string; width: number; height: number };
+  colour: string;
+  ratio: number;
+}> {
+  const { image } = cover;
+  const source =
+    image.width <= SMALL_WIDTH
+      ? image
+      : {
+          src: (await small(image)).src,
+          width: SMALL_WIDTH,
+          height: Math.round((image.height * SMALL_WIDTH) / image.width),
+        };
+  return {
+    source,
+    colour: await averageColour(cover),
+    ratio: image.width / image.height,
+  };
 }
 
 /** A 1200×630 JPEG for link previews, which don't all support AVIF. */
