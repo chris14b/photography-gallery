@@ -51,7 +51,11 @@ const albums = defineCollection({
     start: date.describe(
       "The first day of the trip, as YYYY-MM-DD. Albums are sorted by it, newest first.",
     ),
-    end: date.describe("The last day of the trip, as YYYY-MM-DD."),
+    end: date
+      .optional()
+      .describe(
+        "The last day of the trip, as YYYY-MM-DD. Leave it out while the album is still going, such as the current stay at home.",
+      ),
     cover: text.describe(
       "The file name of the home page cover photo, with its extension. It must be one of the album's photos. Defaults to the first photo.",
     ),

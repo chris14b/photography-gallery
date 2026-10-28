@@ -114,8 +114,8 @@ Each album folder has an album.json:
 }
 ```
 
-- title, start, end and photos are required. Everything else is optional; leave a field out rather than filling it with a placeholder.
-- The page shows the dates as months, such as "July–August 2024" or "October 2024 – April 2025", from start and end (YYYY-MM-DD). Albums are sorted by start, newest first.
+- title, start and photos are required. Everything else is optional; leave a field out rather than filling it with a placeholder.
+- The page shows the dates as months, such as "July–August 2024" or "October 2024 – April 2025", from start and end (YYYY-MM-DD). An album with no end, such as the current stay at home, shows "July 2026 – present". Albums are sorted by start, newest first.
 - description is shown under the title, such as "Bali, the Gili Islands and Flores".
 - country is shown under the title too. Set it only when the title doesn't already name the country.
 - cover is the file of the home page cover photo, such as R0004183.jpg, and must be one of the album's photos. It defaults to the first photo.

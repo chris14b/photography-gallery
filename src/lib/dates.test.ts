@@ -35,6 +35,12 @@ describe("formatDates", () => {
   });
 });
 
+describe("formatDates without an end", () => {
+  test("shows the start month and present", () => {
+    expect(formatDates("2026-07-28")).toBe("July 2026 – present");
+  });
+});
+
 describe("formatMonths", () => {
   test("a range within one month shows that month without its year", () => {
     expect(formatMonths("2023-12-02", "2023-12-20")).toBe("Dec");
@@ -48,6 +54,12 @@ describe("formatMonths", () => {
     expect(formatMonths("2024-10-15", "2025-04-02")).toBe(
       "Oct 2024 – Apr 2025",
     );
+  });
+});
+
+describe("formatMonths without an end", () => {
+  test("shows the start month and present", () => {
+    expect(formatMonths("2026-07-28")).toBe("Jul – present");
   });
 });
 

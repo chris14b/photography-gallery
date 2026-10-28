@@ -11,7 +11,11 @@ const listedAlbums = albums.filter(isListed);
 const listedCollections = collections.filter(isListed);
 const latest = listedAlbums[0];
 // The years the listed albums cover, such as "2023–2026".
-const years = formatYears(listedAlbums.flatMap((album) => album.dates ?? []));
+const years = formatYears(
+  listedAlbums.flatMap(
+    (album) => album.dates?.filter((date) => date !== undefined) ?? [],
+  ),
+);
 
 const join = (parts: (string | undefined)[]) =>
   parts.filter(Boolean).join(SEPARATOR);

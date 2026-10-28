@@ -97,6 +97,17 @@ describe("buildAlbum", () => {
     expect(buildAlbum("laos-2023", data, laos)?.subtitle).toBe("March 2023");
   });
 
+  test("shows an album with no end as ongoing", () => {
+    const data = album({
+      start: "2023-03-01",
+      end: undefined,
+      photos: [{ file: "R0001.jpg" }],
+    });
+    expect(buildAlbum("laos-2023", data, laos)?.subtitle).toBe(
+      "March 2023 – present",
+    );
+  });
+
   test("throws when the album lists a photo twice", () => {
     const data = album({
       photos: [

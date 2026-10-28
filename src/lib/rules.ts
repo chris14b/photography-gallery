@@ -37,7 +37,7 @@ export type PhotoSet = {
   /** The home page cover and link preview photo. */
   cover: Photo;
   /** An album's first and last days, as YYYY-MM-DD. Collections have none. */
-  dates?: [start: string, end: string];
+  dates?: [start: string, end?: string];
 };
 
 export type AlbumData = CollectionEntry<"albums">["data"];
@@ -102,7 +102,7 @@ export function buildAlbum(
   data: AlbumData,
   images: Images,
 ): PhotoSet | undefined {
-  if (data.end < data.start)
+  if (data.end !== undefined && data.end < data.start)
     throw new Error(`Album "${id}" ends before it starts`);
   checkUnique(
     data.photos.map((photo) => photo.file),
