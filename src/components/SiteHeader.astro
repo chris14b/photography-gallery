@@ -62,7 +62,7 @@ const photoPage = Astro.routePattern === "/[slug]";
   }
 
   .name {
-    font-size: 1rem;
+    font-size: var(--font-size-md);
     font-weight: 600;
     letter-spacing: -0.005em;
   }
@@ -80,7 +80,7 @@ const photoPage = Astro.routePattern === "/[slug]";
   }
 
   .about {
-    font-size: 0.9rem;
+    font-size: var(--font-size-sm);
     color: var(--muted);
     transition: color 0.15s ease;
   }

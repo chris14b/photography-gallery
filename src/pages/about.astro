@@ -102,16 +102,9 @@ const description = `About ${AUTHOR}, and how to get in touch.`;
     max-width: 36em;
   }
 
-  h1 {
-    font-size: clamp(1.75rem, 3vw, 2.5rem);
-    font-weight: 600;
-    line-height: 1.1;
-    letter-spacing: -0.01em;
-  }
-
   p {
     margin-top: 16px;
-    font-size: 1.05rem;
+    font-size: var(--font-size-lg);
   }
 
   dl {
@@ -122,7 +115,7 @@ const description = `About ${AUTHOR}, and how to get in touch.`;
 
   dt {
     font-family: var(--font-mono);
-    font-size: 0.75rem;
+    font-size: var(--font-size-xs);
     letter-spacing: 0.02em;
     color: var(--muted);
   }
