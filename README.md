@@ -4,11 +4,12 @@ A minimal, static photo gallery built with Astro. It uses a dark theme and reads
 
 ## Features
 
-- A header on every page with the site name, which links home, and a fullscreen button. On album and collection pages it hides as you scroll down and comes back when you scroll up.
+- A header on every page with the site name, which links home, a link to the about page and a fullscreen button. On album and collection pages it hides as you scroll down and comes back when you scroll up.
 - Home page with albums under the year they spend the most days in, newest first, then the collections. Covers keep their own shapes, in rows of even height.
 - Album pages show one photo per screen, as large as fits, with its caption and location below. On screens at least 768px wide in landscape orientation, portrait photos have their caption beside them instead, alternating sides. The layout is CSS only.
 - Each photo fills with its average colour while it loads. Album pages end with links to the albums before and after, and home.
 - Phones get 1200px AVIF copies; bigger screens get the original 3000px JPEG, untouched
+- An about page with a portrait, a paragraph and links to Instagram and email
 - Per-page titles, descriptions and link previews, plus a sitemap
 - Per‑album JSON metadata with preserved photo order
 - Sync script that adds new photos to the JSON
@@ -75,14 +76,15 @@ The custom domain, chrisjohnston.photography, is set in the repository's Pages s
 | --------------------- | ---------------------------------------------------------------------------------------------------- |
 | albums/{url}/         | One folder per album: its photos and album.json. The folder name is the URL.                         |
 | collections/{url}/    | One folder per collection: its own photos and collection.json, e.g. collections/concerts → /concerts |
-| src/site.ts           | The site's URL, title and author                                                                     |
+| src/site.ts           | The site's URL, title and author, and the author's email and Instagram                               |
 | src/content.config.ts | Zod schemas for album.json and collection.json                                                       |
 | src/lib/folders.ts    | The folder layout: albums/ with album.json, collections/ with collection.json                        |
 | src/lib/gallery.ts    | Loads the JSON and images for the pages                                                              |
 | src/lib/rules.ts      | Builds albums and collections from them, and checks them (tested in rules.test.ts)                   |
 | src/lib/dates.ts      | Formats an album's dates                                                                             |
 | src/lib/images.ts     | Image sizes and formats                                                                              |
-| src/pages/            | The home page, album and collection pages ([slug].astro), 404 and sitemap.xml                        |
+| src/pages/            | The home page, album and collection pages ([slug].astro), about, 404 and sitemap.xml                 |
+| src/assets/about.jpg  | The about page's photo, exported like the album photos                                               |
 | scripts/sync.ts       | Adds new photos to the JSON (npm run sync)                                                           |
 | scripts/captions.ts   | Lists captions still to write (part of npm run check)                                                |
 

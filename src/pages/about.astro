@@ -1,0 +1,141 @@
+---
+import portrait from "../assets/about.jpg";
+import Page from "../layouts/Page.astro";
+import { photoSources, socialImage } from "../lib/images";
+import { AUTHOR, EMAIL, INSTAGRAM } from "../site";
+
+// /about is taken by this page, which wins over [slug].astro, so an album or collection folder called about would
+// never be shown.
+
+const alt = AUTHOR;
+const sources = await photoSources(portrait);
+
+const description = `About ${AUTHOR}, and how to get in touch.`;
+---
+
+<Page
+  title="About"
+  description={description}
+  image={{ ...(await socialImage(portrait)), alt }}
+>
+  <main>
+    <img
+      class="portrait"
+      src={sources.src}
+      srcset={sources.srcset}
+      sizes="(min-width: 768px) 40vw, 100vw"
+      width={portrait.width}
+      height={portrait.height}
+      alt={alt}
+      style={`--ratio: ${(portrait.width / portrait.height).toFixed(4)}`}
+    />
+    <div class="text">
+      <h1>About</h1>
+      <p>
+        Hi! I'm Chris, an amateur photographer from Sydney. I like to capture my
+        day-to-day life with my camera, whether that be out in nature, with
+        friends in the city, or travelling overseas. The majority of my photos
+        are taken with my Ricoh GR iiiX.
+      </p>
+      <dl>
+        <div>
+          <dt>Instagram</dt>
+          <dd>
+            <a
+              href={`https://www.instagram.com/${INSTAGRAM}/`}
+              target="_blank"
+              rel="noopener"
+            >
+              @{INSTAGRAM}
+            </a>
+          </dd>
+        </div>
+        <div>
+          <dt>Email</dt>
+          <dd>
+            <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </main>
+</Page>
+
+<style>
+  main {
+    display: grid;
+    gap: clamp(24px, 4vw, 64px);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: clamp(24px, 4vw, 48px) clamp(16px, 2.5vw, 40px) 64px;
+  }
+
+  /*
+   * The portrait beside the text on wider screens, as tall as fits under the header, with the text level with its
+   * middle. Phones get it above the text, full width.
+   */
+  @media (min-width: 768px) {
+    main {
+      grid-template-columns: auto minmax(0, 1fr);
+      align-items: center;
+    }
+
+    .portrait {
+      width: auto;
+      max-width: 40vw;
+      max-height: calc(100svh - 140px);
+    }
+  }
+
+  .portrait {
+    aspect-ratio: var(--ratio);
+    object-fit: cover;
+    background-color: var(--surface);
+  }
+
+  .text {
+    max-width: 36em;
+  }
+
+  h1 {
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+
+  p {
+    margin-top: 16px;
+    font-size: 1.05rem;
+  }
+
+  dl {
+    display: grid;
+    gap: 12px;
+    margin-top: 32px;
+  }
+
+  dt {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.02em;
+    color: var(--muted);
+  }
+
+  dd a {
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+    text-underline-offset: 3px;
+    transition: text-decoration-color 0.15s ease;
+  }
+
+  dd a:hover {
+    text-decoration-color: var(--text);
+  }
+
+  dd a:focus-visible {
+    outline: 2px solid var(--text);
+    outline-offset: 4px;
+  }
+</style>

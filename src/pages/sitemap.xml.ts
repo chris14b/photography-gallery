@@ -1,11 +1,12 @@
 import type { APIRoute } from "astro";
 import { loadGallery } from "../lib/gallery";
 
-/** The home page and every album and collection, for search engines. */
+/** The home page, the about page and every album and collection, for search engines. */
 export const GET: APIRoute = async ({ site }) => {
   const { albums, collections } = await loadGallery();
   const paths = [
     "/",
+    "/about/",
     ...[...albums, ...collections].map((photoSet) => `/${photoSet.id}/`),
   ];
   const urls = paths.map(

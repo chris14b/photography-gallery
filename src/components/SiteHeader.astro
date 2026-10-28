@@ -3,6 +3,7 @@ import { AUTHOR } from "../site";
 import FullscreenButton from "./FullscreenButton.astro";
 
 const home = Astro.url.pathname === "/";
+const about = Astro.url.pathname.replace(/\/$/, "") === "/about";
 ---
 
 <!--
@@ -14,7 +15,12 @@ const home = Astro.url.pathname === "/";
   <a class="name" href="/" aria-current={home ? "page" : undefined}>
     {AUTHOR} <span class="kind">Photography</span>
   </a>
-  <FullscreenButton />
+  <div class="links">
+    <a class="about" href="/about/" aria-current={about ? "page" : undefined}>
+      About
+    </a>
+    <FullscreenButton />
+  </div>
 </header>
 
 <style>
@@ -64,7 +70,25 @@ const home = Astro.url.pathname === "/";
     color: var(--muted);
   }
 
-  .name:focus-visible {
+  .links {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .about {
+    font-size: 0.9rem;
+    color: var(--muted);
+    transition: color 0.15s ease;
+  }
+
+  .about:hover,
+  .about[aria-current] {
+    color: var(--text);
+  }
+
+  .name:focus-visible,
+  .about:focus-visible {
     outline: 2px solid var(--text);
     outline-offset: 4px;
   }
