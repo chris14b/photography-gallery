@@ -20,6 +20,7 @@ A minimal, static photo gallery built with Astro. It uses a dark theme and reads
 - Scoped CSS in Astro components
 - Content collections with Zod schemas for the album and collection JSON
 - astro:assets (sharp) for image resizing
+- Astro's fonts API, serving Geist Mono from src/assets/fonts for dates, places and labels; everything else uses the system font
 - Vitest, ESLint and Prettier
 
 ## Quick start

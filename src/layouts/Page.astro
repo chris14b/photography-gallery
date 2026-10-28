@@ -1,4 +1,5 @@
 ---
+import { Font } from "astro:assets";
 import "../styles/global.css";
 import SiteHeader from "../components/SiteHeader.astro";
 import { SITE_TITLE } from "../site";
@@ -25,6 +26,7 @@ const background = "#121212";
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content={background} />
+    <Font cssVariable="--font-mono" preload />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="sitemap" href="/sitemap.xml" />
