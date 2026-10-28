@@ -1,5 +1,11 @@
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
-import { formatDates, formatMonths, formatYears, mainYear } from "./dates";
+import {
+  formatDates,
+  formatMonths,
+  formatShortDates,
+  formatYears,
+  mainYear,
+} from "./dates";
 
 describe("formatDates", () => {
   test("a range within one month shows that month once", () => {
@@ -38,6 +44,26 @@ describe("formatDates", () => {
 describe("formatDates without an end", () => {
   test("shows the start month and present", () => {
     expect(formatDates("2026-07-28")).toBe("July 2026 – present");
+  });
+});
+
+describe("formatShortDates", () => {
+  test("a range within one month shows that month and year", () => {
+    expect(formatShortDates("2023-12-02", "2023-12-20")).toBe("Dec 2023");
+  });
+
+  test("a range across months of one year closes up the dash", () => {
+    expect(formatShortDates("2023-08-28", "2023-09-04")).toBe("Aug–Sep 2023");
+  });
+
+  test("a range across years shows both years", () => {
+    expect(formatShortDates("2024-10-15", "2025-04-02")).toBe(
+      "Oct 2024 – Apr 2025",
+    );
+  });
+
+  test("without an end, shows the start month and present", () => {
+    expect(formatShortDates("2026-07-28")).toBe("Jul 2026 – present");
   });
 });
 

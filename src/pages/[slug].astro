@@ -3,7 +3,7 @@ import type { GetStaticPaths } from "astro";
 import PageHeader from "../components/PageHeader.astro";
 import PhotoStream from "../components/PhotoStream.astro";
 import Page from "../layouts/Page.astro";
-import { formatDates } from "../lib/dates";
+import { formatShortDates } from "../lib/dates";
 import {
   type PhotoSet,
   countPhotos,
@@ -50,19 +50,20 @@ const details = [subtitle, countPhotos(photoSet)]
   .filter(Boolean)
   .join(SEPARATOR);
 
-// The albums either side, each with a small copy of its cover.
+// The albums either side, each with a small copy of its cover. Later comes first, so the footer runs newest to oldest
+// from left to right, as the home page does.
 const neighbours = await Promise.all(
   (
     [
-      ["Earlier", earlier],
       ["Later", later],
+      ["Earlier", earlier],
     ] as const
   ).map(async ([label, album]) =>
     album
       ? {
           label,
           album,
-          dates: album.dates && formatDates(...album.dates),
+          dates: album.dates && formatShortDates(...album.dates),
           source: await coverSource(album.cover.image),
           colour: await averageColour(album.cover),
           ratio: album.cover.image.width / album.cover.image.height,
@@ -84,33 +85,35 @@ const isAlbum = photoSet.dates !== undefined;
     <footer>
       {isAlbum ? (
         <nav aria-label="More albums">
-          {neighbours.map((neighbour) =>
-            neighbour ? (
-              <a
-                class:list={["neighbour", neighbour.label.toLowerCase()]}
-                href={`/${neighbour.album.id}/`}
-              >
-                <img
-                  src={neighbour.source.src}
-                  width={neighbour.source.width}
-                  height={neighbour.source.height}
-                  alt=""
-                  loading="lazy"
-                  decoding="async"
-                  style={`--ratio: ${neighbour.ratio.toFixed(4)}; --colour: ${neighbour.colour}`}
-                />
-                <span class="label">
-                  {neighbour.label === "Earlier" ? "← Earlier" : "Later →"}
-                </span>
-                <span class="title">{neighbour.album.title}</span>
-                {neighbour.dates && (
-                  <span class="dates">{neighbour.dates}</span>
-                )}
-              </a>
-            ) : (
-              <span />
-            ),
+          {neighbours.map(
+            (neighbour) =>
+              neighbour && (
+                <a
+                  class:list={["neighbour", neighbour.label.toLowerCase()]}
+                  href={`/${neighbour.album.id}/`}
+                >
+                  <img
+                    src={neighbour.source.src}
+                    width={neighbour.source.width}
+                    height={neighbour.source.height}
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                    style={`--ratio: ${neighbour.ratio.toFixed(4)}; --colour: ${neighbour.colour}`}
+                  />
+                  <span class="label">
+                    {neighbour.label === "Later" ? "← Later" : "Earlier →"}
+                  </span>
+                  <span class="title">{neighbour.album.title}</span>
+                  {neighbour.dates && (
+                    <span class="dates">{neighbour.dates}</span>
+                  )}
+                </a>
+              ),
           )}
+          <a class="all" href="/">
+            All albums
+          </a>
         </nav>
       ) : (
         <a class="more" href="/">
@@ -132,10 +135,22 @@ const isAlbum = photoSet.dates !== undefined;
     border-top: 1px solid var(--surface);
   }
 
+  /* The way home sits between the two albums, level with their labels, and drops below them on phones. */
   nav {
-    display: flex;
-    justify-content: space-between;
+    --cover-height: clamp(80px, 10vw, 140px);
+    display: grid;
+    grid-template-areas: "later all earlier";
+    grid-template-columns: 1fr auto 1fr;
     gap: 24px;
+  }
+
+  @media (max-width: 599px) {
+    nav {
+      grid-template-areas:
+        "later earlier"
+        "all all";
+      grid-template-columns: 1fr 1fr;
+    }
   }
 
   .neighbour {
@@ -145,14 +160,36 @@ const isAlbum = photoSet.dates !== undefined;
     min-width: 0;
   }
 
+  /* Each only as wide as its cover and text, so the cover keeps its shape rather than stretching across the column. */
   .later {
+    grid-area: later;
+    justify-self: start;
+    align-items: flex-start;
+  }
+
+  .earlier {
+    grid-area: earlier;
+    justify-self: end;
     align-items: flex-end;
     text-align: right;
   }
 
+  /* Down past the covers, their 10px margin and the 2px gap, to the labels. */
+  .all {
+    grid-area: all;
+    justify-self: center;
+    padding-top: calc(var(--cover-height) + 12px);
+  }
+
+  @media (max-width: 599px) {
+    .all {
+      padding-top: 0;
+    }
+  }
+
   .neighbour img {
     width: auto;
-    height: clamp(80px, 10vw, 140px);
+    height: var(--cover-height);
     aspect-ratio: var(--ratio);
     margin-bottom: 10px;
     object-fit: cover;
@@ -161,6 +198,7 @@ const isAlbum = photoSet.dates !== undefined;
 
   .label,
   .dates,
+  .all,
   .more {
     font-family: var(--font-mono);
     font-size: 0.8rem;
@@ -172,6 +210,7 @@ const isAlbum = photoSet.dates !== undefined;
   }
 
   .neighbour:hover .title,
+  .all:hover,
   .more:hover {
     color: var(--text);
     text-decoration: underline;
@@ -179,6 +218,7 @@ const isAlbum = photoSet.dates !== undefined;
   }
 
   .neighbour:focus-visible,
+  .all:focus-visible,
   .more:focus-visible {
     outline: 2px solid var(--text);
     outline-offset: 4px;

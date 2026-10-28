@@ -22,6 +22,14 @@ export function formatDates(start: string, end?: string): string {
 }
 
 /**
+ * The months an album covers, short, for a card with no year heading over it: "Dec 2023", "Aug–Sep 2023",
+ * "Oct 2024 – Apr 2025" or "Jul 2026 – present". Dates are YYYY-MM-DD.
+ */
+export function formatShortDates(start: string, end?: string): string {
+  return formatRange(shortMonthYear, start, end);
+}
+
+/**
  * The months an album covers, short and without the year it starts in, for under a year heading: "Dec", "Aug–Sep",
  * "Jul–present", or "Oct 2024 – Apr 2025" when it runs into another year. Dates are YYYY-MM-DD.
  */

@@ -5,8 +5,12 @@ import FullscreenButton from "./FullscreenButton.astro";
 const home = Astro.url.pathname === "/";
 ---
 
-<!-- The same on every page: the name goes home, which is how a shared collection link leads to everything else. -->
-<header>
+<!--
+  The same on every page: the name goes home, which is how a shared collection link leads to everything else. Away
+  from the home page it gets out of the way as you scroll down through the photos and comes back when you scroll up,
+  so home is never far. The home page doesn't need it, and its year headings already stick to the top.
+-->
+<header class:list={{ "comes-back": !home }}>
   <a class="name" href="/" aria-current={home ? "page" : undefined}>
     {AUTHOR} <span class="kind">Photography</span>
   </a>
@@ -22,6 +26,30 @@ const home = Astro.url.pathname === "/";
     /* The fullscreen button's height, so the header doesn't shrink where the button is hidden. */
     min-height: 36px;
     margin: 16px clamp(16px, 2.5vw, 40px) 0;
+  }
+
+  /*
+   * Padding rather than margin, so the background covers the photos edge to edge. The extra 12px underneath is taken
+   * back with a negative margin, so the page starts where it would without it.
+   */
+  .comes-back {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    margin: 4px 0 -12px;
+    padding: 12px clamp(16px, 2.5vw, 40px);
+    background-color: var(--background);
+  }
+
+  /* Tabbing into it brings it back, so keyboard users never focus something they can't see. */
+  .comes-back.hidden:not(:focus-within) {
+    transform: translateY(-100%);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .comes-back {
+      transition: transform 0.25s ease;
+    }
   }
 
   .name {
@@ -41,3 +69,28 @@ const home = Astro.url.pathname === "/";
     outline-offset: 4px;
   }
 </style>
+
+<script>
+  const header = document.querySelector("header.comes-back");
+  if (header) {
+    // How far the page has to move before the header follows, so a wobble of the finger doesn't flick it in and out.
+    const threshold = 8;
+    let last = window.scrollY;
+    window.addEventListener(
+      "scroll",
+      () => {
+        const y = window.scrollY;
+        // At the top, including iOS's bounce above it, the header is back in its own place.
+        if (y <= 0) {
+          header.classList.remove("hidden");
+        } else if (Math.abs(y - last) < threshold) {
+          return;
+        } else {
+          header.classList.toggle("hidden", y > last);
+        }
+        last = y;
+      },
+      { passive: true },
+    );
+  }
+</script>
