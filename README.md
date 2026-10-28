@@ -118,7 +118,7 @@ Each album folder has an album.json:
 - The page shows the dates as months, such as "July–August 2024" or "October 2024 – April 2025", from start and end (YYYY-MM-DD). Albums are sorted by start, newest first.
 - description is shown under the title, such as "Bali, the Gili Islands and Flores".
 - country is shown under the title too. Set it only when the title doesn't already name the country.
-- cover is the file of the home page cover photo, such as R0004183.jpg, and must be one of the album's photos. It defaults to the first landscape photo, else the first photo.
+- cover is the file of the home page cover photo, such as R0004183.jpg, and must be one of the album's photos. It defaults to the first photo.
 - Photos are shown in the order listed. file is the file name with its extension, such as R0003897.jpg, and must be unique across all albums and collections.
 - Leave caption out for a photo that has no caption on purpose. "caption": "" means it's still to write: npm run sync adds it for new photos, and npm run check lists them. Neither shows a caption on the page. An empty location is left off the page too.
 - Set "unlisted": true to keep an album off the home page and out of the sitemap. Its URL still works, and collections can still use its photos.

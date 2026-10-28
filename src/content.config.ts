@@ -53,7 +53,7 @@ const albums = defineCollection({
     ),
     end: date.describe("The last day of the trip, as YYYY-MM-DD."),
     cover: text.describe(
-      "The file name of the home page cover photo, with its extension. It must be one of the album's photos. Defaults to the first landscape photo.",
+      "The file name of the home page cover photo, with its extension. It must be one of the album's photos. Defaults to the first photo.",
     ),
     unlisted: z
       .boolean()

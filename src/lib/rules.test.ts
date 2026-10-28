@@ -203,22 +203,9 @@ describe("album cover", () => {
     );
   });
 
-  test("falls back to the first landscape photo without a cover", () => {
+  test("falls back to the first photo without a cover, even when it is portrait", () => {
     expect(buildAlbum("laos-2023", album({ photos }), mixed)?.cover.file).toBe(
-      "R0002.jpg",
-    );
-  });
-
-  test("falls back to the first photo when none is landscape", () => {
-    const portraits = images({
-      "/albums/laos-2023/R0001.jpg": PORTRAIT,
-      "/albums/laos-2023/R0002.jpg": PORTRAIT,
-    });
-    const data = album({
-      photos: [{ file: "R0002.jpg" }, { file: "R0001.jpg" }],
-    });
-    expect(buildAlbum("laos-2023", data, portraits)?.cover.file).toBe(
-      "R0002.jpg",
+      "R0001.jpg",
     );
   });
 });

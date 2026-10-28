@@ -96,20 +96,6 @@ function namedCover(owner: string, photos: Photo[], cover: string): Photo {
   return named;
 }
 
-/** The photo named by cover, which must be one of the album's photos. Without a cover, the first landscape photo, else the first photo. */
-export function pickCover(
-  id: string,
-  photos: Photo[],
-  cover: string | undefined,
-): Photo {
-  if (cover === undefined)
-    return (
-      photos.find((photo) => photo.image.width > photo.image.height) ??
-      photos[0]
-    );
-  return namedCover(`Album "${id}"`, photos, cover);
-}
-
 /** The album in albums/{id}/album.json, or undefined while it has no photos. */
 export function buildAlbum(
   id: string,
@@ -144,7 +130,10 @@ export function buildAlbum(
     description: `Photos by ${AUTHOR} from ${[data.title, ...details, dates].filter(Boolean).join(", ")}.`,
     unlisted: data.unlisted === true,
     photos,
-    cover: pickCover(id, photos, data.cover),
+    cover:
+      data.cover === undefined
+        ? photos[0]
+        : namedCover(`Album "${id}"`, photos, data.cover),
     dates: [data.start, data.end],
   };
 }
