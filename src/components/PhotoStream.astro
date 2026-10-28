@@ -109,9 +109,13 @@ const items = await Promise.all(
     font-weight: 500;
   }
 
+  /*
+   * Lined up by the text rather than centred, so the location takes its baseline from its text and sits level with the
+   * caption. Otherwise it takes it from the bottom of the pin and sits higher.
+   */
   .location {
     display: inline-flex;
-    align-items: center;
+    align-items: baseline;
     gap: 6px;
     font-family: var(--font-mono);
     font-size: var(--font-size-xs);
@@ -119,6 +123,7 @@ const items = await Promise.all(
   }
 
   .location :global(svg) {
+    align-self: center;
     width: 13px;
     height: 13px;
   }
