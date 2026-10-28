@@ -1,14 +1,12 @@
 import type { APIRoute } from "astro";
-import { isListed, loadGallery } from "../lib/gallery";
+import { loadGallery } from "../lib/gallery";
 
-/** The home page and every listed album and collection, for search engines. */
+/** The home page and every album and collection, for search engines. */
 export const GET: APIRoute = async ({ site }) => {
   const { albums, collections } = await loadGallery();
   const paths = [
     "/",
-    ...[...albums, ...collections]
-      .filter(isListed)
-      .map((photoSet) => `/${photoSet.id}/`),
+    ...[...albums, ...collections].map((photoSet) => `/${photoSet.id}/`),
   ];
   const urls = paths.map(
     (path) => `<url><loc>${new URL(path, site)}</loc></url>`,

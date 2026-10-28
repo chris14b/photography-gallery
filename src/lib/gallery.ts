@@ -8,7 +8,7 @@ import {
   unlistedImages,
 } from "./rules";
 
-export { type Photo, type PhotoSet, countPhotos, isListed } from "./rules";
+export { type Photo, type PhotoSet, countPhotos } from "./rules";
 
 // import.meta.glob needs literal paths, so these repeat the folders and PHOTO_EXTENSION in folders.ts.
 const imageModules = import.meta.glob<ImageMetadata>(
@@ -19,7 +19,7 @@ const imageModules = import.meta.glob<ImageMetadata>(
 let gallery:
   Promise<{ albums: PhotoSet[]; collections: PhotoSet[] }> | undefined;
 
-/** Every album, newest first, and every collection, including unlisted ones. */
+/** Every album, newest first, and every collection. */
 export function loadGallery() {
   gallery ??= (async () => {
     const images = indexImages(imageModules);

@@ -7,7 +7,6 @@ import {
   buildCollection,
   countPhotos,
   indexImages,
-  isListed,
   unlistedImages,
 } from "./rules";
 
@@ -374,40 +373,6 @@ describe("countPhotos", () => {
       index,
     )!;
     expect(countPhotos(built)).toBe("2 photos");
-  });
-});
-
-describe("isListed", () => {
-  const index = images(["/albums/laos-2023/R0001.jpg"]);
-  const photos = [{ file: "R0001.jpg" }];
-
-  test("lists an album or collection", () => {
-    expect(isListed(buildAlbum("laos-2023", album({ photos }), index)!)).toBe(
-      true,
-    );
-    expect(
-      isListed(
-        buildCollection("concerts", collection({ photos }), index, new Set()),
-      ),
-    ).toBe(true);
-  });
-
-  test("leaves out an unlisted album or collection", () => {
-    expect(
-      isListed(
-        buildAlbum("laos-2023", album({ unlisted: true, photos }), index)!,
-      ),
-    ).toBe(false);
-    expect(
-      isListed(
-        buildCollection(
-          "concerts",
-          collection({ unlisted: true, photos }),
-          index,
-          new Set(),
-        ),
-      ),
-    ).toBe(false);
   });
 });
 

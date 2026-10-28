@@ -4,18 +4,13 @@ import PageHeader from "../components/PageHeader.astro";
 import PhotoStream from "../components/PhotoStream.astro";
 import Page from "../layouts/Page.astro";
 import { formatShortDates } from "../lib/dates";
-import {
-  type PhotoSet,
-  countPhotos,
-  isListed,
-  loadGallery,
-} from "../lib/gallery";
+import { type PhotoSet, countPhotos, loadGallery } from "../lib/gallery";
 import { averageColour, coverSource, socialImage } from "../lib/images";
 import { AUTHOR, SEPARATOR } from "../site";
 
 interface Props {
   photoSet: PhotoSet;
-  /** The listed albums just before and after this one, for an album that's listed itself. */
+  /** The albums just before and after this one, for an album. */
   earlier?: PhotoSet;
   later?: PhotoSet;
 }
@@ -23,20 +18,16 @@ interface Props {
 // Albums and collections share the top level of the URL; loadGallery fails the build if a collection clashes with an album.
 export const getStaticPaths = (async () => {
   const { albums, collections } = await loadGallery();
-  // Newest first, as loadGallery sorts them.
-  const listed = albums.filter(isListed);
   return [
-    ...albums.map((album) => {
-      const index = listed.indexOf(album);
-      return {
-        params: { slug: album.id },
-        props: {
-          photoSet: album,
-          earlier: index === -1 ? undefined : listed[index + 1],
-          later: index === -1 ? undefined : listed[index - 1],
-        },
-      };
-    }),
+    // Newest first, as loadGallery sorts them.
+    ...albums.map((album, index) => ({
+      params: { slug: album.id },
+      props: {
+        photoSet: album,
+        earlier: albums[index + 1],
+        later: albums[index - 1],
+      },
+    })),
     ...collections.map((collection) => ({
       params: { slug: collection.id },
       props: { photoSet: collection },

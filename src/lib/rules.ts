@@ -32,7 +32,6 @@ export type PhotoSet = {
   country?: string;
   /** A sentence for search results and link previews. */
   description: string;
-  unlisted: boolean;
   photos: Photo[];
   /** The home page cover and link preview photo. */
   cover: Photo;
@@ -128,7 +127,6 @@ export function buildAlbum(
     subtitle: [...details, dates].filter(Boolean).join(SEPARATOR),
     country: data.country,
     description: `Photos by ${AUTHOR} from ${[data.title, ...details, dates].filter(Boolean).join(", ")}.`,
-    unlisted: data.unlisted === true,
     photos,
     cover:
       data.cover === undefined
@@ -178,7 +176,6 @@ export function buildCollection(
     title: data.title,
     subtitle: data.description,
     description: data.description ?? `${data.title} photos by ${AUTHOR}.`,
-    unlisted: data.unlisted === true,
     photos,
     cover:
       data.cover === undefined
@@ -191,11 +188,6 @@ export function buildCollection(
 export function countPhotos(photoSet: PhotoSet): string {
   const { length } = photoSet.photos;
   return `${length} ${length === 1 ? "photo" : "photos"}`;
-}
-
-/** Whether the home page and the sitemap list an album or collection, which they do unless it's unlisted. */
-export function isListed(photoSet: PhotoSet): boolean {
-  return !photoSet.unlisted;
 }
 
 /** Images that no album.json or collection.json lists, such as "albums/laos-2023/R0001234.jpg", which the site leaves out. */

@@ -2,17 +2,15 @@
 import AlbumCard from "../components/AlbumCard.astro";
 import Page from "../layouts/Page.astro";
 import { formatMonths, formatYears, mainYear } from "../lib/dates";
-import { countPhotos, isListed, loadGallery } from "../lib/gallery";
+import { countPhotos, loadGallery } from "../lib/gallery";
 import { socialImage } from "../lib/images";
 import { AUTHOR, SEPARATOR, SITE_TITLE } from "../site";
 
 const { albums, collections } = await loadGallery();
-const listedAlbums = albums.filter(isListed);
-const listedCollections = collections.filter(isListed);
-const latest = listedAlbums[0];
-// The years the listed albums cover, such as "2023–2026".
+const latest = albums[0];
+// The years the albums cover, such as "2023–2026".
 const years = formatYears(
-  listedAlbums.flatMap(
+  albums.flatMap(
     (album) => album.dates?.filter((date) => date !== undefined) ?? [],
   ),
 );
@@ -20,16 +18,14 @@ const years = formatYears(
 const join = (parts: (string | undefined)[]) =>
   parts.filter(Boolean).join(SEPARATOR);
 
-const collectionCards = listedCollections.map((collection) => ({
+const collectionCards = collections.map((collection) => ({
   photoSet: collection,
   details: countPhotos(collection),
 }));
 
 // Albums under the year they spend the most days in, newest year first. Within a year they stay newest first, as
 // loadGallery sorts them.
-const albumsByYear = Map.groupBy(listedAlbums, (album) =>
-  mainYear(...album.dates!),
-);
+const albumsByYear = Map.groupBy(albums, (album) => mainYear(...album.dates!));
 const yearSections = [...albumsByYear]
   .sort(([a], [b]) => b.localeCompare(a))
   .map(([year, yearAlbums]) => ({

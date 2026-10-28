@@ -59,12 +59,6 @@ const albums = defineCollection({
     cover: text.describe(
       "The file name of the home page cover photo, with its extension. It must be one of the album's photos. Defaults to the first photo.",
     ),
-    unlisted: z
-      .boolean()
-      .optional()
-      .describe(
-        "Leaves the album off the home page and out of the sitemap. Its URL still works.",
-      ),
     photos: z
       .array(photo)
       .describe("In the order shown. npm run sync adds new photos to the end."),
@@ -85,12 +79,6 @@ const handPicked = defineCollection({
     cover: text.describe(
       "The file name of the home page cover photo, with its extension. It must be one of the collection's photos. Defaults to the first photo.",
     ),
-    unlisted: z
-      .boolean()
-      .optional()
-      .describe(
-        "Leaves the collection off the home page and out of the sitemap. Its URL still works.",
-      ),
     photos: z
       .array(photo)
       .describe(
