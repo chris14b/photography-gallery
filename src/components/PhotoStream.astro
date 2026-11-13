@@ -163,3 +163,96 @@ const items = await Promise.all(
     }
   }
 </style>
+
+<script>
+  /*
+   * The arrow keys step through the photos, centring each on the screen: down and right for the next, up and left for
+   * the previous. Past the last photo is the footer, and before the first is the top of the page. Steps are counted
+   * from the photo being scrolled to, so pressing again before the scroll finishes goes on to the one after it.
+   *
+   * While stepping, <html> has data-stepping, which keeps the site header hidden as the page scrolls back up, so it
+   * doesn't cover the top of the photo.
+   */
+  const figures = [
+    ...document.querySelectorAll<HTMLElement>(".stream > .photo"),
+  ];
+  const root = document.documentElement;
+  // How far from the middle of the screen a photo can be and still count as centred, for rounding.
+  const tolerance = 4;
+  // The photo being scrolled to: -1 for the top of the page and figures.length for the bottom.
+  let target: number | undefined;
+  let settled: ReturnType<typeof setTimeout> | undefined;
+
+  const centre = (figure: HTMLElement) => {
+    const { top, height } = figure.getBoundingClientRect();
+    return top + height / 2;
+  };
+
+  // Stepping is over once the page has stopped moving for a moment, or never moved because it was already there.
+  const settle = () => {
+    clearTimeout(settled);
+    settled = setTimeout(() => {
+      target = undefined;
+      delete root.dataset.stepping;
+    }, 150);
+  };
+
+  const step = (direction: 1 | -1) => {
+    const middle = window.innerHeight / 2;
+    let index: number;
+    if (target !== undefined) {
+      index = target + direction;
+    } else if (direction === 1) {
+      index = figures.findIndex(
+        (figure) => centre(figure) > middle + tolerance,
+      );
+      if (index === -1) index = figures.length;
+    } else {
+      index = figures.findLastIndex(
+        (figure) => centre(figure) < middle - tolerance,
+      );
+    }
+    target = Math.min(Math.max(index, -1), figures.length);
+    root.dataset.stepping = "";
+
+    const behavior = window.matchMedia("(prefers-reduced-motion: reduce)")
+      .matches
+      ? "instant"
+      : "smooth";
+    const figure = figures[target];
+    if (figure) {
+      figure.scrollIntoView({ block: "center", behavior });
+    } else {
+      window.scrollTo({ top: target === -1 ? 0 : root.scrollHeight, behavior });
+    }
+    settle();
+  };
+
+  const directions: Record<string, 1 | -1> = {
+    ArrowDown: 1,
+    ArrowRight: 1,
+    ArrowUp: -1,
+    ArrowLeft: -1,
+  };
+
+  if (figures.length > 0) {
+    window.addEventListener("keydown", (event) => {
+      const direction = directions[event.key];
+      if (
+        !direction ||
+        event.defaultPrevented ||
+        event.altKey ||
+        event.ctrlKey ||
+        event.metaKey ||
+        event.shiftKey
+      ) {
+        return;
+      }
+      event.preventDefault();
+      step(direction);
+    });
+    window.addEventListener("scroll", () => target !== undefined && settle(), {
+      passive: true,
+    });
+  }
+</script>

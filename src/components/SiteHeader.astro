@@ -110,6 +110,9 @@ const photoPage = Astro.routePattern === "/[slug]";
         // At the top, including iOS's bounce above it, the header is back in its own place.
         if (y <= 0) {
           header.classList.remove("hidden");
+        } else if (document.documentElement.dataset.stepping !== undefined) {
+          // Stepping through the photos with the arrow keys (see PhotoStream), where it would cover the top of each.
+          header.classList.add("hidden");
         } else if (Math.abs(y - last) < threshold) {
           return;
         } else {
