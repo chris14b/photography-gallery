@@ -85,11 +85,15 @@ const items = await Promise.all(
   }
 
   img {
-    /* Leave room below the photo for its caption. */
+    /*
+     * Leave room below the photo for its caption. lvh rather than svh, so that on a phone the photo is sized for the
+     * screen once the browser's URL bar has gone, not the smaller one it starts with. The reserve is more than the bar,
+     * so the whole photo is still in view while the bar is showing. dvh would resize the photos as you scroll.
+     */
     width: min(
       100% - 2 * var(--gutter),
       1600px,
-      (100svh - 6rem) * var(--ratio)
+      (100lvh - 6rem) * var(--ratio)
     );
     background-color: var(--colour);
   }
@@ -143,7 +147,7 @@ const items = await Promise.all(
       flex: none;
       width: min(
         100% - 2 * var(--gutter) - var(--caption-width) - var(--caption-gap),
-        (100svh - 48px) * var(--ratio)
+        (100lvh - 48px) * var(--ratio)
       );
     }
 
