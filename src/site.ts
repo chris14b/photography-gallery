@@ -10,3 +10,4 @@ export const SEPARATOR = " · ";
 /** Where to find the author, for the about page. */
 export const EMAIL = "chris14b@gmail.com";
 export const INSTAGRAM = "chrisjohnston4";
+export const INSTAGRAM_CONCERTS = "chrisj.pics";

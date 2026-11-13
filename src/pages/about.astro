@@ -2,7 +2,7 @@
 import portrait from "../assets/about.jpg";
 import Page from "../layouts/Page.astro";
 import { photoSources, socialImage } from "../lib/images";
-import { AUTHOR, EMAIL, INSTAGRAM } from "../site";
+import { AUTHOR, EMAIL, INSTAGRAM, INSTAGRAM_CONCERTS } from "../site";
 
 // /about is taken by this page, which wins over [slug].astro, so an album or collection folder called about would
 // never be shown.
@@ -39,7 +39,7 @@ const description = `About ${AUTHOR}, and how to get in touch.`;
       </p>
       <dl>
         <div>
-          <dt>Instagram</dt>
+          <dt>Personal Instagram</dt>
           <dd>
             <a
               href={`https://www.instagram.com/${INSTAGRAM}/`}
@@ -47,6 +47,18 @@ const description = `About ${AUTHOR}, and how to get in touch.`;
               rel="noopener"
             >
               @{INSTAGRAM}
+            </a>
+          </dd>
+        </div>
+        <div>
+          <dt>Concert photography Instagram</dt>
+          <dd>
+            <a
+              href={`https://www.instagram.com/${INSTAGRAM_CONCERTS}/`}
+              target="_blank"
+              rel="noopener"
+            >
+              @{INSTAGRAM_CONCERTS}
             </a>
           </dd>
         </div>

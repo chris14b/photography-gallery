@@ -9,7 +9,7 @@ A minimal, static photo gallery built with Astro. It uses a dark theme and reads
 - Album pages show one photo per screen, as large as fits, with its caption and location below. On screens at least 768px wide in landscape orientation, portrait photos have their caption beside them instead, alternating sides. The layout is CSS only.
 - Each photo fills with its average colour while it loads. Album pages end with links to the albums before and after, and home.
 - Phones get 1200px AVIF copies; bigger screens get the original 3000px JPEG, untouched
-- An about page with a portrait, a paragraph and links to Instagram and email
+- An about page with a portrait, a paragraph and links to both Instagram accounts and email
 - Per-page titles, descriptions and link previews, plus a sitemap
 - Per‑album JSON metadata with preserved photo order
 - Sync script that adds new photos to the JSON
@@ -77,7 +77,7 @@ The custom domain, chrisjohnston.photography, is set in the repository's Pages s
 | --------------------- | ---------------------------------------------------------------------------------------------------- |
 | albums/{url}/         | One folder per album: its photos and album.json. The folder name is the URL.                         |
 | collections/{url}/    | One folder per collection: its own photos and collection.json, e.g. collections/concerts → /concerts |
-| src/site.ts           | The site's URL, title and author, and the author's email and Instagram                               |
+| src/site.ts           | The site's URL, title and author, and the author's email and Instagram accounts                      |
 | src/content.config.ts | Zod schemas for album.json and collection.json                                                       |
 | src/lib/folders.ts    | The folder layout: albums/ with album.json, collections/ with collection.json                        |
 | src/lib/gallery.ts    | Loads the JSON and images for the pages                                                              |
