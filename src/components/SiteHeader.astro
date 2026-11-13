@@ -50,8 +50,11 @@ const photoPage = Astro.routePattern === "/[slug]";
     background-color: var(--background);
   }
 
-  /* Tabbing into it brings it back, so keyboard users never focus something they can't see. */
-  .comes-back.hidden:not(:focus-within) {
+  /*
+   * Tabbing into it brings it back, so keyboard users never focus something they can't see. :focus-visible rather than
+   * :focus-within, because tapping the fullscreen button on a phone leaves it focused, which would pin the header open.
+   */
+  .comes-back.hidden:not(:has(:focus-visible)) {
     transform: translateY(-100%);
   }
 
