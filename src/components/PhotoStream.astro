@@ -69,12 +69,15 @@ const items = await Promise.all(
   .stream {
     display: flex;
     flex-direction: column;
-    gap: 96px;
+    /* Half as much on a phone, where the photos are smaller and fill the width, as on a desktop screen. */
+    gap: clamp(48px, 10vw, 96px);
   }
 
   .photo {
-    /* No gutter on phones, growing to 40px on wide screens. */
-    --gutter: clamp(0px, 2.5vw - 10px, 40px);
+    /* No gutter on phones, where the photos go edge to edge. */
+    --gutter: 0px;
+    /* Room below the photo for its caption. */
+    --reserve: 6rem;
     --caption-width: 300px;
     --caption-gap: 32px;
 
@@ -93,7 +96,7 @@ const items = await Promise.all(
     width: min(
       100% - 2 * var(--gutter),
       1600px,
-      (100lvh - 6rem) * var(--ratio)
+      (100lvh - var(--reserve)) * var(--ratio)
     );
     background-color: var(--colour);
   }
@@ -130,6 +133,24 @@ const items = await Promise.all(
     align-self: center;
     width: 13px;
     height: 13px;
+  }
+
+  /* The same margin as the header and footer, so the photos' edges line up with their text. */
+  @media (min-width: 640px) {
+    .photo {
+      --gutter: clamp(16px, 2.5vw, 40px);
+    }
+  }
+
+  /* A short screen, such as a phone on its side, can't spare as much for the caption or the gap between photos. */
+  @media (max-height: 500px) {
+    .stream {
+      gap: 48px;
+    }
+
+    .photo {
+      --reserve: 4.5rem;
+    }
   }
 
   @media (min-width: 768px) and (orientation: landscape) {
