@@ -53,20 +53,46 @@ import IconButton from "./IconButton.astro";
   const button = document.getElementById("fullscreen");
   if (button && document.fullscreenEnabled) {
     button.hidden = false;
-    button.addEventListener("click", () => {
+    button.setAttribute("aria-keyshortcuts", "F");
+
+    const toggle = () => {
       const change = document.fullscreenElement
         ? document.exitFullscreen()
         : document.documentElement.requestFullscreen();
       change.catch((error: unknown) =>
         console.error("Could not change fullscreen mode:", error),
       );
-    });
-    document.addEventListener("fullscreenchange", () => {
+    };
+    // The tooltip tells mouse users about the F key without anything else on the page.
+    const describe = () => {
       const label = document.fullscreenElement
         ? "Exit fullscreen"
         : "Enter fullscreen";
       button.setAttribute("aria-label", label);
-      button.title = label;
+      button.title = `${label} (F)`;
+    };
+
+    button.addEventListener("click", toggle);
+    document.addEventListener("fullscreenchange", describe);
+    describe();
+
+    // F toggles fullscreen too, unless it's part of a browser shortcut or being typed into something.
+    window.addEventListener("keydown", (event) => {
+      if (
+        event.key.toLowerCase() !== "f" ||
+        event.repeat ||
+        event.defaultPrevented ||
+        event.altKey ||
+        event.ctrlKey ||
+        event.metaKey ||
+        event.shiftKey ||
+        (event.target instanceof HTMLElement &&
+          event.target.closest("input, textarea, select, [contenteditable]"))
+      ) {
+        return;
+      }
+      event.preventDefault();
+      toggle();
     });
   }
 </script>
