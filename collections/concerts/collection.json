@@ -9,9 +9,19 @@
       "location": "Sydney SuperDome"
     },
     {
+      "file": "R0009570.jpg",
+      "caption": "MISHSQUISH, 2026",
+      "location": "Tokyo Sing Song"
+    },
+    {
       "file": "R0009280.jpg",
       "caption": "Tame Impala, 2026",
       "location": "Sydney SuperDome"
+    },
+    {
+      "file": "R0009674.jpg",
+      "caption": "The crowd for Two Door Cinema Club, 2026",
+      "location": "Hordern Pavilion"
     },
     {
       "file": "R0006325.jpg",
@@ -22,6 +32,11 @@
       "file": "R0009268.jpg",
       "caption": "Tame Impala, 2026",
       "location": "Sydney SuperDome"
+    },
+    {
+      "file": "R0009636.jpg",
+      "caption": "DJ METRO LINE EXTENSION, 2026",
+      "location": "Tokyo Sing Song"
     },
     {
       "file": "R0007332.jpg",
@@ -37,6 +52,11 @@
       "file": "R0006333.jpg",
       "caption": "Ólafur Arnalds of Kiasmos, 2025",
       "location": "Sydney Opera House"
+    },
+    {
+      "file": "R0009662.jpg",
+      "caption": "Two Door Cinema Club, 2026",
+      "location": "Hordern Pavilion"
     }
   ]
 }
